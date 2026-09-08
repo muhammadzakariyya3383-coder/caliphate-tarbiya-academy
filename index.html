@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14532d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="CTA Academy">
+<title>Caliphate Tarbiya Academy</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#f4f7f5;color:#17202a;min-height:100vh
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+header{
+background:linear-gradient(135deg,#14532d,#166534);
+color:white;padding:18px 16px;
+position:sticky;top:0;z-index:20;
+box-shadow:0 3px 12px #0002
+}
+.header-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.logo{
+width:45px;height:45px;border-radius:12px;background:white;color:#14532d;
+display:grid;place-items:center;font-weight:900;font-size:20px
+}
+.brand h1{font-size:17px}.brand p{font-size:11px;opacity:.8}
+.header-actions{display:flex;gap:7px}
+.icon-btn{
+border:1px solid #ffffff44;background:#ffffff18;color:white;
+border-radius:10px;padding:9px
+}
+
+.container{max-width:1100px;margin:auto;padding:18px}
+.card{
+background:white;border:1px solid #e2e8e4;border-radius:16px;
+padding:16px;box-shadow:0 3px 12px #00000008;margin-bottom:15px
+}
+.login-wrap{
+min-height:100vh;display:grid;place-items:center;padding:20px;
+background:linear-gradient(135deg,#ecfdf5,#f8fafc)
+}
+.login{
+width:100%;max-width:430px;background:white;border-radius:22px;
+padding:28px;box-shadow:0 15px 45px #0002
+}
+.login-logo{
+width:70px;height:70px;border-radius:20px;background:#14532d;color:white;
+display:grid;place-items:center;font-size:28px;font-weight:900;margin:0 auto 15px
+}
+.login h2{text-align:center;color:#14532d;margin-bottom:6px}
+.login .sub{text-align:center;color:#64748b;font-size:13px;margin-bottom:24px}
+
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
+input,select,textarea{
+width:100%;padding:12px;border:1px solid #cbd5d1;border-radius:10px;
+outline:none;background:white
+}
+input:focus,select:focus,textarea:focus{border-color:#166534;box-shadow:0 0 0 3px #16653418}
+textarea{min-height:130px;resize:vertical}
+
+.btn{
+border:0;border-radius:10px;padding:11px 15px;font-weight:700;
+background:#14532d;color:white
+}
+.btn.secondary{background:#e8f3ec;color:#14532d}
+.btn.danger{background:#b91c1c}
+.btn.warning{background:#b45309}
+.btn.full{width:100%}
+.btn.small{padding:8px 11px;font-size:12px}
+
+.message{
+padding:11px;border-radius:10px;margin-bottom:12px;font-size:13px
+}
+.error{background:#fee2e2;color:#991b1b}
+.success{background:#dcfce7;color:#166534}
+.info{background:#dbeafe;color:#1e40af}
+
+nav{
+background:white;border-bottom:1px solid #e2e8e4;
+display:flex;gap:7px;padding:10px 15px;overflow:auto;
+position:sticky;top:81px;z-index:15
+}
+nav button{
+white-space:nowrap;border:0;background:#f1f5f2;color:#334155;
+padding:9px 12px;border-radius:9px;font-weight:600
+}
+nav button.active{background:#14532d;color:white}
+
+.page-title{margin:7px 0 16px}
+.page-title h2{font-size:22px;color:#14532d}
+.page-title p{font-size:13px;color:#64748b;margin-top:4px}
+
+.grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:12px
+}
+.stat{
+padding:16px;border-radius:15px;background:white;border:1px solid #e2e8e4
+}
+.stat strong{display:block;font-size:25px;color:#14532d}
+.stat span{font-size:12px;color:#64748b}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+
+.item{
+border:1px solid #e2e8e4;border-radius:12px;padding:13px;margin-bottom:10px
+}
+.item-head{
+display:flex;justify-content:space-between;align-items:flex-start;gap:10px
+}
+.item h3{font-size:15px;color:#14532d;margin-bottom:5px}
+.item p{font-size:13px;color:#475569;white-space:pre-wrap}
+.badge{
+display:inline-block;padding:4px 8px;border-radius:999px;
+font-size:11px;font-weight:800;background:#e2e8f0;color:#334155
+}
+.badge.pending{background:#fef3c7;color:#92400e}
+.badge.approved{background:#dcfce7;color:#166534}
+.badge.rejected{background:#fee2e2;color:#991b1b}
+.badge.draft{background:#e0e7ff;color:#3730a3}
+
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+
+.empty{text-align:center;padding:35px 10px;color:#64748b;font-size:14px}
+
+footer{text-align:center;color:#94a3b8;font-size:11px;padding:25px}
+
+@media(max-width:750px){
+.grid{grid-template-columns:1fr 1fr}
+.two{grid-template-columns:1fr}
+.container{padding:12px}
+}
+@media(max-width:430px){
+.login{padding:22px}
+.grid{gap:8px}
+.stat{padding:12px}
+.stat strong{font-size:21px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="loginScreen" class="login-wrap">
+<div class="login">
+<div class="login-logo">CTA</div>
+<h2>Caliphate Tarbiya Academy</h2>
+<p class="sub">Teacher Planner & School Management System</p>
+
+<div id="loginMessage"></div>
+
+<label>Username</label>
+<input id="loginUsername" autocomplete="username" placeholder="Enter username">
+
+<label>Password</label>
+<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password">
+
+<button class="btn full" style="margin-top:18px" onclick="login()">Sign In</button>
+
+<p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:18px">
+Offline-first school management system
+</p>
+</div>
+</div>
+
+<div id="app" class="hidden">
+
+<header>
+<div class="header-row">
+<div style="display:flex;align-items:center;gap:10px">
+<div class="logo">CTA</div>
+<div class="brand">
+<h1>Caliphate Tarbiya Academy</h1>
+<p id="userInfo">School Management System</p>
+</div>
+</div>
+<div class="header-actions">
+<button class="icon-btn" onclick="logout()">↪</button>
+</div>
+</div>
+</header>
+
+<nav id="nav"></nav>
+
+<main class="container">
+
+<section id="dashboardPage" class="page">
+<div class="page-title">
+<h2>Dashboard</h2>
+<p>Welcome to your school workspace.</p>
+</div>
+
+<div class="grid">
+<div class="stat"><strong id="statUsers">0</strong><span>Users</span></div>
+<div class="stat"><strong id="statDocs">0</strong><span>Total Documents</span></div>
+<div class="stat"><strong id="statPending">0</strong><span>Pending Approval</span></div>
+<div class="stat"><strong id="statApproved">0</strong><span>Approved</span></div>
+</div>
+
+<div class="two" style="margin-top:15px">
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:10px">Quick Actions</h3>
+<div class="actions">
+<button class="btn" onclick="showPage('scheme')">Scheme of Work</button>
+<button class="btn" onclick="showPage('lessonPlan')">Lesson Plan</button>
+<button class="btn" onclick="showPage('lessonNote')">Lesson Note</button>
+</div>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:10px">System Status</h3>
+<p id="storageStatus" style="font-size:13px;color:#64748b">
+Checking offline storage...
+</p>
+</div>
+</div>
+</section>
+
+<section id="schemePage" class="page hidden">
+<div class="page-title">
+<h2>Scheme of Work</h2>
+<p>Create and submit schemes for approval.</p>
+</div>
+
+<div class="card">
+<label>Subject</label>
+<input id="schemeSubject" placeholder="e.g. Mathematics">
+
+<label>Class</label>
+<input id="schemeClass" placeholder="e.g. Basic 5">
+
+<label>Term</label>
+<select id="schemeTerm">
+<option>First Term</option>
+<option>Second Term</option>
+<option>Third Term</option>
+</select>
+
+<label>Content</label>
+<textarea id="schemeContent" placeholder="Enter your scheme of work..."></textarea>
+
+<button class="btn" onclick="saveDocument('Scheme of Work')">Save Scheme</button>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:12px">My Schemes</h3>
+<div id="schemeList"></div>
+</div>
+</section>
+
+<section id="lessonPlanPage" class="page hidden">
+<div class="page-title">
+<h2>Lesson Plan</h2>
+<p>Prepare detailed lesson plans and submit them for review.</p>
+</div>
+
+<div class="card">
+<label>Subject</label>
+<input id="planSubject" placeholder="Subject">
+
+<label>Class</label>
+<input id="planClass" placeholder="Class">
+
+<label>Topic</label>
+<input id="planTopic" placeholder="Topic">
+
+<label>Date</label>
+<input id="planDate" type="date">
+
+<label>Objectives</label>
+<textarea id="planObjectives" placeholder="Learning objectives..."></textarea>
+
+<label>Activities / Procedure</label>
+<textarea id="planActivities" placeholder="Lesson activities..."></textarea>
+
+<label>Evaluation</label>
+<textarea id="planEvaluation" placeholder="Evaluation questions or activities..."></textarea>
+
+<button class="btn" onclick="saveDocument('Lesson Plan')">Save Lesson Plan</button>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:12px">My Lesson Plans</h3>
+<div id="lessonPlanList"></div>
+</div>
+</section>
+
+<section id="lessonNotePage" class="page hidden">
+<div class="page-title">
+<h2>Lesson Note</h2>
+<p>Write and manage your lesson notes.</p>
+</div>
+
+<div class="card">
+<label>Subject</label>
+<input id="noteSubject" placeholder="Subject">
+
+<label>Class</label>
+<input id="noteClass" placeholder="Class">
+
+<label>Topic</label>
+<input id="noteTopic" placeholder="Topic">
+
+<label>Lesson Note</label>
+<textarea id="noteContent" style="min-height:220px" placeholder="Write your lesson note here..."></textarea>
+
+<button class="btn" onclick="saveDocument('Lesson Note')">Save Lesson Note</button>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:12px">My Lesson Notes</h3>
+<div id="lessonNoteList"></div>
+</div>
+</section>
+
+<section id="documentsPage" class="page hidden">
+<div class="page-title">
+<h2>Documents</h2>
+<p>View submitted documents and approval status.</p>
+</div>
+<div class="card">
+<div id="allDocuments"></div>
+</div>
+</section>
+
+<section id="assistantPage" class="page hidden">
+<div class="page-title">
+<h2>Teacher Assistant</h2>
+<p>Offline templates for lesson planning and teaching.</p>
+</div>
+
+<div class="card">
+<label>What do you want to create?</label>
+<select id="assistantType">
+<option value="lesson">Lesson Plan</option>
+<option value="note">Lesson Note</option>
+<option value="scheme">Scheme of Work</option>
+<option value="objectives">Learning Objectives</option>
+<option value="questions">Assessment Questions</option>
+</select>
+
+<label>Subject</label>
+<input id="assistantSubject" placeholder="e.g. Mathematics">
+
+<label>Class</label>
+<input id="assistantClass" placeholder="e.g. Basic 5">
+
+<label>Topic</label>
+<input id="assistantTopic" placeholder="e.g. Fractions">
+
+<button class="btn" style="margin-top:12px" onclick="generateAssistant()">Generate Template</button>
+
+<div id="assistantResult" style="margin-top:15px"></div>
+</div>
+</section>
+
+<section id="usersPage" class="page hidden">
+<div class="page-title">
+<h2>User Management</h2>
+<p>Admin can create and manage teacher accounts.</p>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d">Create Teacher</h3>
+
+<label>Full Name</label>
+<input id="newName" placeholder="Teacher full name">
+
+<label>Username</label>
+<input id="newUsername" placeholder="Username">
+
+<label>Temporary Password</label>
+<input id="newPassword" type="password" placeholder="Password">
+
+<button class="btn" style="margin-top:12px" onclick="createTeacher()">Create Teacher</button>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d;margin-bottom:12px">Accounts</h3>
+<div id="userList"></div>
+</div>
+</section>
+
+<section id="approvalPage" class="page hidden">
+<div class="page-title">
+<h2>Approval Centre</h2>
+<p>Review teacher submissions.</p>
+</div>
+<div class="card">
+<div id="approvalList"></div>
+</div>
+</section>
+
+<section id="settingsPage" class="page hidden">
+<div class="page-title">
+<h2>Settings</h2>
+<p>Account and data settings.</p>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d">Change Password</h3>
+
+<label>Current Password</label>
+<input id="currentPassword" type="password">
+
+<label>New Password</label>
+<input id="newPasswordSelf" type="password">
+
+<button class="btn" style="margin-top:12px" onclick="changePassword()">Change Password</button>
+<div id="passwordMessage" style="margin-top:10px"></div>
+</div>
+
+<div class="card">
+<h3 style="color:#14532d">Backup & Restore</h3>
+<p style="font-size:13px;color:#64748b;margin:7px 0 12px">
+Export your local school data or restore a previous backup.
+</p>
+
+<div class="actions">
+<button class="btn secondary" onclick="exportBackup()">Export Backup</button>
+<button class="btn secondary" onclick="document.getElementById('restoreFile').click()">Restore Backup</button>
+<input id="restoreFile" type="file" accept=".json,application/json" style="display:none" onchange="restoreBackup(event)">
+</div>
+</div>
+
+<div class="card">
+<h3 style="color:#b91c1c">Danger Zone</h3>
+<p style="font-size:13px;color:#64748b;margin:7px 0 12px">
+Resetting removes local application data and returns the system to the default administrator account.
+</p>
+<button class="btn danger" onclick="resetSystem()">Reset System</button>
+</div>
+</section>
+
+</main>
+
+<footer>Caliphate Tarbiya Academy • Offline School System</footer>
+</div>
+
+<script>
+const DB_NAME="CTA_ACADEMY_DB";
+const DB_VERSION=1;
+let db=null;
+let currentUser=null;
+let state={
+users:[],
+documents:[]
+};
+
+function openDB(){
+return new Promise((resolve,reject)=>{
+const req=indexedDB.open(DB_NAME,DB_VERSION);
+
+req.onupgradeneeded=e=>{
+const database=e.target.result;
+if(!database.objectStoreNames.contains("state")){
+database.createObjectStore("state",{keyPath:"id"});
+}
+};
+
+req.onsuccess=()=>{
+db=req.result;
+resolve();
+};
+
+req.onerror=()=>reject(req.error);
+});
+}
+
+function idbGet(){
+return new Promise((resolve,reject)=>{
+const tx=db.transaction("state","readonly");
+const store=tx.objectStore("state");
+const req=store.get("main");
+req.onsuccess=()=>resolve(req.result?req.result.data:null);
+req.onerror=()=>reject(req.error);
+});
+}
+
+function idbSave(){
+return new Promise((resolve,reject)=>{
+const tx=db.transaction("state","readwrite");
+tx.objectStore("state").put({id:"main",data:state});
+tx.oncomplete=()=>resolve();
+tx.onerror=()=>reject(tx.error);
+});
+}
+
+async function hashPassword(password){
+const data=new TextEncoder().encode(password);
+const hash=await crypto.subtle.digest("SHA-256",data);
+return Array.from(new Uint8Array(hash))
+.map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+async function init(){
+try{
+await openDB();
+let saved=await idbGet();
+
+if(saved){
+state=saved;
+}else{
+state={
+users:[{
+id:crypto.randomUUID(),
+name:"System Administrator",
+username:"admin",
+password:await hashPassword("Admin@2026!"),
+role:"admin",
+active:true
+}],
+documents:[]
+};
+await idbSave();
+}
+
+document.getElementById("storageStatus").textContent=
+"✓ IndexedDB offline storage is available on this device.";
+}catch(err){
+document.getElementById("loginMessage").innerHTML=
+'<div class="message error">Offline storage could not be opened in this browser. Please use Safari/Chrome from the website, not an in-app preview.</div>';
+}
+}
+
+async function login(){
+const username=document.getElementById("loginUsername").value.trim();
+const password=document.getElementById("loginPassword").value;
+
+const user=state.users.find(u=>
+u.username.toLowerCase()===username.toLowerCase() && u.active
+);
+
+if(!user){
+showLoginMessage("Invalid username or password.","error");
+return;
+}
+
+const hash=await hashPassword(password);
+
+if(hash!==user.password){
+showLoginMessage("Invalid username or password.","error");
+return;
+}
+
+currentUser=user;
+
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("app").classList.remove("hidden");
+
+document.getElementById("userInfo").textContent=
+`${user.name} • ${user.role.toUpperCase()}`;
+
+buildNav();
+showPage("dashboard");
+refresh();
+}
+
+function showLoginMessage(text,type){
+document.getElementById("loginMessage").innerHTML=
+`<div class="message ${type}">${text}</div>`;
+}
+
+function logout(){
+currentUser=null;
+document.getElementById("app").classList.add("hidden");
+document.getElementById("loginScreen").classList.remove("hidden");
+document.getElementById("loginPassword").value="";
+}
+
+function buildNav(){
+let items=[
+["dashboard","Dashboard"],
+["scheme","Scheme"],
+["lessonPlan","Lesson Plan"],
+["lessonNote","Lesson Note"],
+["documents","Documents"],
+["assistant","Teacher Assistant"]
+];
+
+if(currentUser.role==="admin"){
+items.push(["approval","Approvals"]);
+items.push(["users","Users"]);
+}
+
+items.push(["settings","Settings"]);
+
+document.getElementById("nav").innerHTML=items.map(x=>
+`<button id="nav-${x[0]}" onclick="showPage('${x[0]}')">${x[1]}</button>`
+).join("");
+}
+
+function showPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+document.getElementById(page+"Page").classList.remove("hidden");
+
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+const nav=document.getElementById("nav-"+page);
+if(nav)nav.classList.add("active");
+
+refresh();
+window.scrollTo(0,0);
+}
+
+function refresh(){
+if(!currentUser)return;
+
+const visibleDocs=currentUser.role==="admin"
+?state.documents
+:state.documents.filter(d=>d.ownerId===currentUser.id);
+
+document.getElementById("statUsers").textContent=state.users.length;
+document.getElementById("statDocs").textContent=visibleDocs.length;
+document.getElementById("statPending").textContent=
+state.documents.filter(d=>d.status==="pending").length;
+document.getElementById("statApproved").textContent=
+state.documents.filter(d=>d.status==="approved").length;
+
+renderDocuments("schemeList","Scheme of Work");
+renderDocuments("lessonPlanList","Lesson Plan");
+renderDocuments("lessonNoteList","Lesson Note");
+renderAllDocuments();
+renderApprovals();
+renderUsers();
+}
+
+function renderDocuments(elementId,type){
+const el=document.getElementById(elementId);
+if(!el)return;
+
+const docs=state.documents.filter(d=>
+d.type===type && d.ownerId===currentUser.id
+);
+
+if(!docs.length){
+el.innerHTML='<div class="empty">No documents yet.</div>';
+return;
+}
+
+el.innerHTML=docs.map(documentHTML).join("");
+}
+
+function renderAllDocuments(){
+const el=document.getElementById("allDocuments");
+if(!el)return;
+
+let docs=currentUser.role==="admin"
+?state.documents
+:state.documents.filter(d=>d.ownerId===currentUser.id);
+
+if(!docs.length){
+el.innerHTML='<div class="empty">No documents found.</div>';
+return;
+}
+
+el.innerHTML=docs.map(documentHTML).join("");
+}
+
+function documentHTML(d){
+let owner=state.users.find(u=>u.id===d.ownerId);
+return `
+<div class="item">
+<div class="item-head">
+<div>
+<h3>${escapeHTML(d.title)}</h3>
+<p><b>${escapeHTML(d.type)}</b> • ${escapeHTML(d.subject||"")}</p>
+<p>Class: ${escapeHTML(d.className||"")}</p>
+${currentUser.role==="admin"?`<p>Teacher: ${escapeHTML(owner?.name||"Unknown")}</p>`:""}
+</div>
+<span class="badge ${d.status}">${d.status.toUpperCase()}</span>
+</div>
+<p style="margin-top:8px">${escapeHTML(d.content||"")}</p>
+<div class="actions">
+<button class="btn secondary small" onclick="printDocument('${d.id}')">Print</button>
+${d.ownerId===currentUser.id && d.status!=="approved"
+?`<button class="btn small" onclick="submitDocument('${d.id}')">Submit</button>`:""}
+${currentUser.role==="admin" && d.status==="pending"
+?`<button class="btn small" onclick="approveDocument('${d.id}')">Approve</button>
+<button class="btn danger small" onclick="rejectDocument('${d.id}')">Reject</button>`:""}
+${d.ownerId===currentUser.id
+?`<button class="btn danger small" onclick="deleteDocument('${d.id}')">Delete</button>`:""}
+</div>
+</div>`;
+}
+
+async function saveDocument(type){
+let subject="",className="",topic="",content="",title="";
+
+if(type==="Scheme of Work"){
+subject=document.getElementById("schemeSubject").value.trim();
+className=document.getElementById("schemeClass").value.trim();
+topic=document.getElementById("schemeTerm").value;
+content=document.getElementById("schemeContent").value.trim();
+title=`${subject} — ${className} — ${topic}`;
+}else if(type==="Lesson Plan"){
+subject=document.getElementById("planSubject").value.trim();
+className=document.getElementById("planClass").value.trim();
+topic=document.getElementById("planTopic").value.trim();
+content=
+"Date: "+document.getElementById("planDate").value+
+"\n\nObjectives:\n"+document.getElementById("planObjectives").value+
+"\n\nActivities / Procedure:\n"+document.getElementById("planActivities").value+
+"\n\nEvaluation:\n"+document.getElementById("planEvaluation").value;
+title=`${subject} — ${topic}`;
+}else{
+subject=document.getElementById("noteSubject").value.trim();
+className=document.getElementById("noteClass").value.trim();
+topic=document.getElementById("noteTopic").value.trim();
+content=document.getElementById("noteContent").value.trim();
+title=`${subject} — ${topic}`;
+}
+
+if(!subject||!className||!content){
+alert("Please complete the required fields.");
+return;
+}
+
+state.documents.push({
+id:crypto.randomUUID(),
+type,
+title,
+subject,
+className,
+topic,
+content,
+ownerId:currentUser.id,
+status:"draft",
+createdAt:new Date().toISOString()
+});
+
+await idbSave();
+
+alert(type+" saved successfully.");
+clearForms(type);
+refresh();
+}
+
+function clearForms(type){
+if(type==="Scheme of Work"){
+["schemeSubject","schemeClass","schemeContent"].forEach(id=>document.getElementById(id).value="");
+}
+if(type==="Lesson Plan"){
+["planSubject","planClass","planTopic","planDate","planObjectives","planActivities","planEvaluation"]
+.forEach(id=>document.getElementById(id).value="");
+}
+if(type==="Lesson Note"){
+["noteSubject","noteClass","noteTopic","noteContent"].forEach(id=>document.getElementById(id).value="");
+}
+}
+
+async function submitDocument(id){
+const d=state.documents.find(x=>x.id===id);
+if(!d)return;
+
+d.status="pending";
+d.submittedAt=new Date().toISOString();
+
+await idbSave();
+refresh();
+alert("Document submitted for approval.");
+}
+
+async function approveDocument(id){
+const d=state.documents.find(x=>x.id===id);
+if(!d)return;
+
+d.status="approved";
+d.reviewedAt=new Date().toISOString();
+
+await idbSave();
+refresh();
+}
+
+async function rejectDocument(id){
+const d=state.documents.find(x=>x.id===id);
+if(!d)return;
+
+d.status="rejected";
+d.reviewedAt=new Date().toISOString();
+
+await idbSave();
+refresh();
+}
+
+async function deleteDocument(id){
+if(!confirm("Delete this document?"))return;
+
+state.documents=state.documents.filter(x=>x.id!==id);
+await idbSave();
+refresh();
+}
+
+function renderApprovals(){
+const el=document.getElementById("approvalList");
+if(!el||currentUser.role!=="admin")return;
+
+const pending=state.documents.filter(d=>d.status==="pending");
+
+if(!pending.length){
+el.innerHTML='<div class="empty">No documents waiting for approval.</div>';
+return;
+}
+
+el.innerHTML=pending.map(documentHTML).join("");
+}
+
+function renderUsers(){
+const el=document.getElementById("userList");
+if(!el||currentUser.role!=="admin")return;
+
+el.innerHTML=state.users.map(u=>`
+<div class="item">
+<div class="item-head">
+<div>
+<h3>${escapeHTML(u.name)}</h3>
+<p>Username: ${escapeHTML(u.username)} • Role: ${u.role}</p>
+</div>
+<span class="badge ${u.active?"approved":"rejected"}">
+${u.active?"ACTIVE":"DISABLED"}
+</span>
+</div>
+${u.role!=="admin"?`
+<div class="actions">
+<button class="btn small" onclick="toggleUser('${u.id}')">
+${u.active?"Disable":"Enable"}
+</button>
+</div>`:""}
+</div>
+`).join("");
+}
+
+async function createTeacher(){
+const name=document.getElementById("newName").value.trim();
+const username=document.getElementById("newUsername").value.trim();
+const password=document.getElementById("newPassword").value;
+
+if(!name||!username||!password){
+alert("Complete all fields.");
+return;
+}
+
+if(state.users.some(u=>u.username.toLowerCase()===username.toLowerCase())){
+alert("Username already exists.");
+return;
+}
+
+state.users.push({
+id:crypto.randomUUID(),
+name,
+username,
+password:await hashPassword(password),
+role:"teacher",
+active:true
+});
+
+await idbSave();
+
+["newName","newUsername","newPassword"].forEach(id=>document.getElementById(id).value="");
+
+refresh();
+alert("Teacher account created.");
+}
+
+async function toggleUser(id){
+const u=state.users.find(x=>x.id===id);
+if(!u)return;
+
+u.active=!u.active;
+await idbSave();
+refresh();
+}
+
+async function changePassword(){
+const current=document.getElementById("currentPassword").value;
+const next=document.getElementById("newPasswordSelf").value;
+
+const msg=document.getElementById("passwordMessage");
+
+if(!current||!next){
+msg.innerHTML='<div class="message error">Complete both password fields.</div>';
+return;
+}
+
+const currentHash=await hashPassword(current);
+
+if(currentHash!==currentUser.password){
+msg.innerHTML='<div class="message error">Current password is incorrect.</div>';
+return;
+}
+
+if(next.length<6){
+msg.innerHTML='<div class="message error">New password must be at least 6 characters.</div>';
+return;
+}
+
+const hash=await hashPassword(next);
+
+const user=state.users.find(u=>u.id===currentUser.id);
+user.password=hash;
+currentUser.password=hash;
+
+await idbSave();
+
+document.getElementById("currentPassword").value="";
+document.getElementById("newPasswordSelf").value="";
+
+msg.innerHTML='<div class="message success">Password changed successfully.</div>';
+}
+
+function generateAssistant(){
+const type=document.getElementById("assistantType").value;
+const subject=document.getElementById("assistantSubject").value||"Subject";
+const cls=document.getElementById("assistantClass").value||"Class";
+const topic=document.getElementById("assistantTopic").value||"Topic";
+
+let text="";
+
+if(type==="lesson"){
+text=`LESSON PLAN
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+Learning Objectives:
+1. Learners should define/explain ${topic}.
+2. Learners should identify key points related to ${topic}.
+3. Learners should demonstrate understanding through activities.
+
+Introduction:
+Teacher introduces the topic and connects it with learners' previous knowledge.
+
+Presentation:
+Teacher explains the concept using suitable examples and teaching aids.
+
+Learner Activities:
+Learners participate, answer questions and complete class activities.
+
+Evaluation:
+1. What is ${topic}?
+2. Mention two important points about ${topic}.
+3. Give one example.
+
+Conclusion:
+Teacher summarizes the lesson and gives an assignment.`;
+}
+
+if(type==="note"){
+text=`LESSON NOTE
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+Introduction:
+${topic} is an important concept in ${subject}.
+
+Main Content:
+Teacher should explain the meaning, characteristics, examples and practical applications of ${topic} using age-appropriate language.
+
+Examples:
+Provide simple examples related to ${topic}.
+
+Summary:
+Learners review the main points discussed.
+
+Evaluation:
+Ask learners short questions to assess understanding.
+
+Assignment:
+Give learners a suitable exercise on ${topic}.`;
+}
+
+if(type==="scheme"){
+text=`SCHEME OF WORK
+
+Subject: ${subject}
+Class: ${cls}
+
+Week 1: Introduction to ${topic}
+Week 2: Meaning and basic concepts
+Week 3: Examples and applications
+Week 4: Guided practice
+Week 5: Revision
+Week 6: Assessment
+
+Note: Edit the weekly topics to match your approved curriculum.`;
+}
+
+if(type==="objectives"){
+text=`LEARNING OBJECTIVES
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+By the end of the lesson, learners should be able to:
+
+1. Define or explain ${topic}.
+2. Identify the major features of ${topic}.
+3. Give relevant examples.
+4. Apply the concept in simple exercises.
+5. Answer assessment questions correctly.`;
+}
+
+if(type==="questions"){
+text=`ASSESSMENT QUESTIONS
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+1. What is ${topic}?
+2. Mention two important features of ${topic}.
+3. Give two examples related to ${topic}.
+4. Explain one practical application of ${topic}.
+5. Write a short note on ${topic}.`;
+}
+
+document.getElementById("assistantResult").innerHTML=
+`<div class="message success">Template generated successfully.</div>
+<div class="item"><p>${escapeHTML(text)}</p>
+<button class="btn small" onclick="copyAssistant()">Copy</button></div>`;
+
+window.assistantText=text;
+}
+
+function copyAssistant(){
+if(!window.assistantText)return;
+navigator.clipboard?.writeText(window.assistantText)
+.then(()=>alert("Copied."));
+}
+
+function printDocument(id){
+const d=state.documents.find(x=>x.id===id);
+if(!d)return;
+
+const owner=state.users.find(u=>u.id===d.ownerId);
+
+const w=window.open("","_blank");
+
+w.document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+<title>${escapeHTML(d.title)}</title>
+<style>
+body{font-family:Arial;padding:35px;line-height:1.6}
+h1{color:#14532d}
+pre{white-space:pre-wrap;font-family:Arial}
+</style>
+</head>
+<body>
+<h1>Caliphate Tarbiya Academy</h1>
+<h2>${escapeHTML(d.title)}</h2>
+<p><b>Teacher:</b> ${escapeHTML(owner?.name||"")}</p>
+<p><b>Status:</b> ${escapeHTML(d.status)}</p>
+<hr>
+<pre>${escapeHTML(d.content)}</pre>
+</body>
+</html>`);
+
+w.document.close();
+w.focus();
+setTimeout(()=>w.print(),300);
+}
+
+function exportBackup(){
+const backup={
+version:1,
+app:"Caliphate Tarbiya Academy",
+exportedAt:new Date().toISOString(),
+state
+};
+
+const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+a.href=url;
+a.download="caliphate-tarbiya-academy-backup.json";
+a.click();
+
+URL.revokeObjectURL(url);
+}
+
+function restoreBackup(event){
+const file=event.target.files[0];
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=async()=>{
+try{
+const backup=JSON.parse(reader.result);
+
+if(!backup.state||!Array.isArray(backup.state.users)||!Array.isArray(backup.state.documents)){
+throw new Error("Invalid backup");
+}
+
+if(!confirm("Restore this backup? Current local data will be replaced."))return;
+
+state=backup.state;
+await idbSave();
+
+alert("Backup restored successfully.");
+location.reload();
+
+}catch(err){
+alert("Invalid backup file.");
+}
+};
+
+reader.readAsText(file);
+}
+
+async function resetSystem(){
+if(!confirm("Reset the entire system? This cannot be undone unless you have a backup."))return;
+
+await new Promise((resolve,reject)=>{
+const req=indexedDB.deleteDatabase(DB_NAME);
+req.onsuccess=resolve;
+req.onerror=reject;
+});
+
+location.reload();
+}
+
+function escapeHTML(value){
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Enter" && document.activeElement===document.getElementById("loginPassword")){
+login();
+}
+});
+
+init();
+</script>
+
+</body>
+</html>
