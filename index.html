@@ -2,28 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <meta name="theme-color" content="#14532d">
-<title>Caliphate Tarbiya Academy | Professional Teacher System</title>
+<title>Caliphate Tarbiya Academy | Academic Management System</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
- --primary:#14532d;
- --primary2:#166534;
+ --green:#14532d;
+ --green2:#166534;
+ --green3:#15803d;
  --light:#f0fdf4;
- --lighter:#f7faf8;
+ --lighter:#f7fff9;
  --border:#d1d5db;
  --text:#17202a;
  --muted:#64748b;
- --danger:#b91c1c;
- --warning:#b45309;
+ --white:#fff;
+ --red:#b91c1c;
+ --orange:#c2410c;
+ --blue:#1d4ed8;
+ --shadow:0 8px 25px rgba(0,0,0,.08);
 }
 body{
- font-family:Arial,Helvetica,sans-serif;
- background:#f3f7f4;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+ background:#f3f6f4;
  color:var(--text);
- line-height:1.5;
+ min-height:100vh;
 }
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
@@ -32,1050 +36,660 @@ button{cursor:pointer}
 .login-screen{
  min-height:100vh;
  display:flex;
- align-items:center;
  justify-content:center;
+ align-items:center;
  padding:20px;
- background:linear-gradient(135deg,#052e16,#14532d,#166534);
+ background:linear-gradient(135deg,#064e3b,#14532d,#166534);
 }
 .login-card{
- width:min(450px,100%);
+ width:100%;
+ max-width:450px;
  background:white;
- padding:30px;
- border-radius:20px;
- box-shadow:0 20px 50px rgba(0,0,0,.25);
+ border-radius:22px;
+ padding:28px;
+ box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 .logo{
- width:72px;height:72px;
- border-radius:18px;
- background:var(--primary);
- color:white;
- display:flex;
- align-items:center;
- justify-content:center;
- font-weight:bold;
- font-size:25px;
- margin:0 auto 15px;
+ width:70px;height:70px;border-radius:50%;
+ background:var(--green);
+ color:#fff;display:flex;align-items:center;justify-content:center;
+ font-size:30px;font-weight:800;margin:0 auto 15px;
 }
-.login-card h1{text-align:center;color:var(--primary);font-size:23px}
-.login-card .sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:22px}
-.role-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.login-card h1{text-align:center;font-size:23px;color:var(--green)}
+.login-card .subtitle{text-align:center;color:var(--muted);margin:6px 0 22px}
+.role-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .role-btn{
- border:1px solid var(--border);
- background:white;
- color:var(--text);
- padding:12px;
- border-radius:10px;
- font-weight:bold;
+ border:1px solid var(--border);background:#fff;padding:12px;
+ border-radius:10px;font-weight:700;color:#475569;
 }
-.role-btn.active{background:var(--primary);color:white;border-color:var(--primary)}
-.field{margin-bottom:14px}
-label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}
+.role-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
 input,select,textarea{
- width:100%;
- border:1px solid var(--border);
- border-radius:9px;
- padding:11px 12px;
- outline:none;
- background:white;
- color:var(--text);
+ width:100%;border:1px solid var(--border);border-radius:9px;
+ padding:11px 12px;background:#fff;color:var(--text);outline:none;
 }
-textarea{min-height:160px;resize:vertical}
-input:focus,select:focus,textarea:focus{border-color:var(--primary)}
+input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(20,83,45,.08)}
+textarea{min-height:110px;resize:vertical}
 .password-wrap{position:relative}
 .password-wrap input{padding-right:48px}
-.eye{
- position:absolute;
- right:5px;top:5px;
- height:36px;width:38px;
- border:0;background:transparent;
- color:var(--muted);
+.eye-btn{
+ position:absolute;right:6px;top:5px;width:38px;height:36px;
+ border:0;background:transparent;font-size:18px;
 }
-.login-btn{
- width:100%;
- background:var(--primary);
- color:white;
- border:0;
- padding:13px;
- border-radius:10px;
- font-weight:bold;
- margin-top:5px;
+.login-btn,.primary{
+ width:100%;border:0;border-radius:10px;padding:12px;
+ background:var(--green);color:#fff;font-weight:800;
+}
+.login-btn:hover,.primary:hover{background:var(--green2)}
+.secondary{
+ border:1px solid var(--border);background:#fff;color:var(--text);
+ border-radius:9px;padding:10px 14px;font-weight:700;
+}
+.danger{background:#fee2e2!important;color:#991b1b!important;border-color:#fecaca!important}
+.warning{background:#fff7ed!important;color:#9a3412!important;border-color:#fed7aa!important}
+.info{background:#eff6ff!important;color:#1d4ed8!important;border-color:#bfdbfe!important}
+.success{background:#dcfce7!important;color:#166534!important;border-color:#bbf7d0!important}
+.caps{font-size:12px;color:#b45309;margin-top:5px;display:none}
+.login-help{
+ background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;
+ padding:12px;margin-top:15px;font-size:13px;color:#166534;
 }
 .repair-btn{
- width:100%;
- margin-top:10px;
- background:#fff7ed;
- color:#9a3412;
- border:1px solid #fed7aa;
- padding:10px;
- border-radius:9px;
-}
-.help{
- margin-top:15px;
- padding:12px;
- background:var(--light);
- border-left:4px solid var(--primary);
- border-radius:7px;
- font-size:13px;
-}
-.caps{
- color:#b45309;
- font-size:12px;
- font-weight:bold;
- margin-top:5px;
- display:none;
+ margin-top:10px;width:100%;border:1px solid #bbf7d0;
+ background:#f0fdf4;color:#166534;padding:10px;border-radius:9px;font-weight:700;
 }
 
 .app{min-height:100vh}
 .topbar{
- height:65px;
- background:var(--primary);
- color:white;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 18px;
- position:sticky;
- top:0;
- z-index:50;
+ height:64px;background:var(--green);color:#fff;display:flex;
+ align-items:center;justify-content:space-between;padding:0 18px;
+ position:sticky;top:0;z-index:50;
 }
-.brand h1{font-size:18px}
-.brand p{font-size:11px;opacity:.85}
-.user-area{display:flex;align-items:center;gap:8px}
-.user-pill{
- background:rgba(255,255,255,.13);
- border:1px solid rgba(255,255,255,.2);
- padding:7px 10px;
- border-radius:20px;
- font-size:12px;
+.brand{font-weight:800;font-size:17px}
+.user-area{display:flex;align-items:center;gap:9px}
+.user-pill{background:rgba(255,255,255,.15);padding:7px 10px;border-radius:20px;font-size:12px}
+.menu-btn{
+ display:none;background:transparent;color:white;border:0;font-size:25px;
 }
-.logout{
- background:#fff;
- color:var(--primary);
- border:0;
- padding:8px 12px;
- border-radius:8px;
- font-weight:bold;
-}
-
-.layout{display:flex;min-height:calc(100vh - 65px)}
+.layout{display:flex;min-height:calc(100vh - 64px)}
 .sidebar{
- width:250px;
- background:#fff;
- border-right:1px solid #e2e8f0;
- padding:14px 10px;
- position:fixed;
- top:65px;
- bottom:0;
- overflow:auto;
+ width:250px;background:#fff;border-right:1px solid var(--border);
+ padding:15px 10px;flex-shrink:0;
 }
-.sidebar h4{
- color:#94a3b8;
- font-size:11px;
- text-transform:uppercase;
- padding:10px;
+.nav-title{
+ color:#94a3b8;font-size:11px;text-transform:uppercase;
+ font-weight:800;padding:12px 10px 6px;
 }
-.nav{
- width:100%;
- border:0;
- background:white;
- text-align:left;
- padding:11px 12px;
- border-radius:8px;
- margin-bottom:3px;
- color:#334155;
+.nav-btn{
+ width:100%;text-align:left;background:transparent;border:0;
+ padding:11px 12px;border-radius:8px;margin-bottom:3px;color:#334155;
+ font-weight:650;
 }
-.nav:hover,.nav.active{background:var(--light);color:var(--primary);font-weight:bold}
-.main{
- margin-left:250px;
- width:calc(100% - 250px);
- padding:20px;
-}
+.nav-btn:hover,.nav-btn.active{background:var(--light);color:var(--green)}
+.main{flex:1;padding:22px;min-width:0}
 .page{display:none}
 .page.active{display:block}
-
-.page-title{
- margin-bottom:18px;
-}
-.page-title h2{color:var(--primary);font-size:24px}
-.page-title p{color:var(--muted);font-size:13px}
-
+.page-title{font-size:25px;font-weight:800;color:#0f3d25;margin-bottom:5px}
+.page-subtitle{color:var(--muted);margin-bottom:20px}
 .card{
- background:white;
- border:1px solid #e2e8f0;
- border-radius:14px;
- padding:18px;
- margin-bottom:18px;
- box-shadow:0 2px 10px rgba(0,0,0,.035);
+ background:#fff;border:1px solid #e2e8f0;border-radius:14px;
+ padding:18px;box-shadow:var(--shadow);margin-bottom:18px;
 }
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-
-.btn{
- border:0;
- padding:10px 14px;
- border-radius:8px;
- font-weight:bold;
- margin:3px;
-}
-.btn-primary{background:var(--primary);color:white}
-.btn-secondary{background:var(--light);color:var(--primary)}
-.btn-danger{background:#fee2e2;color:#991b1b}
-.btn-warning{background:#fff7ed;color:#9a3412}
-.btn-dark{background:#17202a;color:white}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-
-.info{
- padding:13px;
- border-left:4px solid var(--primary);
- background:var(--light);
- border-radius:7px;
- margin-bottom:14px;
-}
-.warning{
- padding:13px;
- border-left:4px solid #f59e0b;
- background:#fffbeb;
- border-radius:7px;
- margin-bottom:14px;
-}
-
-.stat-grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px;
-}
+.grid{display:grid;gap:15px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .stat{
- background:white;
- border:1px solid #e2e8f0;
- border-radius:12px;
- padding:18px;
+ padding:18px;border-radius:13px;background:#fff;border:1px solid #e2e8f0;
 }
-.stat b{font-size:26px;color:var(--primary);display:block}
-.stat span{font-size:12px;color:var(--muted)}
-
+.stat small{color:var(--muted)}
+.stat strong{display:block;font-size:27px;color:var(--green);margin-top:5px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.actions button{width:auto}
+.section-title{font-size:18px;font-weight:800;margin-bottom:13px;color:#174d2d}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{padding:10px;border-bottom:1px solid #e5e7eb;text-align:left;font-size:13px;vertical-align:top}
+th{background:#f8fafc;font-weight:800}
 .badge{
- display:inline-block;
- padding:4px 8px;
- border-radius:20px;
- font-size:11px;
- font-weight:bold;
+ display:inline-block;padding:5px 8px;border-radius:20px;font-size:11px;font-weight:800;
+ background:#e2e8f0;color:#334155;
 }
-.badge-draft{background:#f1f5f9;color:#475569}
-.badge-submitted{background:#fef3c7;color:#92400e}
-.badge-approved{background:#dcfce7;color:#166534}
-.badge-rejected{background:#fee2e2;color:#991b1b}
-
-.doc-card{
- border:1px solid #e2e8f0;
- padding:14px;
- border-radius:10px;
- margin-bottom:10px;
+.badge.pending{background:#fef3c7;color:#92400e}
+.badge.approved{background:#dcfce7;color:#166534}
+.badge.rejected{background:#fee2e2;color:#991b1b}
+.badge.final{background:#dbeafe;color:#1e40af}
+.badge.draft{background:#e0f2fe;color:#075985}
+.subject-card{
+ border:1px solid #dbe5df;border-radius:12px;padding:15px;
+ background:#fbfefc;margin-bottom:13px;
 }
-.doc-card h3{color:var(--primary);font-size:16px;margin-bottom:5px}
-.doc-meta{font-size:12px;color:var(--muted);margin-bottom:9px}
-
-.question{
- border:1px solid #dbe5de;
- border-radius:10px;
- padding:14px;
- margin:10px 0;
- background:#fff;
+.subject-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.subject-header h4{color:var(--green)}
+.question-card{
+ border:1px solid #e2e8f0;border-radius:10px;padding:13px;margin:10px 0;background:#fff;
 }
-.question .qtopic{font-size:11px;color:var(--primary);font-weight:bold}
-.question textarea{min-height:80px;margin-top:8px}
-.question-options{margin:8px 0 0 18px}
-.question-options div{margin:3px 0}
-
-.paper{
- background:white;
- border:1px solid #d8dee3;
- padding:28px;
+.question-card textarea{min-height:70px}
+.question-number{font-weight:800;color:var(--green);margin-bottom:7px}
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notice{
+ padding:12px;border-radius:10px;background:#eff6ff;border:1px solid #bfdbfe;
+ color:#1e40af;font-size:13px;margin-bottom:15px;
 }
-.paper-head{text-align:center;border-bottom:2px solid var(--primary);padding-bottom:14px;margin-bottom:18px}
-.paper-head h1{font-size:22px;color:var(--primary)}
-.paper-head h2{font-size:18px;margin:5px 0}
-.paper-meta{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:7px;
- margin-bottom:15px;
+.workflow{
+ display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:12px 0;
 }
-.paper-section{margin-top:22px}
-.paper-section h3{
- color:var(--primary);
- border-bottom:1px solid #ccc;
- padding-bottom:6px;
+.workflow span{
+ padding:8px 11px;border-radius:20px;background:#f1f5f9;font-size:12px;font-weight:800;
 }
-.paper-q{margin:15px 0;line-height:1.8}
-.marking-page{page-break-before:always;margin-top:40px}
-
-table{width:100%;border-collapse:collapse}
-th,td{padding:10px;border:1px solid #e2e8f0;text-align:left}
-th{background:var(--primary);color:white}
-
+.workflow b{color:#94a3b8}
+.doc-preview{
+ background:#fff;border:1px solid #cbd5e1;padding:25px;line-height:1.65;
+}
+.doc-preview h2{text-align:center;color:#14532d;margin-bottom:5px}
+.doc-preview h3{margin-top:18px;color:#14532d}
+.toast{
+ position:fixed;right:18px;bottom:18px;z-index:100;
+ background:#17202a;color:white;padding:12px 16px;border-radius:9px;
+ box-shadow:var(--shadow);display:none;max-width:350px;font-size:13px;
+}
 .modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.5);
- display:none;
- align-items:center;
- justify-content:center;
- padding:15px;
- z-index:100;
+ position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:80;
+ display:flex;align-items:center;justify-content:center;padding:18px;
 }
-.modal.show{display:flex}
 .modal-box{
- background:white;
- width:min(650px,100%);
- max-height:90vh;
- overflow:auto;
- border-radius:14px;
- padding:20px;
+ width:100%;max-width:650px;background:white;border-radius:15px;
+ padding:20px;max-height:90vh;overflow:auto;
 }
-.modal-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:15px;
-}
-.close{
- border:0;
- background:#f1f5f9;
- border-radius:7px;
- padding:7px 10px;
-}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.close{border:0;background:#f1f5f9;border-radius:50%;width:32px;height:32px}
+.small{font-size:12px;color:var(--muted)}
+hr{border:0;border-top:1px solid #e5e7eb;margin:16px 0}
 
-.empty{text-align:center;padding:30px;color:var(--muted)}
-
-@media(max-width:800px){
- .sidebar{width:220px}
- .main{margin-left:220px;width:calc(100% - 220px)}
- .stat-grid{grid-template-columns:1fr 1fr}
- .grid2,.grid3{grid-template-columns:1fr}
-}
-@media(max-width:600px){
- .topbar{height:auto;min-height:65px;padding:10px}
- .brand h1{font-size:14px}
- .user-pill{display:none}
+@media(max-width:850px){
+ .menu-btn{display:block}
  .sidebar{
-  position:fixed;
-  left:-250px;
-  width:250px;
-  transition:.2s;
-  z-index:60;
+  position:fixed;top:64px;left:-270px;bottom:0;z-index:45;
+  transition:.2s;box-shadow:5px 0 20px rgba(0,0,0,.12);
  }
  .sidebar.open{left:0}
- .main{margin-left:0;width:100%;padding:12px}
- .mobile-menu{display:block!important}
- .stat-grid{grid-template-columns:1fr 1fr}
- .paper{padding:15px}
- .paper-meta{grid-template-columns:1fr}
+ .main{padding:15px}
+ .grid-4{grid-template-columns:repeat(2,1fr)}
+ .grid-3{grid-template-columns:1fr 1fr}
 }
-.mobile-menu{display:none;border:0;background:rgba(255,255,255,.15);color:white;padding:8px;border-radius:7px;margin-right:8px}
-
+@media(max-width:600px){
+ .brand{font-size:14px}
+ .user-pill{display:none}
+ .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+ .page-title{font-size:21px}
+ .card{padding:14px}
+ .actions button{width:100%}
+ .option-grid{grid-template-columns:1fr}
+}
 @media print{
- .topbar,.sidebar,.no-print{display:none!important}
- .main{margin:0;width:100%;padding:0}
+ body{background:#fff}
+ .topbar,.sidebar,.actions,.no-print{display:none!important}
+ .main{padding:0}
  .page{display:none!important}
- #page-print{display:block!important}
- body{background:white}
+ #printArea{display:block!important}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- LOGIN -->
 <div id="loginScreen" class="login-screen">
  <div class="login-card">
-   <div class="logo">CTA</div>
-   <h1>Caliphate Tarbiya Academy</h1>
-   <div class="sub">Teacher Planning & Academic Document Management System</div>
+  <div class="logo">CTA</div>
+  <h1>Caliphate Tarbiya Academy</h1>
+  <div class="subtitle">Academic Planning & Examination Management System</div>
 
-   <div class="role-buttons">
-     <button id="adminRoleBtn" class="role-btn active" onclick="selectRole('admin')">
-       Administrator
-     </button>
-     <button id="teacherRoleBtn" class="role-btn" onclick="selectRole('teacher')">
-       Teacher
-     </button>
+  <div class="role-buttons">
+   <button class="role-btn active" id="adminRoleBtn" onclick="selectLoginRole('admin')">Administrator</button>
+   <button class="role-btn" id="teacherRoleBtn" onclick="selectLoginRole('teacher')">Teacher</button>
+  </div>
+
+  <input type="hidden" id="loginRole" value="admin">
+
+  <div class="form-group">
+   <label>Username</label>
+   <input id="loginUsername" autocomplete="username" placeholder="Enter username">
+  </div>
+
+  <div class="form-group">
+   <label>Password</label>
+   <div class="password-wrap">
+    <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password">
+    <button class="eye-btn" type="button" onclick="togglePassword('loginPassword','loginEye')" id="loginEye">👁</button>
    </div>
+   <div id="capsWarning" class="caps">⚠ Caps Lock is ON</div>
+  </div>
 
-   <input type="hidden" id="loginRole" value="admin">
+  <button class="login-btn" onclick="login()">Log In</button>
+  <button class="repair-btn" onclick="repairAdminLogin()">Repair Administrator Login</button>
 
-   <div class="field">
-     <label>Username</label>
-     <input id="loginUsername" autocomplete="username" placeholder="Enter username">
-   </div>
-
-   <div class="field">
-     <label>Password</label>
-     <div class="password-wrap">
-       <input id="loginPassword" type="password" autocomplete="current-password"
-              placeholder="Enter password">
-       <button class="eye" type="button"
-               onclick="togglePassword('loginPassword','loginEye')">
-         <span id="loginEye">◉</span>
-       </button>
-     </div>
-     <div id="capsWarning" class="caps">Caps Lock is ON</div>
-   </div>
-
-   <button class="login-btn" onclick="login()">Log In</button>
-
-   <button class="repair-btn" onclick="repairAdminLogin()">
-     Repair Administrator Login
-   </button>
-
-   <div class="help">
-     <b>Default Administrator</b><br>
-     Username: <b>admin</b><br>
-     Password: <b>Admin@2026!</b><br><br>
-     Teachers must be created by the Administrator.
-   </div>
+  <div class="login-help">
+   <b>Administrator first login</b><br>
+   Username: <b>admin</b><br>
+   Password: <b>Admin@2026!</b><br><br>
+   Teachers must be created by the Administrator.
+  </div>
  </div>
 </div>
 
-<!-- =====================================================
-     APPLICATION
-===================================================== -->
+<!-- APP -->
 <div id="app" class="app hidden">
 
 <header class="topbar">
- <div style="display:flex;align-items:center">
-   <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-   <div class="brand">
-     <h1>Caliphate Tarbiya Academy</h1>
-     <p>Teacher Planning & Academic Management System</p>
-   </div>
+ <div style="display:flex;align-items:center;gap:10px">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="brand">Caliphate Tarbiya Academy</div>
  </div>
-
  <div class="user-area">
-   <div id="userPill" class="user-pill"></div>
-   <button class="logout" onclick="logout()">Logout</button>
+  <span class="user-pill" id="userPill"></span>
+  <button class="secondary" onclick="logout()">Logout</button>
  </div>
 </header>
 
 <div class="layout">
+<aside class="sidebar" id="sidebar">
 
-<aside id="sidebar" class="sidebar">
+ <div class="nav-title">Main</div>
+ <button class="nav-btn active" data-page="dashboard" onclick="showPage('dashboard')">🏠 Dashboard</button>
+ <button class="nav-btn" data-page="assistant" onclick="showPage('assistant')">🤖 Teacher Assistant</button>
+ <button class="nav-btn" data-page="scheme" onclick="showPage('scheme')">📚 Scheme of Work</button>
+ <button class="nav-btn" data-page="lessonPlan" onclick="showPage('lessonPlan')">📝 Lesson Plan</button>
+ <button class="nav-btn" data-page="lessonNote" onclick="showPage('lessonNote')">📖 Lesson Note</button>
+ <button class="nav-btn" data-page="assessment" onclick="showPage('assessment')">📋 CA & Examination</button>
+ <button class="nav-btn" data-page="documents" onclick="showPage('documents')">🗂 Documents</button>
+ <button class="nav-btn" data-page="submissions" onclick="showPage('submissions')">📤 My Submissions</button>
 
- <h4>Workspace</h4>
- <button class="nav active" data-page="dashboard" onclick="showPage('dashboard')">Dashboard</button>
- <button class="nav" data-page="scheme" onclick="showPage('scheme')">Scheme of Work</button>
- <button class="nav" data-page="lessonplan" onclick="showPage('lessonplan')">Lesson Plan</button>
- <button class="nav" data-page="lessonnote" onclick="showPage('lessonnote')">Lesson Note</button>
- <button class="nav" data-page="assessment" onclick="showPage('assessment')">CA & Examination</button>
- <button class="nav" data-page="documents" onclick="showPage('documents')">My Documents</button>
- <button class="nav" data-page="submissions" onclick="showPage('submissions')">My Submissions</button>
+ <div id="adminNav">
+  <div class="nav-title">Administration</div>
+  <button class="nav-btn" data-page="teachers" onclick="showPage('teachers')">👥 Teacher Management</button>
+  <button class="nav-btn" data-page="approval" onclick="showPage('approval')">✅ Approval Centre</button>
+  <button class="nav-btn" data-page="archive" onclick="showPage('archive')">🗃 Approved Archive</button>
+  <button class="nav-btn" data-page="backup" onclick="showPage('backup')">💾 Backup & Restore</button>
+ </div>
 
- <h4 id="adminHeading">Administration</h4>
- <button class="nav admin-only" data-page="teachers" onclick="showPage('teachers')">Teacher Management</button>
- <button class="nav admin-only" data-page="approval" onclick="showPage('approval')">Approval Centre</button>
- <button class="nav admin-only" data-page="archive" onclick="showPage('archive')">Approved Archive</button>
- <button class="nav admin-only" data-page="backup" onclick="showPage('backup')">Backup & Restore</button>
-
- <h4>Account</h4>
- <button class="nav" data-page="security" onclick="showPage('security')">Change Password</button>
-
+ <div class="nav-title">Account</div>
+ <button class="nav-btn" data-page="security" onclick="showPage('security')">🔐 Security</button>
 </aside>
 
 <main class="main">
 
 <!-- DASHBOARD -->
 <section id="page-dashboard" class="page active">
- <div class="page-title">
-   <h2>Dashboard</h2>
-   <p>Welcome to your academic workspace.</p>
+ <div class="page-title">Dashboard</div>
+ <div class="page-subtitle">Welcome to your academic workspace.</div>
+
+ <div class="grid grid-4">
+  <div class="stat"><small>Documents</small><strong id="statDocs">0</strong></div>
+  <div class="stat"><small>My Submissions</small><strong id="statSubmissions">0</strong></div>
+  <div class="stat"><small>Pending Review</small><strong id="statPending">0</strong></div>
+  <div class="stat" id="teacherStat"><small>Teachers</small><strong id="statTeachers">0</strong></div>
  </div>
 
- <div class="stat-grid">
-   <div class="stat"><b id="statDocs">0</b><span>My Documents</span></div>
-   <div class="stat"><b id="statDrafts">0</b><span>Drafts</span></div>
-   <div class="stat"><b id="statSubmitted">0</b><span>Submitted</span></div>
-   <div class="stat"><b id="statApproved">0</b><span>Approved</span></div>
+ <div class="card" style="margin-top:18px">
+  <h3 class="section-title">CA & Examination Workflow</h3>
+  <div class="workflow">
+   <span>1. Teacher Creates Questions</span><b>→</b>
+   <span>2. Submit to HOD</span><b>→</b>
+   <span>3. HOD Approval</span><b>→</b>
+   <span>4. Examination Officer</span><b>→</b>
+   <span>5. Final Approval</span>
+  </div>
+  <p class="small">Only approved papers can move to the next stage.</p>
  </div>
 
  <div class="card">
-   <h2>Quick Actions</h2>
-   <button class="btn btn-primary" onclick="showPage('scheme')">Create Scheme</button>
-   <button class="btn btn-primary" onclick="showPage('lessonplan')">Create Lesson Plan</button>
-   <button class="btn btn-primary" onclick="showPage('lessonnote')">Create Lesson Note</button>
-   <button class="btn btn-primary" onclick="showPage('assessment')">Create CA / Examination</button>
+  <h3 class="section-title">Academic Documents</h3>
+  <div class="grid grid-3">
+   <button class="primary" onclick="showPage('scheme')">Create Scheme</button>
+   <button class="primary" onclick="showPage('lessonPlan')">Create Lesson Plan</button>
+   <button class="primary" onclick="showPage('lessonNote')">Create Lesson Note</button>
+   <button class="primary" onclick="showPage('assessment')">Create CA / Examination</button>
+   <button class="secondary" onclick="showPage('submissions')">View My Submissions</button>
+   <button class="secondary" onclick="showPage('documents')">View Documents</button>
+  </div>
  </div>
+</section>
+
+<!-- TEACHER ASSISTANT -->
+<section id="page-assistant" class="page">
+ <div class="page-title">Teacher Assistant</div>
+ <div class="page-subtitle">Create structured academic materials quickly.</div>
 
  <div class="card">
-   <h2>Recent Documents</h2>
-   <div id="recentDocuments"></div>
+  <div class="notice">
+   This offline assistant uses structured templates. Always review generated content before submitting or printing.
+  </div>
+
+  <div class="grid grid-2">
+   <div class="form-group">
+    <label>Material</label>
+    <select id="assistantType">
+     <option value="scheme">Scheme of Work</option>
+     <option value="plan">Detailed Lesson Plan</option>
+     <option value="note">Detailed Lesson Note</option>
+     <option value="questions">CA / Examination Questions</option>
+    </select>
+   </div>
+   <div class="form-group">
+    <label>Subject</label>
+    <input id="assistantSubject" placeholder="e.g. Mathematics">
+   </div>
+   <div class="form-group">
+    <label>Class</label>
+    <input id="assistantClass" placeholder="e.g. JSS 1">
+   </div>
+   <div class="form-group">
+    <label>Topic</label>
+    <input id="assistantTopic" placeholder="Enter topic">
+   </div>
+   <div class="form-group">
+    <label>Language</label>
+    <select id="assistantLanguage">
+     <option value="English">English</option>
+     <option value="Hausa">Hausa</option>
+     <option value="Arabic">Arabic</option>
+     <option value="French">French</option>
+    </select>
+   </div>
+   <div class="form-group">
+    <label>Number of Questions (if applicable)</label>
+    <input id="assistantQuantity" type="number" min="1" max="100" value="10">
+   </div>
+  </div>
+
+  <div class="form-group">
+   <label>Additional Instruction</label>
+   <textarea id="assistantInstruction" placeholder="Add specific instructions..."></textarea>
+  </div>
+
+  <div class="actions">
+   <button class="primary" onclick="generateAssistant()">Generate</button>
+   <button class="secondary" onclick="copyAssistant()">Copy</button>
+   <button class="secondary" onclick="printText(document.getElementById('assistantOutput').value)">Print</button>
+   <button class="secondary" onclick="saveAssistant()">Save</button>
+   <button class="success" onclick="submitAssistant()">Submit to Administrator</button>
+  </div>
+
+  <div class="form-group" style="margin-top:15px">
+   <label>Generated Material</label>
+   <textarea id="assistantOutput" style="min-height:430px" placeholder="Generated material will appear here..."></textarea>
+  </div>
  </div>
 </section>
 
 <!-- SCHEME -->
 <section id="page-scheme" class="page">
- <div class="page-title">
-   <h2>Scheme of Work</h2>
-   <p>Create a standard scheme and submit it to the Administrator.</p>
+ <div class="page-title">Scheme of Work</div>
+ <div class="page-subtitle">Create, save and submit your scheme to the Administrator.</div>
+
+ <div class="card">
+  <div class="grid grid-2">
+   <div class="form-group"><label>Subject</label><input id="schemeSubject"></div>
+   <div class="form-group"><label>Class</label><input id="schemeClass"></div>
+   <div class="form-group"><label>Session</label><input id="schemeSession" value="2026/2027"></div>
+   <div class="form-group"><label>Term</label>
+    <select id="schemeTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select>
+   </div>
+   <div class="form-group"><label>Language</label>
+    <select id="schemeLanguage"><option>English</option><option>Hausa</option><option>Arabic</option><option>French</option></select>
+   </div>
+   <div class="form-group"><label>Number of Weeks</label><input id="schemeWeeks" type="number" value="12" min="1" max="30"></div>
+  </div>
+  <div class="form-group"><label>Topics / Units Covered</label>
+   <textarea id="schemeTopics" placeholder="Enter one topic per line"></textarea>
+  </div>
+  <div class="actions">
+   <button class="primary" onclick="generateScheme()">Generate Scheme</button>
+   <button class="secondary" onclick="saveScheme()">Save Draft</button>
+   <button class="success" onclick="submitScheme()">Submit to Administrator</button>
+   <button class="secondary" onclick="printText(document.getElementById('schemeOutput').value)">Print</button>
+  </div>
  </div>
 
  <div class="card">
-   <div class="info">
-     Enter the topics taught/planned. You can enter one topic per line.
-     After saving, use <b>Submit to Admin</b> to send the document for review.
-   </div>
-
-   <div class="grid2">
-    <div class="field">
-     <label>Subject</label>
-     <input id="schemeSubject" placeholder="e.g. Mathematics">
-    </div>
-    <div class="field">
-     <label>Class</label>
-     <input id="schemeClass" placeholder="e.g. JSS 2">
-    </div>
-    <div class="field">
-     <label>Term</label>
-     <select id="schemeTerm">
-      <option>First Term</option>
-      <option>Second Term</option>
-      <option>Third Term</option>
-     </select>
-    </div>
-    <div class="field">
-     <label>Session</label>
-     <input id="schemeSession" value="2026/2027">
-    </div>
-   </div>
-
-   <div class="field">
-    <label>Topics / Content</label>
-    <textarea id="schemeTopics"
-     placeholder="Week 1 - Place Value
-Week 2 - Addition
-Week 3 - Subtraction
-Week 4 - Multiplication
-Week 5 - Division"></textarea>
-   </div>
-
-   <div class="field">
-    <label>Additional Notes / Objectives</label>
-    <textarea id="schemeNotes" style="min-height:100px"
-     placeholder="Enter any special requirements for the scheme."></textarea>
-   </div>
-
-   <button class="btn btn-secondary" onclick="savePlanningDoc('scheme')">Save Draft</button>
-   <button class="btn btn-primary" onclick="submitPlanningDoc('scheme')">Submit to Admin</button>
-   <button class="btn btn-dark" onclick="printPlanning('scheme')">Print</button>
+  <label style="font-weight:800">Scheme Output</label>
+  <textarea id="schemeOutput" style="min-height:450px"></textarea>
  </div>
 </section>
 
 <!-- LESSON PLAN -->
-<section id="page-lessonplan" class="page">
- <div class="page-title">
-   <h2>Detailed Lesson Plan</h2>
-   <p>Create, save and submit your lesson plan to the Administrator.</p>
- </div>
+<section id="page-lessonPlan" class="page">
+ <div class="page-title">Detailed Lesson Plan</div>
+ <div class="page-subtitle">Prepare a complete lesson plan and submit it directly to the Administrator.</div>
 
  <div class="card">
-  <div class="grid2">
-   <div class="field">
-    <label>Subject</label>
-    <input id="lpSubject" placeholder="Subject">
-   </div>
-   <div class="field">
-    <label>Class</label>
-    <input id="lpClass" placeholder="Class">
-   </div>
-   <div class="field">
-    <label>Date</label>
-    <input id="lpDate" type="date">
-   </div>
-   <div class="field">
-    <label>Duration</label>
-    <input id="lpDuration" placeholder="e.g. 40 minutes">
-   </div>
-   <div class="field">
-    <label>Topic</label>
-    <input id="lpTopic" placeholder="Lesson topic">
-   </div>
-   <div class="field">
-    <label>Sub-topic</label>
-    <input id="lpSubtopic" placeholder="Sub-topic">
-   </div>
+  <div class="grid grid-2">
+   <div class="form-group"><label>Subject</label><input id="planSubject"></div>
+   <div class="form-group"><label>Class</label><input id="planClass"></div>
+   <div class="form-group"><label>Topic</label><input id="planTopic"></div>
+   <div class="form-group"><label>Sub-topic</label><input id="planSubtopic"></div>
+   <div class="form-group"><label>Date</label><input id="planDate" type="date"></div>
+   <div class="form-group"><label>Duration</label><input id="planDuration" placeholder="e.g. 40 minutes"></div>
+   <div class="form-group"><label>Term</label><select id="planTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
+   <div class="form-group"><label>Language</label><select id="planLanguage"><option>English</option><option>Hausa</option><option>Arabic</option><option>French</option></select></div>
   </div>
 
-  <div class="field">
-   <label>Learning Objectives</label>
-   <textarea id="lpObjectives"
-    placeholder="By the end of the lesson, students should be able to:
-1.
-2.
-3."></textarea>
+  <div class="grid grid-2">
+   <div class="form-group"><label>Learning Objectives</label><textarea id="planObjectives"></textarea></div>
+   <div class="form-group"><label>Teaching/Learning Materials</label><textarea id="planMaterials"></textarea></div>
+   <div class="form-group"><label>Previous Knowledge</label><textarea id="planPrevious"></textarea></div>
+   <div class="form-group"><label>Teaching Method</label><textarea id="planMethod" placeholder="e.g. Discussion, demonstration, guided practice"></textarea></div>
   </div>
 
-  <div class="field">
-   <label>Previous Knowledge</label>
-   <textarea id="lpPrevious" style="min-height:100px"></textarea>
-  </div>
+  <div class="form-group"><label>Lesson Development / Teacher & Learner Activities</label><textarea id="planDevelopment" style="min-height:230px"></textarea></div>
+  <div class="form-group"><label>Evaluation</label><textarea id="planEvaluation"></textarea></div>
+  <div class="form-group"><label>Conclusion</label><textarea id="planConclusion"></textarea></div>
+  <div class="form-group"><label>Assignment</label><textarea id="planAssignment"></textarea></div>
 
-  <div class="field">
-   <label>Instructional Materials</label>
-   <textarea id="lpMaterials" style="min-height:100px"></textarea>
+  <div class="actions">
+   <button class="primary" onclick="generatePlan()">Generate</button>
+   <button class="secondary" onclick="saveLessonPlan()">Save Draft</button>
+   <button class="success" onclick="submitLessonPlan()">📤 Submit to Administrator</button>
+   <button class="secondary" onclick="printText(getPlanText())">Print</button>
   </div>
-
-  <div class="field">
-   <label>Introduction / Set Induction</label>
-   <textarea id="lpIntroduction" style="min-height:110px"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Teacher's Activities</label>
-   <textarea id="lpTeacher"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Students' Activities</label>
-   <textarea id="lpStudents"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Lesson Development / Presentation</label>
-   <textarea id="lpDevelopment"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Evaluation / Assessment</label>
-   <textarea id="lpEvaluation"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Conclusion / Summary</label>
-   <textarea id="lpConclusion" style="min-height:100px"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Assignment</label>
-   <textarea id="lpAssignment" style="min-height:100px"></textarea>
-  </div>
-
-  <button class="btn btn-secondary" onclick="savePlanningDoc('lessonplan')">Save Draft</button>
-  <button class="btn btn-primary" onclick="submitPlanningDoc('lessonplan')">Submit to Admin</button>
-  <button class="btn btn-dark" onclick="printPlanning('lessonplan')">Print</button>
  </div>
 </section>
 
 <!-- LESSON NOTE -->
-<section id="page-lessonnote" class="page">
- <div class="page-title">
-   <h2>Detailed Lesson Note</h2>
-   <p>Create a complete lesson note and submit it for administrative review.</p>
- </div>
+<section id="page-lessonNote" class="page">
+ <div class="page-title">Detailed Lesson Note</div>
+ <div class="page-subtitle">Prepare a full lesson note and submit it for administrative review.</div>
 
  <div class="card">
-  <div class="grid2">
-   <div class="field">
-    <label>Subject</label>
-    <input id="lnSubject" placeholder="Subject">
-   </div>
-   <div class="field">
-    <label>Class</label>
-    <input id="lnClass" placeholder="Class">
-   </div>
-   <div class="field">
-    <label>Date</label>
-    <input id="lnDate" type="date">
-   </div>
-   <div class="field">
-    <label>Topic</label>
-    <input id="lnTopic" placeholder="Topic">
-   </div>
-   <div class="field">
-    <label>Sub-topic</label>
-    <input id="lnSubtopic" placeholder="Sub-topic">
-   </div>
-   <div class="field">
-    <label>Language</label>
-    <select id="lnLanguage">
-     <option>English</option>
-     <option>Hausa</option>
-     <option>Arabic</option>
-     <option>French</option>
-    </select>
-   </div>
+  <div class="grid grid-2">
+   <div class="form-group"><label>Subject</label><input id="noteSubject"></div>
+   <div class="form-group"><label>Class</label><input id="noteClass"></div>
+   <div class="form-group"><label>Topic</label><input id="noteTopic"></div>
+   <div class="form-group"><label>Sub-topic</label><input id="noteSubtopic"></div>
+   <div class="form-group"><label>Term</label><select id="noteTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
+   <div class="form-group"><label>Language</label><select id="noteLanguage"><option>English</option><option>Hausa</option><option>Arabic</option><option>French</option></select></div>
   </div>
 
-  <div class="field">
-   <label>Learning Objectives</label>
-   <textarea id="lnObjectives"></textarea>
+  <div class="form-group"><label>Learning Objectives</label><textarea id="noteObjectives"></textarea></div>
+  <div class="form-group"><label>Introduction</label><textarea id="noteIntroduction"></textarea></div>
+  <div class="form-group"><label>Detailed Lesson Content</label><textarea id="noteContent" style="min-height:330px"></textarea></div>
+  <div class="form-group"><label>Examples / Activities</label><textarea id="noteExamples"></textarea></div>
+  <div class="form-group"><label>Evaluation Questions</label><textarea id="noteEvaluation"></textarea></div>
+  <div class="form-group"><label>Assignment</label><textarea id="noteAssignment"></textarea></div>
+  <div class="actions">
+   <button class="primary" onclick="generateNote()">Generate</button>
+   <button class="secondary" onclick="saveLessonNote()">Save Draft</button>
+   <button class="success" onclick="submitLessonNote()">📤 Submit to Administrator</button>
+   <button class="secondary" onclick="printText(getNoteText())">Print</button>
   </div>
-
-  <div class="field">
-   <label>Introduction</label>
-   <textarea id="lnIntroduction"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Detailed Content / Explanation</label>
-   <textarea id="lnContent" style="min-height:240px"
-    placeholder="Write the complete lesson note here..."></textarea>
-  </div>
-
-  <div class="field">
-   <label>Examples / Demonstration</label>
-   <textarea id="lnExamples"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Class Activities</label>
-   <textarea id="lnActivities"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Evaluation Questions</label>
-   <textarea id="lnEvaluation"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Assignment</label>
-   <textarea id="lnAssignment"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Summary / Conclusion</label>
-   <textarea id="lnSummary"></textarea>
-  </div>
-
-  <button class="btn btn-secondary" onclick="savePlanningDoc('lessonnote')">Save Draft</button>
-  <button class="btn btn-primary" onclick="submitPlanningDoc('lessonnote')">Submit to Admin</button>
-  <button class="btn btn-dark" onclick="printPlanning('lessonnote')">Print</button>
  </div>
 </section>
 
-<!-- =====================================================
-     CA & EXAMINATION
-===================================================== -->
+<!-- ASSESSMENT -->
 <section id="page-assessment" class="page">
- <div class="page-title">
-   <h2>CA & Examination</h2>
-   <p>Create standard questions from the actual topics taught.</p>
+ <div class="page-title">CA & Examination</div>
+ <div class="page-subtitle">Create standard questions for all subjects taught, then send them through the HOD → Examination Officer workflow.</div>
+
+ <div class="card">
+  <div class="notice">
+   <b>Workflow:</b> Draft → Submit to HOD → HOD Approval → Send to Examination Officer → Final Approval.
+  </div>
+
+  <div class="grid grid-2">
+   <div class="form-group">
+    <label>Assessment Type</label>
+    <select id="assessmentType">
+     <option value="CA">Continuous Assessment (CA)</option>
+     <option value="Examination">Examination</option>
+    </select>
+   </div>
+   <div class="form-group"><label>Title</label><input id="assessmentTitle" placeholder="e.g. First Term Examination"></div>
+   <div class="form-group"><label>Class</label><input id="assessmentClass" placeholder="e.g. JSS 2"></div>
+   <div class="form-group"><label>Session</label><input id="assessmentSession" value="2026/2027"></div>
+   <div class="form-group"><label>Term</label>
+    <select id="assessmentTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select>
+   </div>
+   <div class="form-group"><label>Duration</label><input id="assessmentDuration" placeholder="e.g. 1 hour 30 minutes"></div>
+  </div>
  </div>
 
  <div class="card">
-  <div class="info">
-   <b>Important:</b> Enter the complete subjects/topics taught during the term.
-   The system uses these topics to distribute the questions across the paper.
-   Questions generated in the current paper are kept different from one another.
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+   <div>
+    <h3 class="section-title" style="margin-bottom:3px">Subjects & Topics</h3>
+    <div class="small">Add every subject taught to the students. Each subject can have its own topics and question numbers.</div>
+   </div>
+   <button class="primary" style="width:auto" onclick="addAssessmentSubject()">＋ Add Subject</button>
   </div>
-
-  <div class="grid2">
-
-   <div class="field">
-    <label>Assessment Type</label>
-    <select id="assType">
-     <option>Continuous Assessment 1 (CA 1)</option>
-     <option>Continuous Assessment 2 (CA 2)</option>
-     <option>Continuous Assessment 3 (CA 3)</option>
-     <option>First Term Examination</option>
-     <option>Second Term Examination</option>
-     <option>Third Term Examination</option>
-     <option>Mock Examination</option>
-    </select>
-   </div>
-
-   <div class="field">
-    <label>Subject</label>
-    <input id="assSubject" placeholder="e.g. Mathematics">
-   </div>
-
-   <div class="field">
-    <label>Class</label>
-    <input id="assClass" placeholder="e.g. JSS 2">
-   </div>
-
-   <div class="field">
-    <label>Session</label>
-    <input id="assSession" value="2026/2027">
-   </div>
-
-   <div class="field">
-    <label>Term</label>
-    <select id="assTerm">
-     <option>First Term</option>
-     <option>Second Term</option>
-     <option>Third Term</option>
-    </select>
-   </div>
-
-   <div class="field">
-    <label>Language</label>
-    <select id="assLanguage">
-     <option>English</option>
-     <option>Hausa</option>
-     <option>Arabic</option>
-     <option>French</option>
-    </select>
-   </div>
-
-   <div class="field">
-    <label>Question Structure</label>
-    <select id="assStructure">
-     <option value="mixed">Mixed Objective + Theory</option>
-     <option value="objective">Objective Only</option>
-     <option value="theory">Theory Only</option>
-     <option value="fill">Fill in the Blanks</option>
-     <option value="truefalse">True / False</option>
-    </select>
-   </div>
-
-   <div class="field">
-    <label>Difficulty</label>
-    <select id="assDifficulty">
-     <option>Standard / Mixed</option>
-     <option>Easy</option>
-     <option>Moderate</option>
-     <option>Challenging</option>
-    </select>
-   </div>
-
-   <div class="field">
-    <label>Number of Questions</label>
-    <input id="assCount" type="number" min="1" max="100" value="20">
-   </div>
-
-   <div class="field">
-    <label>Total Marks</label>
-    <input id="assMarks" type="number" min="1" value="100">
-   </div>
-
-   <div class="field">
-    <label>Duration</label>
-    <input id="assDuration" value="1 Hour 30 Minutes">
-   </div>
-
-   <div class="field">
-    <label>Pass Mark (%)</label>
-    <input id="assPass" type="number" min="0" max="100" value="40">
-   </div>
-
-  </div>
-
-  <div class="field">
-   <label>Complete Topics / Contents Taught</label>
-   <textarea id="assTopics" style="min-height:220px"
-    placeholder="Enter one topic per line.
-
-Example:
-Place Value
-Addition and Subtraction
-Multiplication
-Division
-Fractions
-Decimals
-Percentages
-Ratio and Proportion
-Simple Algebra
-Word Problems"></textarea>
-  </div>
-
-  <div class="field">
-   <label>Special Instructions</label>
-   <textarea id="assInstructions" style="min-height:100px"
-    placeholder="Example:
-Ensure balanced coverage.
-Use standard examination language.
-Avoid repeated questions.
-Include application questions where appropriate."></textarea>
-  </div>
-
-  <button class="btn btn-secondary" onclick="loadAssessmentExample()">Load Example</button>
-  <button class="btn btn-primary" onclick="generateAssessment()">Generate Questions</button>
-  <button class="btn btn-dark" onclick="clearAssessment()">Clear</button>
+  <div id="assessmentSubjects" style="margin-top:15px"></div>
  </div>
 
- <div id="assessmentOutput" class="hidden">
-
-  <div class="card no-print">
-   <h2>Generated Paper</h2>
-   <button class="btn btn-secondary" onclick="generateAssessment()">Generate Different Questions</button>
-   <button class="btn btn-secondary" onclick="saveAssessment()">Save Draft</button>
-   <button class="btn btn-primary" onclick="submitAssessment()">Submit to Admin</button>
-   <button class="btn btn-dark" onclick="printAssessment()">Print Paper</button>
-   <button class="btn btn-warning" onclick="printAssessmentMarking()">Print Marking Scheme</button>
+ <div class="card">
+  <h3 class="section-title">Generate Questions</h3>
+  <div class="grid grid-3">
+   <div class="form-group"><label>Question Type</label>
+    <select id="questionType"><option value="mixed">Mixed</option><option value="objective">Objective Only</option><option value="theory">Theory Only</option></select>
+   </div>
+   <div class="form-group"><label>Difficulty</label>
+    <select id="questionDifficulty"><option>Standard</option><option>Easy</option><option>Moderate</option><option>Challenging</option></select>
+   </div>
+   <div class="form-group"><label>Questions Per Subject</label>
+    <input id="questionsPerSubject" type="number" min="1" max="100" value="10">
+   </div>
   </div>
-
-  <div class="card">
-   <div id="coverageOutput"></div>
+  <div class="actions">
+   <button class="primary" onclick="generateAssessment()">Generate Standard Questions</button>
+   <button class="secondary" onclick="saveAssessment('Draft')">Save Draft</button>
+   <button class="success" onclick="saveAssessment('Pending HOD Review')">📤 Submit to HOD</button>
+   <button class="secondary" onclick="printAssessment()">Print</button>
   </div>
+ </div>
 
-  <div class="card">
-   <div id="assessmentPaper" class="paper"></div>
-  </div>
-
+ <div class="card">
+  <h3 class="section-title">Questions — Review & Edit Before Submission</h3>
+  <div id="assessmentQuestions"></div>
  </div>
 </section>
 
 <!-- DOCUMENTS -->
 <section id="page-documents" class="page">
- <div class="page-title">
-   <h2>My Documents</h2>
-   <p>All documents created by your account.</p>
- </div>
+ <div class="page-title">Documents</div>
+ <div class="page-subtitle">Your saved academic documents.</div>
  <div class="card">
-  <div id="myDocuments"></div>
+  <div id="documentsList"></div>
  </div>
 </section>
 
 <!-- SUBMISSIONS -->
 <section id="page-submissions" class="page">
- <div class="page-title">
-   <h2>My Submissions</h2>
-   <p>Track documents sent to the Administrator.</p>
- </div>
+ <div class="page-title">My Submissions</div>
+ <div class="page-subtitle">Track documents and examination papers submitted for review.</div>
  <div class="card">
-  <div id="mySubmissions"></div>
+  <div id="mySubmissionsList"></div>
  </div>
 </section>
 
 <!-- TEACHERS -->
-<section id="page-teachers" class="page admin-page">
- <div class="page-title">
-  <h2>Teacher Management</h2>
-  <p>Only the Administrator can create teacher accounts.</p>
- </div>
+<section id="page-teachers" class="page">
+ <div class="page-title">Teacher Management</div>
+ <div class="page-subtitle">Only the Administrator can create and manage teacher accounts.</div>
 
  <div class="card">
-  <div class="warning">
-   Teachers cannot create or manage other teacher accounts.
-   Only the Administrator has access to this section.
-  </div>
-
-  <div class="grid2">
-   <div class="field">
-    <label>Teacher Name</label>
-    <input id="teacherName" placeholder="Full name">
-   </div>
-   <div class="field">
-    <label>Username</label>
-    <input id="teacherUsername" placeholder="Username">
-   </div>
-   <div class="field">
+  <h3 class="section-title">Create Teacher Account</h3>
+  <div class="grid grid-2">
+   <div class="form-group"><label>Teacher Full Name</label><input id="teacherName"></div>
+   <div class="form-group"><label>Username</label><input id="teacherUsername"></div>
+   <div class="form-group">
     <label>Password</label>
     <div class="password-wrap">
-     <input id="teacherPassword" type="password" placeholder="Password">
-     <button class="eye" type="button"
-       onclick="togglePassword('teacherPassword','teacherEye')">
-       <span id="teacherEye">◉</span>
-     </button>
+     <input id="teacherPassword" type="password">
+     <button class="eye-btn" type="button" onclick="togglePassword('teacherPassword','teacherEye')" id="teacherEye">👁</button>
     </div>
    </div>
-   <div class="field">
-    <label>Assigned Class</label>
-    <input id="teacherClass" placeholder="e.g. JSS 2">
-   </div>
-   <div class="field">
-    <label>Assigned Subject</label>
-    <input id="teacherSubject" placeholder="e.g. Mathematics">
-   </div>
-   <div class="field">
-    <label>Status</label>
-    <select id="teacherStatus">
-     <option value="active">Active</option>
-     <option value="inactive">Inactive</option>
-    </select>
-   </div>
+   <div class="form-group"><label>Department / HOD</label><input id="teacherDepartment" placeholder="e.g. Sciences"></div>
+   <div class="form-group"><label>Class</label><input id="teacherClass"></div>
+   <div class="form-group"><label>Subject</label><input id="teacherSubject"></div>
   </div>
-
-  <button class="btn btn-primary" onclick="createTeacher()">Create Teacher Account</button>
+  <button class="primary" onclick="createTeacher()">Create Teacher</button>
  </div>
 
  <div class="card">
-  <h2>Teachers</h2>
-  <div id="teacherList"></div>
+  <h3 class="section-title">Registered Teachers</h3>
+  <div id="teachersList"></div>
  </div>
 </section>
 
 <!-- APPROVAL -->
-<section id="page-approval" class="page admin-page">
- <div class="page-title">
-  <h2>Approval Centre</h2>
-  <p>Review documents submitted by teachers.</p>
- </div>
+<section id="page-approval" class="page">
+ <div class="page-title">Approval Centre</div>
+ <div class="page-subtitle">Review academic documents and examination submissions.</div>
  <div class="card">
   <div id="approvalList"></div>
  </div>
 </section>
 
 <!-- ARCHIVE -->
-<section id="page-archive" class="page admin-page">
- <div class="page-title">
-  <h2>Approved Archive</h2>
-  <p>Approved teacher documents.</p>
- </div>
+<section id="page-archive" class="page">
+ <div class="page-title">Approved Archive</div>
+ <div class="page-subtitle">Final approved examination papers and academic documents.</div>
  <div class="card">
   <div id="archiveList"></div>
  </div>
 </section>
 
-<!-- BACKUP -->
-<section id="page-backup" class="page admin-page">
- <div class="page-title">
-  <h2>Backup & Restore</h2>
-  <p>Protect the school's locally stored data.</p>
- </div>
-
- <div class="card">
-  <div class="info">
-   Backup creates a downloadable JSON file containing the current application data.
+<!-- SECURITY -->
+<section id="page-security" class="page">
+ <div class="page-title">Security</div>
+ <div class="page-subtitle">Change your account password.</div>
+ <div class="card" style="max-width:600px">
+  <div class="form-group"><label>Current Password</label>
+   <div class="password-wrap"><input id="oldPassword" type="password"><button class="eye-btn" onclick="togglePassword('oldPassword','oldEye')" id="oldEye">👁</button></div>
   </div>
-  <button class="btn btn-primary" onclick="downloadBackup()">Download Backup</button>
-  <button class="btn btn-warning" onclick="document.getElementById('restoreFile').click()">Restore Backup</button>
-  <input id="restoreFile" type="file" accept=".json" class="hidden" onchange="restoreBackup(event)">
+  <div class="form-group"><label>New Password</label>
+   <div class="password-wrap"><input id="newPassword" type="password"><button class="eye-btn" onclick="togglePassword('newPassword','newEye')" id="newEye">👁</button></div>
+  </div>
+  <div class="form-group"><label>Confirm New Password</label>
+   <div class="password-wrap"><input id="confirmPassword" type="password"><button class="eye-btn" onclick="togglePassword('confirmPassword','confirmEye')" id="confirmEye">👁</button></div>
+  </div>
+  <button class="primary" onclick="changePassword()">Change Password</button>
  </div>
 </section>
 
-<!-- SECURITY -->
-<section id="page-security" class="page">
- <div class="page-title">
-  <h2>Change Password</h2>
-  <p>Change the password for your current account.</p>
- </div>
-
+<!-- BACKUP -->
+<section id="page-backup" class="page">
+ <div class="page-title">Backup & Restore</div>
+ <div class="page-subtitle">Administrator-only local database backup.</div>
  <div class="card">
-  <div class="field">
-   <label>Current Password</label>
-   <div class="password-wrap">
-    <input id="oldPassword" type="password">
-    <button class="eye" type="button"
-      onclick="togglePassword('oldPassword','oldEye')">
-      <span id="oldEye">◉</span>
-    </button>
-   </div>
-  </div>
-
-  <div class="field">
-   <label>New Password</label>
-   <div class="password-wrap">
-    <input id="newPassword" type="password">
-    <button class="eye" type="button"
-      onclick="togglePassword('newPassword','newEye')">
-      <span id="newEye">◉</span>
-    </button>
-   </div>
-  </div>
-
-  <div class="field">
-   <label>Confirm New Password</label>
-   <div class="password-wrap">
-    <input id="confirmPassword" type="password">
-    <button class="eye" type="button"
-      onclick="togglePassword('confirmPassword','confirmEye')">
-      <span id="confirmEye">◉</span>
-    </button>
-   </div>
-  </div>
-
-  <button class="btn btn-primary" onclick="changePassword()">Change Password</button>
+  <button class="primary" onclick="downloadBackup()">Download Backup</button>
+  <hr>
+  <label class="secondary" style="display:inline-block;cursor:pointer">
+   Restore Backup
+   <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreBackup(event)">
+  </label>
+  <hr>
+  <button class="secondary danger" onclick="repairAdminLogin()">Reset Administrator Login</button>
  </div>
 </section>
 
@@ -1083,38 +697,59 @@ Include application questions where appropriate."></textarea>
 </div>
 </div>
 
-<!-- MODAL -->
-<div id="reviewModal" class="modal">
+<div id="toast" class="toast"></div>
+
+<!-- COMMENT MODAL -->
+<div id="commentModal" class="modal hidden">
  <div class="modal-box">
   <div class="modal-head">
-   <h2>Review Submission</h2>
-   <button class="close" onclick="closeModal()">✕</button>
+   <h3 id="commentTitle">Review Submission</h3>
+   <button class="close" onclick="closeModal()">×</button>
   </div>
-  <div id="reviewContent"></div>
+  <div class="form-group">
+   <label>Comment / Review Note</label>
+   <textarea id="reviewComment" placeholder="Enter comments for the teacher..."></textarea>
+  </div>
+  <div class="actions">
+   <button class="primary" id="modalApproveBtn">Approve</button>
+   <button class="secondary danger" id="modalRejectBtn">Reject</button>
+  </div>
  </div>
 </div>
+
+<div id="printArea" class="hidden"></div>
 
 <script>
 "use strict";
 
-/* =====================================================
+/* =========================================================
    DATABASE
-===================================================== */
+========================================================= */
 
-const DB_KEY="CTA_ACADEMY_INTEGRATED_V14";
-const SESSION_KEY="CTA_ACADEMY_SESSION_V14";
+const DB_KEY = "CTA_ACADEMY_DATABASE_V14";
+const OLD_DB_KEY = "CTA_ACADEMY_DATABASE_V13";
+const SESSION_KEY = "CTA_ACADEMY_SESSION_V14";
 
-let db={
+let db = {
  users:[],
  documents:[],
  submissions:[],
  archive:[],
- usedQuestions:[]
+ assessments:[]
 };
 
-let session=null;
-let currentAssessment=null;
-let currentReviewId=null;
+let currentUser = null;
+let currentAssessmentSubjects = [];
+let reviewSubmissionId = null;
+
+function uid(){
+ if(window.crypto && crypto.randomUUID) return crypto.randomUUID();
+ return "id_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+}
+
+function now(){
+ return new Date().toLocaleString();
+}
 
 function storageWorks(){
  try{
@@ -1127,68 +762,157 @@ function storageWorks(){
  }
 }
 
-function loadDB(){
-
- if(!storageWorks()){
-  db={users:[],documents:[],submissions:[],archive:[],usedQuestions:[]};
-  ensureAdmin();
-  return;
- }
-
- try{
-  const raw=localStorage.getItem(DB_KEY);
-
-  if(raw){
-   const parsed=JSON.parse(raw);
-
-   if(parsed && typeof parsed==="object"){
-    db=parsed;
-   }
-  }
- }catch(e){
-  db={users:[],documents:[],submissions:[],archive:[],usedQuestions:[]};
- }
-
- db.users=Array.isArray(db.users)?db.users:[];
- db.documents=Array.isArray(db.documents)?db.documents:[];
- db.submissions=Array.isArray(db.submissions)?db.submissions:[];
- db.archive=Array.isArray(db.archive)?db.archive:[];
- db.usedQuestions=Array.isArray(db.usedQuestions)?db.usedQuestions:[];
-
- db.users=db.users.filter(u=>u && u.username && u.role);
-
- ensureAdmin();
- saveDB();
-}
-
 function saveDB(){
  try{
   localStorage.setItem(DB_KEY,JSON.stringify(db));
   return true;
  }catch(e){
-  alert("Unable to save data. Please allow browser storage and avoid Private Browsing.");
+  toast("Unable to save data. Browser storage may be unavailable.");
   return false;
  }
 }
 
+function normalizeDB(data){
+ if(!data || typeof data!=="object") data={};
+ if(!Array.isArray(data.users)) data.users=[];
+ if(!Array.isArray(data.documents)) data.documents=[];
+ if(!Array.isArray(data.submissions)) data.submissions=[];
+ if(!Array.isArray(data.archive)) data.archive=[];
+ if(!Array.isArray(data.assessments)) data.assessments=[];
+ return data;
+}
+
+function loadDB(){
+ if(!storageWorks()){
+  toast("Browser storage is unavailable. Please disable private browsing or use a normal browser tab.");
+  return;
+ }
+
+ try{
+  let raw=localStorage.getItem(DB_KEY);
+
+  /* Migrate older V13 data */
+  if(!raw){
+   const old=localStorage.getItem(OLD_DB_KEY);
+   if(old){
+    try{
+     db=normalizeDB(JSON.parse(old));
+     saveDB();
+    }catch(e){}
+   }
+  }else{
+   db=normalizeDB(JSON.parse(raw));
+  }
+
+  ensureAdmin();
+ }catch(e){
+  db={
+   users:[],
+   documents:[],
+   submissions:[],
+   archive:[],
+   assessments:[]
+  };
+  ensureAdmin();
+ }
+}
+
 function ensureAdmin(){
-
  let admin=db.users.find(u=>u.role==="admin");
-
  if(!admin){
-  db.users.push({
-   id:"ADMIN-001",
+  db.users.unshift({
+   id:uid(),
    name:"System Administrator",
    username:"admin",
    password:"Admin@2026!",
    role:"admin",
-   status:"active",
-   createdAt:new Date().toISOString()
+   active:true,
+   department:"Administration",
+   createdAt:now()
   });
+ }else{
+  if(!admin.active) admin.active=true;
+  if(!admin.username) admin.username="admin";
+ }
+ saveDB();
+}
+
+function getUserById(id){
+ return db.users.find(u=>u.id===id);
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function selectLoginRole(role){
+ document.getElementById("loginRole").value=role;
+ document.getElementById("adminRoleBtn").classList.toggle("active",role==="admin");
+ document.getElementById("teacherRoleBtn").classList.toggle("active",role==="teacher");
+}
+
+function togglePassword(inputId,eyeId){
+ const input=document.getElementById(inputId);
+ const eye=document.getElementById(eyeId);
+ if(!input) return;
+ if(input.type==="password"){
+  input.type="text";
+  if(eye) eye.textContent="🙈";
+ }else{
+  input.type="password";
+  if(eye) eye.textContent="👁";
  }
 }
 
+function login(){
+ if(!storageWorks()){
+  toast("Browser storage is unavailable.");
+  return;
+ }
+
+ loadDB();
+
+ const username=document.getElementById("loginUsername").value.trim().toLowerCase();
+ const password=document.getElementById("loginPassword").value;
+ const role=document.getElementById("loginRole").value;
+
+ if(!username || !password){
+  toast("Enter username and password.");
+  return;
+ }
+
+ const user=db.users.find(u=>
+  String(u.username||"").trim().toLowerCase()===username
+ );
+
+ if(!user){
+  toast("Invalid username or password.");
+  return;
+ }
+
+ if(!user.active){
+  toast("This account has been deactivated by the Administrator.");
+  return;
+ }
+
+ if(user.role!==role){
+  toast("The selected login role does not match this account.");
+  return;
+ }
+
+ currentUser={
+  id:user.id,
+  name:user.name,
+  username:user.username,
+  role:user.role
+ };
+
+ localStorage.setItem(SESSION_KEY,JSON.stringify(currentUser));
+ openApplication();
+}
+
 function repairAdminLogin(){
+ if(!confirm("Reset the Administrator login to admin / Admin@2026!? Existing teachers and documents will NOT be deleted.")) return;
 
  loadDB();
 
@@ -1196,633 +920,120 @@ function repairAdminLogin(){
 
  if(!admin){
   admin={
-   id:"ADMIN-001",
+   id:uid(),
    name:"System Administrator",
    role:"admin",
-   createdAt:new Date().toISOString()
+   active:true,
+   createdAt:now()
   };
-  db.users.push(admin);
+  db.users.unshift(admin);
  }
 
  admin.username="admin";
  admin.password="Admin@2026!";
- admin.role="admin";
- admin.status="active";
+ admin.active=true;
 
  saveDB();
 
- alert(
-  "Administrator login repaired.\n\nUsername: admin\nPassword: Admin@2026!"
- );
+ document.getElementById("loginUsername").value="admin";
+ document.getElementById("loginPassword").value="Admin@2026!";
+ selectLoginRole("admin");
 
- $("loginUsername").value="admin";
- $("loginPassword").value="Admin@2026!";
- selectRole("admin");
-}
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-function selectRole(role){
-
- $("loginRole").value=role;
-
- $("adminRoleBtn").classList.toggle(
-  "active",role==="admin"
- );
-
- $("teacherRoleBtn").classList.toggle(
-  "active",role==="teacher"
- );
-
- $("loginUsername").value="";
- $("loginPassword").value="";
-}
-
-function login(){
-
- if(!storageWorks()){
-  alert("Browser storage is unavailable. Please use normal/private-storage-enabled browsing.");
-  return;
- }
-
- loadDB();
-
- const role=$("loginRole").value;
- const username=$("loginUsername").value.trim();
- const password=$("loginPassword").value;
-
- if(!username || !password){
-  alert("Please enter username and password.");
-  return;
- }
-
- const user=db.users.find(u=>
-  String(u.username).toLowerCase()===username.toLowerCase()
- );
-
- if(!user){
-  alert("Invalid username or password.");
-  return;
- }
-
- if(user.status==="inactive"){
-  alert("This account has been deactivated by the Administrator.");
-  return;
- }
-
- if(user.role!==role){
-  alert(
-   role==="admin"
-   ? "This account is not an Administrator account."
-   : "This account is not a Teacher account."
-  );
-  return;
- }
-
- if(user.password!==password){
-  alert("Invalid username or password.");
-  return;
- }
-
- session={
-  userId:user.id,
-  username:user.username,
-  role:user.role,
-  loginAt:new Date().toISOString()
- };
-
- localStorage.setItem(SESSION_KEY,JSON.stringify(session));
-
- openApplication();
-}
-
-function checkSession(){
-
- try{
-  const raw=localStorage.getItem(SESSION_KEY);
-
-  if(raw){
-   session=JSON.parse(raw);
-
-   const user=db.users.find(
-    u=>u.id===session.userId
-   );
-
-   if(user && user.status!=="inactive"){
-    openApplication();
-    return;
-   }
-  }
- }catch(e){}
-
+ toast("Administrator login repaired.");
 }
 
 function openApplication(){
+ document.getElementById("loginScreen").classList.add("hidden");
+ document.getElementById("app").classList.remove("hidden");
 
- $("loginScreen").classList.add("hidden");
- $("app").classList.remove("hidden");
+ const roleText=currentUser.role==="admin"?"Administrator":"Teacher";
+ document.getElementById("userPill").textContent=currentUser.name+" • "+roleText;
 
- const user=getCurrentUser();
+ document.getElementById("adminNav").style.display=currentUser.role==="admin"?"block":"none";
 
- if(!user){
-  logout();
-  return;
- }
+ refreshAll();
+ showPage("dashboard");
+}
 
- $("userPill").textContent=
-  user.name+" • "+(
-   user.role==="admin"?"Administrator":"Teacher"
-  );
-
- document.querySelectorAll(".admin-only").forEach(el=>{
-  el.style.display=user.role==="admin"?"block":"none";
- });
-
- $("adminHeading").style.display=
-  user.role==="admin"?"block":"none";
-
- updateDashboard();
- renderAll();
+function checkSession(){
+ try{
+  const s=localStorage.getItem(SESSION_KEY);
+  if(s){
+   const session=JSON.parse(s);
+   loadDB();
+   const user=getUserById(session.id);
+   if(user && user.active){
+    currentUser={
+     id:user.id,name:user.name,username:user.username,role:user.role
+    };
+    openApplication();
+   }
+  }
+ }catch(e){}
 }
 
 function logout(){
-
- session=null;
-
- try{
-  localStorage.removeItem(SESSION_KEY);
- }catch(e){}
-
- $("app").classList.add("hidden");
- $("loginScreen").classList.remove("hidden");
-
- selectRole("admin");
- $("loginUsername").value="admin";
+ localStorage.removeItem(SESSION_KEY);
+ currentUser=null;
+ document.getElementById("app").classList.add("hidden");
+ document.getElementById("loginScreen").classList.remove("hidden");
+ document.getElementById("loginPassword").value="";
 }
 
-function getCurrentUser(){
- if(!session)return null;
- return db.users.find(u=>u.id===session.userId)||null;
-}
-
-function requireAdmin(){
-
- const user=getCurrentUser();
-
- if(!user || user.role!=="admin"){
-  alert("Administrator access required.");
+function requireLogin(){
+ if(!currentUser){
+  toast("Please log in first.");
   return false;
  }
-
  return true;
 }
 
-/* =====================================================
+function requireAdmin(){
+ if(!requireLogin()) return false;
+ if(currentUser.role!=="admin"){
+  toast("Administrator access required.");
+  return false;
+ }
+ return true;
+}
+
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
 function toggleSidebar(){
- $("sidebar").classList.toggle("open");
+ document.getElementById("sidebar").classList.toggle("open");
 }
 
 function showPage(page){
+ if(!requireLogin()) return;
 
- const user=getCurrentUser();
+ const adminPages=["teachers","approval","archive","backup"];
 
- if(
-  ["teachers","approval","archive","backup"].includes(page) &&
-  (!user || user.role!=="admin")
- ){
-  alert("Administrator access required.");
+ if(currentUser.role!=="admin" && adminPages.includes(page)){
+  toast("You do not have permission to access this page.");
   return;
  }
 
- document.querySelectorAll(".page").forEach(p=>{
-  p.classList.remove("active");
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ const target=document.getElementById("page-"+page);
+ if(target) target.classList.add("active");
+
+ document.querySelectorAll(".nav-btn").forEach(b=>{
+  b.classList.toggle("active",b.dataset.page===page);
  });
 
- const target=$("page-"+page);
+ document.getElementById("sidebar").classList.remove("open");
 
- if(target)target.classList.add("active");
-
- document.querySelectorAll(".nav").forEach(n=>{
-  n.classList.toggle(
-   "active",
-   n.dataset.page===page
-  );
- });
-
- $("sidebar").classList.remove("open");
-
- if(page==="dashboard")updateDashboard();
- if(page==="documents")renderMyDocuments();
- if(page==="submissions")renderMySubmissions();
- if(page==="teachers")renderTeachers();
- if(page==="approval")renderApproval();
- if(page==="archive")renderArchive();
+ refreshAll();
 }
 
-/* =====================================================
-   GENERIC DOCUMENT HELPERS
-===================================================== */
-
-function makeId(prefix){
- return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
-}
-
-function createDocument(type,title,data,status="draft"){
-
- const user=getCurrentUser();
-
- const doc={
-  id:makeId("DOC"),
-  type,
-  title,
-  ownerId:user.id,
-  ownerName:user.name,
-  status,
-  data,
-  createdAt:new Date().toISOString(),
-  updatedAt:new Date().toISOString()
- };
-
- db.documents.unshift(doc);
-
- return doc;
-}
-
-function updateDocument(doc){
- doc.updatedAt=new Date().toISOString();
-}
-
-function submitDocument(doc){
-
- doc.status="submitted";
- updateDocument(doc);
-
- const old=db.submissions.find(
-  s=>s.documentId===doc.id
- );
-
- if(!old){
-  db.submissions.unshift({
-   id:makeId("SUB"),
-   documentId:doc.id,
-   ownerId:doc.ownerId,
-   ownerName:doc.ownerName,
-   type:doc.type,
-   title:doc.title,
-   status:"submitted",
-   comment:"",
-   submittedAt:new Date().toISOString(),
-   reviewedAt:null
-  });
- }else{
-  old.status="submitted";
-  old.comment="";
-  old.submittedAt=new Date().toISOString();
-  old.reviewedAt=null;
- }
-
- saveDB();
-}
-
-function findMyDoc(type){
-
- const user=getCurrentUser();
-
- return db.documents.find(
-  d=>d.ownerId===user.id && d.type===type
- );
-}
-
-/* =====================================================
-   SCHEME / LESSON PLAN / LESSON NOTE
-===================================================== */
-
-function collectPlanningData(type){
-
- if(type==="scheme"){
-  return {
-   subject:$("schemeSubject").value.trim(),
-   className:$("schemeClass").value.trim(),
-   term:$("schemeTerm").value,
-   session:$("schemeSession").value.trim(),
-   topics:$("schemeTopics").value,
-   notes:$("schemeNotes").value
-  };
- }
-
- if(type==="lessonplan"){
-  return {
-   subject:$("lpSubject").value.trim(),
-   className:$("lpClass").value.trim(),
-   date:$("lpDate").value,
-   duration:$("lpDuration").value,
-   topic:$("lpTopic").value.trim(),
-   subtopic:$("lpSubtopic").value.trim(),
-   objectives:$("lpObjectives").value,
-   previous:$("lpPrevious").value,
-   materials:$("lpMaterials").value,
-   introduction:$("lpIntroduction").value,
-   teacher:$("lpTeacher").value,
-   students:$("lpStudents").value,
-   development:$("lpDevelopment").value,
-   evaluation:$("lpEvaluation").value,
-   conclusion:$("lpConclusion").value,
-   assignment:$("lpAssignment").value
-  };
- }
-
- return {
-  subject:$("lnSubject").value.trim(),
-  className:$("lnClass").value.trim(),
-  date:$("lnDate").value,
-  topic:$("lnTopic").value.trim(),
-  subtopic:$("lnSubtopic").value.trim(),
-  language:$("lnLanguage").value,
-  objectives:$("lnObjectives").value,
-  introduction:$("lnIntroduction").value,
-  content:$("lnContent").value,
-  examples:$("lnExamples").value,
-  activities:$("lnActivities").value,
-  evaluation:$("lnEvaluation").value,
-  assignment:$("lnAssignment").value,
-  summary:$("lnSummary").value
- };
-}
-
-function planningTitle(type,data){
-
- if(type==="scheme")
-  return "Scheme of Work — "+data.subject+" — "+data.className;
-
- if(type==="lessonplan")
-  return "Lesson Plan — "+data.subject+" — "+data.topic;
-
- return "Lesson Note — "+data.subject+" — "+data.topic;
-}
-
-function savePlanningDoc(type){
-
- const data=collectPlanningData(type);
-
- if(!data.subject){
-  alert("Please enter the subject.");
-  return;
- }
-
- let doc=findMyDoc(type);
-
- if(doc){
-  doc.data=data;
-  doc.title=planningTitle(type,data);
-
-  if(doc.status==="submitted"){
-   doc.status="draft";
-  }
-
-  updateDocument(doc);
- }else{
-  doc=createDocument(
-   type,
-   planningTitle(type,data),
-   data,
-   "draft"
-  );
- }
-
- saveDB();
- updateDashboard();
- renderMyDocuments();
-
- alert("Saved as Draft.");
-}
-
-function submitPlanningDoc(type){
-
- const data=collectPlanningData(type);
-
- if(!data.subject){
-  alert("Please enter the subject.");
-  return;
- }
-
- if(type!=="scheme" && !data.topic){
-  alert("Please enter the lesson topic.");
-  return;
- }
-
- let doc=findMyDoc(type);
-
- if(doc){
-  doc.data=data;
-  doc.title=planningTitle(type,data);
-  updateDocument(doc);
- }else{
-  doc=createDocument(
-   type,
-   planningTitle(type,data),
-   data,
-   "draft"
-  );
- }
-
- submitDocument(doc);
-
- updateDashboard();
- renderMyDocuments();
- renderMySubmissions();
-
- alert("Document submitted to the Administrator successfully.");
-}
-
-/* =====================================================
-   PRINT PLANNING DOCUMENT
-===================================================== */
-
-function printPlanning(type){
-
- const data=collectPlanningData(type);
-
- if(!data.subject){
-  alert("Please enter the subject first.");
-  return;
- }
-
- let html="";
-
- if(type==="scheme"){
-  html=`
-   <div class="paper">
-    <div class="paper-head">
-     <h1>CALIPHATE TARBIYA ACADEMY SOKOTO</h1>
-     <h2>SCHEME OF WORK</h2>
-    </div>
-
-    <p><b>Subject:</b> ${escapeHTML(data.subject)}</p>
-    <p><b>Class:</b> ${escapeHTML(data.className)}</p>
-    <p><b>Term:</b> ${escapeHTML(data.term)}</p>
-    <p><b>Session:</b> ${escapeHTML(data.session)}</p>
-
-    <h3 style="margin-top:20px">Topics / Content</h3>
-    <div style="white-space:pre-wrap;margin-top:10px">
-     ${escapeHTML(data.topics)}
-    </div>
-
-    <h3 style="margin-top:20px">Notes</h3>
-    <div style="white-space:pre-wrap">
-     ${escapeHTML(data.notes)}
-    </div>
-   </div>
-  `;
- }
-
- if(type==="lessonplan"){
-  html=`
-   <div class="paper">
-    <div class="paper-head">
-     <h1>CALIPHATE TARBIYA ACADEMY SOKOTO</h1>
-     <h2>DETAILED LESSON PLAN</h2>
-    </div>
-
-    <p><b>Subject:</b> ${escapeHTML(data.subject)}</p>
-    <p><b>Class:</b> ${escapeHTML(data.className)}</p>
-    <p><b>Date:</b> ${escapeHTML(data.date)}</p>
-    <p><b>Duration:</b> ${escapeHTML(data.duration)}</p>
-    <p><b>Topic:</b> ${escapeHTML(data.topic)}</p>
-    <p><b>Sub-topic:</b> ${escapeHTML(data.subtopic)}</p>
-
-    ${lessonField("Learning Objectives",data.objectives)}
-    ${lessonField("Previous Knowledge",data.previous)}
-    ${lessonField("Instructional Materials",data.materials)}
-    ${lessonField("Introduction / Set Induction",data.introduction)}
-    ${lessonField("Teacher's Activities",data.teacher)}
-    ${lessonField("Students' Activities",data.students)}
-    ${lessonField("Lesson Development",data.development)}
-    ${lessonField("Evaluation / Assessment",data.evaluation)}
-    ${lessonField("Conclusion / Summary",data.conclusion)}
-    ${lessonField("Assignment",data.assignment)}
-   </div>
-  `;
- }
-
- if(type==="lessonnote"){
-  html=`
-   <div class="paper">
-    <div class="paper-head">
-     <h1>CALIPHATE TARBIYA ACADEMY SOKOTO</h1>
-     <h2>DETAILED LESSON NOTE</h2>
-    </div>
-
-    <p><b>Subject:</b> ${escapeHTML(data.subject)}</p>
-    <p><b>Class:</b> ${escapeHTML(data.className)}</p>
-    <p><b>Date:</b> ${escapeHTML(data.date)}</p>
-    <p><b>Topic:</b> ${escapeHTML(data.topic)}</p>
-    <p><b>Sub-topic:</b> ${escapeHTML(data.subtopic)}</p>
-    <p><b>Language:</b> ${escapeHTML(data.language)}</p>
-
-    ${lessonField("Learning Objectives",data.objectives)}
-    ${lessonField("Introduction",data.introduction)}
-    ${lessonField("Detailed Content",data.content)}
-    ${lessonField("Examples / Demonstration",data.examples)}
-    ${lessonField("Class Activities",data.activities)}
-    ${lessonField("Evaluation",data.evaluation)}
-    ${lessonField("Assignment",data.assignment)}
-    ${lessonField("Summary / Conclusion",data.summary)}
-   </div>
-  `;
- }
-
- openPrintWindow(html);
-}
-
-function lessonField(title,value){
- return `
-  <h3 style="margin-top:20px">${escapeHTML(title)}</h3>
-  <div style="white-space:pre-wrap;margin-top:7px">
-   ${escapeHTML(value||"")}
-  </div>
- `;
-}
-
-function openPrintWindow(html){
-
- const w=window.open("","_blank");
-
- if(!w){
-  alert("Please allow pop-ups for printing.");
-  return;
- }
-
- w.document.write(`
- <!DOCTYPE html>
- <html>
- <head>
- <title>Caliphate Tarbiya Academy</title>
- <style>
- body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:#17202a;
-  padding:30px;
-  line-height:1.6;
- }
- .paper{
-  max-width:850px;
-  margin:auto;
- }
- .paper-head{
-  text-align:center;
-  border-bottom:2px solid #14532d;
-  padding-bottom:15px;
-  margin-bottom:20px;
- }
- .paper-head h1{color:#14532d;font-size:23px}
- h3{color:#14532d}
- </style>
- </head>
- <body>${html}</body>
- </html>
- `);
-
- w.document.close();
- w.focus();
-
- setTimeout(()=>{
-  w.print();
- },300);
-}
-
-/* =====================================================
-   ASSESSMENT ENGINE
-===================================================== */
-
-function loadAssessmentExample(){
-
- $("assSubject").value="Mathematics";
- $("assClass").value="JSS 2";
-
- $("assTopics").value=
-`Place Value
-Addition and Subtraction
-Multiplication
-Division
-Fractions
-Decimals
-Percentages
-Ratio and Proportion
-Simple Algebra
-Word Problems`;
-}
-
-function clean(text){
- return String(text||"").replace(/\s+/g," ").trim();
-}
-
-function escapeHTML(text){
- return String(text??"")
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHTML(value){
+ return String(value??"")
   .replace(/&/g,"&amp;")
   .replace(/</g,"&lt;")
   .replace(/>/g,"&gt;")
@@ -1830,1981 +1041,1461 @@ function escapeHTML(text){
   .replace(/'/g,"&#039;");
 }
 
-function uniqueTopics(){
-
- return $("assTopics").value
-  .split(/\n/)
-  .map(clean)
-  .filter(Boolean)
-  .filter((v,i,a)=>a.indexOf(v)===i);
+function toast(message){
+ const t=document.getElementById("toast");
+ t.textContent=message;
+ t.style.display="block";
+ clearTimeout(window.__toastTimer);
+ window.__toastTimer=setTimeout(()=>t.style.display="none",3000);
 }
 
-function shuffle(arr){
+function copyText(text){
+ if(!text){
+  toast("Nothing to copy.");
+  return;
+ }
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(text).then(()=>toast("Copied."));
+ }else{
+  const ta=document.createElement("textarea");
+  ta.value=text;
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  ta.remove();
+  toast("Copied.");
+ }
+}
 
- const a=[...arr];
+function printText(text){
+ if(!text){
+  toast("Nothing to print.");
+  return;
+ }
+ const area=document.getElementById("printArea");
+ area.innerHTML="<div class='doc-preview'><pre style='white-space:pre-wrap;font-family:Arial;line-height:1.6'>"+
+  escapeHTML(text)+"</pre></div>";
+ area.classList.remove("hidden");
+ window.print();
+ setTimeout(()=>area.classList.add("hidden"),500);
+}
 
- for(let i=a.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [a[i],a[j]]=[a[j],a[i]];
+function downloadFile(filename,content,type){
+ const blob=new Blob([content],{type:type||"text/plain"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download=filename;
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+ URL.revokeObjectURL(url);
+}
+
+/* =========================================================
+   DOCUMENT MANAGEMENT
+========================================================= */
+
+function addDocument(type,title,content,extra){
+ const doc={
+  id:uid(),
+  type:type,
+  title:title||type,
+  content:content||"",
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  createdAt:now(),
+  updatedAt:now(),
+  status:"Draft",
+  ...(extra||{})
+ };
+
+ db.documents.unshift(doc);
+ saveDB();
+ return doc;
+}
+
+function findDocument(id){
+ return db.documents.find(d=>d.id===id);
+}
+
+function createSubmission(doc,workflow,status){
+ let existing=db.submissions.find(s=>s.documentId===doc.id && !["Approved","Rejected","Final Approved"].includes(s.status));
+
+ if(existing){
+  existing.status=status;
+  existing.workflow=workflow;
+  existing.updatedAt=now();
+  saveDB();
+  return existing;
  }
 
+ const sub={
+  id:uid(),
+  documentId:doc.id,
+  type:doc.type,
+  title:doc.title,
+  teacherId:doc.teacherId,
+  teacherName:doc.teacherName,
+  workflow:workflow,
+  status:status,
+  comment:"",
+  createdAt:now(),
+  updatedAt:now()
+ };
+
+ db.submissions.unshift(sub);
+ doc.status=status;
+ saveDB();
+ return sub;
+}
+
+/* =========================================================
+   ASSISTANT
+========================================================= */
+
+function generateAssistant(){
+ const type=document.getElementById("assistantType").value;
+ const subject=document.getElementById("assistantSubject").value.trim();
+ const cls=document.getElementById("assistantClass").value.trim();
+ const topic=document.getElementById("assistantTopic").value.trim();
+ const lang=document.getElementById("assistantLanguage").value;
+ const qty=Math.max(1,Math.min(100,Number(document.getElementById("assistantQuantity").value)||10));
+ const instruction=document.getElementById("assistantInstruction").value.trim();
+
+ if(!subject||!cls||!topic){
+  toast("Enter subject, class and topic.");
+  return;
+ }
+
+ let out="";
+
+ if(type==="scheme"){
+  out=makeSchemeText(subject,cls,topic,lang,12);
+ }else if(type==="plan"){
+  out=makePlanText(subject,cls,topic,lang);
+ }else if(type==="note"){
+  out=makeNoteText(subject,cls,topic,lang);
+ }else{
+  out=makeQuestionText(subject,cls,topic,lang,qty);
+ }
+
+ if(instruction) out+="\n\nADDITIONAL INSTRUCTION:\n"+instruction;
+ document.getElementById("assistantOutput").value=out;
+}
+
+function makeSchemeText(subject,cls,topic,lang,weeks){
+ const topics=topic.split(/\n/).map(x=>x.trim()).filter(Boolean);
+ let a=[];
+
+ for(let i=1;i<=weeks;i++){
+  const t=topics[(i-1)%Math.max(topics.length,1)]||topic;
+  a.push("WEEK "+i+"\nTopic: "+t+
+   "\nLearning Objectives: Learners should be able to explain, identify, apply and demonstrate understanding of "+t+"."+
+   "\nContent: Key concepts, examples, guided practice and assessment related to "+t+"."+
+   "\nActivities: Teacher explanation, learner participation, examples, class exercise and review.");
+ }
+
+ if(lang==="Hausa"){
+  return "TSARIN AIKI / SCHEME OF WORK\n\nSubject: "+subject+"\nClass: "+cls+"\n\n"+a.join("\n\n");
+ }
+ if(lang==="Arabic"){
+  return "خطة العمل الدراسية\n\nالمادة: "+subject+"\nالفصل: "+cls+"\n\n"+a.join("\n\n");
+ }
+ if(lang==="French"){
+  return "PROGRAMME DE TRAVAIL\n\nMatière: "+subject+"\nClasse: "+cls+"\n\n"+a.join("\n\n");
+ }
+ return "SCHEME OF WORK\n\nSubject: "+subject+"\nClass: "+cls+"\n\n"+a.join("\n\n");
+}
+
+function makePlanText(subject,cls,topic,lang){
+ if(lang==="Hausa"){
+  return "CIKAKKEN TSARIN DARASI\n\n"+
+   "Fanni: "+subject+"\nAjin: "+cls+"\nMaudu'i: "+topic+
+   "\n\nMANUFOFIN DARASI:\n1. Dalibai su bayyana "+topic+".\n2. Dalibai su gano muhimman abubuwa.\n3. Dalibai su yi amfani da abin da suka koya.\n\n"+
+   "KAYAN KOYARWA:\nAllo, littafin darasi, misalai da sauran kayan koyarwa masu dacewa.\n\n"+
+   "ILIMIN DA AKA RIGA AKA SAMU:\nMalami zai duba abin da dalibai suka sani game da maudu'in.\n\n"+
+   "HANYAR KOYARWA:\nBayani, tattaunawa, tambaya da amsa, misalai da aikin aji.\n\n"+
+   "CI GABAN DARASI:\nMalami ya gabatar da maudu'i, ya bayyana mahimman bayanai, ya ba da misalai, sannan dalibai su yi ayyukan jagoranci.\n\n"+
+   "KIMANTAWA:\nTambayoyin baki da rubuce bisa abubuwan da aka koya.\n\n"+
+   "AIKI NA GIDA:\nA ba dalibai aikin da ya dace da maudu'in.";
+ }
+ if(lang==="Arabic"){
+  return "خطة درس مفصلة\n\n"+
+   "المادة: "+subject+"\nالصف: "+cls+"\nالموضوع: "+topic+
+   "\n\nالأهداف:\n1. أن يشرح الطلاب الموضوع.\n2. أن يحددوا المفاهيم الأساسية.\n3. أن يطبقوا ما تعلموه.\n\n"+
+   "وسائل التعليم:\nالسبورة والكتاب والأمثلة والوسائل المناسبة.\n\n"+
+   "المعرفة السابقة:\nمراجعة ما يعرفه الطلاب عن الموضوع.\n\n"+
+   "طريقة التدريس:\nالشرح والمناقشة والأسئلة والأجوبة والتطبيق.\n\n"+
+   "تطوير الدرس:\nيقدم المعلم الموضوع ويشرح المفاهيم الأساسية ويعرض أمثلة ثم يشارك الطلاب في الأنشطة.\n\n"+
+   "التقويم:\nأسئلة شفهية وكتابية مرتبطة بالدرس.\n\n"+
+   "الواجب المنزلي:\nنشاط مناسب حول الموضوع.";
+ }
+ if(lang==="French"){
+  return "PLAN DE LEÇON DÉTAILLÉ\n\n"+
+   "Matière: "+subject+"\nClasse: "+cls+"\nSujet: "+topic+
+   "\n\nOBJECTIFS:\n1. Les apprenants expliquent le sujet.\n2. Ils identifient les concepts principaux.\n3. Ils appliquent les connaissances acquises.\n\n"+
+   "MATÉRIELS:\nTableau, manuel, exemples et matériels appropriés.\n\n"+
+   "PRÉREQUIS:\nRévision des connaissances antérieures.\n\n"+
+   "MÉTHODE:\nExplication, discussion, questions-réponses et pratique.\n\n"+
+   "DÉROULEMENT:\nL'enseignant présente le sujet, explique les points essentiels, donne des exemples et guide les apprenants dans les activités.\n\n"+
+   "ÉVALUATION:\nQuestions orales et écrites.\n\n"+
+   "DEVOIR:\nActivité appropriée sur le sujet.";
+ }
+ return "DETAILED LESSON PLAN\n\n"+
+  "Subject: "+subject+"\nClass: "+cls+"\nTopic: "+topic+
+  "\n\nLEARNING OBJECTIVES:\n1. Learners should explain the topic.\n2. Learners should identify the key concepts.\n3. Learners should apply the knowledge acquired.\n\n"+
+  "TEACHING/LEARNING MATERIALS:\nBoard, textbook, examples and relevant teaching aids.\n\n"+
+  "PREVIOUS KNOWLEDGE:\nReview learners' existing knowledge related to the topic.\n\n"+
+  "TEACHING METHOD:\nExplanation, discussion, question-and-answer, demonstration and guided practice.\n\n"+
+  "LESSON DEVELOPMENT:\nThe teacher introduces the topic, explains the key concepts, presents suitable examples and guides learners through class activities.\n\n"+
+  "EVALUATION:\nOral and written questions based on the lesson.\n\n"+
+  "ASSIGNMENT:\nGive an appropriate activity related to the topic.";
+}
+
+function makeNoteText(subject,cls,topic,lang){
+ return makePlanText(subject,cls,topic,lang)+
+ "\n\nDETAILED CONTENT:\n\n"+
+ "The teacher should develop the lesson content from the approved curriculum and prescribed textbook, including definitions, explanations, relevant examples, guided activities and practical applications. Review the content for curriculum accuracy before submission.";
+}
+
+function makeQuestionText(subject,cls,topic,lang,qty){
+ let text="";
+ if(lang==="Hausa"){
+  text+="TAMBAYOYIN ASSESSMENT\nFanni: "+subject+"\nAji: "+cls+"\nMaudu'i: "+topic+"\n\n";
+ }else if(lang==="Arabic"){
+  text+="أسئلة التقويم\nالمادة: "+subject+"\nالصف: "+cls+"\nالموضوع: "+topic+"\n\n";
+ }else if(lang==="French"){
+  text+="QUESTIONS D'ÉVALUATION\nMatière: "+subject+"\nClasse: "+cls+"\nSujet: "+topic+"\n\n";
+ }else{
+  text+="ASSESSMENT QUESTIONS\nSubject: "+subject+"\nClass: "+cls+"\nTopic: "+topic+"\n\n";
+ }
+
+ for(let i=1;i<=qty;i++){
+  const stems=[
+   "Which statement best explains",
+   "What is the main importance of",
+   "Which of the following is associated with",
+   "Identify the correct description of",
+   "Which example best illustrates",
+   "What would be the most appropriate application of"
+  ];
+  text+=(i)+". "+stems[(i-1)%stems.length]+" "+topic+"?\n";
+  text+="A. Option related to the topic\nB. A different concept\nC. An unrelated idea\nD. Another incorrect description\n\n";
+ }
+ text+="ANSWER/REVIEW NOTE:\nTeacher should verify each question against the approved curriculum and topic content before submission.";
+ return text;
+}
+
+function copyAssistant(){
+ copyText(document.getElementById("assistantOutput").value);
+}
+
+function saveAssistant(){
+ if(!requireLogin()) return;
+ const content=document.getElementById("assistantOutput").value.trim();
+ if(!content){toast("Generate or enter content first.");return}
+ const type=document.getElementById("assistantType").value;
+ const doc=addDocument("Teacher Assistant",type.toUpperCase(),content);
+ toast("Saved as draft.");
+ renderDocuments();
+ return doc;
+}
+
+function submitAssistant(){
+ if(!requireLogin()) return;
+ const content=document.getElementById("assistantOutput").value.trim();
+ if(!content){toast("Generate or enter content first.");return}
+
+ const doc=addDocument("Teacher Assistant",document.getElementById("assistantSubject").value+" - "+document.getElementById("assistantType").value,content);
+ createSubmission(doc,"Administrator Review","Pending Administrator Review");
+ toast("Submitted to Administrator.");
+ renderSubmissions();
+}
+
+/* =========================================================
+   SCHEME
+========================================================= */
+
+function generateScheme(){
+ const subject=document.getElementById("schemeSubject").value.trim();
+ const cls=document.getElementById("schemeClass").value.trim();
+ const topics=document.getElementById("schemeTopics").value.trim();
+ const lang=document.getElementById("schemeLanguage").value;
+ const weeks=Number(document.getElementById("schemeWeeks").value)||12;
+
+ if(!subject||!cls||!topics){toast("Enter subject, class and topics.");return}
+ document.getElementById("schemeOutput").value=makeSchemeText(subject,cls,topics,lang,weeks);
+}
+
+function saveScheme(){
+ const content=document.getElementById("schemeOutput").value.trim();
+ if(!content){generateScheme();return}
+ const doc=addDocument("Scheme of Work",
+  document.getElementById("schemeSubject").value||"Scheme of Work",content);
+ toast("Scheme saved as draft.");
+ return doc;
+}
+
+function submitScheme(){
+ const content=document.getElementById("schemeOutput").value.trim();
+ if(!content){toast("Create the scheme first.");return}
+ const doc=addDocument("Scheme of Work",
+  document.getElementById("schemeSubject").value||"Scheme of Work",content);
+ createSubmission(doc,"Administrator Review","Pending Administrator Review");
+ toast("Scheme submitted to Administrator.");
+}
+
+/* =========================================================
+   LESSON PLAN
+========================================================= */
+
+function generatePlan(){
+ const subject=document.getElementById("planSubject").value.trim();
+ const cls=document.getElementById("planClass").value.trim();
+ const topic=document.getElementById("planTopic").value.trim();
+ const lang=document.getElementById("planLanguage").value;
+
+ if(!subject||!cls||!topic){toast("Enter subject, class and topic.");return}
+
+ const text=makePlanText(subject,cls,topic,lang);
+ const parts=text.split("\n\n");
+
+ document.getElementById("planObjectives").value=parts.find(x=>x.includes("OBJECTIVES")||x.includes("OBJECTIFS")||x.includes("MANUFOFIN")||x.includes("الأهداف"))||"";
+ document.getElementById("planMaterials").value=parts.find(x=>x.includes("MATERIALS")||x.includes("MATÉRIELS")||x.includes("KAYAN")||x.includes("وسائل"))||"";
+ document.getElementById("planPrevious").value=parts.find(x=>x.includes("PREVIOUS")||x.includes("PRÉREQUIS")||x.includes("ILIMIN")||x.includes("المعرفة"))||"";
+ document.getElementById("planMethod").value=parts.find(x=>x.includes("METHOD")||x.includes("MÉTHODE")||x.includes("HANYAR")||x.includes("طريقة"))||"";
+ document.getElementById("planDevelopment").value=parts.find(x=>x.includes("DEVELOPMENT")||x.includes("DÉROULEMENT")||x.includes("CI GABAN")||x.includes("تطوير"))||"";
+ document.getElementById("planEvaluation").value=parts.find(x=>x.includes("EVALUATION")||x.includes("ÉVALUATION")||x.includes("KIMANTAWA")||x.includes("التقويم"))||"";
+ document.getElementById("planAssignment").value=parts.find(x=>x.includes("ASSIGNMENT")||x.includes("DEVOIR")||x.includes("AIKI")||x.includes("الواجب"))||"";
+}
+
+function getPlanText(){
+ return "DETAILED LESSON PLAN\n\n"+
+ "Subject: "+val("planSubject")+"\nClass: "+val("planClass")+"\nTopic: "+val("planTopic")+"\nSub-topic: "+val("planSubtopic")+
+ "\nDate: "+val("planDate")+"\nDuration: "+val("planDuration")+
+ "\n\nLEARNING OBJECTIVES:\n"+val("planObjectives")+
+ "\n\nTEACHING/LEARNING MATERIALS:\n"+val("planMaterials")+
+ "\n\nPREVIOUS KNOWLEDGE:\n"+val("planPrevious")+
+ "\n\nTEACHING METHOD:\n"+val("planMethod")+
+ "\n\nLESSON DEVELOPMENT:\n"+val("planDevelopment")+
+ "\n\nEVALUATION:\n"+val("planEvaluation")+
+ "\n\nCONCLUSION:\n"+val("planConclusion")+
+ "\n\nASSIGNMENT:\n"+val("planAssignment");
+}
+
+function saveLessonPlan(){
+ const content=getPlanText();
+ const doc=addDocument("Lesson Plan",val("planSubject")+" - "+val("planTopic"),content);
+ toast("Lesson Plan saved as draft.");
+ return doc;
+}
+
+function submitLessonPlan(){
+ const content=getPlanText();
+ if(!val("planSubject")||!val("planClass")||!val("planTopic")){
+  toast("Enter subject, class and topic.");
+  return;
+ }
+ const doc=addDocument("Lesson Plan",val("planSubject")+" - "+val("planTopic"),content);
+ createSubmission(doc,"Administrator Review","Pending Administrator Review");
+ toast("Lesson Plan submitted to Administrator.");
+}
+
+/* =========================================================
+   LESSON NOTE
+========================================================= */
+
+function generateNote(){
+ const subject=val("noteSubject");
+ const cls=val("noteClass");
+ const topic=val("noteTopic");
+ const lang=val("noteLanguage");
+
+ if(!subject||!cls||!topic){toast("Enter subject, class and topic.");return}
+
+ document.getElementById("noteObjectives").value=
+ "By the end of the lesson, learners should be able to explain "+topic+", identify key concepts, give relevant examples and apply the knowledge appropriately.";
+
+ document.getElementById("noteIntroduction").value=
+ "The teacher introduces "+topic+" by asking learners questions about their previous knowledge and linking the lesson to familiar experiences.";
+
+ document.getElementById("noteContent").value=
+ "LESSON CONTENT: "+topic+"\n\n"+
+ "1. Introduction and meaning\nExplain the meaning and scope of "+topic+" using age-appropriate language.\n\n"+
+ "2. Key concepts\nPresent the important concepts under the topic and explain each one clearly.\n\n"+
+ "3. Examples\nProvide suitable examples that relate directly to the learners' level.\n\n"+
+ "4. Guided activity\nAllow learners to participate through questions, demonstrations, exercises or discussion.\n\n"+
+ "5. Application\nAsk learners to apply what they have learned to appropriate situations.\n\n"+
+ "NOTE: The teacher should align the final content with the approved curriculum and prescribed textbook.";
+
+ document.getElementById("noteExamples").value=
+ "Examples and learner activities should be selected to match the class level and the approved curriculum.";
+
+ document.getElementById("noteEvaluation").value=
+ "1. Define/explain "+topic+".\n2. Mention important points learned.\n3. Give an appropriate example.\n4. Apply the concept to a simple situation.";
+
+ document.getElementById("noteAssignment").value=
+ "Complete an appropriate exercise on "+topic+" from the prescribed textbook.";
+}
+
+function getNoteText(){
+ return "DETAILED LESSON NOTE\n\n"+
+ "Subject: "+val("noteSubject")+"\nClass: "+val("noteClass")+
+ "\nTopic: "+val("noteTopic")+"\nSub-topic: "+val("noteSubtopic")+
+ "\nTerm: "+val("noteTerm")+
+ "\n\nLEARNING OBJECTIVES:\n"+val("noteObjectives")+
+ "\n\nINTRODUCTION:\n"+val("noteIntroduction")+
+ "\n\nDETAILED LESSON CONTENT:\n"+val("noteContent")+
+ "\n\nEXAMPLES / ACTIVITIES:\n"+val("noteExamples")+
+ "\n\nEVALUATION:\n"+val("noteEvaluation")+
+ "\n\nASSIGNMENT:\n"+val("noteAssignment");
+}
+
+function saveLessonNote(){
+ const content=getNoteText();
+ const doc=addDocument("Lesson Note",val("noteSubject")+" - "+val("noteTopic"),content);
+ toast("Lesson Note saved as draft.");
+ return doc;
+}
+
+function submitLessonNote(){
+ if(!val("noteSubject")||!val("noteClass")||!val("noteTopic")){
+  toast("Enter subject, class and topic.");
+  return;
+ }
+ const content=getNoteText();
+ const doc=addDocument("Lesson Note",val("noteSubject")+" - "+val("noteTopic"),content);
+ createSubmission(doc,"Administrator Review","Pending Administrator Review");
+ toast("Lesson Note submitted to Administrator.");
+}
+
+/* =========================================================
+   MULTI-SUBJECT ASSESSMENT
+========================================================= */
+
+function addAssessmentSubject(data){
+ const subject={
+  id:uid(),
+  subject:data?.subject||"",
+  topics:data?.topics||"",
+  objectiveCount:Number(data?.objectiveCount)||5,
+  theoryCount:Number(data?.theoryCount)||5,
+  questions:[]
+ };
+ currentAssessmentSubjects.push(subject);
+ renderAssessmentSubjects();
+}
+
+function removeAssessmentSubject(id){
+ currentAssessmentSubjects=currentAssessmentSubjects.filter(s=>s.id!==id);
+ renderAssessmentSubjects();
+}
+
+function renderAssessmentSubjects(){
+ const box=document.getElementById("assessmentSubjects");
+
+ if(!currentAssessmentSubjects.length){
+  box.innerHTML="<div class='notice'>No subject added yet. Click <b>Add Subject</b> to add every subject taught.</div>";
+  return;
+ }
+
+ box.innerHTML=currentAssessmentSubjects.map((s,i)=>`
+  <div class="subject-card">
+   <div class="subject-header">
+    <h4>Subject ${i+1}</h4>
+    <button class="secondary danger" onclick="removeAssessmentSubject('${s.id}')">Remove</button>
+   </div>
+   <div class="grid grid-2">
+    <div class="form-group">
+     <label>Subject Name</label>
+     <input value="${escapeHTML(s.subject)}" onchange="updateAssessmentSubject('${s.id}','subject',this.value)" placeholder="e.g. Mathematics">
+    </div>
+    <div class="form-group">
+     <label>Objective Questions</label>
+     <input type="number" min="0" max="100" value="${s.objectiveCount}" onchange="updateAssessmentSubject('${s.id}','objectiveCount',this.value)">
+    </div>
+    <div class="form-group">
+     <label>Theory Questions</label>
+     <input type="number" min="0" max="100" value="${s.theoryCount}" onchange="updateAssessmentSubject('${s.id}','theoryCount',this.value)">
+    </div>
+   </div>
+   <div class="form-group">
+    <label>All Topics / Units Covered</label>
+    <textarea onchange="updateAssessmentSubject('${s.id}','topics',this.value)" placeholder="Enter all topics covered, one per line">${escapeHTML(s.topics)}</textarea>
+   </div>
+  </div>
+ `).join("");
+}
+
+function updateAssessmentSubject(id,key,value){
+ const s=currentAssessmentSubjects.find(x=>x.id===id);
+ if(!s)return;
+ if(key==="objectiveCount"||key==="theoryCount") value=Math.max(0,Number(value)||0);
+ s[key]=value;
+}
+
+/* Question generation */
+
+const genericStems=[
+ "Which statement best explains",
+ "What is the main importance of",
+ "Which of the following is most closely related to",
+ "Which example best illustrates",
+ "What is the correct description of",
+ "Which statement about",
+ "Identify the most appropriate explanation of",
+ "Which option correctly describes",
+ "What would be the best application of",
+ "Which of the following demonstrates understanding of"
+];
+
+const subjectHints={
+ mathematics:[
+  "calculate", "solve", "compare", "determine", "simplify",
+  "find the value of", "interpret", "apply"
+ ],
+ english:[
+  "identify the correct grammatical use of",
+  "choose the correctly formed sentence involving",
+  "identify the meaning of",
+  "select the appropriate word for",
+  "identify the part of speech related to"
+ ],
+ computer:[
+  "identify the function of",
+  "state the purpose of",
+  "identify an example of",
+  "distinguish between",
+  "select the correct use of"
+ ],
+ science:[
+  "identify the function of",
+  "explain the process of",
+  "identify an example of",
+  "state the importance of",
+  "distinguish between"
+ ]
+};
+
+function classifySubject(subject){
+ const s=subject.toLowerCase();
+ if(s.includes("math"))return"mathematics";
+ if(s.includes("english"))return"english";
+ if(s.includes("computer")||s.includes("ict")||s.includes("digital"))return"computer";
+ if(s.includes("science")||s.includes("biology")||s.includes("chemistry")||s.includes("physics"))return"science";
+ return"general";
+}
+
+function shuffled(arr,seed){
+ const a=arr.slice();
+ let x=Math.abs(seed||1);
+ for(let i=a.length-1;i>0;i--){
+  x=(x*9301+49297)%233280;
+  const j=Math.floor((x/233280)*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
  return a;
 }
 
-function randomItem(arr){
- return arr[Math.floor(Math.random()*arr.length)];
-}
+function uniqueQuestion(subject,topic,index,type,seed){
+ const category=classifySubject(subject);
+ const hints=subjectHints[category]||genericStems;
+ const action=hints[index%hints.length];
 
-function normalQuestion(text){
-
- return clean(text)
-  .toLowerCase()
-  .replace(/\d+/g,"#")
-  .replace(/[^a-z# ]/g,"");
-}
-
-/* =====================================================
-   QUESTION TEMPLATES
-===================================================== */
-
-const Q={
- English:{
-  objective:[
-   "Which of the following best explains {topic}?",
-   "Which statement about {topic} is correct?",
-   "Which of the following is an example related to {topic}?",
-   "What is the main idea behind {topic}?",
-   "Which option correctly describes {topic}?"
-  ],
-  theory:[
-   "Define {topic} and explain its importance.",
-   "Explain {topic} in your own words and give two relevant examples.",
-   "State and explain four important points about {topic}.",
-   "Discuss {topic} and explain its practical application.",
-   "What do you understand by {topic}? Give suitable examples."
-  ],
-  fill:[
-   "{topic} refers to ______________________________.",
-   "One important feature of {topic} is ______________________________.",
-   "An example of {topic} is ______________________________."
-  ],
-  truefalse:[
-   "{topic} is an important concept in this subject. True or False?",
-   "The knowledge of {topic} can be applied in practical situations. True or False?",
-   "{topic} has no relevance to the subject being studied. True or False?"
-  ]
- },
-
- Hausa:{
-  objective:[
-   "Wanne daga cikin waɗannan ya fi bayyana ma’anar {topic}?",
-   "Wanne bayani ne daidai game da {topic}?",
-   "Wanne daga cikin waɗannan misali ne na {topic}?",
-   "Menene babban abin da ya shafi {topic}?",
-   "Wanne bayani ya dace da {topic}?"
-  ],
-  theory:[
-   "Bayyana ma’anar {topic} sannan ka bayar da misalai biyu.",
-   "Menene fahimtarka game da {topic}? Ka yi bayani dalla-dalla.",
-   "Rubuta muhimman abubuwa guda huɗu game da {topic} sannan ka yi bayani.",
-   "Yi bayani kan {topic} da yadda ake amfani da shi a rayuwar yau da kullum.",
-   "Menene {topic}? Ka bayar da misalai masu dacewa."
-  ],
-  fill:[
-   "{topic} yana nufin ______________________________.",
-   "Wani muhimmin abu game da {topic} shi ne ______________________________.",
-   "Misalin {topic} shi ne ______________________________."
-  ],
-  truefalse:[
-   "{topic} muhimmin ra’ayi ne a wannan darasi. Gaskiya ko Ƙarya?",
-   "Ana iya amfani da ilimin {topic} a aikace. Gaskiya ko Ƙarya?",
-   "{topic} ba shi da wani amfani a wannan darasi. Gaskiya ko Ƙarya?"
-  ]
- },
-
- Arabic:{
-  objective:[
-   "أيّ مما يلي يعبّر بشكل أفضل عن {topic}؟",
-   "أيّ عبارة صحيحة عن {topic}؟",
-   "أيّ مما يلي مثال على {topic}؟",
-   "ما الفكرة الأساسية المتعلقة بـ {topic}؟"
-  ],
-  theory:[
-   "عرّف {topic} واشرح أهميته مع ذكر مثالين.",
-   "اشرح مفهوم {topic} بأسلوبك الخاص.",
-   "اذكر أربعة أمور مهمة تتعلق بـ {topic} واشرحها.",
-   "اشرح أهمية {topic} وتطبيقاته العملية.",
-   "ما المقصود بـ {topic}؟ اذكر أمثلة مناسبة."
-  ],
-  fill:[
-   "يقصد بـ {topic}: ______________________________.",
-   "من أهم خصائص {topic}: ______________________________.",
-   "من أمثلة {topic}: ______________________________."
-  ],
-  truefalse:[
-   "{topic} من المفاهيم المهمة في هذه المادة. صح أم خطأ؟",
-   "يمكن تطبيق مفهوم {topic} في مواقف عملية. صح أم خطأ؟"
-  ]
- },
-
- French:{
-  objective:[
-   "Laquelle des propositions décrit le mieux {topic} ?",
-   "Quelle affirmation concernant {topic} est correcte ?",
-   "Lequel des éléments suivants est un exemple de {topic} ?",
-   "Quelle proposition explique correctement {topic} ?"
-  ],
-  theory:[
-   "Définissez {topic} et donnez deux exemples.",
-   "Expliquez {topic} avec vos propres mots.",
-   "Présentez quatre points importants concernant {topic}.",
-   "Expliquez l’importance de {topic} et ses applications.",
-   "Que signifie {topic} ? Donnez des exemples appropriés."
-  ],
-  fill:[
-   "{topic} signifie ______________________________.",
-   "Un élément important de {topic} est ______________________________.",
-   "Un exemple de {topic} est ______________________________."
-  ],
-  truefalse:[
-   "{topic} est un concept important dans cette matière. Vrai ou Faux ?",
-   "{topic} peut être appliqué dans des situations pratiques. Vrai ou Faux ?"
-  ]
- }
-};
-
-/* =====================================================
-   SUBJECT DETECTION
-===================================================== */
-
-function subjectKind(subject){
-
- const s=subject.toLowerCase();
-
- if(
-  s.includes("math") ||
-  s.includes("mathematics") ||
-  s.includes("numeracy")
- )return "math";
-
- if(
-  s.includes("english") ||
-  s.includes("grammar")
- )return "english";
-
- if(
-  s.includes("science") ||
-  s.includes("biology") ||
-  s.includes("chemistry") ||
-  s.includes("physics")
- )return "science";
-
- return "general";
-}
-
-/* =====================================================
-   MATH QUESTIONS
-===================================================== */
-
-function createMathQuestion(topic,type){
-
- const t=topic.toLowerCase();
-
- if(t.includes("addition")){
-
-  const a=100+Math.floor(Math.random()*500);
-  const b=20+Math.floor(Math.random()*400);
-
+ if(type==="theory"){
   return {
-   text:`Calculate ${a} + ${b}.`,
-   answer:String(a+b),
-   marks:3
+   type:"Theory",
+   text:(index+1)+". Explain "+topic+" and discuss at least two important points or applications related to it.",
+   answer:"A complete answer should define/explain the topic accurately and provide relevant points or examples.",
+   marks:5
   };
  }
 
- if(t.includes("subtraction")){
-
-  const a=300+Math.floor(Math.random()*600);
-  const b=20+Math.floor(Math.random()*250);
-
-  return {
-   text:`Calculate ${a} − ${b}.`,
-   answer:String(a-b),
-   marks:3
-  };
+ let stem=genericStems[(index+seed)%genericStems.length];
+ if(category==="mathematics"){
+  stem=action;
  }
-
- if(t.includes("multiplication")){
-
-  const a=10+Math.floor(Math.random()*40);
-  const b=2+Math.floor(Math.random()*12);
-
-  return {
-   text:`Calculate ${a} × ${b}.`,
-   answer:String(a*b),
-   marks:3
-  };
- }
-
- if(t.includes("division")){
-
-  const b=2+Math.floor(Math.random()*10);
-  const result=3+Math.floor(Math.random()*20);
-  const a=b*result;
-
-  return {
-   text:`Calculate ${a} ÷ ${b}.`,
-   answer:String(result),
-   marks:3
-  };
- }
-
- if(t.includes("percentage")||t.includes("percentages")){
-
-  const p=randomItem([5,10,15,20,25,30,40,50]);
-  const n=randomItem([100,200,300,400,500,600,800]);
-
-  return {
-   text:`Find ${p}% of ${n}.`,
-   answer:String(p*n/100),
-   marks:3
-  };
- }
-
- if(t.includes("fraction")){
-
-  const d=randomItem([2,3,4,5,6,8,10]);
-  const n=1+Math.floor(Math.random()*(d-1));
-
-  return {
-   text:`Express ${n} out of ${d} equal parts as a fraction.`,
-   answer:`${n}/${d}`,
-   marks:3
-  };
- }
-
- if(t.includes("decimal")){
-
-  const values=[
-   "0.25","0.5","0.75","1.25","2.5","3.75","4.5"
-  ];
-
-  const value=randomItem(values);
-
-  return {
-   text:`Convert ${value} to a fraction in its simplest form.`,
-   answer:"Accept the correct equivalent fraction.",
-   marks:3
-  };
- }
-
- if(t.includes("ratio")){
-
-  const a=randomItem([2,3,4,5,6]);
-  const b=randomItem([3,4,5,6,7]);
-
-  return {
-   text:`Express the relationship between ${a} and ${b} as a ratio.`,
-   answer:`${a}:${b}`,
-   marks:2
-  };
- }
-
- if(t.includes("place value")){
-
-  const numbers=[
-   "4,582","7,316","9,245","6,781","3,509"
-  ];
-
-  const n=randomItem(numbers);
-  const digit=n.replace(",","")[2];
-
-  return {
-   text:`State the place value of the digit ${digit} in ${n}.`,
-   answer:"Award the appropriate place value.",
-   marks:2
-  };
- }
-
- if(t.includes("algebra")){
-
-  const x=2+Math.floor(Math.random()*8);
-  const b=2+Math.floor(Math.random()*10);
-  const result=x+b;
-
-  return {
-   text:`If x + ${b} = ${result}, find the value of x.`,
-   answer:String(x),
-   marks:3
-  };
- }
-
- return null;
-}
-
-/* =====================================================
-   CREATE QUESTION
-===================================================== */
-
-function createQuestion(topic,index){
-
- const subject=$("assSubject").value;
- const language=$("assLanguage").value;
- const structure=$("assStructure").value;
-
- let type=structure;
-
- if(type==="mixed"){
-  type=index%3===0?"theory":"objective";
- }
-
- if(subjectKind(subject)==="math"){
-
-  const math=createMathQuestion(topic,type);
-
-  if(math){
-
-   if(type==="objective"){
-
-    const correct=math.answer;
-
-    let number=Number(correct);
-
-    let options;
-
-    if(!Number.isNaN(number)){
-     options=shuffle([
-      String(number),
-      String(number+1),
-      String(number+2),
-      String(number+5)
-     ]);
-    }else{
-     options=shuffle([
-      correct,
-      "None of these",
-      "Cannot be determined",
-      "Not applicable"
-     ]);
-    }
-
-    return {
-     topic,
-     type:"objective",
-     text:math.text,
-     options,
-     answer:correct,
-     marks:1
-    };
-   }
-
-   return {
-    topic,
-    type,
-    text:math.text,
-    answer:math.answer,
-    marks:math.marks
-   };
-  }
- }
-
- const languageSet=Q[language]||Q.English;
-
- let pool;
-
- if(type==="objective")pool=languageSet.objective;
- else if(type==="theory")pool=languageSet.theory;
- else if(type==="fill")pool=languageSet.fill;
- else pool=languageSet.truefalse;
-
- const template=randomItem(pool);
-
- const text=template.replace(
-  /\{topic\}/g,
-  topic
- );
-
- if(type==="objective"){
-
-  let options;
-
-  if(language==="Hausa"){
-   options=[
-    "Daidai ne",
-    "Ba daidai ba ne",
-    "Ba shi da alaƙa",
-    "Babu ɗaya"
-   ];
-  }else if(language==="Arabic"){
-   options=[
-    "صحيح",
-    "غير صحيح",
-    "لا علاقة له",
-    "لا شيء مما سبق"
-   ];
-  }else if(language==="French"){
-   options=[
-    "Correct",
-    "Incorrect",
-    "Sans rapport",
-    "Aucune de ces réponses"
-   ];
-  }else{
-   options=[
-    "Correct",
-    "Incorrect",
-    "Not related",
-    "None of the above"
-   ];
-  }
-
-  const shuffled=shuffle(options);
-
-  return {
-   topic,
-   type,
-   text,
-   options:shuffled,
-   answer:shuffled[0],
-   marks:1
-  };
- }
-
- let answer="Award marks for a correct and relevant response.";
-
- if(type==="truefalse"){
-
-  const positive=Math.random()>.25;
-
-  if(language==="Hausa")
-   answer=positive?"Gaskiya":"Ƙarya";
-  else if(language==="Arabic")
-   answer=positive?"صح":"خطأ";
-  else if(language==="French")
-   answer=positive?"Vrai":"Faux";
-  else
-   answer=positive?"True":"False";
- }
+ const text=(index+1)+". "+stem+" "+topic+"?";
+ let opts=shuffled([
+  "A. A statement that correctly relates to the topic",
+  "B. A statement that belongs to a different concept",
+  "C. An incorrect interpretation of the topic",
+  "D. An unrelated statement"
+ ],seed+index*13);
 
  return {
-  topic,
-  type,
-  text,
-  answer,
-  marks:type==="fill"?2:5
+  type:"Objective",
+  text:text,
+  options:opts,
+  answer:"A",
+  marks:1
  };
 }
 
-/* =====================================================
-   UNIQUE GENERATION
-===================================================== */
+function generateQuestionsForSubject(s,index){
+ const topics=s.topics.split(/\n|,/).map(x=>x.trim()).filter(Boolean);
+ const topicList=topics.length?topics:[s.subject+" and the topics covered"];
+ let questions=[];
+ let total=Math.max(1,Number(document.getElementById("questionsPerSubject").value)||10);
+ const qType=document.getElementById("questionType").value;
+ const seed=Date.now()+index*991;
 
-function generateUnique(topic,index,localUsed){
+ for(let i=0;i<total;i++){
+  let type;
+  if(qType==="objective") type="objective";
+  else if(qType==="theory") type="theory";
+  else type=i%3===0?"theory":"objective";
 
- for(let attempt=0;attempt<100;attempt++){
-
-  const q=createQuestion(
-   topic,
-   index+attempt
+  const q=uniqueQuestion(
+   s.subject,
+   topicList[i%topicList.length],
+   i,
+   type,
+   seed
   );
 
-  if(!q)continue;
-
-  const key=normalQuestion(q.text);
-
-  if(!localUsed.has(key)){
-
-   localUsed.add(key);
-
-   return q;
-  }
+  questions.push(q);
  }
 
- return createQuestion(topic,index);
-}
+ /* Ensure no exact duplicate question text */
+ const seen=new Set();
+ questions=questions.map((q,i)=>{
+  let base=q.text;
+  let n=1;
+  while(seen.has(q.text)){
+   n++;
+   q.text=base+" (Version "+n+")";
+  }
+  seen.add(q.text);
+  return q;
+ });
 
-/* =====================================================
-   GENERATE ASSESSMENT
-===================================================== */
+ s.questions=questions;
+ return questions;
+}
 
 function generateAssessment(){
-
- const subject=clean($("assSubject").value);
- const className=clean($("assClass").value);
- const topics=uniqueTopics();
-
- const count=Math.max(
-  1,
-  Math.min(100,Number($("assCount").value)||20)
- );
-
- const totalMarks=Math.max(
-  1,
-  Number($("assMarks").value)||100
- );
-
- if(!subject){
-  alert("Please enter the subject.");
+ if(!currentAssessmentSubjects.length){
+  toast("Add at least one subject.");
   return;
  }
 
- if(!className){
-  alert("Please enter the class.");
-  return;
- }
-
- if(!topics.length){
-  alert("Please enter the complete topics/content taught.");
-  return;
- }
-
- const localUsed=new Set();
-
- let topicOrder=[];
-
- for(let i=0;i<count;i++){
-  topicOrder.push(topics[i%topics.length]);
- }
-
- topicOrder=shuffle(topicOrder);
-
- const questions=[];
-
- for(let i=0;i<count;i++){
-
-  const q=generateUnique(
-   topicOrder[i],
-   i,
-   localUsed
-  );
-
-  if(q){
-   q.number=i+1;
-   questions.push(q);
+ for(let i=0;i<currentAssessmentSubjects.length;i++){
+  const s=currentAssessmentSubjects[i];
+  if(!s.subject.trim()){
+   toast("Every subject must have a subject name.");
+   return;
   }
+  generateQuestionsForSubject(s,i);
  }
 
- if(!questions.length){
-  alert("No questions could be generated.");
+ renderAssessmentQuestions();
+ toast("Questions generated. Review and edit them before submission.");
+}
+
+function renderAssessmentQuestions(){
+ const box=document.getElementById("assessmentQuestions");
+
+ if(!currentAssessmentSubjects.some(s=>s.questions.length)){
+  box.innerHTML="<div class='notice'>Generated questions will appear here.</div>";
   return;
  }
 
- /*
-  Scale marks to the requested total.
- */
- let raw=questions.reduce(
-  (s,q)=>s+(q.marks||1),0
- );
-
- let factor=totalMarks/raw;
-
- questions.forEach(q=>{
-  q.finalMarks=Math.max(
-   1,
-   Math.round((q.marks||1)*factor)
-  );
- });
-
- let currentTotal=questions.reduce(
-  (s,q)=>s+q.finalMarks,0
- );
-
- while(currentTotal<totalMarks){
-  questions[questions.length-1].finalMarks++;
-  currentTotal++;
- }
-
- while(currentTotal>totalMarks){
-
-  const q=questions.find(
-   x=>x.finalMarks>1
-  );
-
-  if(!q)break;
-
-  q.finalMarks--;
-  currentTotal--;
- }
-
- currentAssessment={
-  id:makeId("ASSESS"),
-  assessment:$("assType").value,
-  subject,
-  className,
-  session:$("assSession").value,
-  term:$("assTerm").value,
-  language:$("assLanguage").value,
-  structure:$("assStructure").value,
-  difficulty:$("assDifficulty").value,
-  duration:$("assDuration").value,
-  passMark:$("assPass").value,
-  totalMarks,
-  topics,
-  instructions:$("assInstructions").value,
-  questions,
-  createdAt:new Date().toISOString()
- };
-
- renderAssessment();
- $("assessmentOutput").classList.remove("hidden");
-
- window.scrollTo({
-  top:$("assessmentOutput").offsetTop-15,
-  behavior:"smooth"
- });
-}
-
-/* =====================================================
-   RENDER ASSESSMENT
-===================================================== */
-
-function renderAssessment(){
-
- const p=currentAssessment;
-
- if(!p)return;
-
- const counts={};
-
- p.topics.forEach(t=>counts[t]=0);
-
- p.questions.forEach(q=>{
-  counts[q.topic]=(counts[q.topic]||0)+1;
- });
-
- let coverage=`
-  <h2>Topic Coverage</h2>
-  <table>
-   <tr>
-    <th>Topic / Content</th>
-    <th>Questions</th>
-    <th>Coverage</th>
-   </tr>
- `;
-
- Object.keys(counts).forEach(t=>{
-  const n=counts[t];
-
-  coverage+=`
-   <tr>
-    <td>${escapeHTML(t)}</td>
-    <td>${n}</td>
-    <td>${Math.round(n/p.questions.length*100)}%</td>
-   </tr>
-  `;
- });
-
- coverage+=`</table>`;
-
- $("coverageOutput").innerHTML=coverage;
-
- let objective=[];
- let theory=[];
- let other=[];
-
- p.questions.forEach(q=>{
-  if(q.type==="objective")objective.push(q);
-  else if(q.type==="theory")theory.push(q);
-  else other.push(q);
- });
-
- let html=`
-
- <div class="paper-head">
-  <h1>CALIPHATE TARBIYA ACADEMY SOKOTO</h1>
-  <h2>${escapeHTML(p.assessment)}</h2>
-  <p>
-   <b>SUBJECT:</b> ${escapeHTML(p.subject)}
-   &nbsp; | &nbsp;
-   <b>CLASS:</b> ${escapeHTML(p.className)}
-  </p>
- </div>
-
- <div class="paper-meta">
-  <div><b>Session:</b> ${escapeHTML(p.session)}</div>
-  <div><b>Term:</b> ${escapeHTML(p.term)}</div>
-  <div><b>Duration:</b> ${escapeHTML(p.duration)}</div>
-  <div><b>Total Marks:</b> ${p.totalMarks}</div>
- </div>
-
- <p>
-  <b>Name:</b>
-  ______________________________________________
- </p>
-
- <br>
-
- <p>
-  <b>Instructions:</b>
-  <span style="white-space:pre-wrap">
-   ${escapeHTML(
-    p.instructions ||
-    "Answer all questions and read each question carefully."
-   )}
-  </span>
- </p>
- `;
-
- if(objective.length){
-
-  html+=`
-   <div class="paper-section">
-    <h3>SECTION A — OBJECTIVE QUESTIONS</h3>
-  `;
-
-  objective.forEach(q=>{
-
-   html+=`
-    <div class="paper-q">
-     <b>${q.number}.</b>
-     ${escapeHTML(q.text)}
-     <b>(${q.finalMarks})</b>
-
-     <div style="margin-left:20px">
-      ${q.options.map((o,i)=>
-       `<div>${String.fromCharCode(65+i)}. ${escapeHTML(o)}</div>`
-      ).join("")}
-     </div>
+ box.innerHTML=currentAssessmentSubjects.map((s,si)=>`
+  <div class="subject-card">
+   <h3 style="color:#14532d">${escapeHTML(s.subject)}</h3>
+   <p class="small">Topics covered: ${escapeHTML(s.topics||"Not specified")}</p>
+   ${s.questions.map((q,qi)=>`
+    <div class="question-card">
+     <div class="question-number">${escapeHTML(q.type)} Question ${qi+1} • ${q.marks} mark(s)</div>
+     <textarea onchange="updateQuestion(${si},${qi},'text',this.value)">${escapeHTML(q.text)}</textarea>
+     ${q.type==="Objective"?`
+      <div class="option-grid" style="margin-top:8px">
+       ${q.options.map((o,oi)=>`
+        <input value="${escapeHTML(o)}" onchange="updateQuestionOption(${si},${qi},${oi},this.value)">
+       `).join("")}
+      </div>
+      <div class="grid grid-2" style="margin-top:8px">
+       <div><label class="small">Correct Answer</label>
+        <select onchange="updateQuestion(${si},${qi},'answer',this.value)">
+         ${["A","B","C","D"].map(x=>`<option ${q.answer===x?"selected":""}>${x}</option>`).join("")}
+        </select>
+       </div>
+       <div><label class="small">Marks</label>
+        <input type="number" min="1" value="${q.marks}" onchange="updateQuestion(${si},${qi},'marks',this.value)">
+       </div>
+      </div>
+     `:`
+      <div class="grid grid-2" style="margin-top:8px">
+       <textarea onchange="updateQuestion(${si},${qi},'answer',this.value)" placeholder="Marking guide / expected answer">${escapeHTML(q.answer)}</textarea>
+       <input type="number" min="1" value="${q.marks}" onchange="updateQuestion(${si},${qi},'marks',this.value)">
+      </div>
+     `}
     </div>
-   `;
-  });
-
-  html+=`</div>`;
- }
-
- if(other.length){
-
-  html+=`
-   <div class="paper-section">
-    <h3>SECTION B — OTHER QUESTIONS</h3>
-  `;
-
-  other.forEach(q=>{
-
-   html+=`
-    <div class="paper-q">
-     <b>${q.number}.</b>
-     ${escapeHTML(q.text)}
-     <b>(${q.finalMarks})</b>
-    </div>
-   `;
-  });
-
-  html+=`</div>`;
- }
-
- if(theory.length){
-
-  html+=`
-   <div class="paper-section">
-    <h3>SECTION C — THEORY QUESTIONS</h3>
-  `;
-
-  theory.forEach(q=>{
-
-   html+=`
-    <div class="paper-q">
-     <b>${q.number}.</b>
-     ${escapeHTML(q.text)}
-     <b>(${q.finalMarks})</b>
-
-     <br><br>
-     __________________________________________________________
-     <br><br>
-     __________________________________________________________
-     <br><br>
-     __________________________________________________________
-    </div>
-   `;
-  });
-
-  html+=`</div>`;
- }
-
- html+=`
-  <div style="text-align:center;margin-top:30px">
-   <b>END OF QUESTIONS</b>
+   `).join("")}
   </div>
+ `).join("");
+}
 
-  <div class="marking-page">
+function updateQuestion(si,qi,key,value){
+ const q=currentAssessmentSubjects[si]?.questions[qi];
+ if(!q)return;
+ q[key]=key==="marks"?Math.max(1,Number(value)||1):value;
+}
 
-   <div class="paper-head">
-    <h1>CALIPHATE TARBIYA ACADEMY SOKOTO</h1>
-    <h2>MARKING SCHEME</h2>
-   </div>
+function updateQuestionOption(si,qi,oi,value){
+ const q=currentAssessmentSubjects[si]?.questions[qi];
+ if(!q||!q.options)return;
+ q.options[oi]=value;
+}
 
-   <p>
-    <b>Subject:</b> ${escapeHTML(p.subject)}
-    &nbsp; | &nbsp;
-    <b>Class:</b> ${escapeHTML(p.className)}
-   </p>
- `;
+function buildAssessmentText(){
+ const type=val("assessmentType");
+ let out="CALIPHATE TARBIYA ACADEMY\n";
+ out+=type.toUpperCase()+"\n\n";
+ out+="Title: "+val("assessmentTitle")+"\n";
+ out+="Class: "+val("assessmentClass")+"\n";
+ out+="Session: "+val("assessmentSession")+"\n";
+ out+="Term: "+val("assessmentTerm")+"\n";
+ out+="Duration: "+val("assessmentDuration")+"\n\n";
 
- p.questions.forEach(q=>{
+ currentAssessmentSubjects.forEach((s,si)=>{
+  out+="==================================================\n";
+  out+=(si+1)+". "+s.subject.toUpperCase()+"\n";
+  out+="Topics Covered: "+s.topics+"\n\n";
 
-  html+=`
-   <div class="question" style="margin-top:12px">
-    <b>${q.number}. ${escapeHTML(q.text)}</b>
+  s.questions.forEach((q,qi)=>{
+   out+=q.text+"\n";
+   if(q.type==="Objective"){
+    q.options.forEach(o=>out+=o+"\n");
+   }
+   out+="\n";
+  });
 
-    <div style="background:#f0fdf4;padding:10px;margin-top:7px">
-     <b>Answer / Marking Guide:</b><br>
-     ${escapeHTML(q.answer)}
-     <br>
-     <b>Marks:</b> ${q.finalMarks}
-    </div>
-   </div>
-  `;
+  out+="MARKING SCHEME / ANSWER GUIDE\n";
+  s.questions.forEach((q,qi)=>{
+   out+=(qi+1)+". Answer: "+q.answer+" — "+q.marks+" mark(s)\n";
+  });
+  out+="\n";
  });
 
- html+=`
-   <h3 style="margin-top:20px">
-    Total Marks: ${p.totalMarks}
-   </h3>
-
-   <p><b>Pass Mark:</b> ${escapeHTML(p.passMark)}%</p>
-
-  </div>
- `;
-
- $("assessmentPaper").innerHTML=html;
+ out+="\nQUALITY CHECK:\nQuestions should be reviewed against the approved curriculum and topics covered before final approval.";
+ return out;
 }
 
-/* =====================================================
-   SAVE / SUBMIT ASSESSMENT
-===================================================== */
-
-function assessmentToData(){
-
- return {
-  assessment:currentAssessment.assessment,
-  subject:currentAssessment.subject,
-  className:currentAssessment.className,
-  session:currentAssessment.session,
-  term:currentAssessment.term,
-  language:currentAssessment.language,
-  structure:currentAssessment.structure,
-  difficulty:currentAssessment.difficulty,
-  duration:currentAssessment.duration,
-  passMark:currentAssessment.passMark,
-  totalMarks:currentAssessment.totalMarks,
-  topics:currentAssessment.topics,
-  instructions:currentAssessment.instructions,
-  questions:currentAssessment.questions
- };
+function printAssessment(){
+ if(!currentAssessmentSubjects.some(s=>s.questions.length)){
+  toast("Generate questions first.");
+  return;
+ }
+ printText(buildAssessmentText());
 }
 
-function saveAssessment(){
+function saveAssessment(status){
+ if(!requireLogin())return;
 
- if(!currentAssessment){
-  alert("Generate the paper first.");
+ if(!currentAssessmentSubjects.length){
+  toast("Add subjects first.");
   return;
  }
 
- const user=getCurrentUser();
+ if(!currentAssessmentSubjects.some(s=>s.questions.length)){
+  toast("Generate questions before saving.");
+  return;
+ }
 
- let doc=db.documents.find(
-  d=>d.ownerId===user.id &&
-     d.type==="assessment" &&
-     d.data.assessmentId===currentAssessment.id
- );
+ const title=val("assessmentTitle")||val("assessmentType");
+ const text=buildAssessmentText();
 
- if(!doc){
+ const assessment={
+  id:uid(),
+  type:val("assessmentType"),
+  title:title,
+  className:val("assessmentClass"),
+  session:val("assessmentSession"),
+  term:val("assessmentTerm"),
+  duration:val("assessmentDuration"),
+  subjects:JSON.parse(JSON.stringify(currentAssessmentSubjects)),
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  createdAt:now(),
+  updatedAt:now(),
+  status:status||"Draft"
+ };
 
-  doc=createDocument(
-   "assessment",
-   currentAssessment.assessment+
-    " — "+currentAssessment.subject+
-    " — "+currentAssessment.className,
-   {
-    assessmentId:currentAssessment.id,
-    ...assessmentToData()
-   },
-   "draft"
-  );
+ db.assessments.unshift(assessment);
 
- }else{
+ const doc={
+  id:uid(),
+  type:"CA & Examination",
+  title:title,
+  content:text,
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  assessmentId:assessment.id,
+  createdAt:now(),
+  updatedAt:now(),
+  status:status||"Draft",
+  assessmentData:JSON.parse(JSON.stringify(assessment))
+ };
 
-  doc.data={
-   assessmentId:currentAssessment.id,
-   ...assessmentToData()
-  };
+ db.documents.unshift(doc);
 
-  doc.status="draft";
-  updateDocument(doc);
+ if(status==="Pending HOD Review"){
+  db.submissions.unshift({
+   id:uid(),
+   documentId:doc.id,
+   assessmentId:assessment.id,
+   type:"CA & Examination",
+   title:title,
+   teacherId:currentUser.id,
+   teacherName:currentUser.name,
+   workflow:"Teacher → HOD → Examination Officer",
+   status:"Pending HOD Review",
+   comment:"",
+   createdAt:now(),
+   updatedAt:now()
+  });
  }
 
  saveDB();
- updateDashboard();
- renderMyDocuments();
 
- alert("CA / Examination saved as Draft.");
+ if(status==="Pending HOD Review"){
+  toast("CA/Examination submitted to HOD for review.");
+ }else{
+  toast("Assessment saved as draft.");
+ }
+
+ renderSubmissions();
+ renderDocuments();
 }
 
-function submitAssessment(){
+/* =========================================================
+   DOCUMENT LIST
+========================================================= */
 
- if(!currentAssessment){
-  alert("Generate the paper first.");
+function renderDocuments(){
+ const box=document.getElementById("documentsList");
+ if(!box)return;
+
+ let docs=db.documents.filter(d=>currentUser.role==="admin"||d.teacherId===currentUser.id);
+
+ if(!docs.length){
+  box.innerHTML="<div class='notice'>No documents found.</div>";
   return;
  }
 
- const user=getCurrentUser();
+ box.innerHTML=`
+ <div class="table-wrap"><table>
+ <thead><tr><th>Title</th><th>Type</th><th>Teacher</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+ <tbody>
+ ${docs.map(d=>`
+  <tr>
+   <td>${escapeHTML(d.title)}</td>
+   <td>${escapeHTML(d.type)}</td>
+   <td>${escapeHTML(d.teacherName)}</td>
+   <td><span class="badge ${statusClass(d.status)}">${escapeHTML(d.status)}</span></td>
+   <td>${escapeHTML(d.createdAt)}</td>
+   <td><button class="secondary" onclick="viewDocument('${d.id}')">View</button></td>
+  </tr>
+ `).join("")}
+ </tbody></table></div>`;
+}
 
- let doc=db.documents.find(
-  d=>d.ownerId===user.id &&
-     d.type==="assessment" &&
-     d.data.assessmentId===currentAssessment.id
+function viewDocument(id){
+ const d=findDocument(id);
+ if(!d)return;
+ printText(d.content);
+}
+
+/* =========================================================
+   SUBMISSIONS
+========================================================= */
+
+function statusClass(status){
+ const s=String(status||"").toLowerCase();
+ if(s.includes("approved")||s==="final approved")return"approved";
+ if(s.includes("reject"))return"rejected";
+ if(s.includes("pending"))return"pending";
+ return"draft";
+}
+
+function renderSubmissions(){
+ const box=document.getElementById("mySubmissionsList");
+ if(!box)return;
+
+ let list=db.submissions.filter(s=>currentUser.role==="admin"||s.teacherId===currentUser.id);
+
+ if(!list.length){
+  box.innerHTML="<div class='notice'>No submissions found.</div>";
+  return;
+ }
+
+ box.innerHTML=`
+ <div class="table-wrap"><table>
+ <thead><tr><th>Title</th><th>Type</th><th>Workflow</th><th>Status</th><th>Comment</th><th>Updated</th></tr></thead>
+ <tbody>
+ ${list.map(s=>`
+  <tr>
+   <td>${escapeHTML(s.title)}</td>
+   <td>${escapeHTML(s.type)}</td>
+   <td>${escapeHTML(s.workflow)}</td>
+   <td><span class="badge ${statusClass(s.status)}">${escapeHTML(s.status)}</span></td>
+   <td>${escapeHTML(s.comment||"—")}</td>
+   <td>${escapeHTML(s.updatedAt||s.createdAt)}</td>
+  </tr>
+ `).join("")}
+ </tbody></table></div>`;
+}
+
+/* =========================================================
+   HOD / EXAMINATION OFFICER WORKFLOW
+========================================================= */
+
+function renderApproval(){
+ const box=document.getElementById("approvalList");
+ if(!box)return;
+
+ if(currentUser.role!=="admin"){
+  box.innerHTML="<div class='notice'>Administrator access required.</div>";
+  return;
+ }
+
+ const list=db.submissions.filter(s=>
+  s.status==="Pending Administrator Review" ||
+  s.status==="Pending HOD Review" ||
+  s.status==="HOD Approved" ||
+  s.status==="Pending Examination Officer Review"
  );
 
- if(!doc){
-
-  doc=createDocument(
-   "assessment",
-   currentAssessment.assessment+
-    " — "+currentAssessment.subject+
-    " — "+currentAssessment.className,
-   {
-    assessmentId:currentAssessment.id,
-    ...assessmentToData()
-   },
-   "draft"
-  );
-
- }else{
-
-  doc.data={
-   assessmentId:currentAssessment.id,
-   ...assessmentToData()
-  };
-
-  updateDocument(doc);
- }
-
- submitDocument(doc);
-
- updateDashboard();
- renderMyDocuments();
- renderMySubmissions();
-
- alert("CA / Examination submitted to the Administrator successfully.");
-}
-
-/* =====================================================
-   CLEAR ASSESSMENT
-===================================================== */
-
-function clearAssessment(){
-
- currentAssessment=null;
-
- $("assessmentOutput").classList.add("hidden");
- $("assessmentPaper").innerHTML="";
- $("coverageOutput").innerHTML="";
-}
-
-/* =====================================================
-   PRINT ASSESSMENT
-===================================================== */
-
-function printAssessment(){
-
- if(!currentAssessment){
-  alert("Generate a paper first.");
+ if(!list.length){
+  box.innerHTML="<div class='notice'>No submissions are waiting for review.</div>";
   return;
  }
 
- const clone=$("assessmentPaper").cloneNode(true);
+ box.innerHTML=list.map(s=>{
+  const isAssessment=s.type==="CA & Examination";
+  let buttons="";
 
- const marking=clone.querySelector(".marking-page");
+  if(isAssessment && s.status==="Pending HOD Review"){
+   buttons=`
+    <button class="primary" style="width:auto" onclick="openReview('${s.id}','hodApprove')">HOD Approve</button>
+    <button class="secondary danger" onclick="openReview('${s.id}','hodReject')">Reject</button>`;
+  }else if(isAssessment && s.status==="HOD Approved"){
+   buttons=`
+    <button class="primary" style="width:auto" onclick="sendToExamOfficer('${s.id}')">Send to Examination Officer</button>`;
+  }else if(isAssessment && s.status==="Pending Examination Officer Review"){
+   buttons=`
+    <button class="primary" style="width:auto" onclick="openReview('${s.id}','finalApprove')">Final Approve</button>
+    <button class="secondary danger" onclick="openReview('${s.id}','examReject')">Reject</button>`;
+  }else{
+   buttons=`
+    <button class="primary" style="width:auto" onclick="openReview('${s.id}','approve')">Approve</button>
+    <button class="secondary danger" onclick="openReview('${s.id}','reject')">Reject</button>`;
+  }
 
- if(marking)marking.remove();
-
- openPrintWindow(clone.outerHTML);
+  return `
+   <div class="subject-card">
+    <h3 style="color:#14532d">${escapeHTML(s.title)}</h3>
+    <p class="small">Teacher: ${escapeHTML(s.teacherName)} • Type: ${escapeHTML(s.type)}</p>
+    <p style="margin:8px 0"><b>Status:</b> <span class="badge ${statusClass(s.status)}">${escapeHTML(s.status)}</span></p>
+    <p class="small">Workflow: ${escapeHTML(s.workflow)}</p>
+    ${s.comment?`<p style="margin-top:8px"><b>Previous comment:</b> ${escapeHTML(s.comment)}</p>`:""}
+    <div class="actions">${buttons}
+     <button class="secondary" onclick="viewSubmission('${s.id}')">View Paper</button>
+    </div>
+   </div>`;
+ }).join("");
 }
 
-function printAssessmentMarking(){
+function openReview(id,action){
+ reviewSubmissionId=id;
 
- if(!currentAssessment){
-  alert("Generate a paper first.");
-  return;
- }
+ const s=db.submissions.find(x=>x.id===id);
+ if(!s)return;
 
- const clone=$("assessmentPaper").cloneNode(true);
+ document.getElementById("reviewComment").value="";
+ document.getElementById("commentTitle").textContent=
+  action==="hodApprove"?"HOD Review":
+  action==="finalApprove"?"Examination Officer Final Review":
+  "Review Submission";
 
- const paperHead=clone.querySelector(".paper-head");
+ const modal=document.getElementById("commentModal");
+ modal.classList.remove("hidden");
 
- const marking=clone.querySelector(".marking-page");
-
- if(!marking){
-  alert("Marking scheme unavailable.");
-  return;
- }
-
- const html=marking.outerHTML;
-
- openPrintWindow(html);
+ document.getElementById("modalApproveBtn").onclick=function(){
+  processReview(id,action,true);
+ };
+ document.getElementById("modalRejectBtn").onclick=function(){
+  processReview(id,action,false);
+ };
 }
 
-/* =====================================================
-   TEACHER MANAGEMENT
-===================================================== */
+function closeModal(){
+ document.getElementById("commentModal").classList.add("hidden");
+ reviewSubmissionId=null;
+}
 
-function createTeacher(){
-
+function processReview(id,action,approved){
  if(!requireAdmin())return;
 
- const name=$("teacherName").value.trim();
- const username=$("teacherUsername").value.trim();
- const password=$("teacherPassword").value;
- const className=$("teacherClass").value.trim();
- const subject=$("teacherSubject").value.trim();
- const status=$("teacherStatus").value;
+ const s=db.submissions.find(x=>x.id===id);
+ if(!s)return;
+
+ const comment=document.getElementById("reviewComment").value.trim();
+
+ if(s.type==="CA & Examination"){
+  if(action==="hodApprove"){
+   if(approved){
+    s.status="HOD Approved";
+    s.comment=comment||"Approved by HOD.";
+   }else{
+    s.status="Rejected by HOD";
+    s.comment=comment||"Please revise and resubmit.";
+   }
+  }else if(action==="hodReject"){
+   s.status="Rejected by HOD";
+   s.comment=comment||"Please revise and resubmit.";
+  }else if(action==="finalApprove"){
+   if(approved){
+    s.status="Final Approved";
+    s.comment=comment||"Approved by Examination Officer.";
+    moveToArchive(s);
+   }else{
+    s.status="Rejected by Examination Officer";
+    s.comment=comment||"Please revise and resubmit.";
+   }
+  }else if(action==="examReject"){
+   s.status="Rejected by Examination Officer";
+   s.comment=comment||"Please revise and resubmit.";
+  }
+ }else{
+  if(approved){
+   s.status="Approved";
+   s.comment=comment||"Approved by Administrator.";
+   moveToArchive(s);
+  }else{
+   s.status="Rejected";
+   s.comment=comment||"Please revise and resubmit.";
+  }
+ }
+
+ s.updatedAt=now();
+
+ const doc=findDocument(s.documentId);
+ if(doc){
+  doc.status=s.status;
+  doc.updatedAt=now();
+ }
+
+ const assessment=db.assessments.find(a=>a.id===s.assessmentId);
+ if(assessment){
+  assessment.status=s.status;
+  assessment.updatedAt=now();
+ }
+
+ saveDB();
+ closeModal();
+ refreshAll();
+ toast(approved?"Submission approved.":"Submission rejected.");
+}
+
+function sendToExamOfficer(id){
+ if(!requireAdmin())return;
+
+ const s=db.submissions.find(x=>x.id===id);
+ if(!s)return;
+
+ if(s.status!=="HOD Approved"){
+  toast("Only HOD-approved papers can be sent to the Examination Officer.");
+  return;
+ }
+
+ s.status="Pending Examination Officer Review";
+ s.updatedAt=now();
+ s.comment="Sent to Examination Officer after HOD approval.";
+
+ const doc=findDocument(s.documentId);
+ if(doc)doc.status=s.status;
+
+ const assessment=db.assessments.find(a=>a.id===s.assessmentId);
+ if(assessment)assessment.status=s.status;
+
+ saveDB();
+ refreshAll();
+ toast("Paper sent to Examination Officer.");
+}
+
+function moveToArchive(sub){
+ if(db.archive.some(a=>a.submissionId===sub.id))return;
+
+ db.archive.unshift({
+  id:uid(),
+  submissionId:sub.id,
+  documentId:sub.documentId,
+  assessmentId:sub.assessmentId||null,
+  title:sub.title,
+  type:sub.type,
+  teacherName:sub.teacherName,
+  status:sub.status,
+  approvedAt:now(),
+  comment:sub.comment||""
+ });
+}
+
+function viewSubmission(id){
+ const s=db.submissions.find(x=>x.id===id);
+ if(!s)return;
+
+ const doc=findDocument(s.documentId);
+ if(doc){
+  printText(doc.content);
+ }else{
+  toast("Document not found.");
+ }
+}
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+function renderArchive(){
+ const box=document.getElementById("archiveList");
+ if(!box)return;
+
+ if(currentUser.role!=="admin"){
+  box.innerHTML="<div class='notice'>Administrator access required.</div>";
+  return;
+ }
+
+ if(!db.archive.length){
+  box.innerHTML="<div class='notice'>No approved documents yet.</div>";
+  return;
+ }
+
+ box.innerHTML=`
+ <div class="table-wrap"><table>
+ <thead><tr><th>Title</th><th>Type</th><th>Teacher</th><th>Status</th><th>Approved</th><th>Action</th></tr></thead>
+ <tbody>
+ ${db.archive.map(a=>`
+  <tr>
+   <td>${escapeHTML(a.title)}</td>
+   <td>${escapeHTML(a.type)}</td>
+   <td>${escapeHTML(a.teacherName)}</td>
+   <td><span class="badge approved">${escapeHTML(a.status)}</span></td>
+   <td>${escapeHTML(a.approvedAt)}</td>
+   <td><button class="secondary" onclick="viewSubmission('${a.submissionId}')">View</button></td>
+  </tr>
+ `).join("")}
+ </tbody></table></div>`;
+}
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+function createTeacher(){
+ if(!requireAdmin())return;
+
+ const name=val("teacherName").trim();
+ const username=val("teacherUsername").trim().toLowerCase();
+ const password=val("teacherPassword");
+ const department=val("teacherDepartment").trim();
+ const cls=val("teacherClass").trim();
+ const subject=val("teacherSubject").trim();
 
  if(!name||!username||!password){
-  alert("Name, username and password are required.");
+  toast("Teacher name, username and password are required.");
   return;
  }
 
- if(password.length<4){
-  alert("Please use a stronger password.");
+ if(username==="admin"){
+  toast("That username is reserved for the Administrator.");
   return;
  }
 
- const exists=db.users.some(
-  u=>u.username.toLowerCase()===username.toLowerCase()
- );
-
- if(exists){
-  alert("That username already exists.");
+ if(db.users.some(u=>String(u.username).toLowerCase()===username)){
+  toast("Username already exists.");
   return;
  }
 
  db.users.push({
-  id:makeId("TEACHER"),
-  name,
-  username,
-  password,
+  id:uid(),
+  name:name,
+  username:username,
+  password:password,
   role:"teacher",
-  status,
-  assignedClass:className,
-  assignedSubject:subject,
-  createdAt:new Date().toISOString()
+  active:true,
+  department:department,
+  className:cls,
+  subject:subject,
+  createdAt:now()
  });
 
  saveDB();
 
- $("teacherName").value="";
- $("teacherUsername").value="";
- $("teacherPassword").value="";
- $("teacherClass").value="";
- $("teacherSubject").value="";
- $("teacherStatus").value="active";
+ ["teacherName","teacherUsername","teacherPassword","teacherDepartment","teacherClass","teacherSubject"]
+ .forEach(id=>document.getElementById(id).value="");
 
+ toast("Teacher account created successfully.");
  renderTeachers();
-
- alert("Teacher account created successfully.");
+ updateStats();
 }
 
 function renderTeachers(){
+ const box=document.getElementById("teachersList");
+ if(!box)return;
 
- if(!requireAdmin())return;
-
- const teachers=db.users.filter(
-  u=>u.role==="teacher"
- );
+ const teachers=db.users.filter(u=>u.role==="teacher");
 
  if(!teachers.length){
-  $("teacherList").innerHTML=
-   `<div class="empty">No teacher accounts yet.</div>`;
+  box.innerHTML="<div class='notice'>No teacher accounts have been created.</div>";
   return;
  }
 
- $("teacherList").innerHTML=teachers.map(t=>`
-
-  <div class="doc-card">
-
-   <h3>${escapeHTML(t.name)}</h3>
-
-   <div class="doc-meta">
-    Username: <b>${escapeHTML(t.username)}</b>
-    <br>
-    Class: ${escapeHTML(t.assignedClass||"Not assigned")}
-    <br>
-    Subject: ${escapeHTML(t.assignedSubject||"Not assigned")}
-    <br>
-    Status:
-    <span class="badge ${
-     t.status==="active"
-     ?"badge-approved"
-     :"badge-rejected"
-    }">
-     ${escapeHTML(t.status)}
-    </span>
-   </div>
-
-   <button class="btn btn-secondary"
-    onclick="toggleTeacher('${t.id}')">
-    ${t.status==="active"?"Deactivate":"Activate"}
-   </button>
-
-   <button class="btn btn-warning"
-    onclick="resetTeacherPassword('${t.id}')">
-    Reset Password
-   </button>
-
-   <button class="btn btn-danger"
-    onclick="deleteTeacher('${t.id}')">
-    Delete
-   </button>
-
-  </div>
-
- `).join("");
+ box.innerHTML=`
+ <div class="table-wrap"><table>
+ <thead><tr><th>Name</th><th>Username</th><th>Department</th><th>Class</th><th>Subject</th><th>Status</th><th>Actions</th></tr></thead>
+ <tbody>
+ ${teachers.map(t=>`
+  <tr>
+   <td>${escapeHTML(t.name)}</td>
+   <td>${escapeHTML(t.username)}</td>
+   <td>${escapeHTML(t.department||"—")}</td>
+   <td>${escapeHTML(t.className||"—")}</td>
+   <td>${escapeHTML(t.subject||"—")}</td>
+   <td><span class="badge ${t.active?"approved":"rejected"}">${t.active?"Active":"Inactive"}</span></td>
+   <td>
+    <div class="actions" style="margin-top:0">
+     <button class="secondary" onclick="toggleTeacher('${t.id}')">${t.active?"Deactivate":"Activate"}</button>
+     <button class="secondary warning" onclick="resetTeacherPassword('${t.id}')">Reset Password</button>
+     <button class="secondary danger" onclick="deleteTeacher('${t.id}')">Delete</button>
+    </div>
+   </td>
+  </tr>
+ `).join("")}
+ </tbody></table></div>`;
 }
 
 function toggleTeacher(id){
-
  if(!requireAdmin())return;
-
- const t=db.users.find(u=>u.id===id);
-
+ const t=getUserById(id);
  if(!t)return;
-
- t.status=t.status==="active"?"inactive":"active";
-
+ t.active=!t.active;
  saveDB();
  renderTeachers();
+ toast(t.active?"Teacher activated.":"Teacher deactivated.");
 }
 
 function resetTeacherPassword(id){
-
  if(!requireAdmin())return;
-
- const t=db.users.find(u=>u.id===id);
-
+ const t=getUserById(id);
  if(!t)return;
 
- const password=prompt(
-  "Enter the new password for "+t.name+":"
- );
+ const p=prompt("Enter new password for "+t.name+":");
+ if(p===null)return;
 
- if(password===null)return;
-
- if(password.length<4){
-  alert("Password must contain at least 4 characters.");
+ if(p.length<4){
+  toast("Password must be at least 4 characters.");
   return;
  }
 
- t.password=password;
-
+ t.password=p;
  saveDB();
-
- alert("Teacher password changed successfully.");
+ toast("Teacher password reset successfully.");
 }
 
 function deleteTeacher(id){
-
  if(!requireAdmin())return;
+ const t=getUserById(id);
+ if(!t)return;
 
- if(!confirm("Delete this teacher account?"))
-  return;
+ if(!confirm("Delete teacher account '"+t.name+"'? Their documents will remain in the system."))return;
 
  db.users=db.users.filter(u=>u.id!==id);
-
  saveDB();
  renderTeachers();
+ updateStats();
+ toast("Teacher account deleted.");
 }
 
-/* =====================================================
-   DOCUMENT LISTS
-===================================================== */
-
-function statusBadge(status){
-
- const cls=
-  status==="approved"
-  ?"badge-approved"
-  :status==="rejected"
-  ?"badge-rejected"
-  :status==="submitted"
-  ?"badge-submitted"
-  :"badge-draft";
-
- return `<span class="badge ${cls}">
-  ${escapeHTML(status)}
- </span>`;
-}
-
-function documentTypeName(type){
-
- const names={
-  scheme:"Scheme of Work",
-  lessonplan:"Lesson Plan",
-  lessonnote:"Lesson Note",
-  assessment:"CA / Examination"
- };
-
- return names[type]||type;
-}
-
-function renderMyDocuments(){
-
- const user=getCurrentUser();
-
- if(!user)return;
-
- const docs=db.documents.filter(
-  d=>d.ownerId===user.id
- );
-
- if(!docs.length){
-  $("myDocuments").innerHTML=
-   `<div class="empty">No documents created yet.</div>`;
-  return;
- }
-
- $("myDocuments").innerHTML=docs.map(d=>`
-
-  <div class="doc-card">
-
-   <h3>${escapeHTML(d.title)}</h3>
-
-   <div class="doc-meta">
-    Type: ${documentTypeName(d.type)}
-    <br>
-    Last updated:
-    ${new Date(d.updatedAt).toLocaleString()}
-   </div>
-
-   ${statusBadge(d.status)}
-
-   ${
-    d.status==="draft"
-    ? `<button class="btn btn-primary"
-       onclick="openDocument('${d.id}')">
-       Open / Edit
-       </button>
-       <button class="btn btn-secondary"
-       onclick="submitExisting('${d.id}')">
-       Submit to Admin
-       </button>`
-    : `<button class="btn btn-secondary"
-       onclick="openDocument('${d.id}')">
-       View
-       </button>`
-   }
-
-  </div>
-
- `).join("");
-}
-
-function renderMySubmissions(){
-
- const user=getCurrentUser();
-
- if(!user)return;
-
- const subs=db.submissions.filter(
-  s=>s.ownerId===user.id
- );
-
- if(!subs.length){
-  $("mySubmissions").innerHTML=
-   `<div class="empty">No submissions yet.</div>`;
-  return;
- }
-
- $("mySubmissions").innerHTML=subs.map(s=>`
-
-  <div class="doc-card">
-
-   <h3>${escapeHTML(s.title)}</h3>
-
-   <div class="doc-meta">
-    Type: ${documentTypeName(s.type)}
-    <br>
-    Submitted:
-    ${s.submittedAt
-     ?new Date(s.submittedAt).toLocaleString()
-     :"—"}
-   </div>
-
-   ${statusBadge(s.status)}
-
-   ${
-    s.comment
-    ? `<div class="warning">
-       <b>Administrator Comment:</b><br>
-       ${escapeHTML(s.comment)}
-       </div>`
-    :""
-   }
-
-  </div>
-
- `).join("");
-}
-
-function submitExisting(id){
-
- const doc=db.documents.find(
-  d=>d.id===id
- );
-
- if(!doc)return;
-
- if(doc.status!=="draft"){
-  alert("Only Draft documents can be submitted.");
-  return;
- }
-
- submitDocument(doc);
-
- renderMyDocuments();
- renderMySubmissions();
- updateDashboard();
-
- alert("Submitted to Administrator successfully.");
-}
-
-function openDocument(id){
-
- const doc=db.documents.find(
-  d=>d.id===id
- );
-
- if(!doc)return;
-
- if(doc.type==="assessment"){
-  loadAssessmentFromDocument(doc);
-  showPage("assessment");
-  return;
- }
-
- const d=doc.data;
-
- if(doc.type==="scheme"){
-
-  $("schemeSubject").value=d.subject||"";
-  $("schemeClass").value=d.className||"";
-  $("schemeTerm").value=d.term||"First Term";
-  $("schemeSession").value=d.session||"2026/2027";
-  $("schemeTopics").value=d.topics||"";
-  $("schemeNotes").value=d.notes||"";
-
-  showPage("scheme");
- }
-
- if(doc.type==="lessonplan"){
-
-  $("lpSubject").value=d.subject||"";
-  $("lpClass").value=d.className||"";
-  $("lpDate").value=d.date||"";
-  $("lpDuration").value=d.duration||"";
-  $("lpTopic").value=d.topic||"";
-  $("lpSubtopic").value=d.subtopic||"";
-  $("lpObjectives").value=d.objectives||"";
-  $("lpPrevious").value=d.previous||"";
-  $("lpMaterials").value=d.materials||"";
-  $("lpIntroduction").value=d.introduction||"";
-  $("lpTeacher").value=d.teacher||"";
-  $("lpStudents").value=d.students||"";
-  $("lpDevelopment").value=d.development||"";
-  $("lpEvaluation").value=d.evaluation||"";
-  $("lpConclusion").value=d.conclusion||"";
-  $("lpAssignment").value=d.assignment||"";
-
-  showPage("lessonplan");
- }
-
- if(doc.type==="lessonnote"){
-
-  $("lnSubject").value=d.subject||"";
-  $("lnClass").value=d.className||"";
-  $("lnDate").value=d.date||"";
-  $("lnTopic").value=d.topic||"";
-  $("lnSubtopic").value=d.subtopic||"";
-  $("lnLanguage").value=d.language||"English";
-  $("lnObjectives").value=d.objectives||"";
-  $("lnIntroduction").value=d.introduction||"";
-  $("lnContent").value=d.content||"";
-  $("lnExamples").value=d.examples||"";
-  $("lnActivities").value=d.activities||"";
-  $("lnEvaluation").value=d.evaluation||"";
-  $("lnAssignment").value=d.assignment||"";
-  $("lnSummary").value=d.summary||"";
-
-  showPage("lessonnote");
- }
-}
-
-function loadAssessmentFromDocument(doc){
-
- const d=doc.data;
-
- $("assType").value=d.assessment||"Continuous Assessment 1 (CA 1)";
- $("assSubject").value=d.subject||"";
- $("assClass").value=d.className||"";
- $("assSession").value=d.session||"2026/2027";
- $("assTerm").value=d.term||"First Term";
- $("assLanguage").value=d.language||"English";
- $("assStructure").value=d.structure||"mixed";
- $("assDifficulty").value=d.difficulty||"Standard / Mixed";
- $("assDuration").value=d.duration||"1 Hour 30 Minutes";
- $("assPass").value=d.passMark||40;
- $("assMarks").value=d.totalMarks||100;
- $("assTopics").value=(d.topics||[]).join("\n");
- $("assInstructions").value=d.instructions||"";
-
- currentAssessment={
-  id:d.assessmentId||makeId("ASSESS"),
-  assessment:d.assessment,
-  subject:d.subject,
-  className:d.className,
-  session:d.session,
-  term:d.term,
-  language:d.language,
-  structure:d.structure,
-  difficulty:d.difficulty,
-  duration:d.duration,
-  passMark:d.passMark,
-  totalMarks:d.totalMarks,
-  topics:d.topics,
-  instructions:d.instructions,
-  questions:d.questions,
-  createdAt:doc.createdAt
- };
-
- renderAssessment();
-
- $("assessmentOutput").classList.remove("hidden");
-}
-
-/* =====================================================
-   ADMIN APPROVAL
-===================================================== */
-
-function renderApproval(){
-
- if(!requireAdmin())return;
-
- const pending=db.submissions.filter(
-  s=>s.status==="submitted"
- );
-
- if(!pending.length){
-  $("approvalList").innerHTML=
-   `<div class="empty">No pending submissions.</div>`;
-  return;
- }
-
- $("approvalList").innerHTML=pending.map(s=>`
-
-  <div class="doc-card">
-
-   <h3>${escapeHTML(s.title)}</h3>
-
-   <div class="doc-meta">
-    Teacher: <b>${escapeHTML(s.ownerName)}</b>
-    <br>
-    Type: ${documentTypeName(s.type)}
-    <br>
-    Submitted:
-    ${new Date(s.submittedAt).toLocaleString()}
-   </div>
-
-   ${statusBadge(s.status)}
-
-   <br>
-
-   <button class="btn btn-primary"
-    onclick="reviewSubmission('${s.id}')">
-    Review
-   </button>
-
-  </div>
-
- `).join("");
-}
-
-function reviewSubmission(id){
-
- if(!requireAdmin())return;
-
- const sub=db.submissions.find(
-  s=>s.id===id
- );
-
- if(!sub)return;
-
- currentReviewId=id;
-
- const doc=db.documents.find(
-  d=>d.id===sub.documentId
- );
-
- if(!doc)return;
-
- $("reviewContent").innerHTML=`
-
-  <div class="info">
-   <b>Teacher:</b> ${escapeHTML(sub.ownerName)}<br>
-   <b>Document:</b> ${escapeHTML(sub.title)}<br>
-   <b>Type:</b> ${documentTypeName(sub.type)}
-  </div>
-
-  <div class="card">
-   ${renderDocumentPreview(doc)}
-  </div>
-
-  <div class="field">
-   <label>Administrator Comment</label>
-   <textarea id="reviewComment"
-    placeholder="Enter approval/rejection comment"></textarea>
-  </div>
-
-  <button class="btn btn-primary"
-   onclick="approveSubmission()">
-   Approve
-  </button>
-
-  <button class="btn btn-danger"
-   onclick="rejectSubmission()">
-   Reject
-  </button>
- `;
-
- $("reviewModal").classList.add("show");
-}
-
-function renderDocumentPreview(doc){
-
- const d=doc.data;
-
- let html=`
-  <h3>${escapeHTML(doc.title)}</h3>
- `;
-
- Object.keys(d).forEach(key=>{
-
-  if(key==="questions")return;
-
-  let value=d[key];
-
-  if(Array.isArray(value))
-   value=value.join("\n");
-
-  if(value===undefined||value===null||value==="")
-   return;
-
-  html+=`
-   <div style="margin-top:10px">
-    <b>${escapeHTML(key)}:</b>
-    <div style="white-space:pre-wrap">
-     ${escapeHTML(value)}
-    </div>
-   </div>
-  `;
- });
-
- if(doc.type==="assessment"){
-
-  html+=`
-   <h3 style="margin-top:20px">Questions</h3>
-  `;
-
-  (d.questions||[]).forEach(q=>{
-
-   html+=`
-    <div class="question">
-     <b>${q.number}. ${escapeHTML(q.text)}</b>
-     <div class="qtopic">
-      Topic: ${escapeHTML(q.topic)}
-     </div>
-    </div>
-   `;
-  });
- }
-
- return html;
-}
-
-function closeModal(){
- $("reviewModal").classList.remove("show");
- currentReviewId=null;
-}
-
-function approveSubmission(){
-
- if(!requireAdmin())return;
-
- const sub=db.submissions.find(
-  s=>s.id===currentReviewId
- );
-
- if(!sub)return;
-
- const doc=db.documents.find(
-  d=>d.id===sub.documentId
- );
-
- if(!doc)return;
-
- const comment=$("reviewComment").value.trim();
-
- sub.status="approved";
- sub.comment=comment;
- sub.reviewedAt=new Date().toISOString();
-
- doc.status="approved";
- updateDocument(doc);
-
- db.archive.unshift({
-  id:makeId("ARCHIVE"),
-  submissionId:sub.id,
-  documentId:doc.id,
-  ownerId:doc.ownerId,
-  ownerName:doc.ownerName,
-  type:doc.type,
-  title:doc.title,
-  data:doc.data,
-  approvedAt:new Date().toISOString(),
-  comment
- });
-
- saveDB();
-
- closeModal();
-
- renderApproval();
- renderArchive();
- renderMySubmissions();
- renderMyDocuments();
- updateDashboard();
-
- alert("Document approved successfully.");
-}
-
-function rejectSubmission(){
-
- if(!requireAdmin())return;
-
- const sub=db.submissions.find(
-  s=>s.id===currentReviewId
- );
-
- if(!sub)return;
-
- const doc=db.documents.find(
-  d=>d.id===sub.documentId
- );
-
- if(!doc)return;
-
- const comment=$("reviewComment").value.trim();
-
- if(!comment){
-  alert("Please enter a comment explaining the rejection.");
-  return;
- }
-
- sub.status="rejected";
- sub.comment=comment;
- sub.reviewedAt=new Date().toISOString();
-
- doc.status="rejected";
- updateDocument(doc);
-
- saveDB();
-
- closeModal();
-
- renderApproval();
- renderMySubmissions();
- renderMyDocuments();
- updateDashboard();
-
- alert("Document rejected and returned to the teacher.");
-}
-
-function renderArchive(){
-
- if(!requireAdmin())return;
-
- if(!db.archive.length){
-  $("archiveList").innerHTML=
-   `<div class="empty">No approved documents yet.</div>`;
-  return;
- }
-
- $("archiveList").innerHTML=db.archive.map(a=>`
-
-  <div class="doc-card">
-
-   <h3>${escapeHTML(a.title)}</h3>
-
-   <div class="doc-meta">
-    Teacher: ${escapeHTML(a.ownerName)}
-    <br>
-    Type: ${documentTypeName(a.type)}
-    <br>
-    Approved:
-    ${new Date(a.approvedAt).toLocaleString()}
-   </div>
-
-   ${a.comment
-    ?`<div class="info">
-       <b>Admin Comment:</b><br>
-       ${escapeHTML(a.comment)}
-      </div>`
-    :""
-   }
-
-  </div>
-
- `).join("");
-}
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-function updateDashboard(){
-
- const user=getCurrentUser();
-
- if(!user)return;
-
- const docs=db.documents.filter(
-  d=>d.ownerId===user.id
- );
-
- $("statDocs").textContent=docs.length;
-
- $("statDrafts").textContent=
-  docs.filter(d=>d.status==="draft").length;
-
- $("statSubmitted").textContent=
-  docs.filter(d=>d.status==="submitted").length;
-
- $("statApproved").textContent=
-  docs.filter(d=>d.status==="approved").length;
-
- const recent=docs.slice(0,5);
-
- if(!recent.length){
-  $("recentDocuments").innerHTML=
-   `<div class="empty">No documents yet.</div>`;
-  return;
- }
-
- $("recentDocuments").innerHTML=
-  recent.map(d=>`
-
-   <div class="doc-card">
-    <h3>${escapeHTML(d.title)}</h3>
-    ${statusBadge(d.status)}
-   </div>
-
-  `).join("");
-}
-
-/* =====================================================
-   PASSWORD
-===================================================== */
-
-function togglePassword(inputId,eyeId){
-
- const input=$(inputId);
-
- if(input.type==="password"){
-  input.type="text";
-  $(eyeId).textContent="◉";
- }else{
-  input.type="password";
-  $(eyeId).textContent="◉";
- }
-}
+/* =========================================================
+   SECURITY
+========================================================= */
 
 function changePassword(){
+ if(!requireLogin())return;
 
- const user=getCurrentUser();
+ const old=val("oldPassword");
+ const p=val("newPassword");
+ const c=val("confirmPassword");
+
+ const user=getUserById(currentUser.id);
 
  if(!user)return;
 
- const old=$("oldPassword").value;
- const newer=$("newPassword").value;
- const confirm=$("confirmPassword").value;
-
- if(old!==user.password){
-  alert("Current password is incorrect.");
+ if(user.password!==old){
+  toast("Current password is incorrect.");
   return;
  }
 
- if(!newer || newer.length<4){
-  alert("New password must contain at least 4 characters.");
+ if(!p||p.length<6){
+  toast("New password must be at least 6 characters.");
   return;
  }
 
- if(newer!==confirm){
-  alert("New passwords do not match.");
+ if(p!==c){
+  toast("New passwords do not match.");
   return;
  }
 
- user.password=newer;
-
+ user.password=p;
  saveDB();
 
- $("oldPassword").value="";
- $("newPassword").value="";
- $("confirmPassword").value="";
+ document.getElementById("oldPassword").value="";
+ document.getElementById("newPassword").value="";
+ document.getElementById("confirmPassword").value="";
 
- alert("Password changed successfully.");
+ toast("Password changed successfully.");
 }
 
-/* =====================================================
-   BACKUP / RESTORE
-===================================================== */
+/* =========================================================
+   BACKUP
+========================================================= */
 
 function downloadBackup(){
-
  if(!requireAdmin())return;
 
  const data=JSON.stringify(db,null,2);
-
- const blob=new Blob(
-  [data],
-  {type:"application/json"}
+ downloadFile(
+  "CTA_Academy_Backup_"+new Date().toISOString().slice(0,10)+".json",
+  data,
+  "application/json"
  );
-
- const url=URL.createObjectURL(blob);
-
- const a=document.createElement("a");
-
- a.href=url;
- a.download=
-  "CTA-Backup-"+new Date().toISOString().slice(0,10)+".json";
-
- document.body.appendChild(a);
- a.click();
- a.remove();
-
- URL.revokeObjectURL(url);
+ toast("Backup downloaded.");
 }
 
 function restoreBackup(event){
-
  if(!requireAdmin())return;
 
  const file=event.target.files[0];
-
  if(!file)return;
 
  const reader=new FileReader();
 
  reader.onload=function(){
-
   try{
+   const restored=normalizeDB(JSON.parse(reader.result));
 
-   const restored=JSON.parse(
-    reader.result
-   );
-
-   if(
-    !restored ||
-    !Array.isArray(restored.users) ||
-    !Array.isArray(restored.documents)
-   ){
-    throw new Error("Invalid backup");
+   if(!restored.users.length){
+    toast("Invalid backup: no users found.");
+    return;
    }
 
-   if(!confirm(
-    "Restore this backup? Current local data will be replaced."
-   ))return;
+   if(!confirm("Restore this backup? Current local data will be replaced."))return;
 
    db=restored;
-
-   db.submissions=
-    Array.isArray(db.submissions)
-    ?db.submissions:[];
-
-   db.archive=
-    Array.isArray(db.archive)
-    ?db.archive:[];
-
-   db.usedQuestions=
-    Array.isArray(db.usedQuestions)
-    ?db.usedQuestions:[];
-
    ensureAdmin();
    saveDB();
-
-   alert("Backup restored successfully.");
-
-   location.reload();
-
+   refreshAll();
+   toast("Backup restored successfully.");
   }catch(e){
-   alert("Invalid backup file.");
+   toast("Invalid backup file.");
   }
-
  };
 
  reader.readAsText(file);
-
- event.target.value="";
 }
 
-/* =====================================================
-   CAPS LOCK
-===================================================== */
+/* =========================================================
+   STATS / REFRESH
+========================================================= */
 
-$("loginPassword").addEventListener(
- "keyup",
- function(e){
+function updateStats(){
+ if(!currentUser)return;
 
-  $("capsWarning").style.display=
-   e.getModifierState("CapsLock")
-   ?"block"
-   :"none";
+ const docs=currentUser.role==="admin"
+  ?db.documents
+  :db.documents.filter(d=>d.teacherId===currentUser.id);
+
+ const subs=currentUser.role==="admin"
+  ?db.submissions
+  :db.submissions.filter(s=>s.teacherId===currentUser.id);
+
+ const pending=db.submissions.filter(s=>
+  s.status.includes("Pending")||
+  s.status==="HOD Approved"
+ ).length;
+
+ document.getElementById("statDocs").textContent=docs.length;
+ document.getElementById("statSubmissions").textContent=subs.length;
+ document.getElementById("statPending").textContent=pending;
+ document.getElementById("statTeachers").textContent=db.users.filter(u=>u.role==="teacher").length;
+
+ if(currentUser.role!=="admin"){
+  document.getElementById("teacherStat").style.display="none";
+ }else{
+  document.getElementById("teacherStat").style.display="block";
  }
-);
+}
 
-/* =====================================================
-   RENDER ALL
-===================================================== */
+function refreshAll(){
+ if(!currentUser)return;
 
-function renderAll(){
+ updateStats();
+ renderDocuments();
+ renderSubmissions();
 
- updateDashboard();
- renderMyDocuments();
- renderMySubmissions();
-
- const user=getCurrentUser();
-
- if(user && user.role==="admin"){
+ if(currentUser.role==="admin"){
   renderTeachers();
   renderApproval();
   renderArchive();
  }
 }
 
-/* =====================================================
-   STARTUP
-===================================================== */
+/* =========================================================
+   UTILITY
+========================================================= */
 
-loadDB();
+function val(id){
+ const el=document.getElementById(id);
+ return el?el.value:"";
+}
 
-document.addEventListener(
- "DOMContentLoaded",
- function(){
+/* =========================================================
+   CAPS LOCK
+========================================================= */
 
-  $("loginUsername").value="admin";
-
-  checkSession();
-
+document.addEventListener("keydown",function(e){
+ if(e.target && e.target.id==="loginPassword"){
+  document.getElementById("capsWarning").style.display=
+   e.getModifierState && e.getModifierState("CapsLock")?"block":"none";
  }
-);
-</script>
+});
 
+/* =========================================================
+   STARTUP
+========================================================= */
+
+window.addEventListener("DOMContentLoaded",function(){
+
+ loadDB();
+
+ document.getElementById("loginUsername").value="admin";
+
+ document.getElementById("loginPassword").addEventListener("keydown",function(e){
+  if(e.key==="Enter")login();
+ });
+
+ /* Start assessment with two subjects available to make
+    multi-subject creation obvious, but they can be removed. */
+ addAssessmentSubject();
+ addAssessmentSubject();
+
+ checkSession();
+});
+
+</script>
 </body>
 </html>
