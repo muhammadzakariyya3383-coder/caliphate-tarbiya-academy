@@ -9,496 +9,618 @@
 <title>Caliphate Tarbiya Academy</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 :root{
- --green:#14532d;
- --green2:#166534;
- --green3:#22c55e;
- --light:#f0fdf4;
- --bg:#f6f8f7;
- --white:#fff;
- --text:#17202a;
- --muted:#64748b;
- --border:#dbe3df;
- --danger:#dc2626;
- --warning:#d97706;
- --blue:#2563eb;
+--green:#14532d;
+--green2:#166534;
+--green3:#22c55e;
+--light:#f0fdf4;
+--bg:#f6f8f7;
+--white:#fff;
+--text:#17202a;
+--muted:#64748b;
+--border:#dbe3df;
+--danger:#dc2626;
+--warning:#d97706;
+--blue:#2563eb;
 }
 
 body{
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
- background:var(--bg);
- color:var(--text);
- min-height:100vh;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
 }
 
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
+button,input,select,textarea{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.hidden{
+display:none!important;
+}
 
 /* LOGIN */
+
 #loginScreen{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
- background:linear-gradient(135deg,#052e16,#14532d,#166534);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:linear-gradient(135deg,#052e16,#14532d,#166534);
 }
 
 .login-card{
- width:100%;
- max-width:430px;
- background:#fff;
- border-radius:24px;
- padding:28px;
- box-shadow:0 25px 70px rgba(0,0,0,.28);
+width:100%;
+max-width:430px;
+background:#fff;
+border-radius:24px;
+padding:28px;
+box-shadow:0 25px 70px rgba(0,0,0,.28);
 }
 
 .logo{
- width:72px;
- height:72px;
- border-radius:20px;
- background:var(--green);
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:30px;
- font-weight:800;
- margin:0 auto 15px;
+width:72px;
+height:72px;
+border-radius:20px;
+background:var(--green);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:800;
+margin:0 auto 15px;
 }
 
 .login-card h1{
- text-align:center;
- font-size:23px;
- color:var(--green);
+text-align:center;
+font-size:23px;
+color:var(--green);
 }
 
 .login-card .sub{
- text-align:center;
- color:var(--muted);
- margin:6px 0 24px;
+text-align:center;
+color:var(--muted);
+margin:6px 0 24px;
 }
 
 .role-title{
- font-weight:700;
- margin-bottom:9px;
+font-weight:700;
+margin-bottom:9px;
 }
 
 .roles{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:10px;
- margin-bottom:18px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:18px;
 }
 
 .role-btn{
- border:2px solid var(--border);
- background:#fff;
- color:var(--text);
- border-radius:12px;
- padding:13px;
- font-weight:700;
+border:2px solid var(--border);
+background:#fff;
+color:var(--text);
+border-radius:12px;
+padding:13px;
+font-weight:700;
 }
 
 .role-btn.active{
- border-color:var(--green);
- background:var(--light);
- color:var(--green);
+border-color:var(--green);
+background:var(--light);
+color:var(--green);
 }
 
-.field{margin-bottom:15px}
+.field{
+margin-bottom:15px;
+}
 
 .field label{
- display:block;
- font-size:14px;
- font-weight:700;
- margin-bottom:7px;
+display:block;
+font-size:14px;
+font-weight:700;
+margin-bottom:7px;
 }
 
 .field input,
 .field select,
 .field textarea{
- width:100%;
- border:1px solid var(--border);
- border-radius:11px;
- padding:13px;
- outline:none;
- background:#fff;
- color:var(--text);
+width:100%;
+border:1px solid var(--border);
+border-radius:11px;
+padding:13px;
+outline:none;
+background:#fff;
+color:var(--text);
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
- border-color:var(--green);
- box-shadow:0 0 0 3px rgba(20,83,45,.08);
+border-color:var(--green);
+box-shadow:0 0 0 3px rgba(20,83,45,.08);
 }
 
-.password-wrap{position:relative}
+.password-wrap{
+position:relative;
+}
 
-.password-wrap input{padding-right:70px}
+.password-wrap input{
+padding-right:70px;
+}
 
 .show-btn{
- position:absolute;
- right:7px;
- top:6px;
- border:0;
- background:var(--light);
- color:var(--green);
- border-radius:8px;
- padding:7px 9px;
- font-size:12px;
- font-weight:700;
+position:absolute;
+right:7px;
+top:6px;
+border:0;
+background:var(--light);
+color:var(--green);
+border-radius:8px;
+padding:7px 9px;
+font-size:12px;
+font-weight:700;
 }
 
 .primary{
- width:100%;
- border:0;
- border-radius:11px;
- padding:14px;
- background:var(--green);
- color:#fff;
- font-weight:800;
+width:100%;
+border:0;
+border-radius:11px;
+padding:14px;
+background:var(--green);
+color:#fff;
+font-weight:800;
 }
 
-.primary:hover{background:var(--green2)}
+.primary:hover{
+background:var(--green2);
+}
 
 .error{
- color:var(--danger);
- background:#fef2f2;
- padding:10px;
- border-radius:9px;
- font-size:13px;
- margin-bottom:12px;
+color:var(--danger);
+background:#fef2f2;
+padding:10px;
+border-radius:9px;
+font-size:13px;
+margin-bottom:12px;
 }
 
 .demo{
- margin-top:15px;
- padding:11px;
- border-radius:10px;
- background:#f8fafc;
- font-size:12px;
- color:var(--muted);
- text-align:center;
+margin-top:15px;
+padding:11px;
+border-radius:10px;
+background:#f8fafc;
+font-size:12px;
+color:var(--muted);
+text-align:center;
 }
 
 /* APP */
+
 #app{
- display:none;
- min-height:100vh;
+display:none;
+min-height:100vh;
 }
 
 .topbar{
- height:65px;
- background:var(--green);
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 18px;
- position:sticky;
- top:0;
- z-index:50;
+height:65px;
+background:var(--green);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+position:sticky;
+top:0;
+z-index:50;
 }
 
 .brand{
- font-weight:800;
- font-size:17px;
+font-weight:800;
+font-size:17px;
 }
 
 .user-info{
- font-size:12px;
- opacity:.9;
+font-size:12px;
+opacity:.9;
 }
 
 .logout{
- border:1px solid rgba(255,255,255,.35);
- background:transparent;
- color:#fff;
- padding:8px 11px;
- border-radius:9px;
- font-weight:700;
+border:1px solid rgba(255,255,255,.35);
+background:transparent;
+color:#fff;
+padding:8px 11px;
+border-radius:9px;
+font-weight:700;
 }
 
 .layout{
- display:flex;
- min-height:calc(100vh - 65px);
+display:flex;
+min-height:calc(100vh - 65px);
 }
 
 .sidebar{
- width:240px;
- background:#fff;
- border-right:1px solid var(--border);
- padding:15px;
+width:240px;
+background:#fff;
+border-right:1px solid var(--border);
+padding:15px;
 }
 
 .nav{
- width:100%;
- text-align:left;
- border:0;
- background:transparent;
- padding:12px;
- border-radius:10px;
- margin-bottom:5px;
- color:#334155;
- font-weight:600;
+width:100%;
+text-align:left;
+border:0;
+background:transparent;
+padding:12px;
+border-radius:10px;
+margin-bottom:5px;
+color:#334155;
+font-weight:600;
 }
 
 .nav.active,
 .nav:hover{
- background:var(--light);
- color:var(--green);
+background:var(--light);
+color:var(--green);
 }
 
 .main{
- flex:1;
- padding:20px;
- min-width:0;
+flex:1;
+padding:20px;
+min-width:0;
 }
 
-.page{display:none}
+.page{
+display:none;
+}
 
-.page.active{display:block}
+.page.active{
+display:block;
+}
 
 .page-title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- margin-bottom:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:18px;
 }
 
-.page-title h2{font-size:22px}
+.page-title h2{
+font-size:22px;
+}
+
+/* CARDS */
 
 .card{
- background:#fff;
- border:1px solid var(--border);
- border-radius:15px;
- padding:18px;
- margin-bottom:16px;
+background:#fff;
+border:1px solid var(--border);
+border-radius:15px;
+padding:18px;
+margin-bottom:16px;
 }
 
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
- gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+gap:15px;
 }
 
 .stat{
- background:#fff;
- border:1px solid var(--border);
- border-radius:15px;
- padding:18px;
+background:#fff;
+border:1px solid var(--border);
+border-radius:15px;
+padding:18px;
 }
 
 .stat .number{
- font-size:29px;
- font-weight:800;
- color:var(--green);
+font-size:29px;
+font-weight:800;
+color:var(--green);
 }
 
 .stat .label{
- color:var(--muted);
- font-size:13px;
- margin-top:4px;
+color:var(--muted);
+font-size:13px;
+margin-top:4px;
 }
 
+/* BUTTONS */
+
 .actions{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 }
 
 .btn{
- border:0;
- border-radius:9px;
- padding:10px 13px;
- font-weight:700;
+border:0;
+border-radius:9px;
+padding:10px 13px;
+font-weight:700;
 }
 
 .btn-green{
- background:var(--green);
- color:#fff;
+background:var(--green);
+color:#fff;
 }
 
 .btn-blue{
- background:#eff6ff;
- color:var(--blue);
+background:#eff6ff;
+color:var(--blue);
 }
 
 .btn-red{
- background:#fef2f2;
- color:var(--danger);
+background:#fef2f2;
+color:var(--danger);
 }
 
 .btn-yellow{
- background:#fffbeb;
- color:var(--warning);
+background:#fffbeb;
+color:var(--warning);
 }
 
 .btn-gray{
- background:#f1f5f9;
- color:#334155;
+background:#f1f5f9;
+color:#334155;
 }
 
-.table-wrap{overflow-x:auto}
+/* TABLE */
+
+.table-wrap{
+overflow-x:auto;
+}
 
 table{
- width:100%;
- border-collapse:collapse;
- min-width:600px;
+width:100%;
+border-collapse:collapse;
+min-width:650px;
 }
 
 th,td{
- padding:11px;
- border-bottom:1px solid var(--border);
- text-align:left;
- font-size:13px;
+padding:11px;
+border-bottom:1px solid var(--border);
+text-align:left;
+font-size:13px;
 }
 
-th{background:#f8fafc}
+th{
+background:#f8fafc;
+}
+
+/* STATUS */
 
 .badge{
- display:inline-block;
- padding:5px 8px;
- border-radius:999px;
- font-size:11px;
- font-weight:800;
+display:inline-block;
+padding:5px 8px;
+border-radius:999px;
+font-size:11px;
+font-weight:800;
 }
 
 .badge.pending{
- background:#fff7ed;
- color:#c2410c;
+background:#fff7ed;
+color:#c2410c;
 }
 
 .badge.approved{
- background:#f0fdf4;
- color:#15803d;
+background:#f0fdf4;
+color:#15803d;
 }
 
 .badge.rejected{
- background:#fef2f2;
- color:#b91c1c;
+background:#fef2f2;
+color:#b91c1c;
 }
 
 .badge.disabled{
- background:#f1f5f9;
- color:#64748b;
+background:#f1f5f9;
+color:#64748b;
 }
 
+/* EMPTY */
+
 .empty{
- text-align:center;
- color:var(--muted);
- padding:30px;
+text-align:center;
+color:var(--muted);
+padding:30px;
 }
 
 textarea{
- min-height:130px;
- resize:vertical;
+min-height:130px;
+resize:vertical;
 }
+
+/* MODALS */
 
 .modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.5);
- display:none;
- align-items:center;
- justify-content:center;
- padding:15px;
- z-index:100;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
+padding:15px;
+z-index:100;
 }
 
-.modal.show{display:flex}
+.modal.show{
+display:flex;
+}
 
 .modal-box{
- background:#fff;
- width:100%;
- max-width:600px;
- max-height:90vh;
- overflow:auto;
- border-radius:18px;
- padding:20px;
+background:#fff;
+width:100%;
+max-width:600px;
+max-height:90vh;
+overflow:auto;
+border-radius:18px;
+padding:20px;
 }
 
 .modal-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:16px;
 }
 
 .close{
- border:0;
- background:#f1f5f9;
- border-radius:8px;
- padding:7px 10px;
+border:0;
+background:#f1f5f9;
+border-radius:8px;
+padding:7px 10px;
 }
 
+/* NOTICE */
+
 .notice{
- background:#eff6ff;
- color:#1e40af;
- border-radius:10px;
- padding:11px;
- font-size:13px;
- margin-bottom:12px;
+background:#eff6ff;
+color:#1e40af;
+border-radius:10px;
+padding:11px;
+font-size:13px;
+margin-bottom:12px;
 }
 
 .ai-output{
- white-space:pre-wrap;
- background:#f8fafc;
- border:1px solid var(--border);
- padding:15px;
- border-radius:12px;
- line-height:1.6;
+white-space:pre-wrap;
+background:#f8fafc;
+border:1px solid var(--border);
+padding:15px;
+border-radius:12px;
+line-height:1.6;
 }
 
+/* ARCHIVE */
+
+.archive-tabs{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:15px;
+}
+
+.archive-tab{
+border:1px solid var(--border);
+background:#fff;
+color:#334155;
+padding:10px 13px;
+border-radius:10px;
+font-weight:700;
+}
+
+.archive-tab.active{
+background:var(--green);
+color:#fff;
+border-color:var(--green);
+}
+
+.search-box{
+display:grid;
+grid-template-columns:1fr 180px;
+gap:10px;
+margin-bottom:15px;
+}
+
+.search-box input,
+.search-box select{
+border:1px solid var(--border);
+border-radius:10px;
+padding:11px;
+background:#fff;
+}
+
+.archive-item{
+border:1px solid var(--border);
+border-radius:13px;
+padding:15px;
+margin-bottom:10px;
+background:#fff;
+}
+
+.archive-meta{
+color:var(--muted);
+font-size:12px;
+margin-top:5px;
+}
+
+.archive-preview{
+white-space:pre-wrap;
+line-height:1.5;
+margin-top:10px;
+background:#f8fafc;
+border-radius:10px;
+padding:12px;
+font-size:13px;
+}
+
+/* MOBILE */
+
 .mobile-menu{
- display:none;
+display:none;
 }
 
 @media(max-width:800px){
 
- .sidebar{
-  position:fixed;
-  left:-260px;
-  top:65px;
-  bottom:0;
-  z-index:60;
-  transition:.25s;
- }
+.sidebar{
+position:fixed;
+left:-260px;
+top:65px;
+bottom:0;
+z-index:60;
+transition:.25s;
+}
 
- .sidebar.open{
-  left:0;
- }
+.sidebar.open{
+left:0;
+}
 
- .mobile-menu{
-  display:block;
-  border:0;
-  background:transparent;
-  color:#fff;
-  font-size:23px;
-  margin-right:10px;
- }
+.mobile-menu{
+display:block;
+border:0;
+background:transparent;
+color:#fff;
+font-size:23px;
+margin-right:10px;
+}
 
- .top-left{
-  display:flex;
-  align-items:center;
- }
+.top-left{
+display:flex;
+align-items:center;
+}
 
- .brand{
-  font-size:14px;
- }
+.brand{
+font-size:14px;
+}
 
- .main{
-  padding:13px;
- }
+.main{
+padding:13px;
+}
 
- .page-title h2{
-  font-size:19px;
- }
+.page-title h2{
+font-size:19px;
+}
+
+.search-box{
+grid-template-columns:1fr;
+}
+
+.user-info{
+display:none;
+}
+
 }
 </style>
 </head>
@@ -506,2886 +628,4253 @@ textarea{
 <body>
 
 <!-- LOGIN -->
+
 <section id="loginScreen">
 
- <div class="login-card">
+<div class="login-card">
 
-  <div class="logo">CTA</div>
+<div class="logo">CTA</div>
 
-  <h1>Caliphate Tarbiya Academy</h1>
+<h1>Caliphate Tarbiya Academy</h1>
 
-  <div class="sub">
-   Professional Teacher Management System
-  </div>
+<div class="sub">
+Professional Teacher Management System
+</div>
 
-  <div class="role-title">
-   Login as
-  </div>
+<div class="role-title">
+Login as
+</div>
 
-  <div class="roles">
+<div class="roles">
 
-   <button
-    class="role-btn active"
-    id="adminRole"
-    onclick="chooseRole('admin')">
-    Administrator
-   </button>
+<button
+class="role-btn active"
+id="adminRole"
+onclick="chooseRole('admin')">
+Administrator
+</button>
 
-   <button
-    class="role-btn"
-    id="teacherRole"
-    onclick="chooseRole('teacher')">
-    Teacher
-   </button>
+<button
+class="role-btn"
+id="teacherRole"
+onclick="chooseRole('teacher')">
+Teacher
+</button>
 
-  </div>
+</div>
 
-  <div id="loginError" class="error hidden"></div>
+<div id="loginError" class="error hidden"></div>
 
-  <div class="field">
-   <label>Username</label>
-   <input
-    id="loginUsername"
-    autocomplete="username"
-    placeholder="Enter username">
-  </div>
+<div class="field">
+<label>Username</label>
+<input
+id="loginUsername"
+autocomplete="username"
+placeholder="Enter username">
+</div>
 
-  <div class="field">
+<div class="field">
 
-   <label>Password</label>
+<label>Password</label>
 
-   <div class="password-wrap">
+<div class="password-wrap">
 
-    <input
-     id="loginPassword"
-     type="password"
-     autocomplete="current-password"
-     placeholder="Enter password">
+<input
+id="loginPassword"
+type="password"
+autocomplete="current-password"
+placeholder="Enter password">
 
-    <button
-     class="show-btn"
-     type="button"
-     onclick="togglePassword('loginPassword',this)">
-     Show
-    </button>
+<button
+class="show-btn"
+type="button"
+onclick="togglePassword('loginPassword',this)">
+Show
+</button>
 
-   </div>
+</div>
 
-  </div>
+</div>
 
-  <button
-   class="primary"
-   type="button"
-   onclick="login()">
-   Login
-  </button>
+<button
+class="primary"
+type="button"
+onclick="login()">
+Login
+</button>
 
-  <div class="demo">
-   Default Administrator<br>
-   Username: <b>admin</b><br>
-   Password: <b>Admin@2026!</b>
-  </div>
+<div class="demo">
+Default Administrator<br>
+Username: <b>admin</b><br>
+Password: <b>Admin@2026!</b>
+</div>
 
- </div>
+</div>
 
 </section>
 
+
 <!-- APPLICATION -->
+
 <div id="app">
 
- <header class="topbar">
-
-  <div class="top-left">
-
-   <button
-    class="mobile-menu"
-    type="button"
-    onclick="toggleSidebar()">
-    ☰
-   </button>
-
-   <div class="brand">
-    Caliphate Tarbiya Academy
-   </div>
-
-  </div>
-
-  <div style="display:flex;align-items:center;gap:10px">
-
-   <div
-    class="user-info"
-    id="currentUser">
-   </div>
-
-   <button
-    class="logout"
-    type="button"
-    onclick="logout()">
-    Logout
-   </button>
-
-  </div>
-
- </header>
-
- <div class="layout">
-
-  <aside class="sidebar" id="sidebar">
-
-   <button
-    class="nav active"
-    onclick="showPage('dashboard',this)">
-    🏠 Dashboard
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('scheme',this)">
-    📚 Scheme of Work
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('lessonPlan',this)">
-    📝 Lesson Plan
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('lessonNote',this)">
-    📖 Lesson Note
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('documents',this)">
-    📂 Documents
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('assistant',this)">
-    🤖 Teacher Assistant
-   </button>
-
-   <button
-    class="nav adminOnly"
-    onclick="showPage('approval',this)">
-    ✅ Approval Centre
-   </button>
-
-   <button
-    class="nav adminOnly"
-    onclick="showPage('teachers',this)">
-    👨‍🏫 Teachers
-   </button>
-
-   <button
-    class="nav"
-    onclick="showPage('security',this)">
-    🔐 Account Security
-   </button>
-
-   <button
-    class="nav adminOnly"
-    onclick="showPage('backup',this)">
-    💾 Backup & Restore
-   </button>
-
-  </aside>
-
-  <main class="main">
-
-   <!-- DASHBOARD -->
-   <section class="page active" id="dashboard">
-
-    <div class="page-title">
-     <h2>Dashboard</h2>
-    </div>
-
-    <div class="grid">
-
-     <div class="stat">
-      <div
-       class="number"
-       id="statDocuments">
-       0
-      </div>
-
-      <div class="label">
-       Documents
-      </div>
-     </div>
-
-     <div class="stat adminOnly">
-
-      <div
-       class="number"
-       id="statTeachers">
-       0
-      </div>
-
-      <div class="label">
-       Teachers
-      </div>
-
-     </div>
-
-     <div class="stat adminOnly">
-
-      <div
-       class="number"
-       id="statPending">
-       0
-      </div>
-
-      <div class="label">
-       Pending Approval
-      </div>
-
-     </div>
-
-     <div class="stat">
-
-      <div
-       class="number"
-       id="statApproved">
-       0
-      </div>
-
-      <div class="label">
-       Approved
-      </div>
-
-     </div>
-
-    </div>
-
-    <div
-     class="card"
-     style="margin-top:16px">
-
-     <h3>Welcome</h3>
-
-     <p
-      style="margin-top:8px;color:var(--muted)">
-      Use the navigation menu to prepare, submit and manage school documents.
-     </p>
-
-    </div>
-
-   </section>
-
-   <!-- SCHEME -->
-   <section
-    class="page"
-    id="scheme">
-
-    <div class="page-title">
-
-     <h2>Scheme of Work</h2>
-
-     <button
-      class="btn btn-green"
-      onclick="openDocumentForm('Scheme of Work')">
-      + Create
-     </button>
-
-    </div>
-
-    <div id="schemeList"></div>
-
-   </section>
-
-   <!-- LESSON PLAN -->
-   <section
-    class="page"
-    id="lessonPlan">
-
-    <div class="page-title">
-
-     <h2>Lesson Plan</h2>
-
-     <button
-      class="btn btn-green"
-      onclick="openDocumentForm('Lesson Plan')">
-      + Create
-     </button>
-
-    </div>
-
-    <div id="lessonPlanList"></div>
-
-   </section>
-
-   <!-- LESSON NOTE -->
-   <section
-    class="page"
-    id="lessonNote">
-
-    <div class="page-title">
-
-     <h2>Lesson Note</h2>
-
-     <button
-      class="btn btn-green"
-      onclick="openDocumentForm('Lesson Note')">
-      + Create
-     </button>
-
-    </div>
-
-    <div id="lessonNoteList"></div>
-
-   </section>
-
-   <!-- DOCUMENTS -->
-   <section
-    class="page"
-    id="documents">
-
-    <div class="page-title">
-
-     <h2>All Documents</h2>
-
-     <button
-      class="btn btn-green"
-      onclick="openDocumentForm('General Document')">
-      + Create
-     </button>
-
-    </div>
-
-    <div class="card">
-
-     <div class="table-wrap">
-
-      <table>
-
-       <thead>
-
-        <tr>
-         <th>Title</th>
-         <th>Type</th>
-         <th>Author</th>
-         <th>Status</th>
-         <th>Action</th>
-        </tr>
-
-       </thead>
-
-       <tbody id="documentsTable"></tbody>
-
-      </table>
-
-     </div>
-
-    </div>
-
-   </section>
-
-   <!-- ASSISTANT -->
-   <section
-    class="page"
-    id="assistant">
-
-    <div class="page-title">
-     <h2>🤖 Teacher Assistant</h2>
-    </div>
-
-    <div class="card">
-
-     <div class="notice">
-      This assistant works offline. It creates structured teaching templates without requiring an API.
-     </div>
-
-     <div class="field">
-
-      <label>
-       What do you want to prepare?
-      </label>
-
-      <select id="assistantType">
-
-       <option value="lessonplan">
-        Lesson Plan
-       </option>
-
-       <option value="lessonnote">
-        Lesson Note
-       </option>
-
-       <option value="scheme">
-        Scheme of Work
-       </option>
-
-       <option value="objectives">
-        Learning Objectives
-       </option>
-
-       <option value="assessment">
-        Assessment Questions
-       </option>
-
-      </select>
-
-     </div>
-
-     <div class="field">
-
-      <label>Subject</label>
-
-      <input
-       id="assistantSubject"
-       placeholder="e.g. Mathematics">
-
-     </div>
-
-     <div class="field">
-
-      <label>Class</label>
-
-      <input
-       id="assistantClass"
-       placeholder="e.g. Basic 4">
-
-     </div>
-
-     <div class="field">
-
-      <label>Topic</label>
-
-      <input
-       id="assistantTopic"
-       placeholder="Enter topic">
-
-     </div>
-
-     <button
-      class="btn btn-green"
-      onclick="generateAssistant()">
-      Generate
-     </button>
-
-    </div>
-
-    <div class="card">
-
-     <h3>Generated Content</h3>
-
-     <div
-      id="assistantOutput"
-      class="ai-output"
-      style="margin-top:12px">
-      Your generated content will appear here.
-     </div>
-
-    </div>
-
-   </section>
-
-   <!-- APPROVAL -->
-   <section
-    class="page"
-    id="approval">
-
-    <div class="page-title">
-     <h2>Approval Centre</h2>
-    </div>
-
-    <div class="card">
-
-     <div class="table-wrap">
-
-      <table>
-
-       <thead>
-
-        <tr>
-         <th>Document</th>
-         <th>Teacher</th>
-         <th>Type</th>
-         <th>Status</th>
-         <th>Action</th>
-        </tr>
-
-       </thead>
-
-       <tbody id="approvalTable"></tbody>
-
-      </table>
-
-     </div>
-
-    </div>
-
-   </section>
-
-   <!-- TEACHERS -->
-   <section
-    class="page"
-    id="teachers">
-
-    <div class="page-title">
-
-     <h2>Teacher Management</h2>
-
-     <button
-      class="btn btn-green"
-      onclick="openTeacherForm()">
-      + Add Teacher
-     </button>
-
-    </div>
-
-    <div class="card">
-
-     <div class="table-wrap">
-
-      <table>
-
-       <thead>
-
-        <tr>
-         <th>Name</th>
-         <th>Username</th>
-         <th>Subject</th>
-         <th>Class</th>
-         <th>Status</th>
-         <th>Action</th>
-        </tr>
-
-       </thead>
-
-       <tbody id="teachersTable"></tbody>
-
-      </table>
-
-     </div>
-
-    </div>
-
-   </section>
-
-   <!-- SECURITY -->
-   <section
-    class="page"
-    id="security">
-
-    <div class="page-title">
-     <h2>Account Security</h2>
-    </div>
-
-    <div class="card">
-
-     <div class="field">
-
-      <label>Current Password</label>
-
-      <div class="password-wrap">
-
-       <input
-        id="currentPassword"
-        type="password">
-
-       <button
-        class="show-btn"
-        type="button"
-        onclick="togglePassword('currentPassword',this)">
-        Show
-       </button>
-
-      </div>
-
-     </div>
-
-     <div class="field">
-
-      <label>New Username</label>
-
-      <input
-       id="newUsername"
-       placeholder="Enter new username">
-
-     </div>
-
-     <div class="field">
-
-      <label>New Password</label>
-
-      <div class="password-wrap">
-
-       <input
-        id="newPassword"
-        type="password">
-
-       <button
-        class="show-btn"
-        type="button"
-        onclick="togglePassword('newPassword',this)">
-        Show
-       </button>
-
-      </div>
-
-     </div>
-
-     <div class="field">
-
-      <label>Confirm New Password</label>
-
-      <div class="password-wrap">
-
-       <input
-        id="confirmPassword"
-        type="password">
-
-       <button
-        class="show-btn"
-        type="button"
-        onclick="togglePassword('confirmPassword',this)">
-        Show
-       </button>
-
-      </div>
-
-     </div>
-
-     <button
-      class="btn btn-green"
-      onclick="changeAccount()">
-      Save Changes
-     </button>
-
-     <div
-      id="securityMessage"
-      style="margin-top:12px">
-     </div>
-
-    </div>
-
-   </section>
-
-   <!-- BACKUP -->
-   <section
-    class="page"
-    id="backup">
-
-    <div class="page-title">
-     <h2>Backup & Restore</h2>
-    </div>
-
-    <div class="card">
-
-     <p
-      style="color:var(--muted);margin-bottom:15px">
-      Create a backup of your local application data or restore a previous backup.
-     </p>
-
-     <div class="actions">
-
-      <button
-       class="btn btn-green"
-       onclick="backupData()">
-       Download Backup
-      </button>
-
-      <label class="btn btn-blue">
-
-       Restore Backup
-
-       <input
-        type="file"
-        accept=".json"
-        hidden
-        onchange="restoreData(event)">
-
-      </label>
-
-     </div>
-
-    </div>
-
-   </section>
-
-  </main>
-
- </div>
+<header class="topbar">
+
+<div class="top-left">
+
+<button
+class="mobile-menu"
+type="button"
+onclick="toggleSidebar()">
+☰
+</button>
+
+<div class="brand">
+Caliphate Tarbiya Academy
+</div>
 
 </div>
+
+<div style="display:flex;align-items:center;gap:10px">
+
+<div
+class="user-info"
+id="currentUser">
+</div>
+
+<button
+class="logout"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside
+class="sidebar"
+id="sidebar">
+
+<button
+class="nav active"
+onclick="showPage('dashboard',this)">
+🏠 Dashboard
+</button>
+
+<button
+class="nav"
+onclick="showPage('scheme',this)">
+📚 Scheme of Work
+</button>
+
+<button
+class="nav"
+onclick="showPage('lessonPlan',this)">
+📝 Lesson Plan
+</button>
+
+<button
+class="nav"
+onclick="showPage('lessonNote',this)">
+📖 Lesson Note
+</button>
+
+<button
+class="nav"
+onclick="showPage('documents',this)">
+📂 Documents
+</button>
+
+<button
+class="nav"
+onclick="showPage('assistant',this)">
+🤖 Teacher Assistant
+</button>
+
+<button
+class="nav adminOnly"
+onclick="showPage('approval',this)">
+✅ Approval Centre
+</button>
+
+<button
+class="nav adminOnly"
+onclick="showPage('archive',this)">
+📦 Approved Work Archive
+</button>
+
+<button
+class="nav adminOnly"
+onclick="showPage('teachers',this)">
+👨‍🏫 Teachers
+</button>
+
+<button
+class="nav"
+onclick="showPage('security',this)">
+🔐 Account Security
+</button>
+
+<button
+class="nav adminOnly"
+onclick="showPage('backup',this)">
+💾 Backup & Restore
+</button>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<!-- DASHBOARD -->
+
+<section
+class="page active"
+id="dashboard">
+
+<div class="page-title">
+<h2>Dashboard</h2>
+</div>
+
+<div class="grid">
+
+<div class="stat">
+<div class="number" id="statDocuments">0</div>
+<div class="label">Documents</div>
+</div>
+
+<div class="stat adminOnly">
+<div class="number" id="statTeachers">0</div>
+<div class="label">Teachers</div>
+</div>
+
+<div class="stat adminOnly">
+<div class="number" id="statPending">0</div>
+<div class="label">Pending Approval</div>
+</div>
+
+<div class="stat">
+<div class="number" id="statApproved">0</div>
+<div class="label">Approved</div>
+</div>
+
+<div class="stat adminOnly">
+<div class="number" id="statArchived">0</div>
+<div class="label">Archived Works</div>
+</div>
+
+</div>
+
+<div
+class="card"
+style="margin-top:16px">
+
+<h3>Welcome</h3>
+
+<p
+style="margin-top:8px;color:var(--muted)">
+Use the navigation menu to prepare, submit and manage school documents.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- SCHEME -->
+
+<section
+class="page"
+id="scheme">
+
+<div class="page-title">
+
+<h2>Scheme of Work</h2>
+
+<button
+class="btn btn-green"
+onclick="openDocumentForm('Scheme of Work')">
++ Create
+</button>
+
+</div>
+
+<div id="schemeList"></div>
+
+</section>
+
+
+<!-- LESSON PLAN -->
+
+<section
+class="page"
+id="lessonPlan">
+
+<div class="page-title">
+
+<h2>Lesson Plan</h2>
+
+<button
+class="btn btn-green"
+onclick="openDocumentForm('Lesson Plan')">
++ Create
+</button>
+
+</div>
+
+<div id="lessonPlanList"></div>
+
+</section>
+
+
+<!-- LESSON NOTE -->
+
+<section
+class="page"
+id="lessonNote">
+
+<div class="page-title">
+
+<h2>Lesson Note</h2>
+
+<button
+class="btn btn-green"
+onclick="openDocumentForm('Lesson Note')">
++ Create
+</button>
+
+</div>
+
+<div id="lessonNoteList"></div>
+
+</section>
+
+
+<!-- DOCUMENTS -->
+
+<section
+class="page"
+id="documents">
+
+<div class="page-title">
+
+<h2>All Documents</h2>
+
+<button
+class="btn btn-green"
+onclick="openDocumentForm('General Document')">
++ Create
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Author</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="documentsTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TEACHER ASSISTANT -->
+
+<section
+class="page"
+id="assistant">
+
+<div class="page-title">
+<h2>🤖 Teacher Assistant</h2>
+</div>
+
+<div class="card">
+
+<div class="notice">
+This assistant works offline. It creates structured teaching templates without requiring an API.
+</div>
+
+<div class="field">
+
+<label>
+What do you want to prepare?
+</label>
+
+<select id="assistantType">
+
+<option value="lessonplan">
+Lesson Plan
+</option>
+
+<option value="lessonnote">
+Lesson Note
+</option>
+
+<option value="scheme">
+Scheme of Work
+</option>
+
+<option value="objectives">
+Learning Objectives
+</option>
+
+<option value="assessment">
+Assessment Questions
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>Subject</label>
+
+<input
+id="assistantSubject"
+placeholder="e.g. Mathematics">
+
+</div>
+
+
+<div class="field">
+
+<label>Class</label>
+
+<input
+id="assistantClass"
+placeholder="e.g. Basic 4">
+
+</div>
+
+
+<div class="field">
+
+<label>Topic</label>
+
+<input
+id="assistantTopic"
+placeholder="Enter topic">
+
+</div>
+
+
+<button
+class="btn btn-green"
+onclick="generateAssistant()">
+Generate
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>Generated Content</h3>
+
+<div
+id="assistantOutput"
+class="ai-output"
+style="margin-top:12px">
+Your generated content will appear here.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- APPROVAL CENTRE -->
+
+<section
+class="page"
+id="approval">
+
+<div class="page-title">
+<h2>Approval Centre</h2>
+</div>
+
+<div class="card">
+
+<div class="notice">
+Approved work is automatically copied into the Approved Work Archive and separated by document type.
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Document</th>
+<th>Teacher</th>
+<th>Type</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="approvalTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- APPROVED WORK ARCHIVE -->
+
+<section
+class="page"
+id="archive">
+
+<div class="page-title">
+
+<h2>
+📦 Approved Work Archive
+</h2>
+
+</div>
+
+
+<div class="card">
+
+<div class="notice">
+
+This is the permanent working archive for approved school documents.
+Each document type has its own storage area.
+
+</div>
+
+
+<div class="archive-tabs">
+
+<button
+class="archive-tab active"
+onclick="selectArchive('Scheme of Work',this)">
+📚 Scheme of Work
+</button>
+
+<button
+class="archive-tab"
+onclick="selectArchive('Lesson Plan',this)">
+📝 Lesson Plans
+</button>
+
+<button
+class="archive-tab"
+onclick="selectArchive('Lesson Note',this)">
+📖 Lesson Notes
+</button>
+
+<button
+class="archive-tab"
+onclick="selectArchive('General Document',this)">
+📂 Documents
+</button>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+id="archiveSearch"
+oninput="renderArchive()"
+placeholder="Search title, teacher, subject, class...">
+
+<select
+id="archiveTerm"
+onchange="renderArchive()">
+
+<option value="">
+All Terms
+</option>
+
+<option>
+First Term
+</option>
+
+<option>
+Second Term
+</option>
+
+<option>
+Third Term
+</option>
+
+</select>
+
+</div>
+
+
+<div id="archiveList"></div>
+
+</div>
+
+</section>
+
+
+<!-- TEACHERS -->
+
+<section
+class="page"
+id="teachers">
+
+<div class="page-title">
+
+<h2>
+Teacher Management
+</h2>
+
+<button
+class="btn btn-green"
+onclick="openTeacherForm()">
++ Add Teacher
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Username</th>
+<th>Subject</th>
+<th>Class</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="teachersTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SECURITY -->
+
+<section
+class="page"
+id="security">
+
+<div class="page-title">
+<h2>Account Security</h2>
+</div>
+
+
+<div class="card">
+
+<div class="field">
+
+<label>
+Current Password
+</label>
+
+<div class="password-wrap">
+
+<input
+id="currentPassword"
+type="password">
+
+<button
+class="show-btn"
+type="button"
+onclick="togglePassword('currentPassword',this)">
+Show
+</button>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+New Username
+</label>
+
+<input
+id="newUsername"
+placeholder="Enter new username">
+
+</div>
+
+
+<div class="field">
+
+<label>
+New Password
+</label>
+
+<div class="password-wrap">
+
+<input
+id="newPassword"
+type="password">
+
+<button
+class="show-btn"
+type="button"
+onclick="togglePassword('newPassword',this)">
+Show
+</button>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Confirm New Password
+</label>
+
+<div class="password-wrap">
+
+<input
+id="confirmPassword"
+type="password">
+
+<button
+class="show-btn"
+type="button"
+onclick="togglePassword('confirmPassword',this)">
+Show
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="btn btn-green"
+onclick="changeAccount()">
+Save Changes
+</button>
+
+<div
+id="securityMessage"
+style="margin-top:12px">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BACKUP -->
+
+<section
+class="page"
+id="backup">
+
+<div class="page-title">
+
+<h2>
+Backup & Restore
+</h2>
+
+</div>
+
+<div class="card">
+
+<p
+style="color:var(--muted);margin-bottom:15px">
+
+Create a backup of users, documents and all approved archive storage.
+
+</p>
+
+
+<div class="actions">
+
+<button
+class="btn btn-green"
+onclick="backupData()">
+Download Backup
+</button>
+
+
+<label class="btn btn-blue">
+
+Restore Backup
+
+<input
+type="file"
+accept=".json"
+hidden
+onchange="restoreData(event)">
+
+</label>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+</div>
+
 
 <!-- DOCUMENT MODAL -->
+
 <div
- class="modal"
- id="documentModal">
+class="modal"
+id="documentModal">
 
- <div class="modal-box">
+<div class="modal-box">
 
-  <div class="modal-head">
+<div class="modal-head">
 
-   <h3 id="documentModalTitle">
-    Create Document
-   </h3>
+<h3 id="documentModalTitle">
+Create Document
+</h3>
 
-   <button
-    class="close"
-    onclick="closeModal('documentModal')">
-    ✕
-   </button>
-
-  </div>
-
-  <div class="field">
-
-   <label>Document Title</label>
-
-   <input
-    id="docTitle"
-    placeholder="Enter title">
-
-  </div>
-
-  <div class="field">
-
-   <label>Subject</label>
-
-   <input
-    id="docSubject"
-    placeholder="Enter subject">
-
-  </div>
-
-  <div class="field">
-
-   <label>Class</label>
-
-   <input
-    id="docClass"
-    placeholder="Enter class">
-
-  </div>
-
-  <div class="field">
-
-   <label>Term</label>
-
-   <select id="docTerm">
-
-    <option>First Term</option>
-    <option>Second Term</option>
-    <option>Third Term</option>
-
-   </select>
-
-  </div>
-
-  <div class="field">
-
-   <label>Content</label>
-
-   <textarea
-    id="docContent"
-    placeholder="Write your document here...">
-   </textarea>
-
-  </div>
-
-  <button
-   class="primary"
-   onclick="saveDocument()">
-   Save Document
-  </button>
-
- </div>
+<button
+class="close"
+onclick="closeModal('documentModal')">
+✕
+</button>
 
 </div>
+
+
+<div class="field">
+
+<label>
+Document Title
+</label>
+
+<input
+id="docTitle"
+placeholder="Enter title">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Subject
+</label>
+
+<input
+id="docSubject"
+placeholder="Enter subject">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Class
+</label>
+
+<input
+id="docClass"
+placeholder="Enter class">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Term
+</label>
+
+<select id="docTerm">
+
+<option>
+First Term
+</option>
+
+<option>
+Second Term
+</option>
+
+<option>
+Third Term
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Content
+</label>
+
+<textarea
+id="docContent"
+placeholder="Write your document here...">
+</textarea>
+
+</div>
+
+
+<button
+class="primary"
+onclick="saveDocument()">
+Save Document
+</button>
+
+</div>
+
+</div>
+
 
 <!-- TEACHER MODAL -->
+
 <div
- class="modal"
- id="teacherModal">
+class="modal"
+id="teacherModal">
 
- <div class="modal-box">
+<div class="modal-box">
 
-  <div class="modal-head">
+<div class="modal-head">
 
-   <h3 id="teacherModalTitle">
-    Add Teacher
-   </h3>
+<h3 id="teacherModalTitle">
+Add Teacher
+</h3>
 
-   <button
-    class="close"
-    onclick="closeModal('teacherModal')">
-    ✕
-   </button>
-
-  </div>
-
-  <input
-   type="hidden"
-   id="teacherId">
-
-  <div class="field">
-
-   <label>Full Name</label>
-
-   <input id="teacherName">
-
-  </div>
-
-  <div class="field">
-
-   <label>Username</label>
-
-   <input id="teacherUsername">
-
-  </div>
-
-  <div class="field">
-
-   <label>Password</label>
-
-   <div class="password-wrap">
-
-    <input
-     id="teacherPassword"
-     type="password">
-
-    <button
-     class="show-btn"
-     type="button"
-     onclick="togglePassword('teacherPassword',this)">
-     Show
-    </button>
-
-   </div>
-
-  </div>
-
-  <div class="field">
-
-   <label>Subject</label>
-
-   <input id="teacherSubject">
-
-  </div>
-
-  <div class="field">
-
-   <label>Class</label>
-
-   <input id="teacherClass">
-
-  </div>
-
-  <button
-   class="primary"
-   onclick="saveTeacher()">
-   Save Teacher
-  </button>
-
- </div>
+<button
+class="close"
+onclick="closeModal('teacherModal')">
+✕
+</button>
 
 </div>
+
+
+<input
+type="hidden"
+id="teacherId">
+
+
+<div class="field">
+
+<label>
+Full Name
+</label>
+
+<input id="teacherName">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Username
+</label>
+
+<input id="teacherUsername">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Password
+</label>
+
+<div class="password-wrap">
+
+<input
+id="teacherPassword"
+type="password">
+
+<button
+class="show-btn"
+type="button"
+onclick="togglePassword('teacherPassword',this)">
+Show
+</button>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Subject
+</label>
+
+<input id="teacherSubject">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Class
+</label>
+
+<input id="teacherClass">
+
+</div>
+
+
+<button
+class="primary"
+onclick="saveTeacher()">
+Save Teacher
+</button>
+
+</div>
+
+</div>
+
+
+<!-- VIEW MODAL -->
+
+<div
+class="modal"
+id="viewModal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h3 id="viewTitle">
+Document
+</h3>
+
+<button
+class="close"
+onclick="closeModal('viewModal')">
+✕
+</button>
+
+</div>
+
+
+<div
+id="viewMeta"
+style="color:var(--muted);font-size:13px;margin-bottom:12px">
+</div>
+
+
+<div
+id="viewContent"
+class="ai-output">
+</div>
+
+
+<div
+class="actions"
+style="margin-top:15px">
+
+<button
+class="btn btn-green"
+onclick="printCurrentView()">
+🖨️ Print
+</button>
+
+<button
+class="btn btn-gray"
+onclick="closeModal('viewModal')">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script>
 
 /* =========================================================
-   CALIPHATE TARBIYA ACADEMY
-   PROFESSIONAL OFFLINE SCHOOL MANAGEMENT SYSTEM
-   ========================================================= */
+DATABASE
+========================================================= */
 
-const DB_NAME="CTA_ACADEMY_V10";
+const DB_NAME="CTA_ACADEMY_V11";
 const DB_VERSION=1;
 const STORE="data";
 
 let db=null;
+
 let selectedRole="admin";
 let currentUser=null;
 let editingTeacherId=null;
 let documentType="General Document";
+let archiveType="Scheme of Work";
+let currentViewDocument=null;
+
 
 /* =========================================================
-   DATABASE
-   ========================================================= */
+DATABASE FUNCTIONS
+========================================================= */
 
 function openDB(){
 
- return new Promise((resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
-  const request=indexedDB.open(
-   DB_NAME,
-   DB_VERSION
-  );
+const request=indexedDB.open(
+DB_NAME,
+DB_VERSION
+);
 
-  request.onupgradeneeded=function(e){
+request.onupgradeneeded=e=>{
 
-   const database=e.target.result;
+const database=e.target.result;
 
-   if(!database.objectStoreNames.contains(STORE)){
+if(!database.objectStoreNames.contains(STORE)){
 
-    database.createObjectStore(
-     STORE,
-     {keyPath:"key"}
-    );
-
-   }
-
-  };
-
-  request.onsuccess=function(){
-
-   db=request.result;
-   resolve(db);
-
-  };
-
-  request.onerror=function(){
-
-   reject(request.error);
-
-  };
-
- });
+database.createObjectStore(
+STORE,
+{
+keyPath:"key"
+}
+);
 
 }
+
+};
+
+request.onsuccess=()=>{
+
+db=request.result;
+
+resolve(db);
+
+};
+
+request.onerror=()=>reject(request.error);
+
+});
+
+}
+
 
 function getData(key){
 
- return new Promise((resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
-  if(!db){
-   reject(new Error("Database not ready"));
-   return;
-  }
+if(!db){
 
-  const tx=db.transaction(
-   STORE,
-   "readonly"
-  );
+reject(new Error("Database not ready"));
 
-  const store=tx.objectStore(STORE);
-
-  const request=store.get(key);
-
-  request.onsuccess=function(){
-
-   resolve(
-    request.result
-    ? request.result.value
-    : null
-   );
-
-  };
-
-  request.onerror=function(){
-
-   reject(request.error);
-
-  };
-
- });
+return;
 
 }
+
+const request=db
+.transaction(STORE,"readonly")
+.objectStore(STORE)
+.get(key);
+
+request.onsuccess=()=>{
+
+resolve(
+request.result
+?request.result.value
+:null
+);
+
+};
+
+request.onerror=()=>reject(request.error);
+
+});
+
+}
+
 
 function setData(key,value){
 
- return new Promise((resolve,reject)=>{
+return new Promise((resolve,reject)=>{
 
-  if(!db){
-   reject(new Error("Database not ready"));
-   return;
-  }
+if(!db){
 
-  const tx=db.transaction(
-   STORE,
-   "readwrite"
-  );
+reject(new Error("Database not ready"));
 
-  tx.objectStore(STORE).put({
-   key:key,
-   value:value
-  });
-
-  tx.oncomplete=function(){
-   resolve();
-  };
-
-  tx.onerror=function(){
-   reject(tx.error);
-  };
-
- });
+return;
 
 }
 
-/* =========================================================
-   INITIALIZATION
-   ========================================================= */
+const transaction=db.transaction(
+STORE,
+"readwrite"
+);
 
-async function initialize(){
+transaction
+.objectStore(STORE)
+.put({
+key:key,
+value:value
+});
 
- try{
+transaction.oncomplete=()=>resolve();
 
-  await openDB();
+transaction.onerror=()=>reject(
+transaction.error
+);
 
-  let users=await getData("users");
-
-  if(!Array.isArray(users)){
-
-   users=[
-
-    {
-     id:uid(),
-     name:"System Administrator",
-     username:"admin",
-     password:"Admin@2026!",
-     role:"admin",
-     subject:"",
-     className:"",
-     status:"active",
-     createdAt:new Date().toISOString()
-    }
-
-   ];
-
-   await setData(
-    "users",
-    users
-   );
-
-  }
-
-  let documents=await getData("documents");
-
-  if(!Array.isArray(documents)){
-
-   await setData(
-    "documents",
-    []
-   );
-
-  }
-
-  await checkSession();
-
- }catch(error){
-
-  console.error(error);
-
-  const errorBox=
-   document.getElementById("loginError");
-
-  errorBox.textContent=
-   "Unable to initialize the school system. Please open this file normally in Safari or Chrome.";
-
-  errorBox.classList.remove("hidden");
-
- }
+});
 
 }
 
+
 /* =========================================================
-   HELPERS
-   ========================================================= */
+HELPERS
+========================================================= */
 
 function uid(){
 
- return "id_"+Date.now()+"_"+
- Math.random().toString(36).slice(2,9);
+return "id_"+Date.now()+"_"+Math.random()
+.toString(36)
+.slice(2,9);
 
 }
+
 
 function esc(value){
 
- return String(value ?? "")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
-function toast(message){
-
- const existing=
-  document.getElementById("ctaToast");
-
- if(existing){
-  existing.remove();
- }
-
- const toastBox=
-  document.createElement("div");
-
- toastBox.id="ctaToast";
-
- toastBox.textContent=message;
-
- toastBox.style.position="fixed";
- toastBox.style.left="50%";
- toastBox.style.bottom="25px";
- toastBox.style.transform="translateX(-50%)";
- toastBox.style.background="#14532d";
- toastBox.style.color="#fff";
- toastBox.style.padding="12px 18px";
- toastBox.style.borderRadius="10px";
- toastBox.style.fontWeight="700";
- toastBox.style.fontSize="13px";
- toastBox.style.zIndex="9999";
- toastBox.style.boxShadow="0 8px 30px rgba(0,0,0,.2)";
-
- document.body.appendChild(toastBox);
-
- setTimeout(function(){
-
-  if(toastBox){
-   toastBox.remove();
-  }
-
- },3000);
-
-}
 
 function isAdmin(){
 
- return !!(
-  currentUser &&
-  currentUser.role==="admin"
- );
+return !!currentUser &&
+currentUser.role==="admin";
 
 }
+
+
+function toast(message){
+
+const old=document.getElementById("ctaToast");
+
+if(old)old.remove();
+
+const x=document.createElement("div");
+
+x.id="ctaToast";
+
+x.textContent=message;
+
+Object.assign(
+x.style,
+{
+position:"fixed",
+left:"50%",
+bottom:"25px",
+transform:"translateX(-50%)",
+background:"#14532d",
+color:"#fff",
+padding:"12px 18px",
+borderRadius:"10px",
+fontWeight:"700",
+fontSize:"13px",
+zIndex:"9999",
+boxShadow:"0 8px 30px rgba(0,0,0,.2)"
+}
+);
+
+document.body.appendChild(x);
+
+setTimeout(
+()=>x.remove(),
+3000
+);
+
+}
+
 
 function chooseRole(role){
 
- selectedRole=role;
+selectedRole=role;
 
- document
-  .getElementById("adminRole")
-  .classList.toggle(
-   "active",
-   role==="admin"
-  );
+document
+.getElementById("adminRole")
+.classList
+.toggle("active",role==="admin");
 
- document
-  .getElementById("teacherRole")
-  .classList.toggle(
-   "active",
-   role==="teacher"
-  );
+document
+.getElementById("teacherRole")
+.classList
+.toggle("active",role==="teacher");
 
- document
-  .getElementById("loginError")
-  .classList.add("hidden");
+document
+.getElementById("loginError")
+.classList
+.add("hidden");
 
 }
+
 
 function togglePassword(id,button){
 
- const input=
-  document.getElementById(id);
+const input=document.getElementById(id);
 
- if(input.type==="password"){
+input.type=
+input.type==="password"
+?"text"
+:"password";
 
-  input.type="text";
-  button.textContent="Hide";
-
- }else{
-
-  input.type="password";
-  button.textContent="Show";
-
- }
+button.textContent=
+input.type==="password"
+?"Show"
+:"Hide";
 
 }
 
+
 /* =========================================================
-   LOGIN
-   ========================================================= */
+ARCHIVE TYPE
+========================================================= */
+
+function archiveKey(type){
+
+if(type==="Scheme of Work")
+return "scheme";
+
+if(type==="Lesson Plan")
+return "lessonPlan";
+
+if(type==="Lesson Note")
+return "lessonNote";
+
+return "general";
+
+}
+
+
+/* =========================================================
+INITIALIZATION
+========================================================= */
+
+async function initialize(){
+
+try{
+
+await openDB();
+
+
+/* USERS */
+
+let users=await getData("users");
+
+if(!Array.isArray(users)){
+
+users=[
+{
+id:uid(),
+name:"System Administrator",
+username:"admin",
+password:"Admin@2026!",
+role:"admin",
+subject:"",
+className:"",
+status:"active",
+createdAt:new Date().toISOString()
+}
+];
+
+await setData(
+"users",
+users
+);
+
+}
+
+
+/* DOCUMENTS */
+
+let documents=await getData("documents");
+
+if(!Array.isArray(documents)){
+
+await setData(
+"documents",
+[]
+);
+
+}
+
+
+/* ARCHIVE */
+
+let archives=await getData("archives");
+
+if(
+!archives ||
+typeof archives!=="object"
+){
+
+archives={
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+await setData(
+"archives",
+archives
+);
+
+}
+
+
+/* MOVE OLD APPROVED WORK */
+
+await migrateApprovedDocuments();
+
+
+/* SESSION */
+
+await checkSession();
+
+}catch(error){
+
+console.error(error);
+
+const box=
+document.getElementById("loginError");
+
+box.textContent=
+"Unable to initialize the school system. Please open this file normally in Safari or Chrome.";
+
+box.classList.remove("hidden");
+
+}
+
+}
+
+
+/* =========================================================
+MIGRATE OLD APPROVED WORK
+========================================================= */
+
+async function migrateApprovedDocuments(){
+
+const documents=
+await getData("documents")||[];
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+let changed=false;
+
+for(
+const document of documents
+){
+
+if(document.status!=="approved")
+continue;
+
+const key=
+archiveKey(document.type);
+
+if(
+!archives[key].some(
+item=>item.sourceId===document.id
+)
+){
+
+archives[key].push({
+
+...document,
+
+sourceId:document.id,
+
+archivedAt:
+document.approvedAt||
+document.createdAt||
+new Date().toISOString()
+
+});
+
+changed=true;
+
+}
+
+}
+
+if(changed){
+
+await setData(
+"archives",
+archives
+);
+
+}
+
+}
+
+
+/* =========================================================
+LOGIN
+========================================================= */
 
 async function login(){
 
- const username=
-  document
-   .getElementById("loginUsername")
-   .value
-   .trim();
+const username=
+document
+.getElementById("loginUsername")
+.value
+.trim();
 
- const password=
-  document
-   .getElementById("loginPassword")
-   .value;
+const password=
+document
+.getElementById("loginPassword")
+.value;
 
- const error=
-  document.getElementById("loginError");
+const error=
+document.getElementById("loginError");
 
- if(!username || !password){
 
-  error.textContent=
-   "Please enter username and password.";
+if(!username||!password){
 
-  error.classList.remove("hidden");
+error.textContent=
+"Please enter username and password.";
 
-  return;
+error.classList.remove("hidden");
 
- }
-
- try{
-
-  const users=
-   await getData("users") || [];
-
-  const user=users.find(function(u){
-
-   return String(u.username)
-    .toLowerCase()===username.toLowerCase()
-    &&
-    u.password===password
-    &&
-    u.role===selectedRole
-    &&
-    u.status!=="disabled";
-
-  });
-
-  if(!user){
-
-   error.textContent=
-    "Invalid username, password, or account type.";
-
-   error.classList.remove("hidden");
-
-   return;
-
-  }
-
-  currentUser=user;
-
-  localStorage.setItem(
-   "cta_session",
-   user.id
-  );
-
-  showApplication();
-
- }catch(errorObject){
-
-  console.error(errorObject);
-
-  error.textContent=
-   "Login failed. Please try again.";
-
-  error.classList.remove("hidden");
-
- }
+return;
 
 }
+
+
+try{
+
+const users=
+await getData("users")||[];
+
+const user=users.find(
+u=>
+String(u.username)
+.toLowerCase()===
+username.toLowerCase()
+&&
+u.password===password
+&&
+u.role===selectedRole
+&&
+u.status!=="disabled"
+);
+
+
+if(!user){
+
+error.textContent=
+"Invalid username, password, or account type.";
+
+error.classList.remove("hidden");
+
+return;
+
+}
+
+
+currentUser=user;
+
+localStorage.setItem(
+"cta_session",
+user.id
+);
+
+showApplication();
+
+}catch(error){
+
+console.error(error);
+
+errorBox.textContent=
+"Login failed. Please try again.";
+
+errorBox.classList.remove("hidden");
+
+}
+
+}
+
+
+/* =========================================================
+SESSION
+========================================================= */
 
 async function checkSession(){
 
- const id=
-  localStorage.getItem("cta_session");
+const id=
+localStorage.getItem(
+"cta_session"
+);
 
- if(!id){
-  return;
- }
+if(!id)return;
 
- const users=
-  await getData("users") || [];
+const users=
+await getData("users")||[];
 
- const user=
-  users.find(function(u){
-   return u.id===id;
-  });
+const user=
+users.find(
+u=>u.id===id
+);
 
- if(
-  user &&
-  user.status!=="disabled"
- ){
+if(
+user &&
+user.status!=="disabled"
+){
 
-  currentUser=user;
+currentUser=user;
 
-  showApplication();
-
- }
+showApplication();
 
 }
+
+}
+
+
+/* =========================================================
+SHOW APPLICATION
+========================================================= */
 
 function showApplication(){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- document
-  .getElementById("loginScreen")
-  .style.display="none";
+document
+.getElementById("loginScreen")
+.style.display="none";
 
- document
-  .getElementById("app")
-  .style.display="block";
+document
+.getElementById("app")
+.style.display="block";
 
- document
-  .getElementById("currentUser")
-  .textContent=
-   currentUser.name+
-   " • "+
-   (
-    currentUser.role==="admin"
-     ? "Administrator"
-     : "Teacher"
-   );
 
- document
-  .querySelectorAll(".adminOnly")
-  .forEach(function(el){
+document
+.getElementById("currentUser")
+.textContent=
+currentUser.name+
+" • "+
+(
+isAdmin()
+?"Administrator"
+:"Teacher"
+);
 
-   el.style.display=
-    isAdmin()
-     ? ""
-     : "none";
 
-  });
+document
+.querySelectorAll(".adminOnly")
+.forEach(
+element=>{
+element.style.display=
+isAdmin()?"":"none";
+}
+);
 
- showPage("dashboard");
+
+showPage("dashboard");
+
+refreshAll();
 
 }
+
+
+/* =========================================================
+LOGOUT
+========================================================= */
 
 function logout(){
 
- localStorage.removeItem(
-  "cta_session"
- );
+localStorage.removeItem(
+"cta_session"
+);
 
- currentUser=null;
+currentUser=null;
 
- document
-  .getElementById("app")
-  .style.display="none";
+document
+.getElementById("app")
+.style.display="none";
 
- document
-  .getElementById("loginScreen")
-  .style.display="flex";
+document
+.getElementById("loginScreen")
+.style.display="flex";
 
- document
-  .getElementById("loginUsername")
-  .value="";
+document
+.getElementById("loginUsername")
+.value="";
 
- document
-  .getElementById("loginPassword")
-  .value="";
+document
+.getElementById("loginPassword")
+.value="";
 
 }
+
+
+/* =========================================================
+SIDEBAR
+========================================================= */
 
 function toggleSidebar(){
 
- document
-  .getElementById("sidebar")
-  .classList.toggle("open");
+document
+.getElementById("sidebar")
+.classList
+.toggle("open");
 
 }
 
+
 /* =========================================================
-   NAVIGATION
-   ADMIN-ONLY ROUTE PROTECTION
-   ========================================================= */
+NAVIGATION
+========================================================= */
 
 function showPage(id,button){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- const adminOnlyPages=[
-  "approval",
-  "teachers",
-  "backup"
- ];
 
- if(
-  adminOnlyPages.includes(id) &&
-  !isAdmin()
- ){
+const restrictedPages=[
+"approval",
+"archive",
+"teachers",
+"backup"
+];
 
-  toast(
-   "Access denied. Administrator only."
-  );
 
-  id="dashboard";
-  button=null;
+if(
+restrictedPages.includes(id)
+&&
+!isAdmin()
+){
 
- }
+toast(
+"Access denied. Administrator only."
+);
 
- document
-  .querySelectorAll(".page")
-  .forEach(function(page){
+id="dashboard";
 
-   page.classList.remove("active");
-
-  });
-
- const target=
-  document.getElementById(id);
-
- if(!target){
-  return;
- }
-
- target.classList.add("active");
-
- document
-  .querySelectorAll(".nav")
-  .forEach(function(nav){
-
-   nav.classList.remove("active");
-
-  });
-
- if(button){
-  button.classList.add("active");
- }else{
-
-  document
-   .querySelectorAll(".nav")
-   .forEach(function(nav){
-
-    if(
-     nav.getAttribute("onclick") &&
-     nav.getAttribute("onclick")
-      .includes("'"+id+"'")
-    ){
-
-     nav.classList.add("active");
-
-    }
-
-   });
-
- }
-
- document
-  .getElementById("sidebar")
-  .classList.remove("open");
-
- if(id==="documents"){
-  renderDocuments();
- }
-
- if(id==="scheme"){
-  renderType(
-   "Scheme of Work",
-   "schemeList"
-  );
- }
-
- if(id==="lessonPlan"){
-  renderType(
-   "Lesson Plan",
-   "lessonPlanList"
-  );
- }
-
- if(id==="lessonNote"){
-  renderType(
-   "Lesson Note",
-   "lessonNoteList"
-  );
- }
-
- if(id==="approval" && isAdmin()){
-  renderApproval();
- }
-
- if(id==="teachers" && isAdmin()){
-  renderTeachers();
- }
+button=null;
 
 }
 
+
+document
+.querySelectorAll(".page")
+.forEach(
+page=>page.classList.remove("active")
+);
+
+
+const target=
+document.getElementById(id);
+
+if(!target)return;
+
+target.classList.add("active");
+
+
+document
+.querySelectorAll(".nav")
+.forEach(
+nav=>nav.classList.remove("active")
+);
+
+
+if(button){
+
+button.classList.add("active");
+
+}else{
+
+document
+.querySelectorAll(".nav")
+.forEach(nav=>{
+
+if(
+(nav.getAttribute("onclick")||"")
+.includes("'"+id+"'")
+){
+
+nav.classList.add("active");
+
+}
+
+});
+
+}
+
+
+document
+.getElementById("sidebar")
+.classList.remove("open");
+
+
+if(id==="documents")
+renderDocuments();
+
+if(id==="scheme")
+renderType(
+"Scheme of Work",
+"schemeList"
+);
+
+if(id==="lessonPlan")
+renderType(
+"Lesson Plan",
+"lessonPlanList"
+);
+
+if(id==="lessonNote")
+renderType(
+"Lesson Note",
+"lessonNoteList"
+);
+
+if(
+id==="approval" &&
+isAdmin()
+)
+renderApproval();
+
+if(
+id==="archive" &&
+isAdmin()
+)
+renderArchive();
+
+if(
+id==="teachers" &&
+isAdmin()
+)
+renderTeachers();
+
+}
+
+
 /* =========================================================
-   DASHBOARD
-   ========================================================= */
+REFRESH
+========================================================= */
 
 async function refreshAll(){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- const docs=
-  await getData("documents") || [];
 
- const users=
-  await getData("users") || [];
+const documents=
+await getData("documents")||[];
 
- const visible=
-  isAdmin()
-   ? docs
-   : docs.filter(function(d){
-      return d.authorId===currentUser.id;
-     });
+const users=
+await getData("users")||[];
 
- document
-  .getElementById("statDocuments")
-  .textContent=
-   visible.length;
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
 
- document
-  .getElementById("statApproved")
-  .textContent=
-   visible.filter(function(d){
-    return d.status==="approved";
-   }).length;
 
- if(isAdmin()){
+const visible=
+isAdmin()
+?documents
+:documents.filter(
+d=>d.authorId===currentUser.id
+);
 
-  document
-   .getElementById("statTeachers")
-   .textContent=
-    users.filter(function(u){
-     return u.role==="teacher";
-    }).length;
 
-  document
-   .getElementById("statPending")
-   .textContent=
-    docs.filter(function(d){
-     return d.status==="pending";
-    }).length;
+document
+.getElementById("statDocuments")
+.textContent=
+visible.length;
 
- }
 
- await renderDocuments();
+document
+.getElementById("statApproved")
+.textContent=
+visible.filter(
+d=>d.status==="approved"
+).length;
 
- await renderType(
-  "Scheme of Work",
-  "schemeList"
- );
 
- await renderType(
-  "Lesson Plan",
-  "lessonPlanList"
- );
+if(isAdmin()){
 
- await renderType(
-  "Lesson Note",
-  "lessonNoteList"
- );
+document
+.getElementById("statTeachers")
+.textContent=
+users.filter(
+u=>u.role==="teacher"
+).length;
 
- if(isAdmin()){
 
-  await renderApproval();
-  await renderTeachers();
+document
+.getElementById("statPending")
+.textContent=
+documents.filter(
+d=>d.status==="pending"
+).length;
 
- }
+
+document
+.getElementById("statArchived")
+.textContent=
+Object
+.values(archives)
+.reduce(
+(total,array)=>total+array.length,
+0
+);
 
 }
 
+
+await renderDocuments();
+
+await renderType(
+"Scheme of Work",
+"schemeList"
+);
+
+await renderType(
+"Lesson Plan",
+"lessonPlanList"
+);
+
+await renderType(
+"Lesson Note",
+"lessonNoteList"
+);
+
+
+if(isAdmin()){
+
+await renderApproval();
+
+await renderTeachers();
+
+if(
+document
+.getElementById("archive")
+.classList
+.contains("active")
+){
+
+await renderArchive();
+
+}
+
+}
+
+}
+
+
 /* =========================================================
-   DOCUMENTS
-   ========================================================= */
+CREATE DOCUMENT
+========================================================= */
 
 function openDocumentForm(type){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- documentType=type;
+documentType=type;
 
- document
-  .getElementById("documentModalTitle")
-  .textContent=
-   "Create "+type;
+document
+.getElementById("documentModalTitle")
+.textContent=
+"Create "+type;
 
- document
-  .getElementById("docTitle")
-  .value="";
+document
+.getElementById("docTitle")
+.value="";
 
- document
-  .getElementById("docSubject")
-  .value=
-   currentUser.subject || "";
+document
+.getElementById("docSubject")
+.value=
+currentUser.subject||"";
 
- document
-  .getElementById("docClass")
-  .value=
-   currentUser.className || "";
+document
+.getElementById("docClass")
+.value=
+currentUser.className||"";
 
- document
-  .getElementById("docContent")
-  .value="";
+document
+.getElementById("docContent")
+.value="";
 
- document
-  .getElementById("documentModal")
-  .classList.add("show");
+document
+.getElementById("documentModal")
+.classList.add("show");
 
 }
+
+
+/* =========================================================
+SAVE DOCUMENT
+========================================================= */
 
 async function saveDocument(){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- const title=
-  document
-   .getElementById("docTitle")
-   .value
-   .trim();
 
- const subject=
-  document
-   .getElementById("docSubject")
-   .value
-   .trim();
+const title=
+document
+.getElementById("docTitle")
+.value
+.trim();
 
- const className=
-  document
-   .getElementById("docClass")
-   .value
-   .trim();
+const subject=
+document
+.getElementById("docSubject")
+.value
+.trim();
 
- const term=
-  document
-   .getElementById("docTerm")
-   .value;
+const className=
+document
+.getElementById("docClass")
+.value
+.trim();
 
- const content=
-  document
-   .getElementById("docContent")
-   .value
-   .trim();
+const term=
+document
+.getElementById("docTerm")
+.value;
 
- if(!title || !content){
+const content=
+document
+.getElementById("docContent")
+.value
+.trim();
 
-  alert(
-   "Please enter a title and document content."
-  );
 
-  return;
+if(!title||!content){
 
- }
+alert(
+"Please enter a title and document content."
+);
 
- const docs=
-  await getData("documents") || [];
-
- docs.push({
-
-  id:uid(),
-
-  title:title,
-
-  type:documentType,
-
-  subject:subject,
-
-  className:className,
-
-  term:term,
-
-  content:content,
-
-  authorId:currentUser.id,
-
-  authorName:currentUser.name,
-
-  status:
-   isAdmin()
-    ? "approved"
-    : "pending",
-
-  rejectionReason:"",
-
-  createdAt:
-   new Date().toISOString()
-
- });
-
- await setData(
-  "documents",
-  docs
- );
-
- closeModal("documentModal");
-
- await refreshAll();
-
- if(isAdmin()){
-
-  alert(
-   "Document saved and approved."
-  );
-
- }else{
-
-  alert(
-   "Document submitted successfully. It is now waiting for administrator approval."
-  );
-
- }
+return;
 
 }
 
-async function renderDocuments(){
 
- if(!currentUser){
-  return;
- }
+const documents=
+await getData("documents")||[];
 
- const docs=
-  await getData("documents") || [];
 
- const visible=
-  isAdmin()
-   ? docs
-   : docs.filter(function(d){
-      return d.authorId===currentUser.id;
-     });
+const newDocument={
 
- const tbody=
-  document.getElementById(
-   "documentsTable"
-  );
+id:uid(),
 
- if(!tbody){
-  return;
- }
+title:title,
 
- if(!visible.length){
+type:documentType,
 
-  tbody.innerHTML=
-   '<tr><td colspan="5" class="empty">No documents found.</td></tr>';
+subject:subject,
 
-  return;
+className:className,
 
- }
+term:term,
 
- tbody.innerHTML=
-  visible.map(function(d){
+content:content,
 
-   return `
-    <tr>
+authorId:currentUser.id,
 
-     <td>${esc(d.title)}</td>
+authorName:currentUser.name,
 
-     <td>${esc(d.type)}</td>
+status:
+isAdmin()
+?"approved"
+:"pending",
 
-     <td>${esc(d.authorName)}</td>
+rejectionReason:"",
 
-     <td>${statusBadge(d.status)}</td>
+approvedBy:
+isAdmin()
+?currentUser.name
+:"",
 
-     <td>
+approvedAt:
+isAdmin()
+?new Date().toISOString()
+:"",
 
-      <div class="actions">
+createdAt:
+new Date().toISOString()
 
-       <button
-        class="btn btn-blue"
-        onclick="viewDocument('${d.id}')">
-        View
-       </button>
+};
 
-       ${
-        isAdmin()
-        ?
-        `
-        <button
-         class="btn btn-red"
-         onclick="deleteDocument('${d.id}')">
-         Delete
-        </button>
-        `
-        :
-        ""
-       }
 
-      </div>
+documents.push(newDocument);
 
-     </td>
 
-    </tr>
-   `;
+await setData(
+"documents",
+documents
+);
 
-  }).join("");
+
+/* ADMIN WORK GOES DIRECTLY TO ARCHIVE */
+
+if(isAdmin()){
+
+await archiveDocument(
+newDocument
+);
 
 }
+
+
+closeModal(
+"documentModal"
+);
+
+await refreshAll();
+
+
+if(isAdmin()){
+
+alert(
+"Document saved and added to the Approved Work Archive."
+);
+
+}else{
+
+alert(
+"Document submitted successfully. It is now waiting for administrator approval."
+);
+
+}
+
+}
+
+
+/* =========================================================
+ARCHIVE APPROVED DOCUMENT
+========================================================= */
+
+async function archiveDocument(document){
+
+if(
+!document ||
+document.status!=="approved"
+)return;
+
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+
+const key=
+archiveKey(document.type);
+
+
+if(
+!archives[key].some(
+item=>item.sourceId===document.id
+)
+){
+
+archives[key].push({
+
+...document,
+
+sourceId:document.id,
+
+archivedAt:
+document.approvedAt||
+new Date().toISOString()
+
+});
+
+await setData(
+"archives",
+archives
+);
+
+}
+
+}
+
+
+/* =========================================================
+STATUS BADGE
+========================================================= */
 
 function statusBadge(status){
 
- if(status==="approved"){
+if(status==="approved"){
 
-  return `
-   <span class="badge approved">
-    Approved
-   </span>
-  `;
-
- }
-
- if(status==="rejected"){
-
-  return `
-   <span class="badge rejected">
-    Rejected
-   </span>
-  `;
-
- }
-
- return `
-  <span class="badge pending">
-   Pending
-  </span>
- `;
+return `
+<span class="badge approved">
+Approved
+</span>
+`;
 
 }
+
+if(status==="rejected"){
+
+return `
+<span class="badge rejected">
+Rejected
+</span>
+`;
+
+}
+
+return `
+<span class="badge pending">
+Pending
+</span>
+`;
+
+}
+
+
+/* =========================================================
+RENDER DOCUMENTS
+========================================================= */
+
+async function renderDocuments(){
+
+if(!currentUser)return;
+
+
+const documents=
+await getData("documents")||[];
+
+const visible=
+isAdmin()
+?documents
+:documents.filter(
+d=>d.authorId===currentUser.id
+);
+
+
+const table=
+document.getElementById(
+"documentsTable"
+);
+
+
+if(!table)return;
+
+
+if(!visible.length){
+
+table.innerHTML=`
+<tr>
+<td colspan="5" class="empty">
+No documents found.
+</td>
+</tr>
+`;
+
+return;
+
+}
+
+
+table.innerHTML=
+visible.map(
+d=>`
+
+<tr>
+
+<td>
+${esc(d.title)}
+</td>
+
+<td>
+${esc(d.type)}
+</td>
+
+<td>
+${esc(d.authorName)}
+</td>
+
+<td>
+${statusBadge(d.status)}
+</td>
+
+<td>
+
+<div class="actions">
+
+<button
+class="btn btn-blue"
+onclick="viewDocument('${d.id}')">
+View
+</button>
+
+${
+isAdmin()
+?
+`
+<button
+class="btn btn-red"
+onclick="deleteDocument('${d.id}')">
+Delete
+</button>
+`
+:""
+}
+
+</div>
+
+</td>
+
+</tr>
+
+`
+).join("");
+
+}
+
+
+/* =========================================================
+VIEW DOCUMENT
+========================================================= */
 
 async function viewDocument(id){
 
- const docs=
-  await getData("documents") || [];
+const documents=
+await getData("documents")||[];
 
- const d=
-  docs.find(function(x){
-   return x.id===id;
-  });
+const document=
+documents.find(
+d=>d.id===id
+);
 
- if(!d){
-  return;
- }
+if(!document)return;
 
- alert(
-  d.title+
-  "\n\nType: "+d.type+
-  "\nSubject: "+d.subject+
-  "\nClass: "+d.className+
-  "\nTerm: "+d.term+
-  "\nStatus: "+d.status+
-  "\n\n"+d.content+
-  (
-   d.rejectionReason
-   ?
-   "\n\nRejection reason: "+
-   d.rejectionReason
-   :
-   ""
-  )
- );
+openView(document);
 
 }
+
+
+/* =========================================================
+OPEN VIEW
+========================================================= */
+
+function openView(document){
+
+currentViewDocument=document;
+
+
+document.getElementById(
+"viewTitle"
+).textContent=
+document.title;
+
+
+document.getElementById(
+"viewMeta"
+).textContent=
+`${document.type} • ${
+document.subject||"No subject"
+} • ${
+document.className||"No class"
+} • ${
+document.term||"No term"
+} • ${
+document.authorName||""
+}`;
+
+
+document.getElementById(
+"viewContent"
+).textContent=
+document.content+
+(
+document.rejectionReason
+?
+`\n\nRejection reason: ${document.rejectionReason}`
+:""
+);
+
+
+document
+.getElementById("viewModal")
+.classList
+.add("show");
+
+}
+
+
+/* =========================================================
+DELETE DOCUMENT
+========================================================= */
 
 async function deleteDocument(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can delete documents."
-  );
+toast(
+"Only the Administrator can delete documents."
+);
 
-  return;
-
- }
-
- if(!confirm(
-  "Delete this document?"
-  )){
-  return;
- }
-
- const docs=
-  await getData("documents") || [];
-
- const filtered=
-  docs.filter(function(d){
-   return d.id!==id;
-  });
-
- await setData(
-  "documents",
-  filtered
- );
-
- await refreshAll();
+return;
 
 }
 
+
+if(
+!confirm(
+"Delete this document?"
+)
+)return;
+
+
+const documents=
+await getData("documents")||[];
+
+const document=
+documents.find(
+d=>d.id===id
+);
+
+
+await setData(
+"documents",
+documents.filter(
+d=>d.id!==id
+)
+);
+
+
+/* Remove archive copy too */
+
+if(document){
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+const key=
+archiveKey(document.type);
+
+archives[key]=
+archives[key].filter(
+item=>
+item.sourceId!==id
+);
+
+await setData(
+"archives",
+archives
+);
+
+}
+
+
+await refreshAll();
+
+}
+
+
 /* =========================================================
-   TYPE LISTS
-   ========================================================= */
+RENDER TYPE
+========================================================= */
 
 async function renderType(
- type,
- elementId
+type,
+elementId
 ){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- const docs=
-  await getData("documents") || [];
 
- const visible=
-  docs.filter(function(d){
+const documents=
+await getData("documents")||[];
 
-   return d.type===type &&
-    (
-     isAdmin() ||
-     d.authorId===currentUser.id
-    );
+const visible=
+documents.filter(
+d=>
+d.type===type &&
+(
+isAdmin() ||
+d.authorId===currentUser.id
+)
+);
 
-  });
 
- const box=
-  document.getElementById(elementId);
+const box=
+document.getElementById(
+elementId
+);
 
- if(!box){
-  return;
- }
 
- if(!visible.length){
+if(!box)return;
 
-  box.innerHTML=
-   '<div class="card empty">No '+
-   esc(type)+
-   ' found.</div>';
 
-  return;
+if(!visible.length){
 
- }
+box.innerHTML=`
+<div class="card empty">
+No ${esc(type)} found.
+</div>
+`;
 
- box.innerHTML=
-  visible.map(function(d){
-
-   return `
-
-    <div class="card">
-
-     <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
-
-      <div>
-
-       <h3>
-        ${esc(d.title)}
-       </h3>
-
-       <p style="color:var(--muted);font-size:13px;margin-top:5px">
-
-        ${esc(d.subject)}
-        •
-        ${esc(d.className)}
-        •
-        ${esc(d.term)}
-
-       </p>
-
-      </div>
-
-      ${statusBadge(d.status)}
-
-     </div>
-
-     <p style="margin-top:12px;white-space:pre-wrap;line-height:1.5">
-
-      ${esc(
-       d.content.slice(0,500)
-      )}
-
-      ${
-       d.content.length>500
-       ? "..."
-       : ""
-      }
-
-     </p>
-
-     <div
-      class="actions"
-      style="margin-top:12px">
-
-      <button
-       class="btn btn-blue"
-       onclick="viewDocument('${d.id}')">
-       View
-      </button>
-
-     </div>
-
-    </div>
-
-   `;
-
-  }).join("");
+return;
 
 }
 
+
+box.innerHTML=
+visible.map(
+d=>`
+
+<div class="card">
+
+<div
+style="
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:flex-start
+">
+
+<div>
+
+<h3>
+${esc(d.title)}
+</h3>
+
+<p
+style="
+color:var(--muted);
+font-size:13px;
+margin-top:5px
+">
+
+${esc(d.subject)}
+•
+${esc(d.className)}
+•
+${esc(d.term)}
+
+</p>
+
+</div>
+
+${statusBadge(d.status)}
+
+</div>
+
+
+<p
+style="
+margin-top:12px;
+white-space:pre-wrap;
+line-height:1.5
+">
+
+${esc(d.content.slice(0,500))}
+
+${d.content.length>500?"...":""}
+
+</p>
+
+
+<div
+class="actions"
+style="margin-top:12px">
+
+<button
+class="btn btn-blue"
+onclick="viewDocument('${d.id}')">
+View
+</button>
+
+</div>
+
+</div>
+
+`
+).join("");
+
+}
+
+
 /* =========================================================
-   APPROVAL CENTRE
-   ADMIN ONLY
-   ========================================================= */
+APPROVAL CENTRE
+========================================================= */
 
 async function renderApproval(){
 
- const tbody=
-  document.getElementById(
-   "approvalTable"
-  );
+const table=
+document.getElementById(
+"approvalTable"
+);
 
- if(!tbody){
-  return;
- }
+if(
+!table ||
+!isAdmin()
+)return;
 
- if(!isAdmin()){
 
-  tbody.innerHTML="";
+const documents=
+await getData("documents")||[];
 
-  return;
+const pending=
+documents.filter(
+d=>d.status==="pending"
+);
 
- }
 
- const docs=
-  await getData("documents") || [];
+if(!pending.length){
 
- const pending=
-  docs.filter(function(d){
-   return d.status==="pending";
-  });
+table.innerHTML=`
+<tr>
+<td colspan="5" class="empty">
+No documents awaiting approval.
+</td>
+</tr>
+`;
 
- if(!pending.length){
-
-  tbody.innerHTML=
-   '<tr><td colspan="5" class="empty">No documents awaiting approval.</td></tr>';
-
-  return;
-
- }
-
- tbody.innerHTML=
-  pending.map(function(d){
-
-   return `
-
-    <tr>
-
-     <td>${esc(d.title)}</td>
-
-     <td>${esc(d.authorName)}</td>
-
-     <td>${esc(d.type)}</td>
-
-     <td>${statusBadge(d.status)}</td>
-
-     <td>
-
-      <div class="actions">
-
-       <button
-        class="btn btn-blue"
-        onclick="viewDocument('${d.id}')">
-        View
-       </button>
-
-       <button
-        class="btn btn-green"
-        onclick="approveDocument('${d.id}')">
-        Approve
-       </button>
-
-       <button
-        class="btn btn-red"
-        onclick="rejectDocument('${d.id}')">
-        Reject
-       </button>
-
-      </div>
-
-     </td>
-
-    </tr>
-
-   `;
-
-  }).join("");
+return;
 
 }
+
+
+table.innerHTML=
+pending.map(
+d=>`
+
+<tr>
+
+<td>
+${esc(d.title)}
+</td>
+
+<td>
+${esc(d.authorName)}
+</td>
+
+<td>
+${esc(d.type)}
+</td>
+
+<td>
+${statusBadge(d.status)}
+</td>
+
+<td>
+
+<div class="actions">
+
+<button
+class="btn btn-blue"
+onclick="viewDocument('${d.id}')">
+View
+</button>
+
+<button
+class="btn btn-green"
+onclick="approveDocument('${d.id}')">
+Approve
+</button>
+
+<button
+class="btn btn-red"
+onclick="rejectDocument('${d.id}')">
+Reject
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`
+).join("");
+
+}
+
+
+/* =========================================================
+APPROVE
+========================================================= */
 
 async function approveDocument(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can approve documents."
-  );
+toast(
+"Only the Administrator can approve documents."
+);
 
-  return;
-
- }
-
- const docs=
-  await getData("documents") || [];
-
- const d=
-  docs.find(function(x){
-   return x.id===id;
-  });
-
- if(!d){
-  return;
- }
-
- d.status="approved";
-
- d.approvedBy=
-  currentUser.name;
-
- d.approvedAt=
-  new Date().toISOString();
-
- d.rejectionReason="";
-
- await setData(
-  "documents",
-  docs
- );
-
- await refreshAll();
-
- alert(
-  "Document approved successfully."
- );
+return;
 
 }
+
+
+const documents=
+await getData("documents")||[];
+
+const document=
+documents.find(
+d=>d.id===id
+);
+
+
+if(!document)return;
+
+
+document.status="approved";
+
+document.approvedBy=
+currentUser.name;
+
+document.approvedAt=
+new Date().toISOString();
+
+document.rejectionReason="";
+
+
+await setData(
+"documents",
+documents
+);
+
+
+/* IMPORTANT:
+COPY APPROVED DOCUMENT INTO
+ITS SEPARATE ARCHIVE */
+
+await archiveDocument(
+document
+);
+
+
+await refreshAll();
+
+
+alert(
+"Document approved successfully and saved to the Approved Work Archive."
+);
+
+}
+
+
+/* =========================================================
+REJECT
+========================================================= */
 
 async function rejectDocument(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can reject documents."
-  );
+toast(
+"Only the Administrator can reject documents."
+);
 
-  return;
-
- }
-
- const reason=
-  prompt(
-   "Enter rejection reason:"
-  );
-
- if(reason===null){
-  return;
- }
-
- const docs=
-  await getData("documents") || [];
-
- const d=
-  docs.find(function(x){
-   return x.id===id;
-  });
-
- if(!d){
-  return;
- }
-
- d.status="rejected";
-
- d.rejectionReason=
-  reason ||
-  "Rejected by administrator.";
-
- d.rejectedBy=
-  currentUser.name;
-
- d.rejectedAt=
-  new Date().toISOString();
-
- await setData(
-  "documents",
-  docs
- );
-
- await refreshAll();
-
- alert(
-  "Document rejected."
- );
+return;
 
 }
 
+
+const reason=
+prompt(
+"Enter rejection reason:"
+);
+
+
+if(reason===null)return;
+
+
+const documents=
+await getData("documents")||[];
+
+const document=
+documents.find(
+d=>d.id===id
+);
+
+
+if(!document)return;
+
+
+document.status="rejected";
+
+document.rejectionReason=
+reason||
+"Rejected by administrator.";
+
+document.rejectedBy=
+currentUser.name;
+
+document.rejectedAt=
+new Date().toISOString();
+
+
+await setData(
+"documents",
+documents
+);
+
+
+await refreshAll();
+
+
+alert(
+"Document rejected."
+);
+
+}
+
+
 /* =========================================================
-   TEACHER MANAGEMENT
-   ADMIN ONLY
-   ========================================================= */
+ARCHIVE TABS
+========================================================= */
+
+function selectArchive(
+type,
+button
+){
+
+if(!isAdmin())return;
+
+
+archiveType=type;
+
+
+document
+.querySelectorAll(".archive-tab")
+.forEach(
+b=>b.classList.remove("active")
+);
+
+
+if(button)
+button.classList.add("active");
+
+
+document
+.getElementById("archiveSearch")
+.value="";
+
+document
+.getElementById("archiveTerm")
+.value="";
+
+
+renderArchive();
+
+}
+
+
+/* =========================================================
+RENDER ARCHIVE
+========================================================= */
+
+async function renderArchive(){
+
+if(!isAdmin())return;
+
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+
+const key=
+archiveKey(archiveType);
+
+
+let list=
+archives[key]||[];
+
+
+const search=
+(
+document
+.getElementById("archiveSearch")
+.value||""
+)
+.trim()
+.toLowerCase();
+
+
+const term=
+document
+.getElementById("archiveTerm")
+.value;
+
+
+list=
+list
+.filter(
+d=>
+(
+!term ||
+d.term===term
+)
+&&
+(
+!search ||
+[
+d.title,
+d.authorName,
+d.subject,
+d.className,
+d.term
+]
+.some(
+value=>
+String(value||"")
+.toLowerCase()
+.includes(search)
+)
+)
+)
+.sort(
+(a,b)=>
+new Date(
+b.archivedAt||0
+)
+-
+new Date(
+a.archivedAt||0
+)
+);
+
+
+const box=
+document.getElementById(
+"archiveList"
+);
+
+
+if(!list.length){
+
+box.innerHTML=`
+<div class="empty">
+No approved work in this archive.
+</div>
+`;
+
+return;
+
+}
+
+
+box.innerHTML=
+list.map(
+d=>`
+
+<div class="archive-item">
+
+<div
+style="
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:flex-start
+">
+
+<div>
+
+<h3>
+${esc(d.title)}
+</h3>
+
+
+<div class="archive-meta">
+
+Teacher:
+${esc(d.authorName)}
+
+•
+
+Subject:
+${esc(d.subject)}
+
+•
+
+Class:
+${esc(d.className)}
+
+•
+
+${esc(d.term)}
+
+</div>
+
+
+<div class="archive-meta">
+
+Approved:
+${formatDate(
+d.approvedAt||d.archivedAt
+)}
+
+${
+d.approvedBy
+?
+" • By: "+esc(d.approvedBy)
+:""
+}
+
+</div>
+
+</div>
+
+
+<span class="badge approved">
+ARCHIVED
+</span>
+
+</div>
+
+
+<div class="archive-preview">
+
+${esc(
+d.content.slice(0,700)
+)}
+
+${d.content.length>700?"...":""}
+
+</div>
+
+
+<div
+class="actions"
+style="margin-top:10px">
+
+<button
+class="btn btn-blue"
+onclick="viewArchiveItem('${d.sourceId||d.id}','${d.type}')">
+View
+</button>
+
+
+<button
+class="btn btn-green"
+onclick="printArchiveItem('${d.sourceId||d.id}','${d.type}')">
+🖨️ Print
+</button>
+
+
+<button
+class="btn btn-red"
+onclick="deleteArchiveItem('${d.sourceId||d.id}','${d.type}')">
+Delete
+</button>
+
+</div>
+
+</div>
+
+`
+).join("");
+
+}
+
+
+/* =========================================================
+DATE
+========================================================= */
+
+function formatDate(value){
+
+if(!value)
+return "Unknown";
+
+try{
+
+return new Date(value)
+.toLocaleString();
+
+}catch(error){
+
+return value;
+
+}
+
+}
+
+
+/* =========================================================
+GET ARCHIVED ITEM
+========================================================= */
+
+async function getArchiveItem(
+id,
+type
+){
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+
+return (
+archives[
+archiveKey(type)
+]||[]
+).find(
+item=>
+(item.sourceId||item.id)===id
+);
+
+}
+
+
+/* =========================================================
+VIEW ARCHIVED ITEM
+========================================================= */
+
+async function viewArchiveItem(
+id,
+type
+){
+
+const document=
+await getArchiveItem(
+id,
+type
+);
+
+if(document)
+openView(document);
+
+}
+
+
+/* =========================================================
+DELETE ARCHIVED ITEM
+========================================================= */
+
+async function deleteArchiveItem(
+id,
+type
+){
+
+if(!isAdmin()){
+
+toast(
+"Only the Administrator can delete archived work."
+);
+
+return;
+
+}
+
+
+if(
+!confirm(
+"Delete this approved work from the archive? The original document will remain in Documents."
+)
+)return;
+
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+
+const key=
+archiveKey(type);
+
+
+archives[key]=
+(
+archives[key]||[]
+)
+.filter(
+item=>
+(item.sourceId||item.id)!==id
+);
+
+
+await setData(
+"archives",
+archives
+);
+
+
+await refreshAll();
+
+
+toast(
+"Archived work deleted."
+);
+
+}
+
+
+/* =========================================================
+PRINT ARCHIVE
+========================================================= */
+
+async function printArchiveItem(
+id,
+type
+){
+
+const document=
+await getArchiveItem(
+id,
+type
+);
+
+if(document)
+printDocument(document);
+
+}
+
+
+/* =========================================================
+PRINT CURRENT
+========================================================= */
+
+function printCurrentView(){
+
+if(currentViewDocument)
+printDocument(
+currentViewDocument
+);
+
+}
+
+
+/* =========================================================
+PRINT
+========================================================= */
+
+function printDocument(document){
+
+const windowObject=
+window.open(
+"",
+"_blank"
+);
+
+
+if(!windowObject){
+
+alert(
+"Please allow pop-ups in your browser to print."
+);
+
+return;
+
+}
+
+
+windowObject.document.write(`
+
+<html>
+
+<head>
+
+<title>
+${esc(document.title)}
+</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+padding:35px;
+color:#17202a;
+}
+
+h1{
+color:#14532d;
+margin-bottom:10px;
+}
+
+.meta{
+color:#64748b;
+border-bottom:1px solid #ddd;
+padding-bottom:15px;
+margin-bottom:20px;
+}
+
+.content{
+white-space:pre-wrap;
+line-height:1.7;
+font-size:14px;
+}
+
+@media print{
+
+body{
+padding:15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>
+${esc(document.title)}
+</h1>
+
+<div class="meta">
+
+${esc(document.type)}
+•
+${esc(document.subject)}
+•
+${esc(document.className)}
+•
+${esc(document.term)}
+
+<br>
+
+Teacher:
+${esc(document.authorName)}
+
+<br>
+
+Approved:
+${esc(
+formatDate(
+document.approvedAt||
+document.archivedAt
+)
+)}
+
+</div>
+
+<div class="content">
+
+${esc(document.content)}
+
+</div>
+
+</body>
+
+</html>
+
+`);
+
+
+windowObject.document.close();
+
+windowObject.focus();
+
+setTimeout(
+()=>windowObject.print(),
+300
+);
+
+}
+
+
+/* =========================================================
+TEACHER FORM
+========================================================= */
 
 function openTeacherForm(){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can add teachers."
-  );
+toast(
+"Only the Administrator can add teachers."
+);
 
-  return;
-
- }
-
- editingTeacherId=null;
-
- document
-  .getElementById("teacherModalTitle")
-  .textContent="Add Teacher";
-
- document
-  .getElementById("teacherId")
-  .value="";
-
- document
-  .getElementById("teacherName")
-  .value="";
-
- document
-  .getElementById("teacherUsername")
-  .value="";
-
- document
-  .getElementById("teacherPassword")
-  .value="";
-
- document
-  .getElementById("teacherSubject")
-  .value="";
-
- document
-  .getElementById("teacherClass")
-  .value="";
-
- document
-  .getElementById("teacherModal")
-  .classList.add("show");
+return;
 
 }
+
+
+editingTeacherId=null;
+
+
+document
+.getElementById("teacherModalTitle")
+.textContent=
+"Add Teacher";
+
+
+[
+"teacherId",
+"teacherName",
+"teacherUsername",
+"teacherPassword",
+"teacherSubject",
+"teacherClass"
+]
+.forEach(
+id=>
+document.getElementById(id).value=""
+);
+
+
+document
+.getElementById("teacherModal")
+.classList.add("show");
+
+}
+
+
+/* =========================================================
+EDIT TEACHER
+========================================================= */
 
 async function editTeacher(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can edit teachers."
-  );
+toast(
+"Only the Administrator can edit teachers."
+);
 
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- const teacher=
-  users.find(function(u){
-   return u.id===id &&
-    u.role==="teacher";
-  });
-
- if(!teacher){
-  return;
- }
-
- editingTeacherId=id;
-
- document
-  .getElementById("teacherModalTitle")
-  .textContent="Edit Teacher";
-
- document
-  .getElementById("teacherId")
-  .value=teacher.id;
-
- document
-  .getElementById("teacherName")
-  .value=teacher.name;
-
- document
-  .getElementById("teacherUsername")
-  .value=teacher.username;
-
- document
-  .getElementById("teacherPassword")
-  .value=teacher.password;
-
- document
-  .getElementById("teacherSubject")
-  .value=
-   teacher.subject || "";
-
- document
-  .getElementById("teacherClass")
-  .value=
-   teacher.className || "";
-
- document
-  .getElementById("teacherModal")
-  .classList.add("show");
+return;
 
 }
+
+
+const users=
+await getData("users")||[];
+
+const teacher=
+users.find(
+u=>
+u.id===id &&
+u.role==="teacher"
+);
+
+
+if(!teacher)return;
+
+
+editingTeacherId=id;
+
+
+document
+.getElementById("teacherModalTitle")
+.textContent=
+"Edit Teacher";
+
+
+document
+.getElementById("teacherId")
+.value=
+teacher.id;
+
+
+document
+.getElementById("teacherName")
+.value=
+teacher.name;
+
+
+document
+.getElementById("teacherUsername")
+.value=
+teacher.username;
+
+
+document
+.getElementById("teacherPassword")
+.value=
+teacher.password;
+
+
+document
+.getElementById("teacherSubject")
+.value=
+teacher.subject||"";
+
+
+document
+.getElementById("teacherClass")
+.value=
+teacher.className||"";
+
+
+document
+.getElementById("teacherModal")
+.classList.add("show");
+
+}
+
+
+/* =========================================================
+SAVE TEACHER
+========================================================= */
 
 async function saveTeacher(){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can create teacher accounts."
-  );
+toast(
+"Only the Administrator can create teacher accounts."
+);
 
-  return;
-
- }
-
- const name=
-  document
-   .getElementById("teacherName")
-   .value
-   .trim();
-
- const username=
-  document
-   .getElementById("teacherUsername")
-   .value
-   .trim();
-
- const password=
-  document
-   .getElementById("teacherPassword")
-   .value;
-
- const subject=
-  document
-   .getElementById("teacherSubject")
-   .value
-   .trim();
-
- const className=
-  document
-   .getElementById("teacherClass")
-   .value
-   .trim();
-
- if(!name || !username || !password){
-
-  alert(
-   "Name, username and password are required."
-  );
-
-  return;
-
- }
-
- if(password.length<4){
-
-  alert(
-   "Password must contain at least 4 characters."
-  );
-
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- const duplicate=
-  users.find(function(u){
-
-   return String(u.username)
-    .toLowerCase()===
-    username.toLowerCase()
-    &&
-    u.id!==editingTeacherId;
-
-  });
-
- if(duplicate){
-
-  alert(
-   "That username is already in use."
-  );
-
-  return;
-
- }
-
- if(editingTeacherId){
-
-  const teacher=
-   users.find(function(u){
-    return u.id===editingTeacherId;
-   });
-
-  if(teacher){
-
-   teacher.name=name;
-   teacher.username=username;
-   teacher.password=password;
-   teacher.subject=subject;
-   teacher.className=className;
-
-  }
-
- }else{
-
-  users.push({
-
-   id:uid(),
-
-   name:name,
-
-   username:username,
-
-   password:password,
-
-   role:"teacher",
-
-   subject:subject,
-
-   className:className,
-
-   status:"active",
-
-   createdAt:
-    new Date().toISOString()
-
-  });
-
- }
-
- await setData(
-  "users",
-  users
- );
-
- closeModal("teacherModal");
-
- await refreshAll();
-
- alert(
-  editingTeacherId
-  ? "Teacher account updated successfully."
-  : "Teacher account created successfully."
- );
-
- editingTeacherId=null;
+return;
 
 }
+
+
+const name=
+document
+.getElementById("teacherName")
+.value
+.trim();
+
+const username=
+document
+.getElementById("teacherUsername")
+.value
+.trim();
+
+const password=
+document
+.getElementById("teacherPassword")
+.value;
+
+const subject=
+document
+.getElementById("teacherSubject")
+.value
+.trim();
+
+const className=
+document
+.getElementById("teacherClass")
+.value
+.trim();
+
+
+if(
+!name ||
+!username ||
+!password
+){
+
+alert(
+"Name, username and password are required."
+);
+
+return;
+
+}
+
+
+if(password.length<4){
+
+alert(
+"Password must contain at least 4 characters."
+);
+
+return;
+
+}
+
+
+const users=
+await getData("users")||[];
+
+
+const duplicate=
+users.find(
+u=>
+String(u.username)
+.toLowerCase()===
+username.toLowerCase()
+&&
+u.id!==editingTeacherId
+);
+
+
+if(duplicate){
+
+alert(
+"That username is already in use."
+);
+
+return;
+
+}
+
+
+if(editingTeacherId){
+
+const teacher=
+users.find(
+u=>u.id===editingTeacherId
+);
+
+if(teacher){
+
+teacher.name=name;
+teacher.username=username;
+teacher.password=password;
+teacher.subject=subject;
+teacher.className=className;
+
+}
+
+}else{
+
+users.push({
+
+id:uid(),
+
+name:name,
+
+username:username,
+
+password:password,
+
+role:"teacher",
+
+subject:subject,
+
+className:className,
+
+status:"active",
+
+createdAt:
+new Date().toISOString()
+
+});
+
+}
+
+
+await setData(
+"users",
+users
+);
+
+
+closeModal(
+"teacherModal"
+);
+
+
+await refreshAll();
+
+
+alert(
+editingTeacherId
+?
+"Teacher account updated successfully."
+:
+"Teacher account created successfully."
+);
+
+
+editingTeacherId=null;
+
+}
+
+
+/* =========================================================
+RENDER TEACHERS
+========================================================= */
 
 async function renderTeachers(){
 
- const tbody=
-  document.getElementById(
-   "teachersTable"
-  );
+const table=
+document.getElementById(
+"teachersTable"
+);
 
- if(!tbody){
-  return;
- }
 
- if(!isAdmin()){
+if(
+!table ||
+!isAdmin()
+)return;
 
-  tbody.innerHTML="";
 
-  return;
+const users=
+await getData("users")||[];
 
- }
+const teachers=
+users.filter(
+u=>u.role==="teacher"
+);
 
- const users=
-  await getData("users") || [];
 
- const teachers=
-  users.filter(function(u){
-   return u.role==="teacher";
-  });
+if(!teachers.length){
 
- if(!teachers.length){
+table.innerHTML=`
+<tr>
+<td colspan="6" class="empty">
+No teachers added yet.
+</td>
+</tr>
+`;
 
-  tbody.innerHTML=
-   '<tr><td colspan="6" class="empty">No teachers added yet.</td></tr>';
-
-  return;
-
- }
-
- tbody.innerHTML=
-  teachers.map(function(t){
-
-   return `
-
-    <tr>
-
-     <td>${esc(t.name)}</td>
-
-     <td>${esc(t.username)}</td>
-
-     <td>${esc(t.subject)}</td>
-
-     <td>${esc(t.className)}</td>
-
-     <td>
-
-      ${
-       t.status==="active"
-
-       ?
-
-       '<span class="badge approved">Active</span>'
-
-       :
-
-       '<span class="badge disabled">Disabled</span>'
-      }
-
-     </td>
-
-     <td>
-
-      <div class="actions">
-
-       <button
-        class="btn btn-blue"
-        onclick="editTeacher('${t.id}')">
-        Edit
-       </button>
-
-       <button
-        class="btn btn-yellow"
-        onclick="toggleTeacher('${t.id}')">
-
-        ${
-         t.status==="active"
-         ? "Disable"
-         : "Enable"
-        }
-
-       </button>
-
-       <button
-        class="btn btn-red"
-        onclick="deleteTeacher('${t.id}')">
-        Delete
-       </button>
-
-      </div>
-
-     </td>
-
-    </tr>
-
-   `;
-
-  }).join("");
+return;
 
 }
+
+
+table.innerHTML=
+teachers.map(
+teacher=>`
+
+<tr>
+
+<td>
+${esc(teacher.name)}
+</td>
+
+<td>
+${esc(teacher.username)}
+</td>
+
+<td>
+${esc(teacher.subject)}
+</td>
+
+<td>
+${esc(teacher.className)}
+</td>
+
+<td>
+
+${
+teacher.status==="active"
+?
+`
+<span class="badge approved">
+Active
+</span>
+`
+:
+`
+<span class="badge disabled">
+Disabled
+</span>
+`
+}
+
+</td>
+
+<td>
+
+<div class="actions">
+
+<button
+class="btn btn-blue"
+onclick="editTeacher('${teacher.id}')">
+Edit
+</button>
+
+<button
+class="btn btn-yellow"
+onclick="toggleTeacher('${teacher.id}')">
+
+${
+teacher.status==="active"
+?"Disable"
+:"Enable"
+}
+
+</button>
+
+<button
+class="btn btn-red"
+onclick="deleteTeacher('${teacher.id}')">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`
+).join("");
+
+}
+
+
+/* =========================================================
+TOGGLE TEACHER
+========================================================= */
 
 async function toggleTeacher(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can manage teachers."
-  );
+toast(
+"Only the Administrator can manage teachers."
+);
 
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- const teacher=
-  users.find(function(u){
-
-   return u.id===id &&
-    u.role==="teacher";
-
-  });
-
- if(!teacher){
-  return;
- }
-
- teacher.status=
-  teacher.status==="active"
-  ? "disabled"
-  : "active";
-
- await setData(
-  "users",
-  users
- );
-
- await refreshAll();
+return;
 
 }
+
+
+const users=
+await getData("users")||[];
+
+const teacher=
+users.find(
+u=>
+u.id===id &&
+u.role==="teacher"
+);
+
+
+if(!teacher)return;
+
+
+teacher.status=
+teacher.status==="active"
+?"disabled"
+:"active";
+
+
+await setData(
+"users",
+users
+);
+
+
+await refreshAll();
+
+}
+
+
+/* =========================================================
+DELETE TEACHER
+========================================================= */
 
 async function deleteTeacher(id){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can delete teachers."
-  );
+toast(
+"Only the Administrator can delete teachers."
+);
 
-  return;
-
- }
-
- if(!confirm(
-  "Delete this teacher and all documents created by this teacher?"
-  )){
-
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- const documents=
-  await getData("documents") || [];
-
- const teacher=
-  users.find(function(u){
-   return u.id===id &&
-    u.role==="teacher";
-  });
-
- if(!teacher){
-  return;
- }
-
- const newUsers=
-  users.filter(function(u){
-   return u.id!==id;
-  });
-
- const newDocuments=
-  documents.filter(function(d){
-   return d.authorId!==id;
-  });
-
- await setData(
-  "users",
-  newUsers
- );
-
- await setData(
-  "documents",
-  newDocuments
- );
-
- await refreshAll();
-
- toast(
-  "Teacher account deleted."
- );
+return;
 
 }
 
+
+if(
+!confirm(
+"Delete this teacher and all documents created by this teacher?"
+)
+)return;
+
+
+const users=
+await getData("users")||[];
+
+const documents=
+await getData("documents")||[];
+
+const teacher=
+users.find(
+u=>
+u.id===id &&
+u.role==="teacher"
+);
+
+
+if(!teacher)return;
+
+
+await setData(
+"users",
+users.filter(
+u=>u.id!==id
+)
+);
+
+
+await setData(
+"documents",
+documents.filter(
+d=>d.authorId!==id
+)
+);
+
+
+/* Remove teacher's archived work */
+
+const archives=
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+};
+
+
+Object.keys(archives)
+.forEach(
+key=>{
+
+archives[key]=
+(archives[key]||[])
+.filter(
+d=>d.authorId!==id
+);
+
+}
+);
+
+
+await setData(
+"archives",
+archives
+);
+
+
+await refreshAll();
+
+
+toast(
+"Teacher account and related work deleted."
+);
+
+}
+
+
 /* =========================================================
-   ACCOUNT SECURITY
-   ========================================================= */
+ACCOUNT SECURITY
+========================================================= */
 
 async function changeAccount(){
 
- if(!currentUser){
-  return;
- }
+if(!currentUser)return;
 
- const current=
-  document
-   .getElementById("currentPassword")
-   .value;
 
- const newUsername=
-  document
-   .getElementById("newUsername")
-   .value
-   .trim();
+const current=
+document
+.getElementById("currentPassword")
+.value;
 
- const newPassword=
-  document
-   .getElementById("newPassword")
-   .value;
+const newUsername=
+document
+.getElementById("newUsername")
+.value
+.trim();
 
- const confirm=
-  document
-   .getElementById("confirmPassword")
-   .value;
+const newPassword=
+document
+.getElementById("newPassword")
+.value;
 
- const msg=
-  document.getElementById(
-   "securityMessage"
-  );
+const confirmPassword=
+document
+.getElementById("confirmPassword")
+.value;
 
- if(current!==currentUser.password){
+const message=
+document.getElementById(
+"securityMessage"
+);
 
-  msg.innerHTML=
-   '<div class="error">Current password is incorrect.</div>';
 
-  return;
+if(
+current!==currentUser.password
+){
 
- }
+message.innerHTML=`
+<div class="error">
+Current password is incorrect.
+</div>
+`;
 
- if(newUsername && newUsername.length<3){
-
-  msg.innerHTML=
-   '<div class="error">Username must be at least 3 characters.</div>';
-
-  return;
-
- }
-
- if(newPassword && newPassword.length<6){
-
-  msg.innerHTML=
-   '<div class="error">New password must contain at least 6 characters.</div>';
-
-  return;
-
- }
-
- if(newPassword!==confirm){
-
-  msg.innerHTML=
-   '<div class="error">Passwords do not match.</div>';
-
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- if(
-  newUsername &&
-  users.some(function(u){
-
-   return u.id!==currentUser.id &&
-    String(u.username)
-     .toLowerCase()===
-    newUsername.toLowerCase();
-
-  })
- ){
-
-  msg.innerHTML=
-   '<div class="error">That username is already taken.</div>';
-
-  return;
-
- }
-
- const user=
-  users.find(function(u){
-   return u.id===currentUser.id;
-  });
-
- if(!user){
-  return;
- }
-
- if(newUsername){
-  user.username=newUsername;
- }
-
- if(newPassword){
-  user.password=newPassword;
- }
-
- await setData(
-  "users",
-  users
- );
-
- currentUser=user;
-
- localStorage.setItem(
-  "cta_session",
-  user.id
- );
-
- document
-  .getElementById("currentUser")
-  .textContent=
-   currentUser.name+
-   " • "+
-   (
-    currentUser.role==="admin"
-    ? "Administrator"
-    : "Teacher"
-   );
-
- document
-  .getElementById("currentPassword")
-  .value="";
-
- document
-  .getElementById("newUsername")
-  .value="";
-
- document
-  .getElementById("newPassword")
-  .value="";
-
- document
-  .getElementById("confirmPassword")
-  .value="";
-
- msg.innerHTML=
-  '<div style="background:#f0fdf4;color:#15803d;padding:10px;border-radius:9px">Account updated successfully.</div>';
+return;
 
 }
 
+
+if(
+newUsername &&
+newUsername.length<3
+){
+
+message.innerHTML=`
+<div class="error">
+Username must be at least 3 characters.
+</div>
+`;
+
+return;
+
+}
+
+
+if(
+newPassword &&
+newPassword.length<6
+){
+
+message.innerHTML=`
+<div class="error">
+New password must contain at least 6 characters.
+</div>
+`;
+
+return;
+
+}
+
+
+if(
+newPassword!==confirmPassword
+){
+
+message.innerHTML=`
+<div class="error">
+Passwords do not match.
+</div>
+`;
+
+return;
+
+}
+
+
+const users=
+await getData("users")||[];
+
+
+if(
+newUsername &&
+users.some(
+u=>
+u.id!==currentUser.id &&
+String(u.username)
+.toLowerCase()===
+newUsername.toLowerCase()
+)
+){
+
+message.innerHTML=`
+<div class="error">
+That username is already taken.
+</div>
+`;
+
+return;
+
+}
+
+
+const user=
+users.find(
+u=>u.id===currentUser.id
+);
+
+
+if(!user)return;
+
+
+if(newUsername)
+user.username=newUsername;
+
+if(newPassword)
+user.password=newPassword;
+
+
+await setData(
+"users",
+users
+);
+
+
+currentUser=user;
+
+
+localStorage.setItem(
+"cta_session",
+user.id
+);
+
+
+document
+.getElementById("currentUser")
+.textContent=
+user.name+
+" • "+
+(
+isAdmin()
+?"Administrator"
+:"Teacher"
+);
+
+
+[
+"currentPassword",
+"newUsername",
+"newPassword",
+"confirmPassword"
+]
+.forEach(
+id=>
+document.getElementById(id).value=""
+);
+
+
+message.innerHTML=`
+<div
+style="
+background:#f0fdf4;
+color:#15803d;
+padding:10px;
+border-radius:9px">
+Account updated successfully.
+</div>
+`;
+
+}
+
+
 /* =========================================================
-   OFFLINE TEACHER ASSISTANT
-   ========================================================= */
+TEACHER ASSISTANT
+========================================================= */
 
 function generateAssistant(){
 
- const type=
-  document
-   .getElementById("assistantType")
-   .value;
+const type=
+document
+.getElementById("assistantType")
+.value;
 
- const subject=
-  document
-   .getElementById("assistantSubject")
-   .value
-   .trim()
-   ||
-   "________________";
+const subject=
+document
+.getElementById("assistantSubject")
+.value
+.trim()
+||
+"________________";
 
- const className=
-  document
-   .getElementById("assistantClass")
-   .value
-   .trim()
-   ||
-   "________________";
+const className=
+document
+.getElementById("assistantClass")
+.value
+.trim()
+||
+"________________";
 
- const topic=
-  document
-   .getElementById("assistantTopic")
-   .value
-   .trim()
-   ||
-   "________________";
+const topic=
+document
+.getElementById("assistantTopic")
+.value
+.trim()
+||
+"________________";
 
- let output="";
 
- if(type==="lessonplan"){
+let output="";
 
-  output=
+
+if(type==="lessonplan"){
+
+output=
 `LESSON PLAN
 
 School: Caliphate Tarbiya Academy
@@ -3398,24 +4887,29 @@ Duration: __________________
 Period: __________________
 
 Learning Objectives:
-By the end of the lesson, pupils should be able to:
+
+By the end of the lesson, learners should be able to:
 
 1. Explain ${topic}.
 2. Identify the main concepts related to ${topic}.
 3. Demonstrate understanding through classroom activities.
 
 Previous Knowledge:
+
 Learners have basic knowledge related to the topic.
 
 Instructional Materials:
+
 - Textbook
 - Board/marker
 - Relevant teaching materials
 
 Introduction:
+
 Teacher introduces the topic using questions and examples.
 
 Presentation:
+
 Step 1: Introduce the topic.
 Step 2: Explain the major concepts.
 Step 3: Give examples.
@@ -3423,24 +4917,29 @@ Step 4: Allow learners to participate.
 Step 5: Correct misconceptions.
 
 Learner Activities:
+
 Learners answer questions, participate in discussion and complete exercises.
 
 Evaluation:
+
 1. What is ${topic}?
 2. Mention two important points about the topic.
 3. Explain one example.
 
 Conclusion:
+
 Teacher summarizes the lesson and gives assignment.
 
 Assignment:
+
 Write three things you learned about ${topic}.`;
 
- }
+}
 
- else if(type==="lessonnote"){
 
-  output=
+else if(type==="lessonnote"){
+
+output=
 `LESSON NOTE
 
 Subject: ${subject}
@@ -3448,12 +4947,15 @@ Class: ${className}
 Topic: ${topic}
 
 Introduction:
+
 ${topic} is an important concept in ${subject}. This lesson explains the meaning, importance and practical application of the topic.
 
 Meaning:
+
 ${topic} refers to the main concept being studied in this lesson.
 
 Key Points:
+
 1. Definition and meaning.
 2. Main characteristics.
 3. Examples.
@@ -3461,26 +4963,33 @@ Key Points:
 5. Practical application.
 
 Examples:
+
 Example 1: __________________
+
 Example 2: __________________
+
 Example 3: __________________
 
 Class Activity:
+
 Learners discuss the topic and provide examples.
 
 Evaluation Questions:
+
 1. Define ${topic}.
 2. Mention two examples.
 3. State two important points about the topic.
 
 Summary:
+
 The lesson has explained the meaning, characteristics, examples and importance of ${topic}.`;
 
- }
+}
 
- else if(type==="scheme"){
 
-  output=
+else if(type==="scheme"){
+
+output=
 `SCHEME OF WORK
 
 Subject: ${subject}
@@ -3488,41 +4997,36 @@ Class: ${className}
 Topic Area: ${topic}
 
 Week 1:
-Topic: Introduction to ${topic}
-Objectives: Introduce the basic concepts.
+Introduction to ${topic}
 
 Week 2:
-Topic: Meaning and Definition
-Objectives: Explain the meaning and important terms.
+Meaning and Definition
 
 Week 3:
-Topic: Characteristics
-Objectives: Identify major characteristics.
+Characteristics
 
 Week 4:
-Topic: Types and Examples
-Objectives: Identify different types and examples.
+Types and Examples
 
 Week 5:
-Topic: Practical Application
-Objectives: Apply knowledge to practical situations.
+Practical Application
 
 Week 6:
-Topic: Revision
-Objectives: Review major concepts.
+Revision
 
 Week 7:
-Topic: Assessment
-Objectives: Assess learners' understanding.
+Assessment
 
 Note:
+
 Adjust the weekly sequence to the approved school curriculum.`;
 
- }
+}
 
- else if(type==="objectives"){
 
-  output=
+else if(type==="objectives"){
+
+output=
 `LEARNING OBJECTIVES
 
 Subject: ${subject}
@@ -3538,280 +5042,338 @@ By the end of the lesson, learners should be able to:
 5. Apply the knowledge gained to simple practical situations.
 6. Answer assessment questions correctly.`;
 
- }
+}
 
- else{
 
-  output=
+else{
+
+output=
 `ASSESSMENT QUESTIONS
 
 Subject: ${subject}
 Class: ${className}
 Topic: ${topic}
 
-SECTION A: OBJECTIVE QUESTIONS
+SECTION A:
+OBJECTIVE QUESTIONS
 
 1. What is ${topic}?
+
 A. __________________
 B. __________________
 C. __________________
 D. __________________
 
 2. Which of the following is related to ${topic}?
+
 A. __________________
 B. __________________
 C. __________________
 D. __________________
 
-3. Mention one important feature of ${topic}.
 
-SECTION B: THEORY
+SECTION B:
+THEORY
 
 1. Define ${topic}.
+
 2. Mention three examples.
+
 3. Explain two important points about ${topic}.
-4. State two practical applications.
 
-Teacher's Marking Guide:
-Award marks according to the expected answers and learner understanding.`;
-
- }
-
- document
-  .getElementById("assistantOutput")
-  .textContent=output;
+4. State two practical applications.`;
 
 }
 
+
+document
+.getElementById("assistantOutput")
+.textContent=output;
+
+}
+
+
 /* =========================================================
-   BACKUP
-   ADMIN ONLY
-   ========================================================= */
+BACKUP
+========================================================= */
 
 async function backupData(){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can create backups."
-  );
+toast(
+"Only the Administrator can create backups."
+);
 
-  return;
-
- }
-
- const users=
-  await getData("users") || [];
-
- const documents=
-  await getData("documents") || [];
-
- const backup={
-
-  application:
-   "Caliphate Tarbiya Academy",
-
-  version:"10.0",
-
-  exportedAt:
-   new Date().toISOString(),
-
-  users:users,
-
-  documents:documents
-
- };
-
- const blob=
-  new Blob(
-   [
-    JSON.stringify(
-     backup,
-     null,
-     2
-    )
-   ],
-   {
-    type:"application/json"
-   }
-  );
-
- const url=
-  URL.createObjectURL(blob);
-
- const a=
-  document.createElement("a");
-
- a.href=url;
-
- a.download=
-  "caliphate-tarbiya-backup.json";
-
- document.body.appendChild(a);
-
- a.click();
-
- a.remove();
-
- setTimeout(function(){
-
-  URL.revokeObjectURL(url);
-
- },1000);
+return;
 
 }
+
+
+const backup={
+
+application:
+"Caliphate Tarbiya Academy",
+
+version:
+"11.0",
+
+exportedAt:
+new Date().toISOString(),
+
+users:
+await getData("users")||[],
+
+documents:
+await getData("documents")||[],
+
+archives:
+await getData("archives")||{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+}
+
+};
+
+
+const blob=
+new Blob(
+[
+JSON.stringify(
+backup,
+null,
+2
+)
+],
+{
+type:"application/json"
+}
+);
+
+
+const url=
+URL.createObjectURL(blob);
+
+
+const link=
+document.createElement("a");
+
+link.href=url;
+
+link.download=
+"caliphate-tarbiya-backup-v11.json";
+
+document.body.appendChild(link);
+
+link.click();
+
+link.remove();
+
+setTimeout(
+()=>URL.revokeObjectURL(url),
+1000
+);
+
+}
+
+
+/* =========================================================
+RESTORE
+========================================================= */
 
 async function restoreData(event){
 
- if(!isAdmin()){
+if(!isAdmin()){
 
-  toast(
-   "Only the Administrator can restore backups."
-  );
+toast(
+"Only the Administrator can restore backups."
+);
 
-  event.target.value="";
+event.target.value="";
 
-  return;
-
- }
-
- const file=
-  event.target.files[0];
-
- if(!file){
-  return;
- }
-
- try{
-
-  const text=
-   await file.text();
-
-  const backup=
-   JSON.parse(text);
-
-  if(
-   !Array.isArray(backup.users) ||
-   !Array.isArray(backup.documents)
-  ){
-
-   throw new Error(
-    "Invalid backup"
-   );
-
-  }
-
-  if(!confirm(
-   "Restore this backup? Current local data will be replaced."
-  )){
-
-   event.target.value="";
-
-   return;
-
-  }
-
-  await setData(
-   "users",
-   backup.users
-  );
-
-  await setData(
-   "documents",
-   backup.documents
-  );
-
-  alert(
-   "Backup restored successfully."
-  );
-
-  location.reload();
-
- }catch(error){
-
-  console.error(error);
-
-  alert(
-   "Unable to restore backup. Please select a valid CTA backup file."
-  );
-
- }finally{
-
-  event.target.value="";
-
- }
+return;
 
 }
 
+
+const file=
+event.target.files[0];
+
+if(!file)return;
+
+
+try{
+
+const backup=
+JSON.parse(
+await file.text()
+);
+
+
+if(
+!Array.isArray(backup.users) ||
+!Array.isArray(backup.documents)
+){
+
+throw new Error(
+"Invalid backup"
+);
+
+}
+
+
+if(
+!confirm(
+"Restore this backup? Current local data will be replaced."
+)
+){
+
+event.target.value="";
+
+return;
+
+}
+
+
+await setData(
+"users",
+backup.users
+);
+
+
+await setData(
+"documents",
+backup.documents
+);
+
+
+/* RESTORE ARCHIVES */
+
+if(
+backup.archives &&
+typeof backup.archives==="object"
+){
+
+await setData(
+"archives",
+backup.archives
+);
+
+}else{
+
+await setData(
+"archives",
+{
+scheme:[],
+lessonPlan:[],
+lessonNote:[],
+general:[]
+}
+);
+
+await migrateApprovedDocuments();
+
+}
+
+
+alert(
+"Backup restored successfully."
+);
+
+
+location.reload();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Unable to restore backup. Please select a valid CTA backup file."
+);
+
+}finally{
+
+event.target.value="";
+
+}
+
+}
+
+
 /* =========================================================
-   MODALS
-   ========================================================= */
+CLOSE MODALS
+========================================================= */
 
 function closeModal(id){
 
- const modal=
-  document.getElementById(id);
+const modal=
+document.getElementById(id);
 
- if(modal){
-  modal.classList.remove("show");
- }
+if(modal)
+modal.classList.remove("show");
 
 }
 
+
+/* =========================================================
+CLICK OUTSIDE MODAL
+========================================================= */
+
 window.addEventListener(
- "click",
- function(e){
+"click",
+event=>{
 
-  document
-   .querySelectorAll(".modal")
-   .forEach(function(modal){
+document
+.querySelectorAll(".modal")
+.forEach(
+modal=>{
 
-    if(e.target===modal){
+if(event.target===modal)
+modal.classList.remove("show");
 
-     modal.classList.remove(
-      "show"
-     );
-
-    }
-
-   });
-
- }
+}
 );
 
-/* =========================================================
-   KEYBOARD LOGIN
-   ========================================================= */
+}
+);
 
-document
- .getElementById("loginPassword")
- .addEventListener(
-  "keydown",
-  function(e){
-
-   if(e.key==="Enter"){
-    login();
-   }
-
-  }
- );
-
-document
- .getElementById("loginUsername")
- .addEventListener(
-  "keydown",
-  function(e){
-
-   if(e.key==="Enter"){
-    login();
-   }
-
-  }
- );
 
 /* =========================================================
-   START SYSTEM
-   ========================================================= */
+ENTER LOGIN
+========================================================= */
+
+document
+.getElementById("loginPassword")
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter")
+login();
+
+}
+);
+
+
+document
+.getElementById("loginUsername")
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter")
+login();
+
+}
+);
+
+
+/* =========================================================
+START
+========================================================= */
 
 initialize();
 
