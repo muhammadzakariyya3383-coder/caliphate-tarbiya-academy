@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#14532d">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Caliphate Tarbiya Academy | School Management System</title>
+<title>Caliphate Tarbiya Academy | Digital School System</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -14,17 +13,16 @@
 :root{
  --primary:#14532d;
  --primary2:#166534;
- --dark:#10251a;
+ --dark:#082b18;
  --light:#f0fdf4;
- --white:#fff;
- --border:#d9e2dc;
+ --border:#d8e2dc;
  --text:#17202a;
  --muted:#64748b;
+ --white:#fff;
  --danger:#b91c1c;
- --warning:#b45309;
  --success:#15803d;
+ --warning:#b45309;
  --blue:#1d4ed8;
- --shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 body{
@@ -50,33 +48,43 @@ button{cursor:pointer}
 
 .login-card{
  width:100%;
- max-width:440px;
- background:white;
+ max-width:430px;
+ background:#fff;
  border-radius:24px;
  padding:30px;
  box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .logo{
- width:76px;
- height:76px;
+ width:78px;
+ height:78px;
  border-radius:50%;
  background:var(--primary);
  color:#fff;
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:34px;
+ font-size:30px;
+ font-weight:800;
  margin:0 auto 15px;
 }
 
-.login-card h1{text-align:center;font-size:24px}
-.login-card .subtitle{text-align:center;color:var(--muted);margin:6px 0 25px}
+.login-card h1{
+ text-align:center;
+ font-size:23px;
+}
+
+.subtitle{
+ text-align:center;
+ color:var(--muted);
+ margin:7px 0 25px;
+}
 
 .form-group{margin-bottom:15px}
+
 .form-group label{
  display:block;
- font-weight:600;
+ font-weight:700;
  margin-bottom:7px;
 }
 
@@ -89,17 +97,20 @@ input,select,textarea{
  outline:none;
 }
 
+textarea{
+ min-height:140px;
+ resize:vertical;
+}
+
 input:focus,select:focus,textarea:focus{
  border-color:var(--primary);
  box-shadow:0 0 0 3px rgba(20,83,45,.1);
 }
 
-textarea{min-height:130px;resize:vertical}
-
 .btn{
  border:0;
  border-radius:10px;
- padding:11px 16px;
+ padding:11px 15px;
  font-weight:700;
  display:inline-flex;
  align-items:center;
@@ -109,19 +120,18 @@ textarea{min-height:130px;resize:vertical}
 
 .btn-primary{background:var(--primary);color:#fff}
 .btn-primary:hover{background:#0f3d22}
+.btn-success{background:var(--success);color:#fff}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
 .btn-secondary{background:#e2e8f0;color:#17202a}
-.btn-success{background:#15803d;color:#fff}
-.btn-danger{background:#b91c1c;color:#fff}
 .btn-warning{background:#d97706;color:#fff}
-.btn-blue{background:#1d4ed8;color:#fff}
-.btn-sm{padding:8px 11px;font-size:13px}
-
+.btn-sm{padding:7px 10px;font-size:12px}
 .full{width:100%}
 
 .error{
  background:#fee2e2;
  color:#991b1b;
- padding:10px;
+ padding:11px;
  border-radius:9px;
  margin-bottom:15px;
  font-size:14px;
@@ -134,11 +144,11 @@ textarea{min-height:130px;resize:vertical}
 
 .sidebar{
  width:270px;
- background:#092b19;
+ background:var(--dark);
  color:#fff;
  position:fixed;
- top:0;
  left:0;
+ top:0;
  bottom:0;
  overflow-y:auto;
  z-index:100;
@@ -157,23 +167,28 @@ textarea{min-height:130px;resize:vertical}
 }
 
 .brand-logo{
- width:45px;
- height:45px;
- border-radius:12px;
+ width:46px;
+ height:46px;
  background:#fff;
  color:var(--primary);
+ border-radius:12px;
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:21px;
  font-weight:800;
 }
 
 .brand h2{font-size:16px}
-.brand small{color:#b7d5c1}
+.brand small{color:#a8c8b4}
 
-.nav{
- padding:15px 10px;
+.nav{padding:15px 10px}
+
+.nav-section{
+ color:#7fa68c;
+ font-size:11px;
+ text-transform:uppercase;
+ letter-spacing:1px;
+ padding:14px;
 }
 
 .nav button{
@@ -188,17 +203,10 @@ textarea{min-height:130px;resize:vertical}
  font-weight:600;
 }
 
-.nav button:hover,.nav button.active{
+.nav button:hover,
+.nav button.active{
  background:#166534;
  color:#fff;
-}
-
-.nav-section{
- color:#7fa68c;
- font-size:11px;
- text-transform:uppercase;
- letter-spacing:1px;
- padding:15px 14px 7px;
 }
 
 .main{
@@ -267,7 +275,7 @@ textarea{min-height:130px;resize:vertical}
 }
 
 .page-title h1{font-size:26px}
-.page-title p{color:var(--muted);margin-top:4px}
+.page-title p{color:var(--muted);margin-top:5px}
 
 .grid{
  display:grid;
@@ -280,7 +288,7 @@ textarea{min-height:130px;resize:vertical}
  border:1px solid var(--border);
  border-radius:16px;
  padding:20px;
- box-shadow:var(--shadow);
+ box-shadow:0 7px 22px rgba(0,0,0,.06);
 }
 
 .stat{
@@ -297,11 +305,11 @@ textarea{min-height:130px;resize:vertical}
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:24px;
+ font-size:23px;
 }
 
 .stat h3{font-size:27px;margin-top:4px}
-.stat p{color:var(--muted);font-size:13px}
+.stat p{font-size:13px;color:var(--muted)}
 
 .dashboard-grid{
  display:grid;
@@ -310,102 +318,56 @@ textarea{min-height:130px;resize:vertical}
  margin-top:18px;
 }
 
-.archive-card{
+.archive-dashboard{
+ cursor:pointer;
  border:2px solid #86efac;
  background:linear-gradient(135deg,#f0fdf4,#fff);
- cursor:pointer;
  transition:.2s;
 }
 
-.archive-card:hover{
+.archive-dashboard:hover{
  transform:translateY(-2px);
- box-shadow:0 12px 30px rgba(20,83,45,.13);
 }
 
-.archive-card-head{
+.archive-head{
  display:flex;
- justify-content:space-between;
  align-items:center;
- gap:10px;
+ justify-content:space-between;
+ gap:15px;
 }
 
-.archive-big-icon{
- width:58px;
- height:58px;
+.archive-icon{
+ width:60px;
+ height:60px;
  border-radius:15px;
  background:#dcfce7;
  display:flex;
  align-items:center;
  justify-content:center;
- font-size:30px;
+ font-size:31px;
 }
 
-.archive-categories{
+.archive-stats{
  display:grid;
  grid-template-columns:repeat(4,1fr);
- gap:10px;
+ gap:9px;
  margin-top:18px;
 }
 
-.archive-category{
+.archive-mini{
  background:#fff;
  border:1px solid var(--border);
- border-radius:11px;
- padding:12px;
+ border-radius:10px;
+ padding:11px;
 }
 
-.archive-category strong{display:block;font-size:20px}
-.archive-category span{font-size:12px;color:var(--muted)}
-
-.table-wrap{
- overflow-x:auto;
- background:#fff;
- border:1px solid var(--border);
- border-radius:14px;
+.archive-mini strong{
+ display:block;
+ font-size:21px;
 }
 
-table{
- width:100%;
- border-collapse:collapse;
- min-width:800px;
-}
-
-th,td{
- padding:13px 14px;
- text-align:left;
- border-bottom:1px solid var(--border);
- vertical-align:top;
-}
-
-th{
- background:#f8fafc;
- font-size:13px;
- color:#475569;
-}
-
-td{font-size:14px}
-
-.badge{
- display:inline-block;
- padding:5px 9px;
- border-radius:20px;
- font-size:12px;
- font-weight:700;
-}
-
-.badge-pending{background:#fef3c7;color:#92400e}
-.badge-approved{background:#dcfce7;color:#166534}
-.badge-rejected{background:#fee2e2;color:#991b1b}
-
-.actions{
- display:flex;
- flex-wrap:wrap;
- gap:6px;
-}
-
-.empty{
- padding:40px 20px;
- text-align:center;
+.archive-mini span{
+ font-size:11px;
  color:var(--muted);
 }
 
@@ -419,6 +381,151 @@ td{font-size:14px}
 .toolbar>*{
  flex:1;
  min-width:150px;
+}
+
+.table-wrap{
+ overflow-x:auto;
+ background:#fff;
+ border:1px solid var(--border);
+ border-radius:14px;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:850px;
+}
+
+th,td{
+ padding:13px;
+ border-bottom:1px solid var(--border);
+ text-align:left;
+ vertical-align:top;
+}
+
+th{
+ background:#f8fafc;
+ color:#475569;
+ font-size:13px;
+}
+
+td{font-size:14px}
+
+.badge{
+ display:inline-block;
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:700;
+}
+
+.badge-pending{
+ background:#fef3c7;
+ color:#92400e;
+}
+
+.badge-approved{
+ background:#dcfce7;
+ color:#166534;
+}
+
+.badge-rejected{
+ background:#fee2e2;
+ color:#991b1b;
+}
+
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:6px;
+}
+
+.empty{
+ text-align:center;
+ color:var(--muted);
+ padding:40px 20px;
+}
+
+.notice{
+ background:#eff6ff;
+ border:1px solid #bfdbfe;
+ color:#1e40af;
+ padding:14px;
+ border-radius:10px;
+ margin-bottom:16px;
+}
+
+.term-card{
+ margin-bottom:18px;
+}
+
+.term-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ padding:16px;
+ background:#14532d;
+ color:#fff;
+ border-radius:13px 13px 0 0;
+}
+
+.term-header h2{font-size:19px}
+
+.term-count{
+ background:rgba(255,255,255,.16);
+ padding:6px 10px;
+ border-radius:20px;
+ font-size:12px;
+}
+
+.week-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ padding:15px;
+ background:#f8fafc;
+ border:1px solid var(--border);
+ border-top:0;
+ border-radius:0 0 13px 13px;
+}
+
+.week-card{
+ background:#fff;
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:15px;
+ cursor:pointer;
+ transition:.2s;
+}
+
+.week-card:hover{
+ border-color:#86efac;
+ transform:translateY(-2px);
+}
+
+.week-card h3{
+ font-size:15px;
+ margin-bottom:10px;
+}
+
+.week-total{
+ font-size:25px;
+ font-weight:800;
+ color:var(--primary);
+}
+
+.week-card small{
+ color:var(--muted);
+}
+
+.category-row{
+ display:flex;
+ justify-content:space-between;
+ margin-top:9px;
+ padding-top:8px;
+ border-top:1px solid #eef2f1;
+ font-size:12px;
 }
 
 .modal-bg{
@@ -436,7 +543,7 @@ td{font-size:14px}
 
 .modal{
  width:100%;
- max-width:800px;
+ max-width:850px;
  max-height:92vh;
  overflow-y:auto;
  background:#fff;
@@ -446,9 +553,8 @@ td{font-size:14px}
 
 .modal-head{
  display:flex;
- justify-content:space-between;
  align-items:center;
- gap:10px;
+ justify-content:space-between;
  margin-bottom:18px;
 }
 
@@ -467,45 +573,15 @@ td{font-size:14px}
  gap:14px;
 }
 
-.form-grid .full-field{grid-column:1/-1}
+.full-field{grid-column:1/-1}
 
 .document-content{
  background:#f8fafc;
  border:1px solid var(--border);
  padding:20px;
  border-radius:12px;
- line-height:1.7;
+ line-height:1.8;
  white-space:pre-wrap;
-}
-
-.archive-tabs{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
- margin-bottom:16px;
-}
-
-.archive-tab{
- border:1px solid var(--border);
- background:#fff;
- padding:10px 14px;
- border-radius:10px;
- font-weight:700;
-}
-
-.archive-tab.active{
- background:var(--primary);
- color:#fff;
- border-color:var(--primary);
-}
-
-.notice{
- padding:14px;
- background:#eff6ff;
- border:1px solid #bfdbfe;
- border-radius:10px;
- color:#1e40af;
- margin-bottom:16px;
 }
 
 .footer-note{
@@ -513,38 +589,6 @@ td{font-size:14px}
  color:#94a3b8;
  font-size:12px;
  padding:30px 10px;
-}
-
-@media(max-width:1000px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .dashboard-grid{grid-template-columns:1fr}
-}
-
-@media(max-width:760px){
- .sidebar{
-  transform:translateX(-100%);
-  box-shadow:10px 0 30px rgba(0,0,0,.2);
- }
- .sidebar.open{transform:translateX(0)}
- .main{
-  margin-left:0;
-  width:100%;
- }
- .menu-btn{display:block}
- .topbar{padding:0 14px}
- .content{padding:16px}
- .page-title{align-items:flex-start;flex-direction:column}
- .page-title h1{font-size:22px}
- .grid{grid-template-columns:1fr 1fr}
- .archive-categories{grid-template-columns:1fr 1fr}
- .form-grid{grid-template-columns:1fr}
- .form-grid .full-field{grid-column:auto}
-}
-
-@media(max-width:430px){
- .grid{grid-template-columns:1fr}
- .archive-categories{grid-template-columns:1fr 1fr}
- .login-card{padding:22px}
 }
 
 .overlay{
@@ -556,17 +600,60 @@ td{font-size:14px}
 }
 
 .overlay.show{display:block}
+
+@media(max-width:1050px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .dashboard-grid{grid-template-columns:1fr}
+ .week-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:760px){
+ .sidebar{
+  transform:translateX(-100%);
+  box-shadow:10px 0 30px rgba(0,0,0,.25);
+ }
+ .sidebar.open{transform:translateX(0)}
+ .main{
+  margin-left:0;
+  width:100%;
+ }
+ .menu-btn{display:block}
+ .topbar{padding:0 14px}
+ .content{padding:16px}
+ .page-title{
+  flex-direction:column;
+  align-items:flex-start;
+ }
+ .page-title h1{font-size:22px}
+ .grid{grid-template-columns:1fr 1fr}
+ .archive-stats{grid-template-columns:1fr 1fr}
+ .week-grid{grid-template-columns:1fr 1fr}
+ .form-grid{grid-template-columns:1fr}
+ .full-field{grid-column:auto}
+}
+
+@media(max-width:430px){
+ .grid{grid-template-columns:1fr}
+ .week-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <div id="loginScreen" class="login-screen">
+
  <div class="login-card">
+
   <div class="logo">CTA</div>
+
   <h1>Caliphate Tarbiya Academy</h1>
-  <p class="subtitle">Digital School Management System</p>
+
+  <p class="subtitle">
+   Digital School Management System
+  </p>
 
   <div id="loginError" class="error hidden"></div>
 
@@ -580,102 +667,161 @@ td{font-size:14px}
 
   <div class="form-group">
    <label>Username</label>
-   <input id="loginUsername" autocomplete="username" placeholder="Enter username">
+   <input id="loginUsername"
+    autocomplete="username"
+    placeholder="Enter username">
   </div>
 
   <div class="form-group">
    <label>Password</label>
-   <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password">
+   <input id="loginPassword"
+    type="password"
+    autocomplete="current-password"
+    placeholder="Enter password">
   </div>
 
-  <button class="btn btn-primary full" onclick="login()">🔐 Login</button>
+  <button class="btn btn-primary full" onclick="login()">
+   🔐 Login
+  </button>
 
-  <p style="margin-top:18px;text-align:center;color:#64748b;font-size:12px">
+  <p style="text-align:center;color:#64748b;font-size:12px;margin-top:18px">
    Offline-capable school system
   </p>
+
  </div>
 </div>
 
-<!-- APP -->
+<!-- ================= APPLICATION ================= -->
+
 <div id="app" class="app hidden">
 
  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 
+ <!-- SIDEBAR -->
+
  <aside id="sidebar" class="sidebar">
 
   <div class="sidebar-head">
+
    <div class="brand">
+
     <div class="brand-logo">CTA</div>
+
     <div>
      <h2>Caliphate Tarbiya</h2>
      <small>Academy System</small>
     </div>
+
    </div>
+
   </div>
 
   <nav class="nav">
 
    <div class="nav-section">Main</div>
 
-   <button onclick="showPage('dashboard',this)" class="active">🏠 Dashboard</button>
+   <button class="active"
+    onclick="showPage('dashboard',this)">
+    🏠 Dashboard
+   </button>
 
-   <div class="nav-section">Teacher Planning</div>
+   <div class="nav-section">
+    Teacher Planning
+   </div>
 
-   <button onclick="showPage('scheme',this)">📚 Scheme of Work</button>
-   <button onclick="showPage('lessonPlan',this)">📝 Lesson Plan</button>
-   <button onclick="showPage('lessonNote',this)">📖 Lesson Note</button>
-   <button onclick="showPage('documents',this)">📂 Documents</button>
-   <button onclick="showPage('assistant',this)">🤖 Teacher Assistant</button>
+   <button onclick="showPage('scheme',this)">
+    📚 Scheme of Work
+   </button>
 
-   <div class="nav-section adminOnly">Administration</div>
+   <button onclick="showPage('lessonPlan',this)">
+    📝 Lesson Plans
+   </button>
 
-   <button class="adminOnly" onclick="showPage('approval',this)">✅ Approval Centre</button>
+   <button onclick="showPage('lessonNote',this)">
+    📖 Lesson Notes
+   </button>
 
-   <button class="adminOnly" onclick="showPage('archive',this)">
+   <button onclick="showPage('documents',this)">
+    📂 Documents
+   </button>
+
+   <button onclick="showPage('assistant',this)">
+    🤖 Teacher Assistant
+   </button>
+
+   <div class="nav-section adminOnly">
+    Administration
+   </div>
+
+   <button class="adminOnly"
+    onclick="showPage('approval',this)">
+    ✅ Approval Centre
+   </button>
+
+   <button class="adminOnly"
+    onclick="showPage('archive',this)">
     📦 Approved Work Archive
    </button>
 
-   <button class="adminOnly" onclick="showPage('teachers',this)">👨‍🏫 Teachers</button>
+   <button class="adminOnly"
+    onclick="showPage('teachers',this)">
+    👨‍🏫 Teachers
+   </button>
 
-   <div class="nav-section">Account</div>
+   <div class="nav-section">
+    Account
+   </div>
 
-   <button onclick="showPage('security',this)">🔐 Account Security</button>
+   <button onclick="showPage('security',this)">
+    🔐 Account Security
+   </button>
 
-   <button class="adminOnly" onclick="showPage('backup',this)">💾 Backup & Restore</button>
+   <button class="adminOnly"
+    onclick="showPage('backup',this)">
+    💾 Backup & Restore
+   </button>
 
-   <button onclick="logout()">🚪 Logout</button>
+   <button onclick="logout()">
+    🚪 Logout
+   </button>
+
   </nav>
  </aside>
+
+ <!-- MAIN -->
 
  <main class="main">
 
   <header class="topbar">
+
    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
 
-   <div>
-    <strong id="topTitle">Dashboard</strong>
-   </div>
+   <strong id="topTitle">Dashboard</strong>
 
    <div class="user-info">
-    <div>
-     <strong id="topUser">Administrator</strong>
-    </div>
+    <strong id="topUser">Administrator</strong>
     <div class="avatar" id="topAvatar">A</div>
    </div>
+
   </header>
 
   <div class="content">
 
-   <!-- DASHBOARD -->
+   <!-- ================= DASHBOARD ================= -->
+
    <section id="dashboard" class="page active">
+
     <div class="page-title">
      <div>
       <h1>Dashboard</h1>
-      <p>Welcome to Caliphate Tarbiya Academy Digital System.</p>
+      <p>
+       Welcome to Caliphate Tarbiya Academy Digital System.
+      </p>
      </div>
     </div>
 
     <div class="grid">
+
      <div class="card stat">
       <div>
        <p>Total Documents</p>
@@ -707,115 +853,180 @@ td{font-size:14px}
       </div>
       <div class="stat-icon">📦</div>
      </div>
+
     </div>
+
+    <!-- BIG ARCHIVE BUTTON -->
 
     <div class="dashboard-grid">
 
-     <div class="card archive-card adminOnly" onclick="openArchiveFromDashboard()">
-      <div class="archive-card-head">
+     <div class="card archive-dashboard adminOnly"
+      onclick="openArchive()">
+
+      <div class="archive-head">
+
        <div>
         <h2>📦 Approved Work Archive</h2>
-        <p style="color:#64748b;margin-top:6px">
-         Your permanent collection of approved teaching materials.
+
+        <p style="color:#64748b;margin-top:7px">
+         Approved work is automatically organized by
+         <strong>Term → Week 1–13 → Work Type.</strong>
         </p>
        </div>
-       <div class="archive-big-icon">📦</div>
+
+       <div class="archive-icon">📦</div>
+
       </div>
 
-      <div class="archive-categories">
-       <div class="archive-category">
+      <div class="archive-stats">
+
+       <div class="archive-mini">
         <strong id="dashScheme">0</strong>
-        <span>Scheme of Work</span>
+        <span>Scheme</span>
        </div>
-       <div class="archive-category">
+
+       <div class="archive-mini">
         <strong id="dashPlan">0</strong>
         <span>Lesson Plans</span>
        </div>
-       <div class="archive-category">
+
+       <div class="archive-mini">
         <strong id="dashNote">0</strong>
         <span>Lesson Notes</span>
        </div>
-       <div class="archive-category">
+
+       <div class="archive-mini">
         <strong id="dashGeneral">0</strong>
         <span>Documents</span>
        </div>
+
       </div>
 
-      <button class="btn btn-primary" style="margin-top:18px">
-       Open Approved Work Archive →
+      <button class="btn btn-primary"
+       style="margin-top:18px">
+       Open Term & Week Archive →
       </button>
+
      </div>
 
      <div class="card">
-      <h3>Quick Information</h3>
-      <p style="color:#64748b;line-height:1.7;margin-top:12px">
-       Approved work is automatically copied to the archive when an
-       administrator approves it. Archived work can be viewed, printed,
-       searched and reused later.
+
+      <h3>📌 How the Archive Works</h3>
+
+      <p style="color:#64748b;line-height:1.8;margin-top:12px">
+       Teacher submits work → Administrator approves →
+       system automatically files it under the selected term,
+       selected week and correct work type.
       </p>
+
+      <p style="color:#64748b;line-height:1.8;margin-top:10px">
+       Example: First Term + Week 5 + Mathematics Lesson Note
+       automatically goes to:
+      </p>
+
+      <strong style="display:block;margin-top:8px">
+       First Term → Week 5 → Lesson Notes
+      </strong>
+
      </div>
 
     </div>
+
    </section>
 
-   <!-- SCHEME -->
+   <!-- ================= SCHEME ================= -->
+
    <section id="scheme" class="page">
+
     <div class="page-title">
      <div>
       <h1>📚 Scheme of Work</h1>
-      <p>Create and manage schemes of work.</p>
+      <p>Create and submit schemes.</p>
      </div>
-     <button class="btn btn-primary" onclick="openDocumentModal('scheme')">＋ New Scheme</button>
+
+     <button class="btn btn-primary"
+      onclick="openDocumentModal('scheme')">
+      ＋ New Scheme
+     </button>
     </div>
+
     <div id="schemeList"></div>
+
    </section>
 
-   <!-- LESSON PLAN -->
+   <!-- ================= LESSON PLAN ================= -->
+
    <section id="lessonPlan" class="page">
+
     <div class="page-title">
      <div>
       <h1>📝 Lesson Plans</h1>
-      <p>Create and manage lesson plans.</p>
+      <p>Create and submit lesson plans.</p>
      </div>
-     <button class="btn btn-primary" onclick="openDocumentModal('lessonPlan')">＋ New Lesson Plan</button>
+
+     <button class="btn btn-primary"
+      onclick="openDocumentModal('lessonPlan')">
+      ＋ New Lesson Plan
+     </button>
     </div>
+
     <div id="lessonPlanList"></div>
+
    </section>
 
-   <!-- LESSON NOTE -->
+   <!-- ================= LESSON NOTE ================= -->
+
    <section id="lessonNote" class="page">
+
     <div class="page-title">
      <div>
       <h1>📖 Lesson Notes</h1>
-      <p>Create and manage lesson notes.</p>
+      <p>Create and submit lesson notes.</p>
      </div>
-     <button class="btn btn-primary" onclick="openDocumentModal('lessonNote')">＋ New Lesson Note</button>
+
+     <button class="btn btn-primary"
+      onclick="openDocumentModal('lessonNote')">
+      ＋ New Lesson Note
+     </button>
     </div>
+
     <div id="lessonNoteList"></div>
+
    </section>
 
-   <!-- DOCUMENTS -->
+   <!-- ================= DOCUMENTS ================= -->
+
    <section id="documents" class="page">
+
     <div class="page-title">
      <div>
       <h1>📂 Documents</h1>
-      <p>Manage your school documents.</p>
+      <p>Create and manage general documents.</p>
      </div>
-     <button class="btn btn-primary" onclick="openDocumentModal('general')">＋ New Document</button>
+
+     <button class="btn btn-primary"
+      onclick="openDocumentModal('general')">
+      ＋ New Document
+     </button>
     </div>
+
     <div id="documentsList"></div>
+
    </section>
 
-   <!-- ASSISTANT -->
+   <!-- ================= ASSISTANT ================= -->
+
    <section id="assistant" class="page">
+
     <div class="page-title">
      <div>
       <h1>🤖 Teacher Assistant</h1>
-      <p>Generate a starting template for your teaching materials.</p>
+      <p>Generate teaching templates.</p>
      </div>
     </div>
 
     <div class="card">
+
      <div class="form-grid">
 
       <div class="form-group">
@@ -829,113 +1040,160 @@ td{font-size:14px}
 
       <div class="form-group">
        <label>Subject</label>
-       <input id="assistantSubject" placeholder="e.g. Mathematics">
+       <input id="assistantSubject"
+        placeholder="e.g. Mathematics">
       </div>
 
       <div class="form-group">
        <label>Class</label>
-       <input id="assistantClass" placeholder="e.g. Basic 5">
+       <input id="assistantClass"
+        placeholder="e.g. Basic 5">
       </div>
 
       <div class="form-group">
        <label>Topic</label>
-       <input id="assistantTopic" placeholder="Enter topic">
+       <input id="assistantTopic"
+        placeholder="Enter topic">
       </div>
 
       <div class="form-group full-field">
-       <button class="btn btn-primary" onclick="generateAssistant()">🤖 Generate Template</button>
+       <button class="btn btn-primary"
+        onclick="generateAssistant()">
+        🤖 Generate Template
+       </button>
       </div>
 
       <div class="form-group full-field">
        <label>Generated Content</label>
-       <textarea id="assistantOutput" style="min-height:350px"></textarea>
+       <textarea id="assistantOutput"
+        style="min-height:350px"></textarea>
       </div>
 
      </div>
+
     </div>
+
    </section>
 
-   <!-- APPROVAL -->
+   <!-- ================= APPROVAL ================= -->
+
    <section id="approval" class="page">
+
     <div class="page-title">
      <div>
       <h1>✅ Approval Centre</h1>
-      <p>Review teacher submissions before they enter the approved archive.</p>
+      <p>
+       Review submitted teacher work.
+      </p>
      </div>
     </div>
 
     <div id="approvalList"></div>
+
    </section>
 
-   <!-- ARCHIVE -->
+   <!-- ================= ARCHIVE ================= -->
+
    <section id="archive" class="page">
+
     <div class="page-title">
+
      <div>
       <h1>📦 Approved Work Archive</h1>
-      <p>Permanent storage of approved school work.</p>
+      <p>
+       Organized automatically by term and Week 1–13.
+      </p>
      </div>
+
     </div>
 
     <div class="notice">
-     <strong>Administrator Archive</strong><br>
-     Every approved work is automatically stored here according to its type.
-     Teachers cannot access this section.
-    </div>
-
-    <div class="archive-tabs">
-     <button class="archive-tab active" id="tabScheme" onclick="selectArchive('scheme',this)">
-      📚 Scheme of Work
-     </button>
-     <button class="archive-tab" id="tabPlan" onclick="selectArchive('lessonPlan',this)">
-      📝 Lesson Plans
-     </button>
-     <button class="archive-tab" id="tabNote" onclick="selectArchive('lessonNote',this)">
-      📖 Lesson Notes
-     </button>
-     <button class="archive-tab" id="tabGeneral" onclick="selectArchive('general',this)">
-      📂 Documents
-     </button>
+     <strong>Archive structure:</strong>
+     Term → Week → Work Type.
+     <br>
+     Approved work cannot be lost when the original document
+     or teacher account is deleted.
     </div>
 
     <div class="toolbar">
-     <input id="archiveSearch" placeholder="🔎 Search approved work..." oninput="renderArchive()">
 
-     <select id="archiveTerm" onchange="renderArchive()">
+     <input id="archiveSearch"
+      placeholder="🔎 Search teacher, subject, title..."
+      oninput="renderArchive()">
+
+     <select id="archiveTermFilter"
+      onchange="renderArchive()">
+
       <option value="">All Terms</option>
-      <option>First Term</option>
-      <option>Second Term</option>
-      <option>Third Term</option>
+      <option value="First Term">First Term</option>
+      <option value="Second Term">Second Term</option>
+      <option value="Third Term">Third Term</option>
+
      </select>
 
-     <button class="btn btn-secondary" onclick="renderArchive()">↻ Refresh</button>
+     <select id="archiveWeekFilter"
+      onchange="renderArchive()">
+
+      <option value="">All Weeks</option>
+
+      <script>
+       for(let i=1;i<=13;i++){
+        document.write(
+         '<option value="Week '+i+'">Week '+i+'</option>'
+        );
+       }
+      </script>
+
+     </select>
+
+     <button class="btn btn-secondary"
+      onclick="clearArchiveFilters()">
+      Clear Filters
+     </button>
+
     </div>
 
+    <div id="archiveSummary"></div>
+
     <div id="archiveList"></div>
+
    </section>
 
-   <!-- TEACHERS -->
+   <!-- ================= TEACHERS ================= -->
+
    <section id="teachers" class="page">
+
     <div class="page-title">
+
      <div>
       <h1>👨‍🏫 Teachers</h1>
-      <p>Create and manage teacher accounts.</p>
+      <p>Manage teacher accounts.</p>
      </div>
-     <button class="btn btn-primary" onclick="openTeacherModal()">＋ Add Teacher</button>
+
+     <button class="btn btn-primary"
+      onclick="openTeacherModal()">
+      ＋ Add Teacher
+     </button>
+
     </div>
 
     <div id="teachersList"></div>
+
    </section>
 
-   <!-- SECURITY -->
+   <!-- ================= SECURITY ================= -->
+
    <section id="security" class="page">
+
     <div class="page-title">
      <div>
       <h1>🔐 Account Security</h1>
-      <p>Change your account password.</p>
+      <p>Change your password.</p>
      </div>
     </div>
 
     <div class="card" style="max-width:600px">
+
      <div id="securityMessage"></div>
 
      <div class="form-group">
@@ -953,37 +1211,65 @@ td{font-size:14px}
       <input id="confirmPassword" type="password">
      </div>
 
-     <button class="btn btn-primary" onclick="changePassword()">Change Password</button>
+     <button class="btn btn-primary"
+      onclick="changePassword()">
+      Change Password
+     </button>
+
     </div>
+
    </section>
 
-   <!-- BACKUP -->
+   <!-- ================= BACKUP ================= -->
+
    <section id="backup" class="page">
+
     <div class="page-title">
      <div>
       <h1>💾 Backup & Restore</h1>
-      <p>Protect your school data.</p>
+      <p>Protect school records.</p>
      </div>
     </div>
 
-    <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="grid"
+     style="grid-template-columns:repeat(2,1fr)">
+
      <div class="card">
+
       <h3>💾 Create Backup</h3>
+
       <p style="color:#64748b;margin:10px 0 18px">
-       Backup teachers, documents and approved archive records.
+       Backup teachers, documents and the complete
+       Week 1–13 archive.
       </p>
-      <button class="btn btn-primary" onclick="createBackup()">Download Backup</button>
+
+      <button class="btn btn-primary"
+       onclick="createBackup()">
+       Download Backup
+      </button>
+
      </div>
 
      <div class="card">
+
       <h3>♻️ Restore Backup</h3>
+
       <p style="color:#64748b;margin:10px 0 18px">
-       Restore a previously downloaded system backup.
+       Restore your school system data.
       </p>
-      <input type="file" id="restoreFile" accept=".json">
-      <button class="btn btn-success" style="margin-top:12px" onclick="restoreBackup()">Restore</button>
+
+      <input id="restoreFile" type="file" accept=".json">
+
+      <button class="btn btn-success"
+       style="margin-top:12px"
+       onclick="restoreBackup()">
+       Restore
+      </button>
+
      </div>
+
     </div>
+
    </section>
 
    <div class="footer-note">
@@ -994,32 +1280,39 @@ td{font-size:14px}
  </main>
 </div>
 
-<!-- DOCUMENT MODAL -->
+<!-- ================= DOCUMENT MODAL ================= -->
+
 <div id="documentModal" class="modal-bg">
+
  <div class="modal">
 
   <div class="modal-head">
    <h2 id="documentModalTitle">New Document</h2>
-   <button class="close" onclick="closeModal('documentModal')">×</button>
+   <button class="close"
+    onclick="closeModal('documentModal')">×</button>
   </div>
 
-  <div id="documentFormError" class="error hidden"></div>
+  <div id="documentFormError"
+   class="error hidden"></div>
 
   <div class="form-grid">
 
    <div class="form-group">
     <label>Title</label>
-    <input id="docTitle" placeholder="Enter title">
+    <input id="docTitle"
+     placeholder="Enter title">
    </div>
 
    <div class="form-group">
     <label>Subject</label>
-    <input id="docSubject" placeholder="e.g. Mathematics">
+    <input id="docSubject"
+     placeholder="e.g. Mathematics">
    </div>
 
    <div class="form-group">
     <label>Class</label>
-    <input id="docClass" placeholder="e.g. Basic 5">
+    <input id="docClass"
+     placeholder="e.g. Basic 5">
    </div>
 
    <div class="form-group">
@@ -1033,40 +1326,72 @@ td{font-size:14px}
    </div>
 
    <div class="form-group">
-    <label>Session</label>
-    <input id="docSession" placeholder="e.g. 2026/2027">
+    <label>Week</label>
+    <select id="docWeek">
+     <option value="">Select Week</option>
+     <option>Week 1</option>
+     <option>Week 2</option>
+     <option>Week 3</option>
+     <option>Week 4</option>
+     <option>Week 5</option>
+     <option>Week 6</option>
+     <option>Week 7</option>
+     <option>Week 8</option>
+     <option>Week 9</option>
+     <option>Week 10</option>
+     <option>Week 11</option>
+     <option>Week 12</option>
+     <option>Week 13</option>
+    </select>
    </div>
 
    <div class="form-group">
-    <label>Week</label>
-    <input id="docWeek" placeholder="e.g. Week 1">
+    <label>Session</label>
+    <input id="docSession"
+     placeholder="e.g. 2026/2027">
    </div>
 
-   <div class="form-group full-field">
+   <div class="form-group">
     <label>Content</label>
-    <textarea id="docContent" style="min-height:300px" placeholder="Enter your work here..."></textarea>
+    <textarea id="docContent"
+     style="min-height:300px"
+     placeholder="Enter your work here..."></textarea>
    </div>
 
   </div>
 
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
-   <button class="btn btn-secondary" onclick="closeModal('documentModal')">Cancel</button>
-   <button class="btn btn-primary" onclick="saveDocument()">Save & Submit</button>
+
+   <button class="btn btn-secondary"
+    onclick="closeModal('documentModal')">
+    Cancel
+   </button>
+
+   <button class="btn btn-primary"
+    onclick="saveDocument()">
+    Save & Submit
+   </button>
+
   </div>
 
  </div>
 </div>
 
-<!-- TEACHER MODAL -->
+<!-- ================= TEACHER MODAL ================= -->
+
 <div id="teacherModal" class="modal-bg">
+
  <div class="modal" style="max-width:600px">
 
   <div class="modal-head">
    <h2>Add Teacher</h2>
-   <button class="close" onclick="closeModal('teacherModal')">×</button>
+
+   <button class="close"
+    onclick="closeModal('teacherModal')">×</button>
   </div>
 
-  <div id="teacherFormError" class="error hidden"></div>
+  <div id="teacherFormError"
+   class="error hidden"></div>
 
   <div class="form-group">
    <label>Teacher Name</label>
@@ -1094,28 +1419,49 @@ td{font-size:14px}
   </div>
 
   <div style="display:flex;justify-content:flex-end;gap:8px">
-   <button class="btn btn-secondary" onclick="closeModal('teacherModal')">Cancel</button>
-   <button class="btn btn-primary" onclick="saveTeacher()">Create Teacher</button>
+
+   <button class="btn btn-secondary"
+    onclick="closeModal('teacherModal')">
+    Cancel
+   </button>
+
+   <button class="btn btn-primary"
+    onclick="saveTeacher()">
+    Create Teacher
+   </button>
+
   </div>
 
  </div>
 </div>
 
-<!-- VIEW MODAL -->
+<!-- ================= VIEW MODAL ================= -->
+
 <div id="viewModal" class="modal-bg">
+
  <div class="modal">
 
   <div class="modal-head">
+
    <h2 id="viewTitle">View Work</h2>
-   <button class="close" onclick="closeModal('viewModal')">×</button>
+
+   <button class="close"
+    onclick="closeModal('viewModal')">×</button>
+
   </div>
 
-  <div id="viewMeta" style="margin-bottom:15px"></div>
-  <div id="viewContent" class="document-content"></div>
+  <div id="viewMeta"></div>
 
-  <div id="viewActions" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px"></div>
+  <div id="viewContent"
+   class="document-content"
+   style="margin-top:15px"></div>
+
+  <div id="viewActions"
+   style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+  </div>
 
  </div>
+
 </div>
 
 <script>
@@ -1125,22 +1471,44 @@ td{font-size:14px}
    DATABASE
 ========================================================= */
 
-const DB_NAME = "CTA_ACADEMY_V10";
-const DB_VERSION = 1;
-const STORE_NAME = "data";
+const DB_NAME="CTA_ACADEMY_V10";
+const DB_VERSION=1;
+const STORE_NAME="data";
 
-let db = null;
-let currentUser = null;
-let currentDocumentType = "general";
-let currentArchiveType = "scheme";
+let db=null;
+let currentUser=null;
+let currentDocumentType="general";
+
+/*
+ Separate archive storage keys.
+ Each key contains only one work category.
+*/
+const ARCHIVE_KEYS={
+ scheme:"archive_scheme",
+ lessonPlan:"archive_lessonPlan",
+ lessonNote:"archive_lessonNote",
+ general:"archive_general"
+};
+
+const TERMS=[
+ "First Term",
+ "Second Term",
+ "Third Term"
+];
+
+const WEEKS=[
+ "Week 1","Week 2","Week 3","Week 4",
+ "Week 5","Week 6","Week 7","Week 8",
+ "Week 9","Week 10","Week 11","Week 12","Week 13"
+];
 
 /* =========================================================
-   HELPERS
+ HELPERS
 ========================================================= */
 
 function uid(){
- return "id_" + Date.now().toString(36) + "_" +
-        Math.random().toString(36).slice(2,9);
+ return "id_"+Date.now().toString(36)+"_"+
+ Math.random().toString(36).slice(2,9);
 }
 
 function now(){
@@ -1148,18 +1516,18 @@ function now(){
 }
 
 function esc(value){
- return String(value ?? "")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+ return String(value??"")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
 }
 
 function formatDate(value){
- if(!value) return "-";
- const d = new Date(value);
- if(Number.isNaN(d.getTime())) return "-";
+ if(!value)return"-";
+ const d=new Date(value);
+ if(Number.isNaN(d.getTime()))return"-";
  return d.toLocaleString();
 }
 
@@ -1169,88 +1537,119 @@ function typeName(type){
   lessonPlan:"Lesson Plan",
   lessonNote:"Lesson Note",
   general:"General Document"
- }[type] || "Document";
+ }[type]||"Document";
 }
 
 function isAdmin(){
- return currentUser && currentUser.role === "admin";
+ return currentUser && currentUser.role==="admin";
 }
 
 function showError(id,msg){
- const el = document.getElementById(id);
- if(!el) return;
- el.textContent = msg;
+ const el=document.getElementById(id);
+ if(!el)return;
+ el.textContent=msg;
  el.classList.remove("hidden");
 }
 
 function hideError(id){
- const el = document.getElementById(id);
+ const el=document.getElementById(id);
  if(el){
-  el.textContent = "";
+  el.textContent="";
   el.classList.add("hidden");
  }
 }
 
 /* =========================================================
-   INDEXED DB
+ DATABASE
 ========================================================= */
 
 function openDB(){
- return new Promise((resolve,reject)=>{
-  const request = indexedDB.open(DB_NAME,DB_VERSION);
 
-  request.onupgradeneeded = function(e){
-   const database = e.target.result;
+ return new Promise((resolve,reject)=>{
+
+  const request=indexedDB.open(DB_NAME,DB_VERSION);
+
+  request.onupgradeneeded=function(e){
+
+   const database=e.target.result;
 
    if(!database.objectStoreNames.contains(STORE_NAME)){
-    database.createObjectStore(STORE_NAME,{keyPath:"key"});
+    database.createObjectStore(
+     STORE_NAME,
+     {keyPath:"key"}
+    );
    }
   };
 
-  request.onsuccess = function(e){
-   db = e.target.result;
+  request.onsuccess=function(e){
+   db=e.target.result;
    resolve(db);
   };
 
-  request.onerror = function(){
-   reject(request.error || new Error("Unable to open database."));
+  request.onerror=function(){
+   reject(
+    request.error||
+    new Error("Unable to open database.")
+   );
   };
+
+ });
 }
 
 function getData(key){
- return new Promise((resolve,reject)=>{
-  const tx = db.transaction(STORE_NAME,"readonly");
-  const store = tx.objectStore(STORE_NAME);
-  const req = store.get(key);
 
-  req.onsuccess = ()=>resolve(req.result ? req.result.value : null);
-  req.onerror = ()=>reject(req.error);
+ return new Promise((resolve,reject)=>{
+
+  const tx=db.transaction(STORE_NAME,"readonly");
+  const store=tx.objectStore(STORE_NAME);
+  const request=store.get(key);
+
+  request.onsuccess=()=>{
+   resolve(
+    request.result?
+    request.result.value:
+    null
+   );
+  };
+
+  request.onerror=()=>{
+   reject(request.error);
+  };
+
  });
 }
 
 function setData(key,value){
- return new Promise((resolve,reject)=>{
-  const tx = db.transaction(STORE_NAME,"readwrite");
-  const store = tx.objectStore(STORE_NAME);
-  const req = store.put({key:key,value:value});
 
-  req.onsuccess = ()=>resolve(true);
-  req.onerror = ()=>reject(req.error);
+ return new Promise((resolve,reject)=>{
+
+  const tx=db.transaction(STORE_NAME,"readwrite");
+  const store=tx.objectStore(STORE_NAME);
+
+  const request=store.put({
+   key:key,
+   value:value
+  });
+
+  request.onsuccess=()=>resolve(true);
+  request.onerror=()=>reject(request.error);
+
  });
 }
 
 /* =========================================================
-   INITIAL DATA
+ INITIALIZE
 ========================================================= */
 
 async function initialize(){
 
  await openDB();
 
- let users = await getData("users");
+ let users=await getData("users");
 
- if(!Array.isArray(users) || users.length === 0){
-  users = [{
+ if(!Array.isArray(users)||users.length===0){
+
+  users=[{
    id:uid(),
    name:"System Administrator",
    username:"admin",
@@ -1264,85 +1663,134 @@ async function initialize(){
   await setData("users",users);
  }
 
- let documents = await getData("documents");
+ let documents=await getData("documents");
 
  if(!Array.isArray(documents)){
   await setData("documents",[]);
  }
 
  /*
-   Four genuinely separate archive records.
-   This makes each category independently stored.
+ Ensure all four archive stores exist.
  */
- const archiveKeys = [
-  "archive_scheme",
-  "archive_lessonPlan",
-  "archive_lessonNote",
-  "archive_general"
- ];
+ for(const key of Object.values(ARCHIVE_KEYS)){
 
- for(const key of archiveKeys){
-  const value = await getData(key);
+  const value=await getData(key);
+
   if(!Array.isArray(value)){
    await setData(key,[]);
   }
  }
 
- const session = localStorage.getItem("cta_session");
+ /*
+ Automatically repair/archive any previously approved
+ documents that may not yet have an archive copy.
+ */
+ await migrateApprovedDocuments();
+
+ const session=localStorage.getItem("cta_session");
 
  if(session){
-  try{
-   const parsed = JSON.parse(session);
 
-   if(parsed && parsed.userId){
-    const found = users.find(u=>u.id===parsed.userId);
+  try{
+
+   const parsed=JSON.parse(session);
+
+   if(parsed&&parsed.userId){
+
+    const found=users.find(
+     u=>u.id===parsed.userId
+    );
 
     if(found){
-     currentUser = found;
+     currentUser=found;
      showApp();
     }
+
    }
+
   }catch(e){
+
    localStorage.removeItem("cta_session");
+
   }
  }
 }
 
 /* =========================================================
-   LOGIN
+ MIGRATE APPROVED DOCUMENTS
+========================================================= */
+
+async function migrateApprovedDocuments(){
+
+ const documents=await getData("documents")||[];
+
+ for(const d of documents){
+
+  if(
+   d.status==="approved" &&
+   d.term &&
+   d.week &&
+   WEEKS.includes(d.week)
+  ){
+   await archiveApprovedWork(d);
+  }
+
+ }
+}
+
+/* =========================================================
+ LOGIN
 ========================================================= */
 
 async function login(){
 
- const errorBox = document.getElementById("loginError");
+ const errorBox=document.getElementById("loginError");
 
  try{
 
   hideError("loginError");
 
-  const role = document.getElementById("loginRole").value;
-  const username = document.getElementById("loginUsername").value.trim();
-  const password = document.getElementById("loginPassword").value;
+  const role=
+   document.getElementById("loginRole").value;
 
-  if(!username || !password){
-   showError("loginError","Please enter username and password.");
+  const username=
+   document.getElementById("loginUsername")
+    .value.trim();
+
+  const password=
+   document.getElementById("loginPassword")
+    .value;
+
+  if(!username||!password){
+
+   showError(
+    "loginError",
+    "Please enter username and password."
+   );
+
    return;
   }
 
-  const users = await getData("users") || [];
+  const users=await getData("users")||[];
 
-  const user = users.find(u =>
-   String(u.username).toLowerCase() === username.toLowerCase() &&
-   u.password === password &&
-   u.role === role
+  const user=users.find(u=>
+   String(u.username).toLowerCase()===
+   username.toLowerCase()&&
+   u.password===password&&
+   u.role===role
   );
 
   if(!user){
-   showError("loginError","Invalid username, password or login role.");
+
+   showError(
+    "loginError",
+    "Invalid username, password or login role."
+   );
+
    return;
   }
 
-  currentUser = user;
+  currentUser=user;
 
   localStorage.setItem(
    "cta_session",
@@ -1355,30 +1803,43 @@ async function login(){
   showApp();
 
  }catch(err){
+
   console.error(err);
-  errorBox.textContent =
+
+  errorBox.textContent=
    "Unable to login. Please reload the page and try again.";
+
   errorBox.classList.remove("hidden");
+
  }
 }
 
 /* =========================================================
-   APP DISPLAY
+ SHOW APP
 ========================================================= */
 
 function showApp(){
 
- document.getElementById("loginScreen").classList.add("hidden");
- document.getElementById("app").classList.remove("hidden");
+ document.getElementById("loginScreen")
+  .classList.add("hidden");
 
- document.getElementById("topUser").textContent =
-  currentUser.name || currentUser.username;
+ document.getElementById("app")
+  .classList.remove("hidden");
 
- document.getElementById("topAvatar").textContent =
-  (currentUser.name || currentUser.username).charAt(0).toUpperCase();
+ document.getElementById("topUser")
+  .textContent=
+  currentUser.name||currentUser.username;
 
- document.querySelectorAll(".adminOnly").forEach(el=>{
-  el.style.display = isAdmin() ? "" : "none";
+ document.getElementById("topAvatar")
+  .textContent=
+  (currentUser.name||
+   currentUser.username)
+   .charAt(0)
+   .toUpperCase();
+
+ document.querySelectorAll(".adminOnly")
+ .forEach(el=>{
+  el.style.display=isAdmin()?"":"none";
  });
 
  refreshAll();
@@ -1386,45 +1847,58 @@ function showApp(){
 
 function logout(){
 
- currentUser = null;
+ currentUser=null;
+
  localStorage.removeItem("cta_session");
 
- document.getElementById("app").classList.add("hidden");
- document.getElementById("loginScreen").classList.remove("hidden");
+ document.getElementById("app")
+  .classList.add("hidden");
 
- document.getElementById("loginUsername").value = "";
- document.getElementById("loginPassword").value = "";
+ document.getElementById("loginScreen")
+  .classList.remove("hidden");
+
+ document.getElementById("loginUsername").value="";
+ document.getElementById("loginPassword").value="";
+
  hideError("loginError");
 }
 
 /* =========================================================
-   NAVIGATION
+ NAVIGATION
 ========================================================= */
 
 function showPage(pageId,button){
 
- if(["approval","archive","teachers","backup"].includes(pageId) && !isAdmin()){
+ const restricted=[
+  "approval",
+  "archive",
+  "teachers",
+  "backup"
+ ];
+
+ if(
+  restricted.includes(pageId)&&
+  !isAdmin()
+ ){
   alert("Administrator access required.");
   return;
  }
 
- document.querySelectorAll(".page").forEach(p=>{
-  p.classList.remove("active");
- });
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.remove("active"));
 
- const page = document.getElementById(pageId);
+ const page=document.getElementById(pageId);
 
- if(!page) return;
+ if(!page)return;
 
  page.classList.add("active");
 
- document.querySelectorAll(".nav button").forEach(b=>{
-  b.classList.remove("active");
- });
+ document.querySelectorAll(".nav button")
+ .forEach(b=>b.classList.remove("active"));
 
- if(button) button.classList.add("active");
+ if(button)button.classList.add("active");
 
- const titles = {
+ const titles={
   dashboard:"Dashboard",
   scheme:"Scheme of Work",
   lessonPlan:"Lesson Plans",
@@ -1438,65 +1912,87 @@ function showPage(pageId,button){
   backup:"Backup & Restore"
  };
 
- document.getElementById("topTitle").textContent =
-  titles[pageId] || "Dashboard";
+ document.getElementById("topTitle")
+  .textContent=titles[pageId]||"Dashboard";
 
  closeSidebar();
 
- if(pageId === "archive") renderArchive();
- if(pageId === "approval") renderApproval();
- if(pageId === "teachers") renderTeachers();
+ if(pageId==="approval")renderApproval();
+
+ if(pageId==="teachers")renderTeachers();
+
+ if(pageId==="archive")renderArchive();
 }
 
-function openArchiveFromDashboard(){
+function openArchive(){
 
  if(!isAdmin()){
   alert("Administrator access required.");
   return;
  }
 
- const archiveButton =
+ const button=
   [...document.querySelectorAll(".nav button")]
-   .find(b=>b.textContent.includes("Approved Work Archive"));
+  .find(b=>
+   b.textContent.includes(
+    "Approved Work Archive"
+   )
+  );
 
- showPage("archive",archiveButton);
+ showPage("archive",button);
 }
 
 function toggleSidebar(){
- document.getElementById("sidebar").classList.toggle("open");
- document.getElementById("overlay").classList.toggle("show");
+
+ document.getElementById("sidebar")
+  .classList.toggle("open");
+
+ document.getElementById("overlay")
+  .classList.toggle("show");
 }
 
 function closeSidebar(){
- document.getElementById("sidebar").classList.remove("open");
- document.getElementById("overlay").classList.remove("show");
+
+ document.getElementById("sidebar")
+  .classList.remove("open");
+
+ document.getElementById("overlay")
+  .classList.remove("show");
 }
 
 /* =========================================================
-   DOCUMENT CREATION
+ DOCUMENT MODAL
 ========================================================= */
 
 function openDocumentModal(type){
 
- currentDocumentType = type;
+ currentDocumentType=type;
 
- document.getElementById("documentModalTitle").textContent =
-  "New " + typeName(type);
+ document.getElementById("documentModalTitle")
+  .textContent="New "+typeName(type);
 
  hideError("documentFormError");
 
- document.getElementById("docTitle").value = "";
- document.getElementById("docSubject").value =
-  currentUser.subject || "";
- document.getElementById("docClass").value =
-  currentUser.className || "";
- document.getElementById("docTerm").value = "";
- document.getElementById("docSession").value = "";
- document.getElementById("docWeek").value = "";
- document.getElementById("docContent").value = "";
+ document.getElementById("docTitle").value="";
 
- document.getElementById("documentModal").classList.add("show");
+ document.getElementById("docSubject").value=
+  currentUser.subject||"";
+
+ document.getElementById("docClass").value=
+  currentUser.className||"";
+
+ document.getElementById("docTerm").value="";
+ document.getElementById("docWeek").value="";
+ document.getElementById("docSession").value="";
+ document.getElementById("docContent").value="";
+
+ document.getElementById("documentModal")
+  .classList.add("show");
 }
+
+/* =========================================================
+ SAVE DOCUMENT
+========================================================= */
 
 async function saveDocument(){
 
@@ -1504,42 +2000,95 @@ async function saveDocument(){
 
   hideError("documentFormError");
 
-  const title = document.getElementById("docTitle").value.trim();
-  const subject = document.getElementById("docSubject").value.trim();
-  const className = document.getElementById("docClass").value.trim();
-  const term = document.getElementById("docTerm").value;
-  const session = document.getElementById("docSession").value.trim();
-  const week = document.getElementById("docWeek").value.trim();
-  const content = document.getElementById("docContent").value.trim();
+  const title=
+   document.getElementById("docTitle")
+   .value.trim();
+
+  const subject=
+   document.getElementById("docSubject")
+   .value.trim();
+
+  const className=
+   document.getElementById("docClass")
+   .value.trim();
+
+  const term=
+   document.getElementById("docTerm").value;
+
+  const week=
+   document.getElementById("docWeek").value;
+
+  const session=
+   document.getElementById("docSession")
+   .value.trim();
+
+  const content=
+   document.getElementById("docContent")
+   .value.trim();
 
   if(!title){
-   showError("documentFormError","Please enter a title.");
+   showError(
+    "documentFormError",
+    "Please enter a title."
+   );
+   return;
+  }
+
+  if(!term){
+   showError(
+    "documentFormError",
+    "Please select the term."
+   );
+   return;
+  }
+
+  if(!week){
+   showError(
+    "documentFormError",
+    "Please select Week 1 to Week 13."
+   );
    return;
   }
 
   if(!content){
-   showError("documentFormError","Please enter the work content.");
+   showError(
+    "documentFormError",
+    "Please enter the work content."
+   );
    return;
   }
 
-  const documents = await getData("documents") || [];
+  const documents=
+   await getData("documents")||[];
 
-  const document = {
+  const approved=isAdmin();
+
+  const document={
    id:uid(),
    type:currentDocumentType,
-   title,
-   subject,
-   className,
-   term,
-   session,
-   week,
-   content,
+   title:title,
+   subject:subject,
+   className:className,
+   term:term,
+   week:week,
+   session:session,
+   content:content,
+
    teacherId:currentUser.id,
    teacherName:currentUser.name,
-   status:isAdmin() ? "approved" : "pending",
+
+   status:approved?
+    "approved":
+    "pending",
+
    createdAt:now(),
-   approvedAt:isAdmin() ? now() : null,
-   approvedBy:isAdmin() ? currentUser.name : null,
+
+   approvedAt:
+    approved?now():null,
+
+   approvedBy:
+    approved?currentUser.name:null,
+
    rejectionReason:""
   };
 
@@ -1548,194 +2097,312 @@ async function saveDocument(){
   await setData("documents",documents);
 
   /*
-    Administrator-created work is automatically approved
-    and copied into the appropriate archive.
+   If administrator creates the work,
+   archive immediately.
   */
-  if(isAdmin()){
+  if(approved){
    await archiveApprovedWork(document);
   }
 
   closeModal("documentModal");
 
-  refreshAll();
+  await refreshAll();
 
   alert(
-   isAdmin()
-    ? "Document saved and added to Approved Work Archive."
-    : "Work submitted successfully for administrator approval."
+   approved
+   ?
+   "Work saved and archived successfully."
+   :
+   "Work submitted successfully for approval."
   );
 
  }catch(err){
+
   console.error(err);
+
   showError(
    "documentFormError",
    "Unable to save data. Please try again."
   );
+
  }
 }
 
 /* =========================================================
-   DOCUMENT RENDERING
+ DOCUMENT LISTS
 ========================================================= */
 
 async function renderDocuments(type,elementId){
 
- const documents = await getData("documents") || [];
+ const documents=
+  await getData("documents")||[];
 
- const mine = documents
+ const records=documents
   .filter(d=>d.type===type)
-  .filter(d=>isAdmin() || d.teacherId===currentUser.id)
-  .sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  .filter(d=>
+   isAdmin()||
+   d.teacherId===currentUser.id
+  )
+  .sort(
+   (a,b)=>
+   new Date(b.createdAt)-
+   new Date(a.createdAt)
+  );
 
- const el = document.getElementById(elementId);
+ const el=document.getElementById(elementId);
 
- if(!mine.length){
-  el.innerHTML = `
+ if(!records.length){
+
+  el.innerHTML=`
    <div class="card empty">
     No ${esc(typeName(type))} found.
    </div>`;
+
   return;
  }
 
- el.innerHTML = `
+ el.innerHTML=`
   <div class="table-wrap">
    <table>
+
     <thead>
      <tr>
       <th>Title</th>
       <th>Subject</th>
       <th>Class</th>
       <th>Term</th>
+      <th>Week</th>
       <th>Status</th>
-      <th>Created</th>
       <th>Actions</th>
      </tr>
     </thead>
+
     <tbody>
-     ${mine.map(d=>`
+
+     ${records.map(d=>`
+
       <tr>
-       <td><strong>${esc(d.title)}</strong></td>
+
+       <td>
+        <strong>${esc(d.title)}</strong>
+       </td>
+
        <td>${esc(d.subject)}</td>
+
        <td>${esc(d.className)}</td>
+
        <td>${esc(d.term)}</td>
+
+       <td>${esc(d.week)}</td>
+
        <td>
         <span class="badge badge-${esc(d.status)}">
          ${esc(d.status)}
         </span>
        </td>
-       <td>${formatDate(d.createdAt)}</td>
+
        <td>
+
         <div class="actions">
-         <button class="btn btn-blue btn-sm"
-          onclick="viewDocument('${d.id}')">View</button>
 
-         ${isAdmin() && d.status==="pending" ? `
-          <button class="btn btn-success btn-sm"
-           onclick="approveDocument('${d.id}')">Approve</button>
-          <button class="btn btn-danger btn-sm"
-           onclick="rejectDocument('${d.id}')">Reject</button>
-         `:""}
+         <button
+          class="btn btn-blue btn-sm"
+          onclick="viewDocument('${d.id}')">
+          View
+         </button>
 
-         <button class="btn btn-danger btn-sm"
-          onclick="deleteDocument('${d.id}')">Delete</button>
+         ${
+          isAdmin()&&
+          d.status==="pending"
+          ?
+          `
+          <button
+           class="btn btn-success btn-sm"
+           onclick="approveDocument('${d.id}')">
+           Approve
+          </button>
+
+          <button
+           class="btn btn-danger btn-sm"
+           onclick="rejectDocument('${d.id}')">
+           Reject
+          </button>
+          `
+          :
+          ""
+         }
+
+         <button
+          class="btn btn-danger btn-sm"
+          onclick="deleteDocument('${d.id}')">
+          Delete
+         </button>
+
         </div>
+
        </td>
+
       </tr>
+
      `).join("")}
+
     </tbody>
    </table>
   </div>`;
 }
 
-function viewDocument(id){
+/* =========================================================
+ VIEW DOCUMENT
+========================================================= */
 
- getData("documents").then(documents=>{
+async function viewDocument(id){
 
-  const d = (documents || []).find(x=>x.id===id);
+ const documents=
+  await getData("documents")||[];
 
-  if(!d) return;
+ const d=documents.find(x=>x.id===id);
 
-  document.getElementById("viewTitle").textContent = d.title;
+ if(!d)return;
 
-  document.getElementById("viewMeta").innerHTML = `
-   <div class="card" style="box-shadow:none;background:#f8fafc">
-    <strong>Type:</strong> ${esc(typeName(d.type))}<br>
-    <strong>Teacher:</strong> ${esc(d.teacherName)}<br>
-    <strong>Subject:</strong> ${esc(d.subject)}<br>
-    <strong>Class:</strong> ${esc(d.className)}<br>
-    <strong>Term:</strong> ${esc(d.term)}<br>
-    <strong>Session:</strong> ${esc(d.session)}<br>
-    <strong>Status:</strong> ${esc(d.status)}<br>
-    <strong>Created:</strong> ${formatDate(d.createdAt)}
+ document.getElementById("viewTitle")
+  .textContent=d.title;
+
+ document.getElementById("viewMeta")
+  .innerHTML=`
+   <div class="card"
+    style="box-shadow:none;background:#f8fafc">
+
+    <strong>Type:</strong>
+    ${esc(typeName(d.type))}<br>
+
+    <strong>Teacher:</strong>
+    ${esc(d.teacherName)}<br>
+
+    <strong>Subject:</strong>
+    ${esc(d.subject)}<br>
+
+    <strong>Class:</strong>
+    ${esc(d.className)}<br>
+
+    <strong>Term:</strong>
+    ${esc(d.term)}<br>
+
+    <strong>Week:</strong>
+    ${esc(d.week)}<br>
+
+    <strong>Session:</strong>
+    ${esc(d.session)}<br>
+
+    <strong>Status:</strong>
+    ${esc(d.status)}<br>
+
+    <strong>Created:</strong>
+    ${formatDate(d.createdAt)}
+
    </div>`;
 
-  document.getElementById("viewContent").textContent = d.content;
+ document.getElementById("viewContent")
+  .textContent=d.content;
 
-  document.getElementById("viewActions").innerHTML = `
-   <button class="btn btn-primary"
-    onclick="printDocument('${d.id}')">🖨 Print</button>
+ document.getElementById("viewActions")
+  .innerHTML=`
+   <button
+    class="btn btn-primary"
+    onclick="printDocument('${d.id}')">
+    🖨 Print
+   </button>
   `;
 
-  document.getElementById("viewModal").classList.add("show");
- });
+ document.getElementById("viewModal")
+  .classList.add("show");
 }
+
+/* =========================================================
+ DELETE DOCUMENT
+========================================================= */
 
 async function deleteDocument(id){
 
- if(!confirm("Delete this document from the normal Documents section?")) return;
+ if(!confirm(
+  "Delete this document from the normal document list?"
+ ))return;
 
- const documents = await getData("documents") || [];
- const target = documents.find(d=>d.id===id);
+ const documents=
+  await getData("documents")||[];
 
- if(!target) return;
+ const target=
+  documents.find(d=>d.id===id);
+
+ if(!target)return;
 
  /*
-   IMPORTANT:
-   Deleting a normal document DOES NOT delete its archive copy.
-   This preserves approved work for future use.
+ IMPORTANT:
+ Approved archive copy is NOT deleted.
  */
- const remaining = documents.filter(d=>d.id!==id);
+ await setData(
+  "documents",
+  documents.filter(d=>d.id!==id)
+ );
 
- await setData("documents",remaining);
-
- refreshAll();
+ await refreshAll();
 
  alert(
   target.status==="approved"
-   ? "Document deleted. Its approved archive copy remains محفوظ."
-   : "Document deleted."
+  ?
+  "Document deleted. The approved archive copy remains محفوظ."
+  :
+  "Document deleted."
  );
 }
 
 /* =========================================================
-   APPROVAL
+ APPROVAL CENTRE
 ========================================================= */
 
 async function renderApproval(){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const documents = await getData("documents") || [];
+ const documents=
+  await getData("documents")||[];
 
- const pending = documents
+ const pending=documents
   .filter(d=>d.status==="pending")
-  .sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  .sort(
+   (a,b)=>
+   new Date(b.createdAt)-
+   new Date(a.createdAt)
+  );
 
- const el = document.getElementById("approvalList");
+ const el=document.getElementById("approvalList");
 
  if(!pending.length){
-  el.innerHTML = `
+
+  el.innerHTML=`
    <div class="card empty">
-    <div style="font-size:40px">✅</div>
-    <h3 style="margin-top:10px">No Pending Work</h3>
-    <p>All submitted work has been reviewed.</p>
+
+    <div style="font-size:45px">
+     ✅
+    </div>
+
+    <h3 style="margin-top:10px">
+     No Pending Work
+    </h3>
+
+    <p>
+     All submitted work has been reviewed.
+    </p>
+
    </div>`;
+
   return;
  }
 
- el.innerHTML = `
+ el.innerHTML=`
   <div class="table-wrap">
+
    <table>
+
     <thead>
      <tr>
       <th>Teacher</th>
@@ -1744,38 +2411,73 @@ async function renderApproval(){
       <th>Subject</th>
       <th>Class</th>
       <th>Term</th>
-      <th>Submitted</th>
+      <th>Week</th>
       <th>Actions</th>
      </tr>
     </thead>
+
     <tbody>
+
      ${pending.map(d=>`
+
       <tr>
+
        <td>${esc(d.teacherName)}</td>
+
        <td>${esc(typeName(d.type))}</td>
-       <td><strong>${esc(d.title)}</strong></td>
-       <td>${esc(d.subject)}</td>
-       <td>${esc(d.className)}</td>
-       <td>${esc(d.term)}</td>
-       <td>${formatDate(d.createdAt)}</td>
+
        <td>
-        <div class="actions">
-         <button class="btn btn-blue btn-sm"
-          onclick="viewDocument('${d.id}')">View</button>
-
-         <button class="btn btn-success btn-sm"
-          onclick="approveDocument('${d.id}')">Approve</button>
-
-         <button class="btn btn-danger btn-sm"
-          onclick="rejectDocument('${d.id}')">Reject</button>
-        </div>
+        <strong>${esc(d.title)}</strong>
        </td>
+
+       <td>${esc(d.subject)}</td>
+
+       <td>${esc(d.className)}</td>
+
+       <td>${esc(d.term)}</td>
+
+       <td>${esc(d.week)}</td>
+
+       <td>
+
+        <div class="actions">
+
+         <button
+          class="btn btn-blue btn-sm"
+          onclick="viewDocument('${d.id}')">
+          View
+         </button>
+
+         <button
+          class="btn btn-success btn-sm"
+          onclick="approveDocument('${d.id}')">
+          Approve
+         </button>
+
+         <button
+          class="btn btn-danger btn-sm"
+          onclick="rejectDocument('${d.id}')">
+          Reject
+         </button>
+
+        </div>
+
+       </td>
+
       </tr>
+
      `).join("")}
+
     </tbody>
+
    </table>
+
   </div>`;
 }
+
+/* =========================================================
+ APPROVE
+========================================================= */
 
 async function approveDocument(id){
 
@@ -1784,8 +2486,10 @@ async function approveDocument(id){
   return;
  }
 
- const documents = await getData("documents") || [];
- const d = documents.find(x=>x.id===id);
+ const documents=
+  await getData("documents")||[];
+
+ const d=documents.find(x=>x.id===id);
 
  if(!d){
   alert("Document not found.");
@@ -1797,9 +2501,19 @@ async function approveDocument(id){
   return;
  }
 
+ if(!d.term||!d.week){
+  alert(
+   "This work cannot be approved because its term or week is missing."
+  );
+  return;
+ }
+
  if(!confirm(
-  "Approve this work?\n\nIt will automatically be saved in the Approved Work Archive."
- )) return;
+  "Approve this work?\n\n"+
+  "It will automatically be stored under:\n"+
+  d.term+" → "+d.week+" → "+
+  typeName(d.type)
+ ))return;
 
  d.status="approved";
  d.approvedAt=now();
@@ -1809,32 +2523,40 @@ async function approveDocument(id){
  await setData("documents",documents);
 
  /*
-   AUTOMATIC ARCHIVE
+ AUTOMATIC ARCHIVE
  */
  await archiveApprovedWork(d);
 
- refreshAll();
+ await refreshAll();
 
  alert(
-  "APPROVED SUCCESSFULLY!\n\n" +
-  "The work has been saved to the Approved Work Archive."
+  "APPROVED SUCCESSFULLY!\n\n"+
+  "Saved automatically to:\n"+
+  d.term+" → "+d.week+" → "+
+  typeName(d.type)
  );
 }
 
+/* =========================================================
+ REJECT
+========================================================= */
+
 async function rejectDocument(id){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const reason = prompt(
+ const reason=prompt(
   "Enter reason for rejecting this work:"
  );
 
- if(reason===null) return;
+ if(reason===null)return;
 
- const documents = await getData("documents") || [];
- const d = documents.find(x=>x.id===id);
+ const documents=
+  await getData("documents")||[];
 
- if(!d) return;
+ const d=documents.find(x=>x.id===id);
+
+ if(!d)return;
 
  d.status="rejected";
  d.rejectionReason=reason;
@@ -1843,59 +2565,91 @@ async function rejectDocument(id){
 
  await setData("documents",documents);
 
- refreshAll();
+ await refreshAll();
 
  alert("Work rejected.");
 }
 
 /* =========================================================
-   ARCHIVE
+ ARCHIVE
 ========================================================= */
-
-function archiveKey(type){
- return "archive_" + type;
-}
 
 async function archiveApprovedWork(document){
 
- if(!document || document.status!=="approved") return;
+ if(!document)return;
 
- const key = archiveKey(document.type);
+ if(document.status!=="approved")return;
 
- let archive = await getData(key);
+ if(!document.term)return;
 
- if(!Array.isArray(archive)) archive=[];
+ if(!WEEKS.includes(document.week))return;
+
+ const key=ARCHIVE_KEYS[document.type];
+
+ if(!key)return;
+
+ let archive=
+  await getData(key)||[];
 
  /*
-   Prevent duplicate archive records.
+ Prevent duplicate copies.
  */
- const existing = archive.find(a=>a.sourceDocumentId===document.id);
+ const existing=archive.find(
+  item=>
+  item.sourceDocumentId===
+  document.id
+ );
 
- if(existing){
-  return;
- }
+ if(existing)return;
 
- const archived = {
+ const archived={
+
   archiveId:uid(),
-  sourceDocumentId:document.id,
 
-  type:document.type,
-  title:document.title,
-  subject:document.subject,
-  className:document.className,
-  term:document.term,
-  session:document.session,
-  week:document.week,
+  sourceDocumentId:
+   document.id,
 
-  content:document.content,
+  type:
+   document.type,
 
-  teacherId:document.teacherId,
-  teacherName:document.teacherName,
+  term:
+   document.term,
 
-  approvedBy:document.approvedBy || currentUser.name,
-  approvedAt:document.approvedAt || now(),
+  week:
+   document.week,
 
-  archivedAt:now()
+  title:
+   document.title,
+
+  subject:
+   document.subject,
+
+  className:
+   document.className,
+
+  session:
+   document.session,
+
+  content:
+   document.content,
+
+  teacherId:
+   document.teacherId,
+
+  teacherName:
+   document.teacherName,
+
+  approvedBy:
+   document.approvedBy||
+   currentUser?.name||
+   "Administrator",
+
+  approvedAt:
+   document.approvedAt||
+   now(),
+
+  archivedAt:
+   now()
  };
 
  archive.unshift(archived);
@@ -1903,260 +2657,636 @@ async function archiveApprovedWork(document){
  await setData(key,archive);
 }
 
-async function selectArchive(type,button){
+/* =========================================================
+ GET ALL ARCHIVE
+========================================================= */
 
- currentArchiveType=type;
+async function getAllArchive(){
 
- document.querySelectorAll(".archive-tab").forEach(t=>{
-  t.classList.remove("active");
- });
+ const all=[];
 
- if(button) button.classList.add("active");
+ for(const type of Object.keys(ARCHIVE_KEYS)){
 
- renderArchive();
+  const records=
+   await getData(ARCHIVE_KEYS[type])||[];
+
+  records.forEach(r=>{
+   all.push(r);
+  });
+
+ }
+
+ return all;
 }
+
+/* =========================================================
+ ARCHIVE SUMMARY
+========================================================= */
 
 async function renderArchive(){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const key = archiveKey(currentArchiveType);
+ const search=
+  document.getElementById("archiveSearch")
+  .value.trim().toLowerCase();
 
- let archive = await getData(key) || [];
+ const term=
+  document.getElementById("archiveTermFilter")
+  .value;
 
- const search =
-  document.getElementById("archiveSearch").value
-   .trim()
-   .toLowerCase();
+ const week=
+  document.getElementById("archiveWeekFilter")
+  .value;
 
- const term =
-  document.getElementById("archiveTerm").value;
+ let all=await getAllArchive();
 
- archive = archive.filter(item=>{
+ const filtered=all.filter(item=>{
 
-  const matchesSearch = !search ||
-   [
-    item.title,
-    item.subject,
-    item.className,
-    item.teacherName,
-    item.session,
-    item.content
-   ].some(value =>
-    String(value || "").toLowerCase().includes(search)
-   );
+  const text=[
+   item.title,
+   item.subject,
+   item.className,
+   item.teacherName,
+   item.content,
+   item.session
+  ].join(" ").toLowerCase();
 
-  const matchesTerm =
-   !term || item.term===term;
+  const searchMatch=
+   !search||text.includes(search);
 
-  return matchesSearch && matchesTerm;
+  const termMatch=
+   !term||item.term===term;
+
+  const weekMatch=
+   !week||item.week===week;
+
+  return searchMatch&&termMatch&&weekMatch;
  });
 
- const el=document.getElementById("archiveList");
+ renderArchiveSummary(filtered);
 
- if(!archive.length){
+ /*
+ If filters are applied, show direct records.
+ Otherwise show the full Term -> Week structure.
+ */
+
+ if(search||term||week){
+
+  renderFilteredArchive(filtered);
+
+ }else{
+
+  renderTermWeekArchive(all);
+
+ }
+}
+
+/* =========================================================
+ SUMMARY
+========================================================= */
+
+function renderArchiveSummary(records){
+
+ const scheme=
+  records.filter(r=>r.type==="scheme").length;
+
+ const plan=
+  records.filter(r=>r.type==="lessonPlan").length;
+
+ const note=
+  records.filter(r=>r.type==="lessonNote").length;
+
+ const general=
+  records.filter(r=>r.type==="general").length;
+
+ document.getElementById("archiveSummary")
+ .innerHTML=`
+  <div class="grid"
+   style="grid-template-columns:repeat(4,1fr);margin-bottom:18px">
+
+   <div class="card stat">
+    <div>
+     <p>Scheme</p>
+     <h3>${scheme}</h3>
+    </div>
+    <div class="stat-icon">📚</div>
+   </div>
+
+   <div class="card stat">
+    <div>
+     <p>Lesson Plans</p>
+     <h3>${plan}</h3>
+    </div>
+    <div class="stat-icon">📝</div>
+   </div>
+
+   <div class="card stat">
+    <div>
+     <p>Lesson Notes</p>
+     <h3>${note}</h3>
+    </div>
+    <div class="stat-icon">📖</div>
+   </div>
+
+   <div class="card stat">
+    <div>
+     <p>Documents</p>
+     <h3>${general}</h3>
+    </div>
+    <div class="stat-icon">📂</div>
+   </div>
+
+  </div>`;
+}
+
+/* =========================================================
+ TERM -> WEEK ARCHIVE
+========================================================= */
+
+function renderTermWeekArchive(all){
+
+ const container=
+  document.getElementById("archiveList");
+
+ let html="";
+
+ TERMS.forEach(term=>{
+
+  const termRecords=
+   all.filter(r=>r.term===term);
+
+  let weeksHTML="";
+
+  WEEKS.forEach(week=>{
+
+   const records=
+    termRecords.filter(r=>r.week===week);
+
+   const scheme=
+    records.filter(
+     r=>r.type==="scheme"
+    ).length;
+
+   const plan=
+    records.filter(
+     r=>r.type==="lessonPlan"
+    ).length;
+
+   const note=
+    records.filter(
+     r=>r.type==="lessonNote"
+    ).length;
+
+   const general=
+    records.filter(
+     r=>r.type==="general"
+    ).length;
+
+   weeksHTML+=`
+    <div class="week-card"
+     onclick="openArchiveWeek('${term}','${week}')">
+
+     <h3>📅 ${week}</h3>
+
+     <div class="week-total">
+      ${records.length}
+     </div>
+
+     <small>
+      Approved works
+     </small>
+
+     <div class="category-row">
+      <span>📚 Scheme</span>
+      <strong>${scheme}</strong>
+     </div>
+
+     <div class="category-row">
+      <span>📝 Plans</span>
+      <strong>${plan}</strong>
+     </div>
+
+     <div class="category-row">
+      <span>📖 Notes</span>
+      <strong>${note}</strong>
+     </div>
+
+     <div class="category-row">
+      <span>📂 Docs</span>
+      <strong>${general}</strong>
+     </div>
+
+    </div>`;
+  });
+
+  html+=`
+   <div class="term-card">
+
+    <div class="term-header">
+
+     <h2>📁 ${term}</h2>
+
+     <span class="term-count">
+      ${termRecords.length} approved
+     </span>
+
+    </div>
+
+    <div class="week-grid">
+     ${weeksHTML}
+    </div>
+
+   </div>`;
+ });
+
+ container.innerHTML=html;
+}
+
+/* =========================================================
+ OPEN SPECIFIC WEEK
+========================================================= */
+
+async function openArchiveWeek(term,week){
+
+ const all=await getAllArchive();
+
+ const records=all.filter(
+  r=>r.term===term&&r.week===week
+ );
+
+ document.getElementById("archiveSearch").value="";
+
+ document.getElementById("archiveTermFilter").value=
+  term;
+
+ document.getElementById("archiveWeekFilter").value=
+  week;
+
+ renderArchiveSummary(records);
+
+ renderFilteredArchive(records);
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+}
+
+/* =========================================================
+ FILTERED ARCHIVE
+========================================================= */
+
+function renderFilteredArchive(records){
+
+ const el=
+  document.getElementById("archiveList");
+
+ if(!records.length){
+
   el.innerHTML=`
    <div class="card empty">
+
     <div style="font-size:45px">📦</div>
-    <h3 style="margin-top:10px">No Archived Work</h3>
+
+    <h3>No approved work found.</h3>
+
     <p>
-     Approved ${esc(typeName(currentArchiveType))}
-     will appear here automatically.
+     Try another term, week or search.
     </p>
+
    </div>`;
+
   return;
  }
 
- el.innerHTML=`
-  <div class="table-wrap">
-   <table>
-    <thead>
-     <tr>
-      <th>Title</th>
-      <th>Teacher</th>
-      <th>Subject</th>
-      <th>Class</th>
-      <th>Term</th>
-      <th>Approved</th>
-      <th>Approved By</th>
-      <th>Actions</th>
-     </tr>
-    </thead>
+ /*
+ Group filtered records by term/week/type.
+ */
+ const groups={};
 
-    <tbody>
-     ${archive.map(item=>`
-      <tr>
-       <td><strong>${esc(item.title)}</strong></td>
-       <td>${esc(item.teacherName)}</td>
-       <td>${esc(item.subject)}</td>
-       <td>${esc(item.className)}</td>
-       <td>${esc(item.term)}</td>
-       <td>${formatDate(item.approvedAt)}</td>
-       <td>${esc(item.approvedBy)}</td>
+ records.forEach(item=>{
 
-       <td>
-        <div class="actions">
+  const key=
+   item.term+"||"+item.week;
 
-         <button class="btn btn-blue btn-sm"
-          onclick="viewArchiveItem('${item.archiveId}')">
-          View
-         </button>
+  if(!groups[key]){
+   groups[key]=[];
+  }
 
-         <button class="btn btn-primary btn-sm"
-          onclick="reuseArchiveItem('${item.archiveId}')">
-          ♻ Reuse
-         </button>
+  groups[key].push(item);
+ });
 
-         <button class="btn btn-secondary btn-sm"
-          onclick="printArchiveItem('${item.archiveId}')">
-          🖨 Print
-         </button>
+ let html="";
 
-         <button class="btn btn-danger btn-sm"
-          onclick="deleteArchiveItem('${item.archiveId}')">
-          Delete
-         </button>
+ Object.keys(groups).forEach(groupKey=>{
 
-        </div>
-       </td>
-      </tr>
-     `).join("")}
-    </tbody>
-   </table>
-  </div>`;
+  const recordsInGroup=
+   groups[groupKey];
+
+  const parts=groupKey.split("||");
+
+  const term=parts[0];
+  const week=parts[1];
+
+  html+=`
+   <div class="card" style="margin-bottom:18px">
+
+    <div style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     gap:10px;
+     margin-bottom:15px;
+    ">
+
+     <div>
+      <h2>
+       📁 ${esc(term)} → ${esc(week)}
+      </h2>
+
+      <p style="color:#64748b;margin-top:5px">
+       ${recordsInGroup.length} approved work(s)
+      </p>
+     </div>
+
+    </div>
+
+    <div class="table-wrap">
+
+     <table>
+
+      <thead>
+       <tr>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Teacher</th>
+        <th>Subject</th>
+        <th>Class</th>
+        <th>Approved</th>
+        <th>Actions</th>
+       </tr>
+      </thead>
+
+      <tbody>
+
+       ${recordsInGroup.map(item=>`
+
+        <tr>
+
+         <td>
+          ${esc(typeName(item.type))}
+         </td>
+
+         <td>
+          <strong>${esc(item.title)}</strong>
+         </td>
+
+         <td>
+          ${esc(item.teacherName)}
+         </td>
+
+         <td>
+          ${esc(item.subject)}
+         </td>
+
+         <td>
+          ${esc(item.className)}
+         </td>
+
+         <td>
+          ${formatDate(item.approvedAt)}
+         </td>
+
+         <td>
+
+          <div class="actions">
+
+           <button
+            class="btn btn-blue btn-sm"
+            onclick="viewArchiveItem('${item.archiveId}','${item.type}')">
+            View
+           </button>
+
+           <button
+            class="btn btn-primary btn-sm"
+            onclick="reuseArchiveItem('${item.archiveId}','${item.type}')">
+            ♻ Reuse
+           </button>
+
+           <button
+            class="btn btn-secondary btn-sm"
+            onclick="printArchiveItem('${item.archiveId}','${item.type}')">
+            🖨 Print
+           </button>
+
+           <button
+            class="btn btn-danger btn-sm"
+            onclick="deleteArchiveItem('${item.archiveId}','${item.type}')">
+            Delete
+           </button>
+
+          </div>
+
+         </td>
+
+        </tr>
+
+       `).join("")}
+
+      </tbody>
+
+     </table>
+
+    </div>
+
+   </div>`;
+ });
+
+ el.innerHTML=html;
 }
 
-async function getArchiveItem(type,id){
+/* =========================================================
+ CLEAR FILTERS
+========================================================= */
 
- const archive = await getData(archiveKey(type)) || [];
+function clearArchiveFilters(){
 
- return archive.find(item=>item.archiveId===id);
-}
-
-async function viewArchiveItem(id){
-
- const item=await getArchiveItem(currentArchiveType,id);
-
- if(!item) return;
-
- document.getElementById("viewTitle").textContent =
-  item.title;
-
- document.getElementById("viewMeta").innerHTML=`
-  <div class="card" style="box-shadow:none;background:#f8fafc">
-
-   <strong>Archive Type:</strong>
-   ${esc(typeName(item.type))}<br>
-
-   <strong>Teacher:</strong>
-   ${esc(item.teacherName)}<br>
-
-   <strong>Subject:</strong>
-   ${esc(item.subject)}<br>
-
-   <strong>Class:</strong>
-   ${esc(item.className)}<br>
-
-   <strong>Term:</strong>
-   ${esc(item.term)}<br>
-
-   <strong>Session:</strong>
-   ${esc(item.session)}<br>
-
-   <strong>Approved By:</strong>
-   ${esc(item.approvedBy)}<br>
-
-   <strong>Approved Date:</strong>
-   ${formatDate(item.approvedAt)}<br>
-
-   <strong>Archived Date:</strong>
-   ${formatDate(item.archivedAt)}
-
-  </div>`;
-
- document.getElementById("viewContent").textContent =
-  item.content;
-
- document.getElementById("viewActions").innerHTML=`
-  <button class="btn btn-primary"
-   onclick="printArchiveItem('${item.archiveId}')">
-   🖨 Print
-  </button>
-
-  <button class="btn btn-success"
-   onclick="reuseArchiveItem('${item.archiveId}')">
-   ♻ Reuse as New Work
-  </button>
- `;
-
- document.getElementById("viewModal").classList.add("show");
-}
-
-async function deleteArchiveItem(id){
-
- if(!isAdmin()) return;
-
- if(!confirm(
-  "Delete this archived copy permanently?\n\n" +
-  "The original document will not be deleted."
- )) return;
-
- const key=archiveKey(currentArchiveType);
-
- const archive=await getData(key) || [];
-
- await setData(
-  key,
-  archive.filter(item=>item.archiveId!==id)
- );
+ document.getElementById("archiveSearch").value="";
+ document.getElementById("archiveTermFilter").value="";
+ document.getElementById("archiveWeekFilter").value="";
 
  renderArchive();
- updateDashboardStats();
-
- alert("Archived copy deleted.");
 }
 
-async function reuseArchiveItem(id){
+/* =========================================================
+ GET ARCHIVE ITEM
+========================================================= */
 
- const item=await getArchiveItem(currentArchiveType,id);
+async function getArchiveItem(id,type){
 
- if(!item) return;
+ const archive=
+  await getData(
+   ARCHIVE_KEYS[type]
+  )||[];
+
+ return archive.find(
+  item=>item.archiveId===id
+ );
+}
+
+/* =========================================================
+ VIEW ARCHIVE
+========================================================= */
+
+async function viewArchiveItem(id,type){
+
+ const item=
+  await getArchiveItem(id,type);
+
+ if(!item)return;
+
+ document.getElementById("viewTitle")
+  .textContent=item.title;
+
+ document.getElementById("viewMeta")
+  .innerHTML=`
+   <div class="card"
+    style="box-shadow:none;background:#f8fafc">
+
+    <strong>Archive:</strong>
+    ${esc(item.term)}
+    → ${esc(item.week)}<br>
+
+    <strong>Type:</strong>
+    ${esc(typeName(item.type))}<br>
+
+    <strong>Teacher:</strong>
+    ${esc(item.teacherName)}<br>
+
+    <strong>Subject:</strong>
+    ${esc(item.subject)}<br>
+
+    <strong>Class:</strong>
+    ${esc(item.className)}<br>
+
+    <strong>Session:</strong>
+    ${esc(item.session)}<br>
+
+    <strong>Approved By:</strong>
+    ${esc(item.approvedBy)}<br>
+
+    <strong>Approved:</strong>
+    ${formatDate(item.approvedAt)}<br>
+
+    <strong>Archived:</strong>
+    ${formatDate(item.archivedAt)}
+
+   </div>`;
+
+ document.getElementById("viewContent")
+  .textContent=item.content;
+
+ document.getElementById("viewActions")
+  .innerHTML=`
+
+   <button
+    class="btn btn-primary"
+    onclick="printArchiveItem('${item.archiveId}','${item.type}')">
+    🖨 Print
+   </button>
+
+   <button
+    class="btn btn-success"
+    onclick="reuseArchiveItem('${item.archiveId}','${item.type}')">
+    ♻ Reuse as New Work
+   </button>
+
+  `;
+
+ document.getElementById("viewModal")
+  .classList.add("show");
+}
+
+/* =========================================================
+ REUSE ARCHIVE
+========================================================= */
+
+async function reuseArchiveItem(id,type){
+
+ const item=
+  await getArchiveItem(id,type);
+
+ if(!item)return;
 
  closeModal("viewModal");
 
  currentDocumentType=item.type;
 
- document.getElementById("documentModalTitle").textContent =
-  "Reuse Approved " + typeName(item.type);
+ document.getElementById("documentModalTitle")
+  .textContent=
+  "Reuse Approved "+typeName(item.type);
 
- document.getElementById("docTitle").value =
-  item.title + " - Copy";
+ document.getElementById("docTitle").value=
+  item.title+" - Copy";
 
- document.getElementById("docSubject").value =
-  item.subject || "";
+ document.getElementById("docSubject").value=
+  item.subject||"";
 
- document.getElementById("docClass").value =
-  item.className || "";
+ document.getElementById("docClass").value=
+  item.className||"";
 
- document.getElementById("docTerm").value =
-  item.term || "";
+ document.getElementById("docTerm").value=
+  item.term||"";
 
- document.getElementById("docSession").value =
-  item.session || "";
+ document.getElementById("docWeek").value=
+  item.week||"";
 
- document.getElementById("docWeek").value =
-  item.week || "";
+ document.getElementById("docSession").value=
+  item.session||"";
 
- document.getElementById("docContent").value =
-  item.content || "";
+ document.getElementById("docContent").value=
+  item.content||"";
 
  hideError("documentFormError");
 
- document.getElementById("documentModal").classList.add("show");
+ document.getElementById("documentModal")
+  .classList.add("show");
 }
 
 /* =========================================================
-   PRINTING
+ DELETE ARCHIVE
+========================================================= */
+
+async function deleteArchiveItem(id,type){
+
+ if(!isAdmin())return;
+
+ if(!confirm(
+  "Delete this archived copy permanently?\n\n"+
+  "The original document will not be deleted."
+ ))return;
+
+ const key=ARCHIVE_KEYS[type];
+
+ const archive=
+  await getData(key)||[];
+
+ await setData(
+  key,
+  archive.filter(
+   item=>item.archiveId!==id
+  )
+ );
+
+ await renderArchive();
+ await updateDashboardStats();
+
+ alert("Archived work deleted.");
+}
+
+/* =========================================================
+ PRINT
 ========================================================= */
 
 function printHTML(title,meta,content){
@@ -2164,7 +3294,11 @@ function printHTML(title,meta,content){
  const win=window.open("","_blank");
 
  if(!win){
-  alert("Please allow pop-ups for printing.");
+
+  alert(
+   "Please allow pop-ups for printing."
+  );
+
   return;
  }
 
@@ -2172,48 +3306,71 @@ function printHTML(title,meta,content){
  <!DOCTYPE html>
  <html>
  <head>
+
  <title>${esc(title)}</title>
+
  <style>
+
  body{
   font-family:Arial,sans-serif;
   padding:35px;
   color:#111;
  }
- h1{
-  text-align:center;
-  margin-bottom:8px;
- }
+
  .school{
   text-align:center;
+  font-size:21px;
   font-weight:bold;
-  font-size:20px;
-  margin-bottom:25px;
+  margin-bottom:8px;
  }
+
+ h1{
+  text-align:center;
+  margin-bottom:20px;
+ }
+
  .meta{
   background:#f5f5f5;
   padding:15px;
-  line-height:1.7;
+  line-height:1.8;
   margin-bottom:25px;
  }
+
  .content{
   white-space:pre-wrap;
   line-height:1.8;
  }
+
  @media print{
   body{padding:15px}
  }
+
  </style>
+
  </head>
+
  <body>
-  <div class="school">CALIPHATE TARBIYA ACADEMY</div>
+
+  <div class="school">
+   CALIPHATE TARBIYA ACADEMY
+  </div>
+
   <h1>${esc(title)}</h1>
-  <div class="meta">${meta}</div>
-  <div class="content">${esc(content)}</div>
+
+  <div class="meta">
+   ${meta}
+  </div>
+
+  <div class="content">
+   ${esc(content)}
+  </div>
+
   <script>
    window.onload=function(){
     window.print();
    };
   <\/script>
+
  </body>
  </html>
  `);
@@ -2223,69 +3380,115 @@ function printHTML(title,meta,content){
 
 async function printDocument(id){
 
- const documents=await getData("documents") || [];
- const d=documents.find(x=>x.id===id);
+ const documents=
+  await getData("documents")||[];
 
- if(!d) return;
+ const d=
+  documents.find(x=>x.id===id);
+
+ if(!d)return;
 
  const meta=`
-  <strong>Type:</strong> ${esc(typeName(d.type))}<br>
-  <strong>Teacher:</strong> ${esc(d.teacherName)}<br>
-  <strong>Subject:</strong> ${esc(d.subject)}<br>
-  <strong>Class:</strong> ${esc(d.className)}<br>
-  <strong>Term:</strong> ${esc(d.term)}<br>
-  <strong>Session:</strong> ${esc(d.session)}<br>
-  <strong>Status:</strong> ${esc(d.status)}
+  <strong>Type:</strong>
+  ${esc(typeName(d.type))}<br>
+
+  <strong>Teacher:</strong>
+  ${esc(d.teacherName)}<br>
+
+  <strong>Subject:</strong>
+  ${esc(d.subject)}<br>
+
+  <strong>Class:</strong>
+  ${esc(d.className)}<br>
+
+  <strong>Term:</strong>
+  ${esc(d.term)}<br>
+
+  <strong>Week:</strong>
+  ${esc(d.week)}<br>
+
+  <strong>Status:</strong>
+  ${esc(d.status)}
  `;
 
- printHTML(d.title,meta,d.content);
+ printHTML(
+  d.title,
+  meta,
+  d.content
+ );
 }
 
-async function printArchiveItem(id){
+async function printArchiveItem(id,type){
 
- const item=await getArchiveItem(currentArchiveType,id);
+ const item=
+  await getArchiveItem(id,type);
 
- if(!item) return;
+ if(!item)return;
 
  const meta=`
-  <strong>Type:</strong> ${esc(typeName(item.type))}<br>
-  <strong>Teacher:</strong> ${esc(item.teacherName)}<br>
-  <strong>Subject:</strong> ${esc(item.subject)}<br>
-  <strong>Class:</strong> ${esc(item.className)}<br>
-  <strong>Term:</strong> ${esc(item.term)}<br>
-  <strong>Session:</strong> ${esc(item.session)}<br>
-  <strong>Approved By:</strong> ${esc(item.approvedBy)}<br>
-  <strong>Approved:</strong> ${formatDate(item.approvedAt)}
+  <strong>Archive:</strong>
+  ${esc(item.term)} → ${esc(item.week)}<br>
+
+  <strong>Type:</strong>
+  ${esc(typeName(item.type))}<br>
+
+  <strong>Teacher:</strong>
+  ${esc(item.teacherName)}<br>
+
+  <strong>Subject:</strong>
+  ${esc(item.subject)}<br>
+
+  <strong>Class:</strong>
+  ${esc(item.className)}<br>
+
+  <strong>Approved By:</strong>
+  ${esc(item.approvedBy)}<br>
+
+  <strong>Approved:</strong>
+  ${formatDate(item.approvedAt)}
  `;
 
- printHTML(item.title,meta,item.content);
+ printHTML(
+  item.title,
+  meta,
+  item.content
+ );
 }
 
 /* =========================================================
-   TEACHERS
+ TEACHERS
 ========================================================= */
 
 async function renderTeachers(){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const users=await getData("users") || [];
+ const users=
+  await getData("users")||[];
 
- const teachers=users.filter(u=>u.role==="teacher");
+ const teachers=
+  users.filter(
+   u=>u.role==="teacher"
+  );
 
- const el=document.getElementById("teachersList");
+ const el=
+  document.getElementById("teachersList");
 
  if(!teachers.length){
+
   el.innerHTML=`
    <div class="card empty">
     No teacher accounts have been created yet.
    </div>`;
+
   return;
  }
 
  el.innerHTML=`
   <div class="table-wrap">
+
    <table>
+
     <thead>
      <tr>
       <th>Name</th>
@@ -2298,23 +3501,41 @@ async function renderTeachers(){
     </thead>
 
     <tbody>
+
      ${teachers.map(t=>`
+
       <tr>
-       <td><strong>${esc(t.name)}</strong></td>
-       <td>${esc(t.username)}</td>
-       <td>${esc(t.subject)}</td>
-       <td>${esc(t.className)}</td>
-       <td>${formatDate(t.createdAt)}</td>
+
        <td>
-        <button class="btn btn-danger btn-sm"
+        <strong>${esc(t.name)}</strong>
+       </td>
+
+       <td>${esc(t.username)}</td>
+
+       <td>${esc(t.subject)}</td>
+
+       <td>${esc(t.className)}</td>
+
+       <td>${formatDate(t.createdAt)}</td>
+
+       <td>
+
+        <button
+         class="btn btn-danger btn-sm"
          onclick="deleteTeacher('${t.id}')">
          Delete
         </button>
+
        </td>
+
       </tr>
+
      `).join("")}
+
     </tbody>
+
    </table>
+
   </div>`;
 }
 
@@ -2328,7 +3549,8 @@ function openTeacherModal(){
  document.getElementById("teacherSubject").value="";
  document.getElementById("teacherClass").value="";
 
- document.getElementById("teacherModal").classList.add("show");
+ document.getElementById("teacherModal")
+  .classList.add("show");
 }
 
 async function saveTeacher(){
@@ -2337,53 +3559,87 @@ async function saveTeacher(){
 
   hideError("teacherFormError");
 
-  const name=document.getElementById("teacherName").value.trim();
-  const username=document.getElementById("teacherUsername").value.trim();
-  const password=document.getElementById("teacherPassword").value;
-  const subject=document.getElementById("teacherSubject").value.trim();
-  const className=document.getElementById("teacherClass").value.trim();
+  const name=
+   document.getElementById("teacherName")
+   .value.trim();
 
-  if(!name || !username || !password){
+  const username=
+   document.getElementById("teacherUsername")
+   .value.trim();
+
+  const password=
+   document.getElementById("teacherPassword")
+   .value;
+
+  const subject=
+   document.getElementById("teacherSubject")
+   .value.trim();
+
+  const className=
+   document.getElementById("teacherClass")
+   .value.trim();
+
+  if(!name||!username||!password){
+
    showError(
     "teacherFormError",
     "Name, username and password are required."
    );
+
    return;
   }
 
-  const users=await getData("users") || [];
+  const users=
+   await getData("users")||[];
 
-  if(users.some(u=>
-   u.username.toLowerCase()===username.toLowerCase()
+  if(users.some(
+   u=>
+   u.username.toLowerCase()===
+   username.toLowerCase()
   )){
+
    showError(
     "teacherFormError",
     "That username already exists."
    );
+
    return;
   }
 
   users.push({
+
    id:uid(),
-   name,
-   username,
-   password,
-   subject,
-   className,
+
+   name:name,
+
+   username:username,
+
+   password:password,
+
+   subject:subject,
+
+   className:className,
+
    role:"teacher",
+
    createdAt:now()
+
   });
 
   await setData("users",users);
 
   closeModal("teacherModal");
 
-  refreshAll();
+  await refreshAll();
 
-  alert("Teacher account created successfully.");
+  alert(
+   "Teacher account created successfully."
+  );
 
  }catch(err){
+
   console.error(err);
+
   showError(
    "teacherFormError",
    "Unable to create teacher account."
@@ -2393,32 +3649,30 @@ async function saveTeacher(){
 
 async function deleteTeacher(id){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
  if(!confirm(
-  "Delete this teacher account?\n\n" +
-  "Approved archived work will remain in the archive."
- )) return;
+  "Delete this teacher account?\n\n"+
+  "Approved archived work will remain safely stored."
+ ))return;
 
- const users=await getData("users") || [];
+ const users=
+  await getData("users")||[];
 
  await setData(
   "users",
   users.filter(u=>u.id!==id)
  );
 
- /*
-   Only delete the teacher account.
-   Do NOT delete documents or approved archive history.
- */
+ await refreshAll();
 
- refreshAll();
-
- alert("Teacher account deleted. Approved archive history was preserved.");
+ alert(
+  "Teacher account deleted. Archive history preserved."
+ );
 }
 
 /* =========================================================
-   SECURITY
+ SECURITY
 ========================================================= */
 
 async function changePassword(){
@@ -2432,35 +3686,46 @@ async function changePassword(){
  const confirmPass=
   document.getElementById("confirmPassword").value;
 
- const box=document.getElementById("securityMessage");
+ const box=
+  document.getElementById("securityMessage");
 
  box.innerHTML="";
 
- if(!current || !newPass || !confirmPass){
+ if(!current||!newPass||!confirmPass){
+
   box.innerHTML=
    '<div class="error">Please complete all password fields.</div>';
+
   return;
  }
 
  if(newPass!==confirmPass){
+
   box.innerHTML=
    '<div class="error">New passwords do not match.</div>';
+
   return;
  }
 
  if(newPass.length<6){
+
   box.innerHTML=
    '<div class="error">Password must be at least 6 characters.</div>';
+
   return;
  }
 
- const users=await getData("users") || [];
+ const users=
+  await getData("users")||[];
 
- const user=users.find(u=>u.id===currentUser.id);
+ const user=
+  users.find(u=>u.id===currentUser.id);
 
- if(!user || user.password!==current){
+ if(!user||user.password!==current){
+
   box.innerHTML=
    '<div class="error">Current password is incorrect.</div>';
+
   return;
  }
 
@@ -2471,7 +3736,7 @@ async function changePassword(){
  currentUser=user;
 
  box.innerHTML=
-  '<div class="notice" style="color:#166534;background:#dcfce7;border-color:#86efac">Password changed successfully.</div>';
+  '<div class="notice" style="background:#dcfce7;border-color:#86efac;color:#166534">Password changed successfully.</div>';
 
  document.getElementById("currentPassword").value="";
  document.getElementById("newPassword").value="";
@@ -2479,18 +3744,33 @@ async function changePassword(){
 }
 
 /* =========================================================
-   TEACHER ASSISTANT
+ ASSISTANT
 ========================================================= */
 
 function generateAssistant(){
 
- const type=document.getElementById("assistantType").value;
- const subject=document.getElementById("assistantSubject").value.trim();
- const className=document.getElementById("assistantClass").value.trim();
- const topic=document.getElementById("assistantTopic").value.trim();
+ const type=
+  document.getElementById("assistantType")
+  .value;
 
- if(!subject || !className || !topic){
-  alert("Please enter subject, class and topic.");
+ const subject=
+  document.getElementById("assistantSubject")
+  .value.trim();
+
+ const className=
+  document.getElementById("assistantClass")
+  .value.trim();
+
+ const topic=
+  document.getElementById("assistantTopic")
+  .value.trim();
+
+ if(!subject||!className||!topic){
+
+  alert(
+   "Please enter subject, class and topic."
+  );
+
   return;
  }
 
@@ -2498,7 +3778,7 @@ function generateAssistant(){
 
  if(type==="lessonPlan"){
 
-  output=
+ output=
 `CALIPHATE TARBIYA ACADEMY
 
 LESSON PLAN
@@ -2512,13 +3792,13 @@ Term:
 Week:
 
 Previous Knowledge:
-Learners' previous knowledge related to the topic.
 
 Learning Objectives:
 By the end of the lesson, learners should be able to:
-1. Define/explain ${topic}.
-2. Identify important concepts related to ${topic}.
-3. Apply the knowledge acquired.
+1. Explain ${topic}.
+2. Identify important ideas related to ${topic}.
+3. Give examples.
+4. Apply the knowledge acquired.
 
 Teaching/Learning Materials:
 1.
@@ -2526,17 +3806,18 @@ Teaching/Learning Materials:
 3.
 
 Introduction:
-The teacher introduces the lesson by asking learners questions related to ${topic}.
+The teacher introduces the lesson using questions related to ${topic}.
 
 Presentation:
+
 Step 1:
-The teacher introduces and explains the topic.
+Teacher introduces the topic.
 
 Step 2:
-The teacher gives examples and involves learners in activities.
+Teacher explains the main concepts.
 
 Step 3:
-Learners answer questions and participate in guided practice.
+Learners participate in guided activities.
 
 Evaluation:
 1.
@@ -2545,7 +3826,7 @@ Evaluation:
 4.
 
 Conclusion:
-The teacher summarizes the major points.
+Teacher summarizes the major points.
 
 Assignment:
 1.
@@ -2553,7 +3834,7 @@ Assignment:
 
  }else if(type==="lessonNote"){
 
-  output=
+ output=
 `CALIPHATE TARBIYA ACADEMY
 
 LESSON NOTE
@@ -2579,6 +3860,7 @@ At the end of the lesson, learners should be able to:
 CONTENT
 
 Meaning of ${topic}:
+
 Write a clear explanation here.
 
 Main Points:
@@ -2620,7 +3902,7 @@ ASSIGNMENT
 
  }else{
 
-  output=
+ output=
 `CALIPHATE TARBIYA ACADEMY
 
 SCHEME OF WORK
@@ -2701,40 +3983,71 @@ Teaching Materials:
 Activities:
 
 WEEK 11
-Revision
+Topic:
+Sub-topic:
+Objectives:
+Teaching Materials:
+Activities:
 
 WEEK 12
-Examination`;
+Revision
+
+WEEK 13
+Examination / Revision`;
+
  }
 
- document.getElementById("assistantOutput").value=output;
+ document.getElementById("assistantOutput")
+  .value=output;
 }
 
 /* =========================================================
-   BACKUP
+ BACKUP
 ========================================================= */
 
 async function createBackup(){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const users=await getData("users") || [];
- const documents=await getData("documents") || [];
+ const users=
+  await getData("users")||[];
 
- const archive={
-  scheme:await getData("archive_scheme") || [],
-  lessonPlan:await getData("archive_lessonPlan") || [],
-  lessonNote:await getData("archive_lessonNote") || [],
-  general:await getData("archive_general") || []
+ const documents=
+  await getData("documents")||[];
+
+ const archives={
+  scheme:
+   await getData("archive_scheme")||[],
+
+  lessonPlan:
+   await getData("archive_lessonPlan")||[],
+
+  lessonNote:
+   await getData("archive_lessonNote")||[],
+
+  general:
+   await getData("archive_general")||[]
  };
 
  const backup={
-  app:"Caliphate Tarbiya Academy",
-  version:"CTA-ARCHIVE-1",
-  createdAt:now(),
-  users,
-  documents,
-  archives:archive
+
+  app:
+   "Caliphate Tarbiya Academy",
+
+  version:
+   "CTA-WEEK-ARCHIVE-1",
+
+  createdAt:
+   now(),
+
+  users:
+   users,
+
+  documents:
+   documents,
+
+  archives:
+   archives
  };
 
  const blob=new Blob(
@@ -2742,104 +4055,116 @@ async function createBackup(){
   {type:"application/json"}
  );
 
- const url=URL.createObjectURL(blob);
+ const url=
+  URL.createObjectURL(blob);
 
- const a=document.createElement("a");
+ const a=
+  document.createElement("a");
 
- const date=new Date()
+ const date=
+  new Date()
   .toISOString()
   .slice(0,10);
 
  a.href=url;
- a.download="CTA_School_Backup_"+date+".json";
+
+ a.download=
+  "CTA_School_Backup_"+date+".json";
 
  document.body.appendChild(a);
+
  a.click();
+
  a.remove();
 
  URL.revokeObjectURL(url);
 
- alert("Backup downloaded successfully.");
+ alert(
+  "Complete school backup downloaded successfully."
+ );
 }
 
 async function restoreBackup(){
 
- if(!isAdmin()) return;
+ if(!isAdmin())return;
 
- const input=document.getElementById("restoreFile");
+ const input=
+  document.getElementById("restoreFile");
+
  const file=input.files[0];
 
  if(!file){
-  alert("Please select a backup JSON file.");
+
+  alert(
+   "Please select a backup JSON file."
+  );
+
   return;
  }
 
  if(!confirm(
-  "Restore this backup?\n\n" +
-  "Current school data will be replaced by the backup."
- )) return;
+  "Restore this backup?\n\n"+
+  "Current school data will be replaced."
+ ))return;
 
  try{
 
-  const text=await file.text();
-  const backup=JSON.parse(text);
+  const text=
+   await file.text();
+
+  const backup=
+   JSON.parse(text);
 
   if(
-   !backup ||
-   !Array.isArray(backup.users) ||
+   !backup||
+   !Array.isArray(backup.users)||
    !Array.isArray(backup.documents)
   ){
-   throw new Error("Invalid backup.");
+   throw new Error(
+    "Invalid backup."
+   );
   }
 
-  await setData("users",backup.users);
-  await setData("documents",backup.documents);
+  await setData(
+   "users",
+   backup.users
+  );
 
-  if(backup.archives){
+  await setData(
+   "documents",
+   backup.documents
+  );
 
-   await setData(
-    "archive_scheme",
-    Array.isArray(backup.archives.scheme)
-     ? backup.archives.scheme : []
-   );
+  const archives=
+   backup.archives||{};
 
-   await setData(
-    "archive_lessonPlan",
-    Array.isArray(backup.archives.lessonPlan)
-     ? backup.archives.lessonPlan : []
-   );
+  await setData(
+   "archive_scheme",
+   Array.isArray(archives.scheme)
+    ?archives.scheme:[]
+  );
 
-   await setData(
-    "archive_lessonNote",
-    Array.isArray(backup.archives.lessonNote)
-     ? backup.archives.lessonNote : []
-   );
+  await setData(
+   "archive_lessonPlan",
+   Array.isArray(archives.lessonPlan)
+    ?archives.lessonPlan:[]
+  );
 
-   await setData(
-    "archive_general",
-    Array.isArray(backup.archives.general)
-     ? backup.archives.general : []
-   );
+  await setData(
+   "archive_lessonNote",
+   Array.isArray(archives.lessonNote)
+    ?archives.lessonNote:[]
+  );
 
-  }else{
+  await setData(
+   "archive_general",
+   Array.isArray(archives.general)
+    ?archives.general:[]
+  );
 
-   /*
-     Compatibility with older backups:
-     automatically archive approved documents.
-   */
-
-   const docs=backup.documents || [];
-
-   for(const d of docs){
-
-    if(d.status==="approved"){
-     await archiveApprovedWork(d);
-    }
-
-   }
-  }
-
-  alert("Backup restored successfully.");
+  alert(
+   "Backup restored successfully."
+  );
 
   location.reload();
 
@@ -2848,44 +4173,65 @@ async function restoreBackup(){
   console.error(err);
 
   alert(
-   "Restore failed. The selected file may not be a valid CTA backup."
+   "Restore failed. Please select a valid CTA backup file."
   );
  }
 }
 
 /* =========================================================
-   MODALS
+ MODALS
 ========================================================= */
 
 function closeModal(id){
- document.getElementById(id).classList.remove("show");
+
+ document.getElementById(id)
+  .classList.remove("show");
 }
 
-document.querySelectorAll(".modal-bg").forEach(bg=>{
- bg.addEventListener("click",function(e){
-  if(e.target===bg){
-   bg.classList.remove("show");
-  }
+document.querySelectorAll(".modal-bg")
+ .forEach(bg=>{
+
+  bg.addEventListener(
+   "click",
+   function(e){
+
+    if(e.target===bg){
+     bg.classList.remove("show");
+    }
+
+   }
+  );
+
  });
-});
 
 /* =========================================================
-   DASHBOARD STATS
+ DASHBOARD STATS
 ========================================================= */
 
 async function updateDashboardStats(){
 
- const documents=await getData("documents") || [];
- const users=await getData("users") || [];
+ const documents=
+  await getData("documents")||[];
 
- const pending=documents.filter(
-  d=>d.status==="pending"
- );
+ const users=
+  await getData("users")||[];
 
- const scheme=await getData("archive_scheme") || [];
- const plan=await getData("archive_lessonPlan") || [];
- const note=await getData("archive_lessonNote") || [];
- const general=await getData("archive_general") || [];
+ const scheme=
+  await getData("archive_scheme")||[];
+
+ const plan=
+  await getData("archive_lessonPlan")||[];
+
+ const note=
+  await getData("archive_lessonNote")||[];
+
+ const general=
+  await getData("archive_general")||[];
+
+ const pending=
+  documents.filter(
+   d=>d.status==="pending"
+  ).length;
 
  const totalArchive=
   scheme.length+
@@ -2893,75 +4239,107 @@ async function updateDashboardStats(){
   note.length+
   general.length;
 
- document.getElementById("statDocuments").textContent=
-  documents.length;
+ document.getElementById("statDocuments")
+  .textContent=documents.length;
 
- document.getElementById("statPending").textContent=
-  pending.length;
+ document.getElementById("statPending")
+  .textContent=pending;
 
- document.getElementById("statTeachers").textContent=
-  users.filter(u=>u.role==="teacher").length;
+ document.getElementById("statTeachers")
+  .textContent=
+  users.filter(
+   u=>u.role==="teacher"
+  ).length;
 
- document.getElementById("statArchived").textContent=
-  totalArchive;
+ document.getElementById("statArchived")
+  .textContent=totalArchive;
 
- document.getElementById("dashScheme").textContent=
-  scheme.length;
+ document.getElementById("dashScheme")
+  .textContent=scheme.length;
 
- document.getElementById("dashPlan").textContent=
-  plan.length;
+ document.getElementById("dashPlan")
+  .textContent=plan.length;
 
- document.getElementById("dashNote").textContent=
-  note.length;
+ document.getElementById("dashNote")
+  .textContent=note.length;
 
- document.getElementById("dashGeneral").textContent=
-  general.length;
+ document.getElementById("dashGeneral")
+  .textContent=general.length;
 }
 
 /* =========================================================
-   REFRESH EVERYTHING
+ REFRESH
 ========================================================= */
 
 async function refreshAll(){
 
- if(!currentUser) return;
+ if(!currentUser)return;
 
  await updateDashboardStats();
 
- await renderDocuments("scheme","schemeList");
- await renderDocuments("lessonPlan","lessonPlanList");
- await renderDocuments("lessonNote","lessonNoteList");
- await renderDocuments("general","documentsList");
+ await renderDocuments(
+  "scheme",
+  "schemeList"
+ );
+
+ await renderDocuments(
+  "lessonPlan",
+  "lessonPlanList"
+ );
+
+ await renderDocuments(
+  "lessonNote",
+  "lessonNoteList"
+ );
+
+ await renderDocuments(
+  "general",
+  "documentsList"
+ );
 
  if(isAdmin()){
+
   await renderApproval();
+
   await renderTeachers();
+
   await renderArchive();
+
  }
 }
 
 /* =========================================================
-   KEYBOARD LOGIN
+ ENTER TO LOGIN
 ========================================================= */
 
 document.getElementById("loginPassword")
- .addEventListener("keydown",function(e){
-  if(e.key==="Enter") login();
- });
+ .addEventListener(
+  "keydown",
+  function(e){
+
+   if(e.key==="Enter"){
+    login();
+   }
+
+  }
+ );
 
 /* =========================================================
-   START APPLICATION
+ START
 ========================================================= */
 
 initialize().catch(err=>{
+
  console.error(err);
 
- const error=document.getElementById("loginError");
+ const error=
+  document.getElementById("loginError");
 
  error.textContent=
-  "The system could not start. Please make sure your browser allows site storage.";
+  "The system could not start. Please make sure browser storage is enabled.";
 
  error.classList.remove("hidden");
+
 });
 </script>
 
