@@ -1,693 +1,428 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
 <meta name="theme-color" content="#14532d">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<title>Caliphate Tarbiya Academy | Academic Management System</title>
+<title>Caliphate Tarbiya Academy | Professional Academic Management System</title>
 
 <style>
-
 *{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-
  --g:#14532d;
-
  --g2:#166534;
-
+ --g3:#22c55e;
  --bg:#f4f7f5;
-
  --line:#d9e0dc;
-
  --text:#17202a;
-
  --muted:#64748b;
-
  --danger:#b91c1c;
-
  --orange:#c2410c;
-
- --white:#fff
-
+ --blue:#1d4ed8;
+ --white:#fff;
+ --dark:#052e16
 }
-
 html,body{width:100%;min-width:0;overflow-x:hidden}
-
 body{
-
  font-family:Arial,Helvetica,sans-serif;
-
  background:var(--bg);
-
  color:var(--text);
-
- line-height:1.45
-
+ line-height:1.5
 }
-
 button,input,select,textarea{font:inherit}
-
 button{cursor:pointer}
-
 .hidden{display:none!important}
-
 #login{
-
  min-height:100dvh;
-
  display:grid;
-
  place-items:center;
-
  padding:16px;
-
  background:linear-gradient(135deg,#052e16,#166534)
-
 }
-
 .login-card{
-
- width:min(100%,440px);
-
+ width:min(100%,450px);
  background:#fff;
-
- border-radius:20px;
-
- padding:26px;
-
+ border-radius:22px;
+ padding:28px;
  box-shadow:0 20px 70px #0005
-
 }
-
 .logo{
-
- width:64px;
-
- height:64px;
-
- border-radius:17px;
-
+ width:68px;
+ height:68px;
+ border-radius:18px;
  background:var(--g);
-
  color:#fff;
-
  display:grid;
-
  place-items:center;
-
  font-size:25px;
-
  font-weight:800;
-
  margin:0 auto 14px
-
 }
-
 .center{text-align:center}
-
 .muted{color:var(--muted);font-size:13px}
-
 label{
-
  display:block;
-
  font-size:13px;
-
  font-weight:700;
-
  margin:13px 0 6px
-
 }
-
 input,select,textarea{
-
  width:100%;
-
  min-width:0;
-
  border:1px solid var(--line);
-
  border-radius:9px;
-
  background:#fff;
-
  padding:11px 12px;
-
  outline:none
-
 }
-
 input:focus,select:focus,textarea:focus{
-
  border-color:var(--g);
-
  box-shadow:0 0 0 3px #14532d18
-
 }
-
 textarea{min-height:120px;resize:vertical}
-
 .btn{
-
  border:0;
-
  border-radius:9px;
-
  padding:10px 14px;
-
  font-weight:700;
-
  min-height:42px
-
 }
-
 .primary{background:var(--g);color:#fff}
-
 .secondary{background:#e2e8f0;color:var(--text)}
-
 .danger{background:#fee2e2;color:#991b1b}
-
 .orange{background:#ffedd5;color:#9a3412}
-
+.blue{background:#dbeafe;color:#1e40af}
 .password-wrap{position:relative}
-
 .password-wrap input{padding-right:70px}
-
 .password-wrap button{
-
  position:absolute;
-
  right:5px;
-
  top:5px;
-
  border:0;
-
  border-radius:7px;
-
  padding:6px;
-
  background:#eef2f7
-
 }
-
 #app{display:none;min-height:100dvh}
-
 .sidebar{
-
  position:fixed;
-
  z-index:1000;
-
  inset:0 auto 0 0;
-
  width:255px;
-
  background:#052e16;
-
  color:#fff;
-
  padding:16px 12px;
-
  overflow:auto
-
 }
-
 .brand{
-
  padding:8px 10px 18px;
-
  border-bottom:1px solid #ffffff22;
-
  margin-bottom:12px
-
 }
-
 .brand strong{display:block;font-size:17px}
-
 .brand small{color:#bbf7d0}
-
+.nav-title{
+ color:#86efac;
+ font-size:10px;
+ text-transform:uppercase;
+ letter-spacing:1px;
+ padding:13px 12px 5px
+}
 .nav-btn{
-
  display:block;
-
  width:100%;
-
  text-align:left;
-
  padding:11px 12px;
-
  border:0;
-
  border-radius:8px;
-
  background:transparent;
-
  color:#dcfce7;
-
  margin:2px 0;
-
  min-height:42px
-
 }
-
 .nav-btn:hover,.nav-btn.active{background:#166534}
-
 .main{
-
  margin-left:255px;
-
  padding:20px;
-
- max-width:1600px;
-
+ max-width:1700px;
  min-width:0
-
 }
-
 .topbar{
-
  display:flex;
-
  justify-content:space-between;
-
  align-items:center;
-
  gap:12px;
-
  margin-bottom:18px
-
 }
-
 .userbox{
-
  background:#fff;
-
  border:1px solid var(--line);
-
  padding:8px 12px;
-
  border-radius:10px;
-
  max-width:100%;
-
  overflow-wrap:anywhere
-
 }
-
 .mobile-menu{
-
  display:none;
-
  border:0;
-
  background:var(--g);
-
  color:#fff;
-
  width:44px;
-
  height:44px;
-
  border-radius:10px;
-
  font-size:23px;
-
  flex:0 0 44px
-
 }
-
 .page{display:none}
-
 .page.active{display:block}
-
 .cards{
-
  display:grid;
-
  grid-template-columns:repeat(4,minmax(0,1fr));
-
  gap:14px
-
 }
-
 .card,.panel{
-
  background:#fff;
-
  border:1px solid var(--line);
-
  border-radius:13px;
-
  padding:17px
-
 }
-
 .card h3{font-size:13px;color:var(--muted)}
-
 .num{
-
  font-size:28px;
-
  font-weight:800;
-
  color:var(--g);
-
  margin-top:6px
-
 }
-
 .panel{margin-bottom:15px}
-
 .panel h2{font-size:18px;margin-bottom:9px}
-
+.panel h3{margin-bottom:5px}
 .grid{
-
  display:grid;
-
  grid-template-columns:repeat(2,minmax(0,1fr));
-
  gap:13px
-
 }
-
 .grid3{
-
  display:grid;
-
  grid-template-columns:repeat(3,minmax(0,1fr));
-
  gap:13px
-
 }
-
+.grid4{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:13px
+}
 .actions{
-
  display:flex;
-
  flex-wrap:wrap;
-
  gap:8px;
-
  margin-top:14px
-
 }
-
 .table-wrap{
-
  width:100%;
-
  overflow:auto;
-
  -webkit-overflow-scrolling:touch
-
 }
-
 table{
-
  width:100%;
-
  border-collapse:collapse;
-
  margin-top:10px;
-
- min-width:620px
-
+ min-width:700px
 }
-
 th,td{
-
  padding:9px;
-
  border-bottom:1px solid #e5e7eb;
-
  text-align:left;
-
  font-size:13px;
-
  vertical-align:top
-
 }
-
 th{background:#f8fafc}
-
 .badge{
-
  display:inline-block;
-
  padding:4px 8px;
-
  border-radius:999px;
-
  font-size:11px;
-
  font-weight:700;
-
  background:#e2e8f0
-
 }
-
 .badge.green{background:#dcfce7;color:#166534}
-
 .badge.orange{background:#ffedd5;color:#9a3412}
-
 .badge.red{background:#fee2e2;color:#991b1b}
-
+.badge.blue{background:#dbeafe;color:#1e40af}
 .assistant-result{
-
  white-space:pre-wrap;
-
  background:#f8fafc;
-
  border:1px solid var(--line);
-
  padding:15px;
-
  border-radius:10px;
-
- line-height:1.6;
-
+ line-height:1.65;
  min-height:250px;
-
  overflow-wrap:anywhere
-
 }
-
 .overlay{display:none}
-
 .notice{
-
  padding:10px 12px;
-
  border-radius:9px;
-
  background:#f0fdf4;
-
  border:1px solid #bbf7d0;
-
  color:#166534;
-
  font-size:13px
-
 }
-
+.warning{
+ padding:10px 12px;
+ border-radius:9px;
+ background:#fff7ed;
+ border:1px solid #fed7aa;
+ color:#9a3412;
+ font-size:13px
+}
 .kpi{font-size:12px;color:var(--muted)}
-
 hr{
-
  border:0;
-
  border-top:1px solid var(--line);
-
  margin:14px 0
-
 }
-
-@media(max-width:1050px){
-
+.section-title{
+ font-weight:800;
+ color:var(--g);
+ margin:15px 0 6px
+}
+.check-grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:4px 10px;
+ max-height:280px;
+ overflow:auto;
+ border:1px solid var(--line);
+ padding:10px;
+ border-radius:9px
+}
+.check-item{
+ font-weight:400;
+ margin:0;
+ font-size:12px
+}
+.check-item input{
+ width:auto;
+ margin-right:5px
+}
+.question-box{
+ border:1px solid var(--line);
+ border-radius:10px;
+ padding:12px;
+ margin:9px 0;
+ background:#fff
+}
+.small{font-size:12px}
+.stat-green{border-top:4px solid var(--g)}
+.stat-blue{border-top:4px solid var(--blue)}
+.stat-orange{border-top:4px solid var(--orange)}
+.stat-red{border-top:4px solid var(--danger)}
+.empty{
+ padding:25px;
+ text-align:center;
+ color:var(--muted)
+}
+.readonly{
+ background:#f8fafc;
+ cursor:not-allowed
+}
+@media(max-width:1100px){
  .sidebar{width:225px}
-
  .main{margin-left:225px}
-
  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-
- .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
-
+ .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
 @media(max-width:760px){
-
  .sidebar{
-
   width:min(86vw,320px);
-
   transform:translateX(-105%);
-
   transition:.22s ease;
-
   box-shadow:10px 0 30px #0003
-
  }
-
  .sidebar.open{transform:translateX(0)}
-
  .overlay.active{
-
   display:block;
-
   position:fixed;
-
   inset:0;
-
   background:#0006;
-
   z-index:999
-
  }
-
  .main{margin-left:0;padding:12px}
-
  .mobile-menu{display:block}
-
  .topbar{align-items:center}
-
  .topbar>div:first-of-type{
-
   display:flex;
-
   align-items:center;
-
   gap:9px
-
  }
-
- .cards,.grid,.grid3{grid-template-columns:1fr}
-
+ .cards,.grid,.grid3,.grid4,.check-grid{grid-template-columns:1fr}
  .panel,.card{padding:13px}
-
  .actions{flex-direction:column}
-
  .actions .btn{width:100%}
-
  h1{font-size:22px!important}
-
  h2{font-size:17px!important}
-
 }
-
 @media(max-width:390px){
-
  .main{padding:8px}
-
  .login-card{padding:20px}
-
  input,select,textarea{font-size:16px}
-
  .card,.panel{padding:11px}
-
 }
-
 @media print{
-
  .sidebar,.mobile-menu,.overlay,.no-print,button{display:none!important}
-
- .main{
-
-  margin:0!important;
-
-  padding:0!important;
-
-  max-width:none!important
-
- }
-
+ .main{margin:0!important;padding:0!important;max-width:none!important}
  table{min-width:0!important}
-
 }
-
 </style>
-
 </head>
 
 <body>
 
 <section id="login">
-
 <div class="login-card">
 
 <div class="logo">CTA</div>
 
 <div class="center">
-
 <h1>Caliphate Tarbiya Academy</h1>
-
-<p class="muted">Academic Management System</p>
-
+<p class="muted">Professional Academic Management System</p>
 </div>
 
 <label>Login as</label>
-
 <select id="loginRole">
-
 <option value="admin">Administrator</option>
-
 <option value="teacher">Teacher</option>
-
 </select>
 
 <label>Username</label>
-
 <input id="loginUser" autocomplete="username">
 
 <label>Password</label>
-
 <div class="password-wrap">
-
 <input id="loginPass" type="password" autocomplete="current-password">
-
 <button type="button" onclick="togglePassword('loginPass',this)">Show</button>
-
 </div>
 
 <div id="caps" class="muted hidden"
-
 style="margin-top:7px;color:#b45309">
-
 Caps Lock is ON.
-
 </div>
 
 <button class="btn primary"
-
 style="width:100%;margin-top:17px"
-
 onclick="login()">Login</button>
 
 <p class="muted center" style="margin-top:12px">
-
-Teachers must be created by the Administrator.
-
+Teacher accounts can only be created by the Administrator.
 </p>
 
 <p class="muted center" style="margin-top:5px">
-
-Default admin: <b>admin</b> / <b>Admin@12345</b>
-
+Default administrator: <b>admin</b> / <b>Admin@12345</b>
 </p>
 
 </div>
-
 </section>
 
 <div id="app">
@@ -695,110 +430,47 @@ Default admin: <b>admin</b> / <b>Admin@12345</b>
 <aside class="sidebar" id="sidebar">
 
 <div class="brand">
-
 <strong>Caliphate Tarbiya Academy</strong>
-
-<small>Academic Management System</small>
-
+<small>Professional Academic System V6</small>
 </div>
 
 <button class="nav-btn" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
 
+<div class="nav-title">Academic Work</div>
+
 <div id="teacherNav">
 
-<button class="nav-btn" onclick="showPage('lessonPlan',this)">
-
-📘 Lesson Plan
-
-</button>
-
-<button class="nav-btn" onclick="showPage('lessonNote',this)">
-
-📝 Lesson Note
-
-</button>
-
-<button class="nav-btn" onclick="showPage('scheme',this)">
-
-📚 Scheme of Work
-
-</button>
-
-<button class="nav-btn" onclick="showPage('assessment',this)">
-
-📋 CA & Examination
-
-</button>
-
-<button class="nav-btn" onclick="showPage('assistant',this)">
-
-🤖 Teacher Assistant
-
-</button>
-
-<button class="nav-btn" onclick="showPage('submissions',this)">
-
-📤 My Submissions
-
-</button>
+<button class="nav-btn" onclick="showPage('lessonPlan',this)">📘 Lesson Plan</button>
+<button class="nav-btn" onclick="showPage('lessonNote',this)">📝 Lesson Note</button>
+<button class="nav-btn" onclick="showPage('scheme',this)">📚 Scheme of Work</button>
+<button class="nav-btn" onclick="showPage('assessment',this)">📋 CA & Examination</button>
+<button class="nav-btn" onclick="showPage('assistant',this)">🤖 Teacher Assistant</button>
+<button class="nav-btn" onclick="showPage('submissions',this)">📤 My Submissions</button>
 
 <button id="hodNav" class="nav-btn hidden"
-
-onclick="showPage('hod',this)">
-
-✅ HOD Approval Centre
-
-</button>
+onclick="showPage('hod',this)">✅ HOD Approval Centre</button>
 
 <button id="examNav" class="nav-btn hidden"
-
-onclick="showPage('exam',this)">
-
-🧾 Examination Officer
-
-</button>
+onclick="showPage('exam',this)">🧾 Examination Officer</button>
 
 </div>
 
 <div id="adminNav" class="hidden">
 
-<button class="nav-btn" onclick="showPage('teachers',this)">
+<div class="nav-title">Administration</div>
 
-👨‍🏫 Teacher Management
-
-</button>
-
-<button class="nav-btn" onclick="showPage('hodAssign',this)">
-
-🎯 HOD Assignment
-
-</button>
-
-<button class="nav-btn" onclick="showPage('settings',this)">
-
-⚙️ School Settings
-
-</button>
-
-<button class="nav-btn" onclick="showPage('backup',this)">
-
-💾 Backup & Restore
-
-</button>
+<button class="nav-btn" onclick="showPage('teachers',this)">👨‍🏫 Teacher Management</button>
+<button class="nav-btn" onclick="showPage('hodAssign',this)">🎯 HOD Assignment</button>
+<button class="nav-btn" onclick="showPage('settings',this)">⚙️ School Settings</button>
+<button class="nav-btn" onclick="showPage('backup',this)">💾 Backup & Restore</button>
+<button class="nav-btn" onclick="showPage('activity',this)">📜 Activity Log</button>
 
 </div>
 
-<button class="nav-btn" onclick="showPage('password',this)">
+<div class="nav-title">Account</div>
 
-🔐 Change Password
-
-</button>
-
-<button class="nav-btn" onclick="logout()">
-
-🚪 Logout
-
-</button>
+<button class="nav-btn" onclick="showPage('password',this)">🔐 Change Password</button>
+<button class="nav-btn" onclick="logout()">🚪 Logout</button>
 
 </aside>
 
@@ -809,275 +481,267 @@ onclick="showPage('exam',this)">
 <div class="topbar">
 
 <div style="min-width:0">
-
 <div style="display:flex;align-items:center;gap:8px">
-
 <button class="mobile-menu" onclick="toggleMenu()">☰</button>
-
 <h1 id="pageTitle">Dashboard</h1>
-
 </div>
-
 <p class="muted" id="schoolMotto"></p>
-
 </div>
 
 <div class="userbox" id="who"></div>
 
 </div>
 
+<!-- DASHBOARD -->
 <section id="dashboard" class="page active">
 
 <div class="cards">
 
-<div class="card">
-
+<div class="card stat-green">
 <h3>Teachers</h3>
-
 <div class="num" id="statTeachers">0</div>
-
 </div>
 
-<div class="card">
-
-<h3>Documents</h3>
-
+<div class="card stat-blue">
+<h3>Academic Documents</h3>
 <div class="num" id="statDocs">0</div>
-
 </div>
 
-<div class="card">
-
-<h3>Pending</h3>
-
+<div class="card stat-orange">
+<h3>Pending Assessments</h3>
 <div class="num" id="statPending">0</div>
-
 </div>
 
-<div class="card">
-
-<h3>Approved / Finalized</h3>
-
+<div class="card stat-green">
+<h3>Finalized Assessments</h3>
 <div class="num" id="statApproved">0</div>
-
 </div>
 
 </div>
 
 <div class="panel" style="margin-top:15px">
-
 <h2>Welcome</h2>
-
 <p id="welcomeText"></p>
+</div>
 
+<div class="grid">
+
+<div class="panel">
+<h2>Academic Workflow</h2>
+<p class="small">
+Teacher prepares academic documents and assessments.
+Assessments are sent to the assigned subject HOD.
+After HOD approval, they move to the Examination Officer
+for final review.
+</p>
 </div>
 
 <div class="panel">
-
-<h2>Assessment Workflow</h2>
-
-<p>
-
-Teacher creates assessment → assigned Subject HOD reviews →
-
-Examination Officer reviews → system finalizes →
-
-Word document can be generated.
-
+<h2>Important Security Rule</h2>
+<p class="small">
+Only the Administrator can create teacher accounts,
+assign HOD subjects and assign the Examination Officer.
+Teachers cannot create other teachers.
 </p>
+</div>
 
 </div>
 
 </section>
 
+<!-- LESSON PLAN -->
 <section id="lessonPlan" class="page">
 
 <div class="panel">
 
-<h2>Detailed Lesson Plan</h2>
+<h2>Nigerian Standard Detailed Lesson Plan</h2>
+
+<div class="notice">
+Use the Teacher Assistant to generate a complete lesson plan,
+then press <b>Use Generated Lesson Plan</b> to automatically
+populate this form.
+</div>
 
 <div class="grid">
 
 <div>
+<label>School</label>
+<input id="lpSchool" class="readonly" readonly>
+</div>
 
+<div>
+<label>Teacher</label>
+<input id="lpTeacher" class="readonly" readonly>
+</div>
+
+<div>
 <label>Class</label>
-
 <input id="lpClass" placeholder="e.g. JSS1">
-
 </div>
 
 <div>
-
 <label>Subject</label>
-
 <select id="lpSubject"></select>
-
 </div>
 
 <div>
-
 <label>Topic</label>
-
 <input id="lpTopic">
-
 </div>
 
 <div>
-
 <label>Subtopic</label>
-
 <input id="lpSubtopic">
-
 </div>
 
 <div>
-
 <label>Date</label>
-
 <input id="lpDate" type="date">
-
 </div>
 
 <div>
-
 <label>Duration</label>
+<input id="lpDuration" value="40 minutes">
+</div>
 
-<input id="lpDuration" placeholder="40 minutes">
+<div>
+<label>Period</label>
+<input id="lpPeriod" placeholder="e.g. 2nd Period">
+</div>
 
+<div>
+<label>Class Size</label>
+<input id="lpClassSize" placeholder="e.g. 35">
 </div>
 
 </div>
+
+<div class="section-title">Behavioural / Learning Objectives</div>
+<textarea id="lpObjectives"
+placeholder="By the end of the lesson, learners should be able to..."></textarea>
 
 <div class="grid">
 
 <div>
-
-<label>Learning Objectives</label>
-
-<textarea id="lpObjectives"></textarea>
-
-</div>
-
-<div>
-
-<label>Previous Knowledge</label>
-
+<label>Entry Behaviour / Previous Knowledge</label>
 <textarea id="lpPrevious"></textarea>
-
 </div>
 
 <div>
-
 <label>Instructional Materials</label>
-
 <textarea id="lpMaterials"></textarea>
-
 </div>
 
 <div>
-
-<label>Introduction</label>
-
-<textarea id="lpIntro"></textarea>
-
+<label>Reference Materials</label>
+<textarea id="lpReferences"></textarea>
 </div>
 
 <div>
-
-<label>Lesson Development</label>
-
-<textarea id="lpDevelopment"></textarea>
+<label>Set Induction</label>
+<textarea id="lpInduction"></textarea>
+</div>
 
 </div>
 
-<div>
+<div class="section-title">Presentation / Lesson Development</div>
+<textarea id="lpDevelopment"
+style="min-height:220px"
+placeholder="Step 1...&#10;Teacher Activities...&#10;Learner Activities..."></textarea>
 
+<div class="grid">
+
+<div>
+<label>Teacher Activities</label>
+<textarea id="lpTeacherActivities"></textarea>
+</div>
+
+<div>
 <label>Learner Activities</label>
-
 <textarea id="lpLearner"></textarea>
-
 </div>
 
 <div>
-
 <label>Evaluation</label>
-
 <textarea id="lpEvaluation"></textarea>
-
 </div>
 
 <div>
-
-<label>Conclusion / Assignment</label>
-
+<label>Summary / Conclusion</label>
 <textarea id="lpConclusion"></textarea>
+</div>
 
+<div>
+<label>Assignment</label>
+<textarea id="lpAssignment"></textarea>
+</div>
+
+<div>
+<label>Teacher's Reflection</label>
+<textarea id="lpReflection"></textarea>
 </div>
 
 </div>
 
 <div class="actions">
 
-<button class="btn primary"
+<button class="btn primary" onclick="saveLessonPlan()">Save Lesson Plan</button>
 
-onclick="saveDoc('Lesson Plan')">
-
-Save Lesson Plan
-
+<button class="btn blue" onclick="submitCurrentDocument('Lesson Plan')">
+Submit to HOD
 </button>
 
-<button class="btn secondary"
-
-onclick="printCurrent('lessonPlan')">
-
+<button class="btn secondary" onclick="printCurrent('lessonPlan')">
 Print
-
 </button>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- LESSON NOTE -->
 <section id="lessonNote" class="page">
 
 <div class="panel">
 
-<h2>Lesson Note</h2>
+<h2>Detailed Lesson Note</h2>
+
+<div class="notice">
+Generated lesson notes from the Teacher Assistant can be inserted
+directly into this editor.
+</div>
 
 <div class="grid">
 
 <div>
+<label>School</label>
+<input id="lnSchool" class="readonly" readonly>
+</div>
 
+<div>
+<label>Teacher</label>
+<input id="lnTeacher" class="readonly" readonly>
+</div>
+
+<div>
 <label>Class</label>
-
 <input id="lnClass">
-
 </div>
 
 <div>
-
 <label>Subject</label>
-
 <select id="lnSubject"></select>
-
 </div>
 
 <div>
-
 <label>Topic</label>
-
 <input id="lnTopic">
-
 </div>
 
 <div>
-
 <label>Subtopic</label>
-
 <input id="lnSubtopic">
-
 </div>
 
 </div>
@@ -1085,469 +749,366 @@ Print
 <div class="grid">
 
 <div>
-
-<label>Objectives</label>
-
+<label>Specific Objectives</label>
 <textarea id="lnObjectives"></textarea>
-
 </div>
 
 <div>
-
-<label>Content</label>
-
-<textarea id="lnContent"></textarea>
-
+<label>Introduction</label>
+<textarea id="lnIntroduction"></textarea>
 </div>
 
 <div>
+<label>Content / Explanation</label>
+<textarea id="lnContent" style="min-height:220px"></textarea>
+</div>
 
+<div>
+<label>Examples</label>
+<textarea id="lnExamples"></textarea>
+</div>
+
+<div>
 <label>Teaching Methods</label>
-
 <textarea id="lnMethods"></textarea>
-
 </div>
 
 <div>
-
-<label>Materials</label>
-
+<label>Instructional Materials</label>
 <textarea id="lnMaterials"></textarea>
-
 </div>
 
 <div>
-
 <label>Evaluation</label>
-
 <textarea id="lnEvaluation"></textarea>
+</div>
 
+<div>
+<label>Summary</label>
+<textarea id="lnSummary"></textarea>
+</div>
+
+<div>
+<label>Assignment</label>
+<textarea id="lnAssignment"></textarea>
+</div>
+
+<div>
+<label>References</label>
+<textarea id="lnReferences"></textarea>
 </div>
 
 </div>
 
 <div class="actions">
 
-<button class="btn primary"
+<button class="btn primary" onclick="saveLessonNote()">Save Lesson Note</button>
 
-onclick="saveDoc('Lesson Note')">
-
-Save Lesson Note
-
+<button class="btn blue" onclick="submitCurrentDocument('Lesson Note')">
+Submit to HOD
 </button>
 
-<button class="btn secondary"
-
-onclick="printCurrent('lessonNote')">
-
+<button class="btn secondary" onclick="printCurrent('lessonNote')">
 Print
-
 </button>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- SCHEME -->
 <section id="scheme" class="page">
 
 <div class="panel">
 
-<h2>Scheme of Work</h2>
+<h2>Standard Scheme of Work</h2>
+
+<div class="notice">
+The Teacher Assistant creates a structured term-by-term scheme.
+You can edit it before saving or submitting.
+</div>
 
 <div class="grid">
 
 <div>
+<label>School</label>
+<input id="scSchool" class="readonly" readonly>
+</div>
 
+<div>
+<label>Teacher</label>
+<input id="scTeacher" class="readonly" readonly>
+</div>
+
+<div>
 <label>Class</label>
-
 <input id="scClass">
-
 </div>
 
 <div>
-
 <label>Subject</label>
-
 <select id="scSubject"></select>
-
 </div>
 
 <div>
-
 <label>Session</label>
-
 <input id="scSession" value="2026/2027">
-
 </div>
 
 <div>
-
 <label>Term</label>
-
 <select id="scTerm">
-
 <option>First Term</option>
-
 <option>Second Term</option>
-
 <option>Third Term</option>
-
 </select>
-
 </div>
 
 </div>
 
-<label>Scheme Content</label>
-
-<textarea id="scContent"
-
-style="min-height:300px"
-
-placeholder="Week 1: ...&#10;Week 2: ..."></textarea>
+<label>Scheme of Work</label>
+<textarea id="scContent" style="min-height:450px"></textarea>
 
 <div class="actions">
 
-<button class="btn primary"
+<button class="btn primary" onclick="saveScheme()">Save Scheme</button>
 
-onclick="saveDoc('Scheme of Work')">
-
-Save Scheme
-
+<button class="btn blue" onclick="submitCurrentDocument('Scheme of Work')">
+Submit to HOD
 </button>
 
-<button class="btn secondary"
-
-onclick="printCurrent('scheme')">
-
+<button class="btn secondary" onclick="printCurrent('scheme')">
 Print
-
 </button>
 
 </div>
 
 </div>
-
 </section>
 
+<!-- ASSESSMENT -->
 <section id="assessment" class="page">
 
 <div class="panel">
 
 <h2>CA & Examination</h2>
 
+<div class="notice">
+For generated assessments, the system keeps the objective questions,
+theory questions and marking scheme separately. The answer key is
+generated from the actual displayed options.
+</div>
+
 <div class="grid">
 
 <div>
-
 <label>Assessment Type</label>
-
 <select id="aType">
-
 <option>Continuous Assessment (CA)</option>
-
 <option>Examination</option>
-
 </select>
-
 </div>
 
 <div>
-
 <label>Class</label>
-
 <input id="aClass">
-
 </div>
 
 <div>
-
 <label>Subject</label>
-
 <select id="aSubject"></select>
-
 </div>
 
 <div>
-
 <label>Term</label>
-
 <select id="aTerm">
-
 <option>First Term</option>
-
 <option>Second Term</option>
-
 <option>Third Term</option>
-
 </select>
-
 </div>
 
 <div>
-
 <label>Session</label>
-
 <input id="aSession" value="2026/2027">
-
 </div>
 
 <div>
-
 <label>Duration</label>
-
 <input id="aDuration" value="1 Hour">
-
 </div>
 
 </div>
 
 <label>Instructions</label>
-
-<textarea id="aInstructions">
-
-Answer all questions as instructed.
-
-</textarea>
+<textarea id="aInstructions">Answer all questions as instructed.</textarea>
 
 <label>Objective Questions</label>
-
-<textarea id="aObjective" style="min-height:220px"></textarea>
+<textarea id="aObjective" style="min-height:300px"></textarea>
 
 <label>Theory Questions</label>
-
-<textarea id="aTheory" style="min-height:220px"></textarea>
+<textarea id="aTheory" style="min-height:260px"></textarea>
 
 <label>Marking Scheme</label>
-
-<textarea id="aMarking" style="min-height:220px"></textarea>
+<textarea id="aMarking" style="min-height:300px"></textarea>
 
 <div class="actions">
 
-<button class="btn primary"
-
-onclick="submitAssessment()">
-
+<button class="btn primary" onclick="submitAssessment()">
 Submit to Subject HOD
-
 </button>
 
-<button class="btn secondary"
+<button class="btn secondary" onclick="printAssessmentPage(false)">
+Print Question Paper
+</button>
 
-onclick="printAssessmentPage()">
+<button class="btn orange" onclick="printAssessmentPage(true)">
+Print Marking Scheme
+</button>
 
-Print Assessment
-
+<button class="btn blue" onclick="downloadAssessmentWord()">
+Save as Word
 </button>
 
 </div>
 
-<p class="muted" style="margin-top:9px">
-
-The system automatically identifies the HOD assigned to the selected subject.
-
-Teachers do not select HODs.
-
-</p>
-
 </div>
-
 </section>
 
+<!-- ASSISTANT -->
 <section id="assistant" class="page">
 
 <div class="panel">
 
-<h2>🤖 AI Teacher Assistant</h2>
+<h2>🤖 Professional Teacher Assistant</h2>
 
 <p class="muted">
-
-Generates varied, curriculum-appropriate CA and examination questions,
-
-objective options, theory questions and marking schemes.
-
-Hausa, Arabic and French subjects automatically use their language.
-
+Generate academic material and automatically use it in the relevant
+school module. The assistant supports English, Hausa, Arabic and French.
 </p>
 
 <div class="grid">
 
 <div>
-
 <label>What do you want to create?</label>
-
 <select id="taType">
-
 <option>Lesson Plan</option>
-
 <option>Lesson Note</option>
-
 <option>Scheme of Work</option>
-
 <option>CA Questions</option>
-
 <option>Examination Questions</option>
-
 <option>Objective Questions</option>
-
 <option>Theory Questions</option>
-
 <option>Marking Scheme</option>
-
 </select>
-
 </div>
 
 <div>
-
 <label>Class</label>
-
 <input id="taClass" placeholder="e.g. JSS1">
-
 </div>
 
 <div>
-
 <label>Subject</label>
-
 <select id="taSubject"></select>
-
 </div>
 
 <div>
-
 <label>Topic</label>
-
 <input id="taTopic">
-
 </div>
 
 <div>
-
 <label>Subtopic</label>
-
 <input id="taSubtopic">
-
 </div>
 
 <div>
-
 <label>Term</label>
-
 <select id="taTerm">
-
 <option>First Term</option>
-
 <option>Second Term</option>
-
 <option>Third Term</option>
-
 </select>
-
 </div>
 
 <div>
-
 <label>Session</label>
-
 <input id="taSession" value="2026/2027">
-
 </div>
 
 <div>
-
-<label>Number of Questions</label>
-
-<input id="taCount" type="number" min="1" max="100" value="10">
-
+<label>Objective Questions</label>
+<input id="taCount" type="number" min="1" max="100" value="20">
 </div>
 
 <div>
+<label>Theory Questions</label>
+<input id="taTheoryCount" type="number" min="1" max="30" value="5">
+</div>
 
-<label>Output Language</label>
-
-<select id="taLanguage">
-
-<option>Automatic</option>
-
-<option>English</option>
-
-<option>Hausa</option>
-
-<option>Arabic</option>
-
-<option>French</option>
-
+<div>
+<label>Difficulty</label>
+<select id="taDifficulty">
+<option>Easy</option>
+<option>Moderate</option>
+<option>Hard</option>
+<option>Mixed</option>
 </select>
+</div>
 
+<div>
+<label>Output Language</label>
+<select id="taLanguage">
+<option>Automatic</option>
+<option>English</option>
+<option>Hausa</option>
+<option>Arabic</option>
+<option>French</option>
+</select>
 </div>
 
 </div>
 
 <div class="actions">
 
-<button class="btn primary"
-
-onclick="generateAssistant()">
-
+<button class="btn primary" onclick="generateAssistant()">
 ✨ Generate
-
 </button>
 
-<button class="btn secondary"
-
-onclick="copyAssistant()">
-
+<button class="btn secondary" onclick="copyAssistant()">
 Copy
-
 </button>
 
-<button class="btn secondary"
-
-onclick="printAssistant()">
-
+<button class="btn secondary" onclick="printAssistant()">
 Print
-
 </button>
 
-<button class="btn orange"
-
-onclick="useAssistantForAssessment()">
-
-Use for CA / Exam
-
+<button class="btn orange" onclick="useAssistantMaterial()">
+Use Generated Work
 </button>
 
 </div>
 
-<div id="taResult"
-
-class="assistant-result"
-
-style="margin-top:15px">
-
+<div id="taResult" class="assistant-result" style="margin-top:15px">
 Your generated material will appear here.
-
 </div>
 
 </div>
-
 </section>
 
+<!-- SUBMISSIONS -->
 <section id="submissions" class="page">
 
 <div class="panel">
-
 <h2>My Submissions</h2>
-
 <div id="mySubmissions"></div>
-
 </div>
 
 </section>
 
+<!-- HOD -->
 <section id="hod" class="page">
 
 <div class="panel">
@@ -1555,9 +1116,8 @@ Your generated material will appear here.
 <h2>HOD Approval Centre</h2>
 
 <p class="muted">
-
-Only assessments submitted for your assigned HOD subjects appear here.
-
+Only assessments and documents assigned to your HOD subjects
+appear here.
 </p>
 
 <div id="hodList"></div>
@@ -1566,6 +1126,7 @@ Only assessments submitted for your assigned HOD subjects appear here.
 
 </section>
 
+<!-- EXAM OFFICER -->
 <section id="exam" class="page">
 
 <div class="panel">
@@ -1573,9 +1134,8 @@ Only assessments submitted for your assigned HOD subjects appear here.
 <h2>Examination Officer Centre</h2>
 
 <p class="muted">
-
-Final review of assessments approved by the subject HOD.
-
+Assessments approved by the relevant subject HOD appear here
+for final review.
 </p>
 
 <div id="examList"></div>
@@ -1584,6 +1144,7 @@ Final review of assessments approved by the subject HOD.
 
 </section>
 
+<!-- TEACHERS -->
 <section id="teachers" class="page">
 
 <div class="panel">
@@ -1591,87 +1152,56 @@ Final review of assessments approved by the subject HOD.
 <h2>Teacher Management</h2>
 
 <div class="notice">
-
-Only the Administrator can create, edit, activate/deactivate and remove teacher accounts.
-
+<strong>Administrator Only.</strong>
+Teachers cannot create teacher accounts.
+Only the Administrator can create, edit, activate, deactivate,
+reset passwords and assign responsibilities.
 </div>
 
 <div class="grid" style="margin-top:12px">
 
 <div>
-
 <label>Full Name</label>
-
 <input id="tName">
-
 </div>
 
 <div>
-
 <label>Username</label>
-
 <input id="tUser">
-
 </div>
 
 <div>
-
 <label>Password</label>
-
+<div class="password-wrap">
 <input id="tPass" type="password">
-
+<button type="button" onclick="togglePassword('tPass',this)">Show</button>
+</div>
 </div>
 
 <div>
-
 <label>Status</label>
-
 <select id="tStatus">
-
 <option>Active</option>
-
 <option>Inactive</option>
-
 </select>
-
 </div>
 
 </div>
 
 <label>Subjects Taught</label>
-
-<div id="subjectChecks" class="grid3"></div>
+<div id="subjectChecks" class="check-grid"></div>
 
 <label>HOD Subjects</label>
+<div id="hodChecks" class="check-grid"></div>
 
-<div id="hodChecks" class="grid3"></div>
-
-<label>
-
+<label style="margin-top:13px">
 <input type="checkbox" id="tExam" style="width:auto">
-
-Assign as Examination Officer
-
+ Assign as Examination Officer
 </label>
 
 <div class="actions">
-
-<button class="btn primary"
-
-onclick="saveTeacher()">
-
-Save Teacher
-
-</button>
-
-<button class="btn secondary"
-
-onclick="clearTeacherForm()">
-
-Clear
-
-</button>
-
+<button class="btn primary" onclick="saveTeacher()">Save Teacher</button>
+<button class="btn secondary" onclick="clearTeacherForm()">Clear</button>
 </div>
 
 <input type="hidden" id="editTeacherId">
@@ -1687,25 +1217,15 @@ Clear
 <table>
 
 <thead>
-
 <tr>
-
 <th>Name</th>
-
 <th>Username</th>
-
 <th>Subjects</th>
-
-<th>HOD</th>
-
+<th>HOD Subjects</th>
 <th>Exam Officer</th>
-
 <th>Status</th>
-
-<th>Action</th>
-
+<th>Actions</th>
 </tr>
-
 </thead>
 
 <tbody id="teacherTable"></tbody>
@@ -1718,6 +1238,7 @@ Clear
 
 </section>
 
+<!-- HOD ASSIGN -->
 <section id="hodAssign" class="page">
 
 <div class="panel">
@@ -1725,11 +1246,8 @@ Clear
 <h2>HOD Assignment</h2>
 
 <p class="muted">
-
-One HOD can be assigned per subject.
-
-The selected teacher must teach that subject.
-
+HODs are teachers with responsibility for one or more subjects.
+Only the Administrator can make these assignments.
 </p>
 
 <div class="table-wrap">
@@ -1737,15 +1255,10 @@ The selected teacher must teach that subject.
 <table>
 
 <thead>
-
 <tr>
-
 <th>Subject</th>
-
 <th>Assigned HOD</th>
-
 </tr>
-
 </thead>
 
 <tbody id="hodTable"></tbody>
@@ -1758,6 +1271,7 @@ The selected teacher must teach that subject.
 
 </section>
 
+<!-- SETTINGS -->
 <section id="settings" class="page">
 
 <div class="panel">
@@ -1767,101 +1281,64 @@ The selected teacher must teach that subject.
 <div class="grid">
 
 <div>
-
 <label>School Name</label>
-
 <input id="setName">
-
 </div>
 
 <div>
-
 <label>Motto</label>
-
 <input id="setMotto">
-
 </div>
 
 <div>
-
 <label>Address</label>
-
 <input id="setAddress">
-
 </div>
 
 <div>
-
 <label>Contact</label>
-
 <input id="setContact">
-
 </div>
 
 </div>
 
 <div class="actions">
-
-<button class="btn primary"
-
-onclick="saveSettings()">
-
-Save Settings
-
-</button>
-
+<button class="btn primary" onclick="saveSettings()">Save Settings</button>
 </div>
 
 </div>
 
 </section>
 
+<!-- BACKUP -->
 <section id="backup" class="page">
 
 <div class="panel">
 
 <h2>Backup & Restore</h2>
 
-<p class="muted">
-
-Backup all locally stored school data as JSON.
-
-Restore it on the same browser/device.
-
-</p>
+<div class="notice">
+Backup contains teachers, documents, assessments, submissions,
+settings, activity records and system data.
+</div>
 
 <div class="actions">
 
-<button class="btn primary"
-
-onclick="backup()">
-
-Download Backup
-
+<button class="btn primary" onclick="backup()">
+Download Complete Backup
 </button>
 
 <label class="btn secondary"
-
 style="display:inline-flex;align-items:center;justify-content:center">
-
 Restore Backup
-
 <input type="file"
-
 accept=".json,application/json"
-
 onchange="restore(event)"
-
 style="display:none">
-
 </label>
 
-<button class="btn danger"
-
-onclick="resetDemo()">
-
+<button class="btn danger" onclick="resetDemo()">
 Erase Local Data
-
 </button>
 
 </div>
@@ -1870,6 +1347,32 @@ Erase Local Data
 
 </section>
 
+<!-- ACTIVITY -->
+<section id="activity" class="page">
+
+<div class="panel">
+
+<h2>Activity / Audit Log</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>User</th>
+<th>Action</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody id="activityTable"></tbody>
+</table>
+</div>
+
+</div>
+
+</section>
+
+<!-- PASSWORD -->
 <section id="password" class="page">
 
 <div class="panel">
@@ -1879,27 +1382,18 @@ Erase Local Data
 <div style="max-width:600px">
 
 <label>Current Password</label>
-
 <input id="oldPass" type="password">
 
 <label>New Password</label>
-
 <input id="newPass" type="password">
 
 <label>Confirm New Password</label>
-
 <input id="newPass2" type="password">
 
 <div class="actions">
-
-<button class="btn primary"
-
-onclick="changePassword()">
-
+<button class="btn primary" onclick="changePassword()">
 Change Password
-
 </button>
-
 </div>
 
 </div>
@@ -1909,169 +1403,214 @@ Change Password
 </section>
 
 </main>
-
 </div>
 
 <script>
 
-const DB_KEY="CTA_COMPLETE_ACADEMIC_SYSTEM_V5";
+/* =========================================================
+   CTA V6 DATABASE
+   ========================================================= */
 
-const USER_KEY="CTA_CURRENT_USER";
+const DB_KEY="CTA_COMPLETE_ACADEMIC_SYSTEM_V6";
+const OLD_DB_KEY="CTA_COMPLETE_ACADEMIC_SYSTEM_V5";
+const USER_KEY="CTA_CURRENT_USER_V6";
 
 const SUBJECTS=[
-
 "English Studies","English Language","Mathematics","Further Mathematics",
-
 "Physics","Chemistry","Biology","Basic Science","Basic Technology",
-
 "Social Studies","Civic Education","Computer Studies / ICT",
-
 "Computer Science","Data Processing","Information Technology",
-
 "Agricultural Science","Home Economics",
-
 "Physical and Health Education","Cultural and Creative Arts",
-
 "Business Studies","Economics","Government","Commerce","Accounting",
-
 "Geography","Literature in English","Technical Drawing",
-
 "Food and Nutrition","Home Management","Visual Arts","Music",
-
 "Hausa Language","Arabic Language","French Language",
-
 "Islamic Religious Studies","Christian Religious Studies",
-
 "Basic Digital Literacy","Pre-Vocational Studies",
-
 "Quantitative Reasoning","Verbal Reasoning","Handwriting",
-
 "Reading","Phonics","Religious and National Values (RNV)"
-
 ];
 
+const CLASSES=[
+"Nursery 1","Nursery 2","Nursery 3",
+"Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
+"JSS1","JSS2","JSS3",
+"SS1","SS2","SS3"
+];
+
+let LAST_GENERATED=null;
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
 function id(){
-
- return Date.now().toString(36)+Math.random().toString(36).slice(2,8)
-
+ return Date.now().toString(36)+Math.random().toString(36).slice(2,8);
 }
+
+function now(){
+ return new Date().toISOString();
+}
+
+function esc(s){
+ return String(s??"").replace(
+  /[&<>"']/g,
+  m=>({
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[m])
+ );
+}
+
+function shuffle(arr){
+ let a=[...arr];
+ for(let i=a.length-1;i>0;i--){
+  let j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
+}
+
+function rand(n){
+ return Math.floor(Math.random()*n);
+}
+
+function formatDate(d){
+ if(!d)return"";
+ return new Date(d).toLocaleString();
+}
+
+/* =========================================================
+   DATABASE
+   ========================================================= */
 
 function freshDB(){
 
  return {
-
+  version:"V6",
   school:{
-
    name:"Caliphate Tarbiya Academy",
-
    motto:"Academic Excellence and Tarbiya",
-
    address:"Sokoto State, Nigeria",
-
    contact:""
-
   },
 
   users:[
-
    {
-
     id:id(),
-
     role:"admin",
-
     fullName:"Administrator",
-
     username:"admin",
-
     password:"Admin@12345",
-
     status:"Active",
-
     subjects:[],
-
     hodSubjects:[],
-
     isExamOfficer:false
-
    }
-
   ],
 
   documents:[],
-
   assessments:[],
-
   activities:[]
-
- }
-
+ };
 }
 
 function getDB(){
 
  try{
 
-  return JSON.parse(localStorage.getItem(DB_KEY))||freshDB()
+  let v6=localStorage.getItem(DB_KEY);
+
+  if(v6){
+
+   let db=JSON.parse(v6);
+
+   if(!db.activities)db.activities=[];
+
+   return db;
+  }
+
+  let old=localStorage.getItem(OLD_DB_KEY);
+
+  if(old){
+
+   let db=JSON.parse(old);
+
+   if(!db.activities)db.activities=[];
+
+   localStorage.setItem(DB_KEY,JSON.stringify(db));
+
+   return db;
+  }
+
+  return freshDB();
 
  }catch(e){
 
-  return freshDB()
-
+  return freshDB();
  }
-
 }
 
 function saveDB(db){
-
- localStorage.setItem(DB_KEY,JSON.stringify(db))
-
+ localStorage.setItem(DB_KEY,JSON.stringify(db));
 }
 
 function current(){
 
- let x=localStorage.getItem(USER_KEY);
+ let uid=localStorage.getItem(USER_KEY);
 
- if(!x)return null;
+ if(!uid){
+
+  /* compatibility with old session */
+  uid=localStorage.getItem("CTA_CURRENT_USER");
+ }
+
+ if(!uid)return null;
 
  let db=getDB();
 
- return db.users.find(u=>u.id===x)||null
-
+ return db.users.find(u=>u.id===uid)||null;
 }
 
-function esc(s){
+function logActivity(action,details){
 
- return String(s??"").replace(
+ let u=current();
 
-  /[&<>"']/g,
+ let db=getDB();
 
-  m=>({
+ db.activities.unshift({
+  id:id(),
+  date:now(),
+  userId:u?.id||"",
+  userName:u?.fullName||"System",
+  action,
+  details
+ });
 
-   "&":"&amp;",
+ db.activities=db.activities.slice(0,1000);
 
-   "<":"&lt;",
-
-   ">":"&gt;",
-
-   '"':"&quot;",
-
-   "'":"&#39;"
-
-  }[m])
-
- )
-
+ saveDB(db);
 }
 
-function togglePassword(id,btn){
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
- let x=document.getElementById(id);
+function togglePassword(inputId,btn){
 
- x.type=x.type==="password"?"text":"password";
+ let input=document.getElementById(inputId);
 
- btn.textContent=x.type==="password"?"Show":"Hide"
-
+ if(input.type==="password"){
+  input.type="text";
+  btn.textContent="Hide";
+ }else{
+  input.type="password";
+  btn.textContent="Show";
+ }
 }
 
 function login(){
@@ -2079,43 +1618,37 @@ function login(){
  let db=getDB();
 
  let role=document.getElementById("loginRole").value;
-
- let u=document.getElementById("loginUser").value.trim();
-
- let p=document.getElementById("loginPass").value;
+ let username=document.getElementById("loginUser").value.trim();
+ let password=document.getElementById("loginPass").value;
 
  let found=db.users.find(
-
-  x=>x.role===role &&
-
-  x.username===u &&
-
-  x.password===p &&
-
-  x.status==="Active"
-
+  u=>
+  u.role===role &&
+  u.username===username &&
+  u.password===password &&
+  u.status==="Active"
  );
 
  if(!found){
-
   alert("Invalid username or password.");
-
-  return
-
+  return;
  }
 
  localStorage.setItem(USER_KEY,found.id);
 
- openApp()
+ logActivity("Login","Successful login");
 
+ openApp();
 }
 
 function logout(){
 
+ logActivity("Logout","User logged out");
+
  localStorage.removeItem(USER_KEY);
+ localStorage.removeItem("CTA_CURRENT_USER");
 
- location.reload()
-
+ location.reload();
 }
 
 function openApp(){
@@ -2123,776 +1656,800 @@ function openApp(){
  if(!current()){
 
   document.getElementById("login").style.display="grid";
-
   document.getElementById("app").style.display="none";
 
-  return
-
+  return;
  }
 
  document.getElementById("login").style.display="none";
-
  document.getElementById("app").style.display="block";
 
- refreshAll()
-
+ refreshAll();
 }
+
+/* =========================================================
+   MENU
+   ========================================================= */
 
 function toggleMenu(){
 
  document.getElementById("sidebar").classList.toggle("open");
-
- document.getElementById("overlay").classList.toggle("active")
-
+ document.getElementById("overlay").classList.toggle("active");
 }
 
 function closeMenu(){
 
  document.getElementById("sidebar").classList.remove("open");
-
- document.getElementById("overlay").classList.remove("active")
-
+ document.getElementById("overlay").classList.remove("active");
 }
 
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
 const titles={
-
  dashboard:"Dashboard",
-
  lessonPlan:"Lesson Plan",
-
  lessonNote:"Lesson Note",
-
  scheme:"Scheme of Work",
-
  assessment:"CA & Examination",
-
  assistant:"Teacher Assistant",
-
  submissions:"My Submissions",
-
  hod:"HOD Approval Centre",
-
  exam:"Examination Officer",
-
  teachers:"Teacher Management",
-
  hodAssign:"HOD Assignment",
-
  settings:"School Settings",
-
  backup:"Backup & Restore",
-
+ activity:"Activity Log",
  password:"Change Password"
-
 };
 
 function showPage(name,btn){
 
+ let page=document.getElementById(name);
+
+ if(!page)return;
+
  document.querySelectorAll(".page")
+ .forEach(p=>p.classList.remove("active"));
 
- .forEach(x=>x.classList.remove("active"));
-
- document.getElementById(name)
-
- .classList.add("active");
+ page.classList.add("active");
 
  document.querySelectorAll(".nav-btn")
-
- .forEach(x=>x.classList.remove("active"));
+ .forEach(b=>b.classList.remove("active"));
 
  if(btn)btn.classList.add("active");
 
- document.getElementById("pageTitle")
-
- .textContent=titles[name]||name;
+ document.getElementById("pageTitle").textContent=titles[name]||name;
 
  closeMenu();
 
  if(name==="submissions")renderSubmissions();
-
  if(name==="hod")renderHOD();
-
  if(name==="exam")renderExam();
-
  if(name==="teachers")renderTeachers();
-
  if(name==="hodAssign")renderHODAssign();
-
- if(name==="settings")loadSettings()
-
+ if(name==="settings")loadSettings();
+ if(name==="activity")renderActivity();
 }
+
+/* =========================================================
+   SUBJECT / CLASS SELECTS
+   ========================================================= */
 
 function fillSubjects(){
 
  [
-
   "lpSubject",
-
   "lnSubject",
-
   "scSubject",
-
   "aSubject",
-
   "taSubject"
+ ].forEach(key=>{
 
- ].forEach(id=>{
+  let el=document.getElementById(key);
 
-  let e=document.getElementById(id);
+  if(!el)return;
 
-  let old=e.value;
+  let old=el.value;
 
-  e.innerHTML=SUBJECTS.map(
+  let u=current();
 
+  let list=
+  u?.role==="teacher" && u.subjects?.length
+  ? u.subjects
+  : SUBJECTS;
+
+  el.innerHTML=list.map(
    s=>`<option value="${esc(s)}">${esc(s)}</option>`
-
   ).join("");
 
-  if(old)e.value=old
-
- })
-
+  if(old && list.includes(old))el.value=old;
+ });
 }
+
+function setReadOnlyIdentity(){
+
+ let u=current();
+ let db=getDB();
+
+ if(!u)return;
+
+ ["lpSchool","lnSchool","scSchool"].forEach(x=>{
+  let e=document.getElementById(x);
+  if(e)e.value=db.school.name;
+ });
+
+ ["lpTeacher","lnTeacher","scTeacher"].forEach(x=>{
+  let e=document.getElementById(x);
+  if(e)e.value=u.fullName;
+ });
+}
+
+/* =========================================================
+   REFRESH
+   ========================================================= */
 
 function refreshAll(){
 
  let db=getDB();
-
  let u=current();
 
  if(!u)return;
 
  document.getElementById("who").textContent=
-
  `${u.fullName} • ${u.role==="admin"?"Administrator":"Teacher"}`;
 
- document.getElementById("schoolMotto")
+ document.getElementById("schoolMotto").textContent=
+ db.school.motto||"";
 
- .textContent=db.school.motto||"";
-
- document.getElementById("welcomeText")
-
- .textContent=
-
- `Welcome, ${u.fullName}. Use the menu to manage academic documents and assessments.`;
+ document.getElementById("welcomeText").textContent=
+ `Welcome, ${u.fullName}. Use the academic modules to prepare,
+submit and manage school documents and assessments.`;
 
  document.getElementById("adminNav")
-
  .classList.toggle("hidden",u.role!=="admin");
 
  document.getElementById("hodNav")
-
  .classList.toggle(
-
   "hidden",
-
-  !(u.role==="teacher"&&(u.hodSubjects||[]).length)
-
+  !(u.role==="teacher" && (u.hodSubjects||[]).length)
  );
 
  document.getElementById("examNav")
-
  .classList.toggle(
-
   "hidden",
-
-  !(u.role==="teacher"&&u.isExamOfficer)
-
+  !(u.role==="teacher" && u.isExamOfficer)
  );
 
- document.getElementById("statTeachers")
+ document.getElementById("statTeachers").textContent=
+ db.users.filter(x=>x.role==="teacher").length;
 
- .textContent=db.users.filter(x=>x.role==="teacher").length;
+ document.getElementById("statDocs").textContent=
+ db.documents.length;
 
- document.getElementById("statDocs")
-
- .textContent=db.documents.length;
-
- document.getElementById("statPending")
-
- .textContent=
-
+ document.getElementById("statPending").textContent=
  db.assessments.filter(
-
-  a=>!["Finalized"].includes(a.status) &&
-
+  a=>
+  !["Finalized"].includes(a.status) &&
   !String(a.status).startsWith("Rejected")
-
  ).length;
 
- document.getElementById("statApproved")
-
- .textContent=
-
+ document.getElementById("statApproved").textContent=
  db.assessments.filter(
-
   a=>a.status==="Finalized"
-
  ).length;
 
  fillSubjects();
+ setReadOnlyIdentity();
 
  renderSubmissions();
-
  renderHOD();
-
  renderExam();
-
  renderTeachers();
-
  renderHODAssign();
-
- loadSettings()
-
+ loadSettings();
+ renderActivity();
 }
 
-function collect(ids){
-
- let o={};
-
- ids.forEach(
-
-  x=>o[x]=document.getElementById(x)?.value||""
-
- );
-
- return o
-
-}
-
-function saveDoc(type){
-
- let u=current();
-
- if(!u)return;
-
- let ids=
-
- type==="Lesson Plan"
-
- ?
-
- [
-
-  "lpClass","lpSubject","lpTopic","lpSubtopic",
-
-  "lpDate","lpDuration","lpObjectives","lpPrevious",
-
-  "lpMaterials","lpIntro","lpDevelopment",
-
-  "lpLearner","lpEvaluation","lpConclusion"
-
- ]
-
- :
-
- type==="Lesson Note"
-
- ?
-
- [
-
-  "lnClass","lnSubject","lnTopic","lnSubtopic",
-
-  "lnObjectives","lnContent","lnMethods",
-
-  "lnMaterials","lnEvaluation"
-
- ]
-
- :
-
- [
-
-  "scClass","scSubject","scSession","scTerm","scContent"
-
- ];
-
- let data=collect(ids);
-
- if(!Object.values(data).some(Boolean)){
-
-  alert("Please enter the document details.");
-
-  return
-
- }
-
- let db=getDB();
-
- db.documents.unshift({
-
-  id:id(),
-
-  type,
-
-  teacherId:u.id,
-
-  teacherName:u.fullName,
-
-  data,
-
-  createdAt:new Date().toISOString()
-
- });
-
- saveDB(db);
-
- refreshAll();
-
- alert(type+" saved successfully.")
-
-}
+/* =========================================================
+   HOD / EXAM OFFICER
+   ========================================================= */
 
 function findHOD(subject,db){
 
  return db.users.find(
-
-  x=>
-
-  x.role==="teacher" &&
-
-  x.status==="Active" &&
-
-  (x.hodSubjects||[]).includes(subject)
-
- )
-
+  u=>
+  u.role==="teacher" &&
+  u.status==="Active" &&
+  (u.hodSubjects||[]).includes(subject)
+ );
 }
 
 function findExam(db){
 
  return db.users.find(
-
-  x=>
-
-  x.role==="teacher" &&
-
-  x.status==="Active" &&
-
-  x.isExamOfficer
-
- )
-
+  u=>
+  u.role==="teacher" &&
+  u.status==="Active" &&
+  u.isExamOfficer
+ );
 }
+
+/* =========================================================
+   DOCUMENT SAVE
+   ========================================================= */
+
+function documentPayload(type){
+
+ if(type==="Lesson Plan"){
+
+  return {
+   school:document.getElementById("lpSchool").value,
+   teacher:document.getElementById("lpTeacher").value,
+   className:document.getElementById("lpClass").value,
+   subject:document.getElementById("lpSubject").value,
+   topic:document.getElementById("lpTopic").value,
+   subtopic:document.getElementById("lpSubtopic").value,
+   date:document.getElementById("lpDate").value,
+   duration:document.getElementById("lpDuration").value,
+   period:document.getElementById("lpPeriod").value,
+   classSize:document.getElementById("lpClassSize").value,
+   objectives:document.getElementById("lpObjectives").value,
+   previous:document.getElementById("lpPrevious").value,
+   materials:document.getElementById("lpMaterials").value,
+   references:document.getElementById("lpReferences").value,
+   induction:document.getElementById("lpInduction").value,
+   development:document.getElementById("lpDevelopment").value,
+   teacherActivities:document.getElementById("lpTeacherActivities").value,
+   learner:document.getElementById("lpLearner").value,
+   evaluation:document.getElementById("lpEvaluation").value,
+   conclusion:document.getElementById("lpConclusion").value,
+   assignment:document.getElementById("lpAssignment").value,
+   reflection:document.getElementById("lpReflection").value
+  };
+ }
+
+ if(type==="Lesson Note"){
+
+  return {
+   school:document.getElementById("lnSchool").value,
+   teacher:document.getElementById("lnTeacher").value,
+   className:document.getElementById("lnClass").value,
+   subject:document.getElementById("lnSubject").value,
+   topic:document.getElementById("lnTopic").value,
+   subtopic:document.getElementById("lnSubtopic").value,
+   objectives:document.getElementById("lnObjectives").value,
+   introduction:document.getElementById("lnIntroduction").value,
+   content:document.getElementById("lnContent").value,
+   examples:document.getElementById("lnExamples").value,
+   methods:document.getElementById("lnMethods").value,
+   materials:document.getElementById("lnMaterials").value,
+   evaluation:document.getElementById("lnEvaluation").value,
+   summary:document.getElementById("lnSummary").value,
+   assignment:document.getElementById("lnAssignment").value,
+   references:document.getElementById("lnReferences").value
+  };
+ }
+
+ return {
+  school:document.getElementById("scSchool").value,
+  teacher:document.getElementById("scTeacher").value,
+  className:document.getElementById("scClass").value,
+  subject:document.getElementById("scSubject").value,
+  session:document.getElementById("scSession").value,
+  term:document.getElementById("scTerm").value,
+  content:document.getElementById("scContent").value
+ };
+}
+
+function saveAcademicDocument(type,submit=false){
+
+ let u=current();
+
+ if(!u || u.role!=="teacher"){
+  alert("Only teachers can create academic documents.");
+  return;
+ }
+
+ let data=documentPayload(type);
+
+ let important=
+ type==="Lesson Plan"
+ ? [data.className,data.subject,data.topic,data.objectives]
+ : type==="Lesson Note"
+ ? [data.className,data.subject,data.topic,data.content]
+ : [data.className,data.subject,data.content];
+
+ if(!important.some(Boolean)){
+  alert("Please complete the main document details.");
+  return;
+ }
+
+ let db=getDB();
+
+ let hod=findHOD(data.subject,db);
+
+ let status=submit ? "Pending HOD" : "Draft";
+
+ let doc={
+  id:id(),
+  type,
+  teacherId:u.id,
+  teacherName:u.fullName,
+  subject:data.subject,
+  className:data.className,
+  data,
+  status,
+  hodId:hod?.id||"",
+  hodName:hod?.fullName||"",
+  createdAt:now(),
+  updatedAt:now()
+ };
+
+ if(submit && !hod){
+
+  alert(
+   "No HOD has been assigned to "+data.subject+
+   ". Ask the Administrator to assign the subject HOD first."
+  );
+
+  return;
+ }
+
+ db.documents.unshift(doc);
+
+ saveDB(db);
+
+ logActivity(
+  submit?"Document Submitted":"Document Saved",
+  `${type} — ${data.subject} — ${data.className}`
+ );
+
+ refreshAll();
+
+ alert(
+  submit
+  ? "Document submitted to the subject HOD."
+  : "Document saved as draft."
+ );
+}
+
+function saveLessonPlan(){
+ saveAcademicDocument("Lesson Plan",false);
+}
+
+function saveLessonNote(){
+ saveAcademicDocument("Lesson Note",false);
+}
+
+function saveScheme(){
+ saveAcademicDocument("Scheme of Work",false);
+}
+
+function submitCurrentDocument(type){
+ saveAcademicDocument(type,true);
+}
+
+/* =========================================================
+   ASSESSMENT
+   ========================================================= */
 
 function submitAssessment(){
 
  let u=current();
 
+ if(!u || u.role!=="teacher"){
+  alert("Only teachers can submit assessments.");
+  return;
+ }
+
  let db=getDB();
 
  let subject=document.getElementById("aSubject").value;
-
  let hod=findHOD(subject,db);
 
  if(!hod){
 
   alert(
-
-   "No HOD has been assigned to this subject. Ask the Administrator to assign one."
-
+   "No HOD has been assigned to "+subject+
+   ". Ask the Administrator to assign the subject HOD."
   );
 
-  return
+  return;
+ }
 
+ let objective=document.getElementById("aObjective").value.trim();
+ let theory=document.getElementById("aTheory").value.trim();
+ let marking=document.getElementById("aMarking").value.trim();
+
+ if(!objective && !theory){
+
+  alert("Enter or generate at least one set of questions.");
+  return;
  }
 
  let a={
-
   id:id(),
-
   teacherId:u.id,
-
   teacherName:u.fullName,
-
   subject,
-
-  className:
-
-  document.getElementById("aClass").value,
-
-  term:
-
-  document.getElementById("aTerm").value,
-
-  session:
-
-  document.getElementById("aSession").value,
-
-  type:
-
-  document.getElementById("aType").value,
-
-  duration:
-
-  document.getElementById("aDuration").value,
-
-  instructions:
-
-  document.getElementById("aInstructions").value,
-
-  objective:
-
-  document.getElementById("aObjective").value,
-
-  theory:
-
-  document.getElementById("aTheory").value,
-
-  marking:
-
-  document.getElementById("aMarking").value,
-
+  className:document.getElementById("aClass").value,
+  term:document.getElementById("aTerm").value,
+  session:document.getElementById("aSession").value,
+  type:document.getElementById("aType").value,
+  duration:document.getElementById("aDuration").value,
+  instructions:document.getElementById("aInstructions").value,
+  objective,
+  theory,
+  marking,
   status:"Pending HOD",
-
   hodId:hod.id,
-
   hodName:hod.fullName,
-
-  createdAt:new Date().toISOString()
-
+  createdAt:now()
  };
 
  db.assessments.unshift(a);
 
  saveDB(db);
 
+ logActivity(
+  "Assessment Submitted",
+  `${a.type} — ${a.subject} — ${a.className} → HOD ${hod.fullName}`
+ );
+
  refreshAll();
 
  alert(
-
-  "Assessment submitted to "+
-
-  hod.fullName+
-
-  " for "+
-
-  subject+
-
-  "."
-
- )
-
+  "Assessment submitted successfully to "+
+  hod.fullName+"."
+ );
 }
 
-function statusBadge(s){
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+function statusBadge(status){
 
  let c=
-
- s==="Finalized"
-
+ status==="Finalized"
  ?"green"
-
  :
-
- String(s).startsWith("Rejected")
-
+ String(status).toLowerCase().includes("reject")
  ?"red"
-
+ :
+ String(status).includes("Pending Examination")
+ ?"blue"
  :"orange";
 
- return `<span class="badge ${c}">${esc(s)}</span>`
-
+ return `<span class="badge ${c}">${esc(status)}</span>`;
 }
+
+/* =========================================================
+   SUBMISSIONS
+   ========================================================= */
 
 function renderSubmissions(){
 
  let u=current();
-
  let el=document.getElementById("mySubmissions");
 
  if(!el||!u)return;
 
- let rows=
+ let db=getDB();
 
- getDB().assessments
+ let docs=
+ db.documents.filter(d=>d.teacherId===u.id);
 
- .filter(a=>a.teacherId===u.id);
+ let assessments=
+ db.assessments.filter(a=>a.teacherId===u.id);
 
- el.innerHTML=
+ let html="";
 
- rows.length
+ if(!docs.length && !assessments.length){
 
- ?
-
- `<div class="table-wrap">
-
- <table>
-
- <thead>
-
- <tr>
-
- <th>Date</th>
-
- <th>Type</th>
-
- <th>Subject</th>
-
- <th>Class</th>
-
- <th>HOD</th>
-
- <th>Status</th>
-
- </tr>
-
- </thead>
-
- <tbody>
-
- ${
-
- rows.map(a=>`
-
- <tr>
-
- <td>${new Date(a.createdAt).toLocaleString()}</td>
-
- <td>${esc(a.type)}</td>
-
- <td>${esc(a.subject)}</td>
-
- <td>${esc(a.className)}</td>
-
- <td>${esc(a.hodName||"—")}</td>
-
- <td>${statusBadge(a.status)}</td>
-
- </tr>
-
- `).join("")
-
+  el.innerHTML=`<div class="empty">No submissions yet.</div>`;
+  return;
  }
 
- </tbody>
+ if(docs.length){
 
- </table>
+  html+=`
+  <h3>Academic Documents</h3>
+  <div class="table-wrap">
+  <table>
+  <thead>
+  <tr>
+  <th>Date</th>
+  <th>Document</th>
+  <th>Subject</th>
+  <th>Class</th>
+  <th>Status</th>
+  <th>HOD</th>
+  </tr>
+  </thead>
+  <tbody>
+  ${
+   docs.map(d=>`
+   <tr>
+   <td>${formatDate(d.createdAt)}</td>
+   <td>${esc(d.type)}</td>
+   <td>${esc(d.subject)}</td>
+   <td>${esc(d.className)}</td>
+   <td>${statusBadge(d.status)}</td>
+   <td>${esc(d.hodName||"—")}</td>
+   </tr>
+   `).join("")
+  }
+  </tbody>
+  </table>
+  </div>`;
+ }
 
- </div>`
+ if(assessments.length){
 
- :
+  html+=`
+  <h3 style="margin-top:20px">Assessments</h3>
+  <div class="table-wrap">
+  <table>
+  <thead>
+  <tr>
+  <th>Date</th>
+  <th>Type</th>
+  <th>Subject</th>
+  <th>Class</th>
+  <th>HOD</th>
+  <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  ${
+   assessments.map(a=>`
+   <tr>
+   <td>${formatDate(a.createdAt)}</td>
+   <td>${esc(a.type)}</td>
+   <td>${esc(a.subject)}</td>
+   <td>${esc(a.className)}</td>
+   <td>${esc(a.hodName||"—")}</td>
+   <td>${statusBadge(a.status)}</td>
+   </tr>
+   `).join("")
+  }
+  </tbody>
+  </table>
+  </div>`;
+ }
 
- `<p class="muted">No assessment submissions yet.</p>`
-
+ el.innerHTML=html;
 }
+
+/* =========================================================
+   HOD
+   ========================================================= */
 
 function renderHOD(){
 
  let u=current();
-
  let el=document.getElementById("hodList");
 
  if(!el||!u)return;
 
  if(
-
   u.role!=="teacher" ||
-
   !(u.hodSubjects||[]).length
-
  ){
 
-  el.innerHTML=
-
-  "<p class='muted'>You are not assigned as an HOD.</p>";
-
-  return
-
+  el.innerHTML=`<div class="empty">You are not assigned as an HOD.</div>`;
+  return;
  }
 
- let arr=
+ let db=getDB();
 
- getDB().assessments
-
- .filter(
-
-  a=>
-
-  a.hodId===u.id &&
-
-  a.status==="Pending HOD"
-
+ let docs=
+ db.documents.filter(
+  d=>
+  d.hodId===u.id &&
+  d.status==="Pending HOD"
  );
 
- el.innerHTML=
+ let assessments=
+ db.assessments.filter(
+  a=>
+  a.hodId===u.id &&
+  a.status==="Pending HOD"
+ );
 
- arr.length
+ let html="";
 
- ?
-
- arr.map(a=>assessmentCard(a,"hod")).join("")
-
- :
-
- "<p class='muted'>No assessments awaiting HOD review.</p>"
-
-}
-
-function renderExam(){
-
- let u=current();
-
- let el=document.getElementById("examList");
-
- if(!el||!u)return;
-
- if(!u.isExamOfficer){
+ if(!docs.length && !assessments.length){
 
   el.innerHTML=
+  `<div class="empty">No submissions are waiting for your review.</div>`;
 
-  "<p class='muted'>You are not assigned as Examination Officer.</p>";
-
-  return
-
+  return;
  }
 
- let arr=
+ if(docs.length){
 
- getDB().assessments
+  html+=`<h3>Academic Documents</h3>`;
 
- .filter(a=>a.status==="Pending Examination Officer");
+  docs.forEach(d=>{
 
- el.innerHTML=
+   html+=`
+   <div class="panel" style="border-left:4px solid var(--g)">
 
- arr.length
+   <h3>${esc(d.type)}</h3>
 
- ?
+   <p class="muted">
+   ${esc(d.subject)} • ${esc(d.className)} •
+   ${esc(d.teacherName)}
+   </p>
 
- arr.map(a=>assessmentCard(a,"exam")).join("")
+   <details style="margin-top:10px">
+   <summary>View document</summary>
+   <pre style="white-space:pre-wrap;margin-top:10px">${esc(documentToText(d))}</pre>
+   </details>
 
- :
+   <label>Review Comment</label>
+   <textarea id="doccomment_${d.id}"
+   placeholder="Optional feedback"></textarea>
 
- "<p class='muted'>No assessments awaiting final review.</p>"
+   <div class="actions">
 
+   <button class="btn primary"
+   onclick="reviewDocument('${d.id}','approve')">
+   Approve
+   </button>
+
+   <button class="btn danger"
+   onclick="reviewDocument('${d.id}','reject')">
+   Reject
+   </button>
+
+   </div>
+
+   </div>`;
+  });
+ }
+
+ if(assessments.length){
+
+  html+=`<h3 style="margin-top:20px">Assessments</h3>`;
+
+  assessments.forEach(a=>{
+   html+=assessmentReviewCard(a,"hod");
+  });
+ }
+
+ el.innerHTML=html;
 }
 
-function assessmentCard(a,mode){
+function assessmentReviewCard(a,mode){
 
  return `
+ <div class="panel" style="border-left:4px solid var(--g)">
 
- <div class="panel"
-
- style="border-left:4px solid var(--g)">
-
- <h3>
-
- ${esc(a.type)} — ${esc(a.subject)}
-
- </h3>
+ <h3>${esc(a.type)} — ${esc(a.subject)}</h3>
 
  <p class="muted">
-
  ${esc(a.className)} •
-
  ${esc(a.term)} •
-
  ${esc(a.session)} •
-
  ${esc(a.teacherName)}
-
  </p>
 
- <hr>
+ <details style="margin-top:10px">
+ <summary>View questions and marking scheme</summary>
 
- <b>Instructions</b>
+ <div class="question-box">
+ <b>Objective Questions</b>
+ <pre style="white-space:pre-wrap">${esc(a.objective||"None")}</pre>
+ </div>
 
- <p>${esc(a.instructions)}</p>
+ <div class="question-box">
+ <b>Theory Questions</b>
+ <pre style="white-space:pre-wrap">${esc(a.theory||"None")}</pre>
+ </div>
 
- <details style="margin-top:9px">
-
- <summary>
-
- View questions and marking scheme
-
- </summary>
-
- <pre style="white-space:pre-wrap;margin-top:10px">${esc(
-
- a.objective
-
- )}
-
-${esc(a.theory)}
-
-MARKING SCHEME
-
-${esc(a.marking)}</pre>
+ <div class="question-box">
+ <b>Marking Scheme</b>
+ <pre style="white-space:pre-wrap">${esc(a.marking||"None")}</pre>
+ </div>
 
  </details>
 
  <label>Review Comment</label>
-
- <textarea
-
- id="comment_${a.id}"
-
- placeholder="Optional comment">
-
- </textarea>
+ <textarea id="acomment_${a.id}"
+ placeholder="Enter feedback if required"></textarea>
 
  <div class="actions">
 
  ${
-
  mode==="hod"
-
  ?
-
  `
-
  <button class="btn primary"
-
- onclick="reviewHOD('${a.id}','approve')">
-
+ onclick="reviewHODAssessment('${a.id}','approve')">
  Approve to Examination Officer
-
  </button>
 
  <button class="btn danger"
-
- onclick="reviewHOD('${a.id}','reject')">
-
+ onclick="reviewHODAssessment('${a.id}','reject')">
  Reject
-
  </button>
-
  `
-
  :
-
  `
-
  <button class="btn primary"
-
  onclick="finalizeAssessment('${a.id}')">
+ Finalize Assessment
+ </button>
 
- Finalize & Generate Word
-
+ <button class="btn blue"
+ onclick="downloadSpecificWord('${a.id}')">
+ Save as Word
  </button>
 
  <button class="btn danger"
-
- onclick="reviewExam('${a.id}','reject')">
-
+ onclick="reviewExamAssessment('${a.id}','reject')">
  Reject
-
  </button>
-
  `
-
  }
 
  </div>
 
  </div>
-
- `
-
+ `;
 }
 
-function reviewHOD(aid,action){
+function reviewDocument(docId,action){
+
+ let u=current();
+
+ if(!u || !u.hodSubjects?.length)return;
+
+ let db=getDB();
+
+ let d=db.documents.find(x=>x.id===docId);
+
+ if(!d)return;
+
+ let comment=
+ document.getElementById("doccomment_"+docId)?.value||"";
+
+ d.hodComment=comment;
+
+ if(action==="approve"){
+
+  d.status="Approved HOD";
+
+ }else{
+
+  d.status="Rejected by HOD";
+ }
+
+ d.reviewedAt=now();
+
+ saveDB(db);
+
+ logActivity(
+  "Document Reviewed",
+  `${d.type} — ${d.subject} — ${action}`
+ );
+
+ refreshAll();
+
+ alert(
+  action==="approve"
+  ?"Document approved."
+  :"Document rejected."
+ );
+}
+
+function reviewHODAssessment(aid,action){
 
  let db=getDB();
 
@@ -2900,61 +2457,86 @@ function reviewHOD(aid,action){
 
  if(!a)return;
 
- let c=
+ let comment=
+ document.getElementById("acomment_"+aid)?.value||"";
 
- document.getElementById("comment_"+aid)?.value||"";
-
- a.hodComment=c;
+ a.hodComment=comment;
 
  if(action==="reject"){
 
-  a.status="Rejected by HOD"
+  a.status="Rejected by HOD";
 
  }else{
 
-  let ex=findExam(db);
+  let exam=findExam(db);
 
-  if(!ex){
+  if(!exam){
 
    alert(
-
     "No Examination Officer has been assigned. Ask the Administrator."
-
    );
 
-   return
-
+   return;
   }
 
   a.status="Pending Examination Officer";
-
-  a.examOfficerId=ex.id;
-
-  a.examOfficerName=ex.fullName
-
+  a.examOfficerId=exam.id;
+  a.examOfficerName=exam.fullName;
  }
 
+ a.reviewedAt=now();
+
  saveDB(db);
+
+ logActivity(
+  "HOD Assessment Review",
+  `${a.type} — ${a.subject} — ${action}`
+ );
 
  refreshAll();
 
  alert(
-
   action==="approve"
-
-  ?
-
-  "Approved and sent to Examination Officer."
-
-  :
-
-  "Assessment rejected."
-
- )
-
+  ?"Assessment approved and sent to Examination Officer."
+  :"Assessment rejected."
+ );
 }
 
-function reviewExam(aid,action){
+/* =========================================================
+   EXAMINATION OFFICER
+   ========================================================= */
+
+function renderExam(){
+
+ let u=current();
+ let el=document.getElementById("examList");
+
+ if(!el||!u)return;
+
+ if(!u.isExamOfficer){
+
+  el.innerHTML=
+  `<div class="empty">You are not assigned as Examination Officer.</div>`;
+
+  return;
+ }
+
+ let db=getDB();
+
+ let arr=
+ db.assessments.filter(
+  a=>a.status==="Pending Examination Officer"
+ );
+
+ el.innerHTML=
+ arr.length
+ ?
+ arr.map(a=>assessmentReviewCard(a,"exam")).join("")
+ :
+ `<div class="empty">No assessments are awaiting final review.</div>`;
+}
+
+function reviewExamAssessment(aid,action){
 
  let db=getDB();
 
@@ -2963,22 +2545,26 @@ function reviewExam(aid,action){
  if(!a)return;
 
  a.examComment=
-
- document.getElementById("comment_"+aid)?.value||"";
+ document.getElementById("acomment_"+aid)?.value||"";
 
  if(action==="reject")
-
  a.status="Rejected by Examination Officer";
+
+ a.reviewedAt=now();
 
  saveDB(db);
 
+ logActivity(
+  "Examination Officer Review",
+  `${a.type} — ${a.subject} — ${action}`
+ );
+
  refreshAll();
 
- alert("Assessment rejected.")
-
+ alert("Assessment rejected.");
 }
 
-async function finalizeAssessment(aid){
+function finalizeAssessment(aid){
 
  let db=getDB();
 
@@ -2987,177 +2573,190 @@ async function finalizeAssessment(aid){
  if(!a)return;
 
  a.status="Finalized";
-
- a.finalizedAt=new Date().toISOString();
+ a.finalizedAt=now();
 
  saveDB(db);
 
+ logActivity(
+  "Assessment Finalized",
+  `${a.type} — ${a.subject} — ${a.className}`
+ );
+
  refreshAll();
 
- await generateWord(a)
-
+ alert(
+  "Assessment finalized successfully. You can now save it as Word."
+ );
 }
 
-function loadScript(src){
+/* =========================================================
+   WORD EXPORT
+   Browser-compatible Microsoft Word .doc
+   ========================================================= */
 
- return new Promise(
+function downloadBlob(filename,content,type){
 
-  (res,rej)=>{
+ let blob=new Blob([content],{type});
 
-   if(window.docx)return res();
+ let url=URL.createObjectURL(blob);
 
-   let s=document.createElement("script");
+ let a=document.createElement("a");
 
-   s.src=src;
+ a.href=url;
+ a.download=filename;
 
-   s.onload=res;
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
 
-   s.onerror=rej;
-
-   document.head.appendChild(s)
-
-  }
-
- )
-
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-async function generateWord(a){
-
- try{
-
-  await loadScript(
-
-   "https://cdn.jsdelivr.net/npm/docx@9.5.1/build/index.umd.js"
-
-  );
-
-  const {
-
-   Document,
-
-   Packer,
-
-   Paragraph,
-
-   TextRun
-
-  }=docx;
-
-  let lines=
-
-  (
-
-   a.objective+
-
-   "\n\n"+
-
-   a.theory+
-
-   "\n\nMARKING SCHEME\n"+
-
-   a.marking
-
-  ).split("\n");
-
-  let children=[
-
-   new Paragraph({
-
-    children:[
-
-     new TextRun({
-
-      text:"CALIPHATE TARBIYA ACADEMY",
-
-      bold:true,
-
-      size:28
-
-     })
-
-    ]
-
-   }),
-
-   new Paragraph(a.type),
-
-   new Paragraph(
-
-    `Class: ${a.className} | Subject: ${a.subject}`
-
-   ),
-
-   new Paragraph(
-
-    `Term: ${a.term} | Session: ${a.session}`
-
-   ),
-
-   new Paragraph(
-
-    `Duration: ${a.duration}`
-
-   ),
-
-   new Paragraph(
-
-    "Instructions: "+a.instructions
-
-   )
-
-  ];
-
-  lines.forEach(
-
-   x=>children.push(new Paragraph(x))
-
-  );
-
-  const doc=new Document({
-
-   sections:[{children}]
-
-  });
-
-  const blob=
-
-  await Packer.toBlob(doc);
-
-  const url=
-
-  URL.createObjectURL(blob);
-
-  const link=
-
-  document.createElement("a");
-
-  link.href=url;
-
-  link.download=
-
-  `${a.subject}-${a.className}-${a.type}.docx`;
-
-  link.click();
-
-  URL.revokeObjectURL(url)
-
- }catch(e){
-
-  alert(
-
-   "Assessment finalized, but Word generation needs internet access."
-
-  )
-
- }
-
+function htmlEscapeText(s){
+ return esc(s).replace(/\n/g,"<br>");
 }
+
+function assessmentWordHTML(a){
+
+ let db=getDB();
+
+ return `
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${esc(a.type)}</title>
+<style>
+body{
+ font-family:Arial,Helvetica,sans-serif;
+ margin:35px;
+ color:#111
+}
+.header{
+ text-align:center;
+ border-bottom:2px solid #14532d;
+ padding-bottom:12px;
+ margin-bottom:18px
+}
+.header h1{
+ color:#14532d;
+ margin:0
+}
+.meta{
+ width:100%;
+ border-collapse:collapse;
+ margin:15px 0
+}
+.meta td{
+ border:1px solid #ccc;
+ padding:7px
+}
+h2{
+ color:#14532d;
+ margin-top:22px
+}
+pre{
+ white-space:pre-wrap;
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.6
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>${esc(db.school.name)}</h1>
+<div>${esc(db.school.motto)}</div>
+<div>${esc(a.type)}</div>
+</div>
+
+<table class="meta">
+<tr>
+<td><b>Class:</b> ${esc(a.className)}</td>
+<td><b>Subject:</b> ${esc(a.subject)}</td>
+</tr>
+<tr>
+<td><b>Term:</b> ${esc(a.term)}</td>
+<td><b>Session:</b> ${esc(a.session)}</td>
+</tr>
+<tr>
+<td><b>Duration:</b> ${esc(a.duration)}</td>
+<td><b>Teacher:</b> ${esc(a.teacherName)}</td>
+</tr>
+</table>
+
+<h2>Instructions</h2>
+<p>${htmlEscapeText(a.instructions)}</p>
+
+<h2>Objective Questions</h2>
+<pre>${esc(a.objective||"")}</pre>
+
+<h2>Theory Questions</h2>
+<pre>${esc(a.theory||"")}</pre>
+
+<h2>Marking Scheme</h2>
+<pre>${esc(a.marking||"")}</pre>
+
+</body>
+</html>`;
+}
+
+function downloadAssessmentWord(){
+
+ let a={
+  type:document.getElementById("aType").value,
+  className:document.getElementById("aClass").value,
+  subject:document.getElementById("aSubject").value,
+  term:document.getElementById("aTerm").value,
+  session:document.getElementById("aSession").value,
+  duration:document.getElementById("aDuration").value,
+  teacherName:current()?.fullName||"",
+  instructions:document.getElementById("aInstructions").value,
+  objective:document.getElementById("aObjective").value,
+  theory:document.getElementById("aTheory").value,
+  marking:document.getElementById("aMarking").value
+ };
+
+ let html=assessmentWordHTML(a);
+
+ downloadBlob(
+  `${a.subject}-${a.className}-${a.type}.doc`,
+  html,
+  "application/msword"
+ );
+
+ logActivity(
+  "Word Export",
+  `${a.type} — ${a.subject}`
+ );
+}
+
+function downloadSpecificWord(aid){
+
+ let a=getDB().assessments.find(x=>x.id===aid);
+
+ if(!a)return;
+
+ let html=assessmentWordHTML(a);
+
+ downloadBlob(
+  `${a.subject}-${a.className}-${a.type}.doc`,
+  html,
+  "application/msword"
+ );
+
+ logActivity(
+  "Word Export",
+  `${a.type} — ${a.subject}`
+ );
+}
+
+/* =========================================================
+   TEACHER MANAGEMENT
+   ========================================================= */
 
 function renderTeachers(){
 
  let el=document.getElementById("teacherTable");
-
  let u=current();
 
  if(!el||!u)return;
@@ -3165,20 +2764,18 @@ function renderTeachers(){
  if(u.role!=="admin"){
 
   el.innerHTML="";
-
-  return
-
+  return;
  }
 
  let db=getDB();
 
+ let teachers=
+ db.users.filter(x=>x.role==="teacher");
+
  el.innerHTML=
-
- db.users
-
- .filter(x=>x.role==="teacher")
-
- .map(t=>`
+ teachers.length
+ ?
+ teachers.map(t=>`
 
  <tr>
 
@@ -3188,95 +2785,59 @@ function renderTeachers(){
 
  <td>${esc((t.subjects||[]).join(", "))}</td>
 
- <td>
-
- ${esc((t.hodSubjects||[]).join(", "))||"—"}
-
- </td>
+ <td>${esc((t.hodSubjects||[]).join(", "))||"—"}</td>
 
  <td>${t.isExamOfficer?"Yes":"No"}</td>
 
- <td>${t.status}</td>
+ <td>${statusBadge(t.status)}</td>
 
  <td>
 
  <button class="btn secondary"
-
  onclick="editTeacher('${t.id}')">
-
  Edit
-
  </button>
 
  <button class="btn danger"
-
  onclick="deleteTeacher('${t.id}')">
-
  Delete
-
  </button>
 
  </td>
 
  </tr>
 
- `)
+ `).join("")
+ :
+ `<tr><td colspan="7">No teachers created.</td></tr>`;
 
- .join("")
-
- ||
-
- `<tr>
-
- <td colspan="7">No teachers.</td>
-
- </tr>`;
-
- renderSubjectChecks()
-
+ renderSubjectChecks();
 }
 
 function renderSubjectChecks(){
 
  let u=current();
 
- if(!u||u.role!=="admin")return;
+ if(!u || u.role!=="admin")return;
 
  let db=getDB();
 
- let edit=
+ let edit=document.getElementById("editTeacherId").value;
 
- document.getElementById("editTeacherId").value;
+ let t=db.users.find(x=>x.id===edit);
 
- let t=
+ let subjects=t?.subjects||[];
+ let hods=t?.hodSubjects||[];
 
- db.users.find(x=>x.id===edit);
+ document.getElementById("subjectChecks").innerHTML=
+ SUBJECTS.map(s=>`
 
- let sel=t?.subjects||[];
+ <label class="check-item">
 
- let hod=t?.hodSubjects||[];
-
- document.getElementById("subjectChecks")
-
- .innerHTML=
-
- SUBJECTS.map((s,i)=>`
-
- <label
-
- style="font-weight:400;margin:3px 0">
-
- <input
-
- class="subCheck"
-
+ <input class="subCheck"
  type="checkbox"
-
  value="${esc(s)}"
-
- ${sel.includes(s)?"checked":""}
-
- style="width:auto">
+ ${subjects.includes(s)?"checked":""}>
 
  ${esc(s)}
 
@@ -3284,360 +2845,268 @@ function renderSubjectChecks(){
 
  `).join("");
 
- document.getElementById("hodChecks")
-
- .innerHTML=
-
+ document.getElementById("hodChecks").innerHTML=
  SUBJECTS.map(s=>`
 
- <label
+ <label class="check-item">
 
- style="font-weight:400;margin:3px 0">
-
- <input
-
- class="hodCheck"
-
+ <input class="hodCheck"
  type="checkbox"
-
  value="${esc(s)}"
-
- ${hod.includes(s)?"checked":""}
-
- style="width:auto">
+ ${hods.includes(s)?"checked":""}>
 
  ${esc(s)}
 
  </label>
 
- `).join("")
-
+ `).join("");
 }
 
 function clearTeacherForm(){
 
- [
-
-  "tName",
-
-  "tUser",
-
-  "tPass",
-
-  "editTeacherId"
-
- ]
-
- .forEach(
-
-  x=>document.getElementById(x).value=""
-
- );
-
+ document.getElementById("editTeacherId").value="";
+ document.getElementById("tName").value="";
+ document.getElementById("tUser").value="";
+ document.getElementById("tPass").value="";
  document.getElementById("tStatus").value="Active";
-
  document.getElementById("tExam").checked=false;
 
- renderSubjectChecks()
-
+ renderSubjectChecks();
 }
 
 function saveTeacher(){
 
- if(current()?.role!=="admin")return;
+ if(current()?.role!=="admin"){
+
+  alert("Administrator permission required.");
+  return;
+ }
 
  let db=getDB();
 
- let eid=
+ let editId=document.getElementById("editTeacherId").value;
 
- document.getElementById("editTeacherId").value;
-
- let name=
-
- document.getElementById("tName").value.trim();
-
- let username=
-
- document.getElementById("tUser").value.trim();
-
- let pass=
-
- document.getElementById("tPass").value;
+ let name=document.getElementById("tName").value.trim();
+ let username=document.getElementById("tUser").value.trim();
+ let password=document.getElementById("tPass").value;
 
  let subjects=
-
- [
-
-  ...document.querySelectorAll(".subCheck:checked")
-
- ].map(x=>x.value);
+ [...document.querySelectorAll(".subCheck:checked")]
+ .map(x=>x.value);
 
  let hods=
-
- [
-
-  ...document.querySelectorAll(".hodCheck:checked")
-
- ].map(x=>x.value);
+ [...document.querySelectorAll(".hodCheck:checked")]
+ .map(x=>x.value);
 
  if(!name||!username){
 
-  alert(
-
-   "Full name and username are required."
-
-  );
-
-  return
-
+  alert("Full name and username are required.");
+  return;
  }
 
- if(hods.some(s=>!subjects.includes(s))){
+ if(hods.some(x=>!subjects.includes(x))){
 
   alert(
-
-   "Every HOD subject must also be among Subjects Taught."
-
+   "Every HOD subject must also be selected under Subjects Taught."
   );
 
-  return
-
+  return;
  }
 
- let dupe=
-
+ let duplicate=
  db.users.find(
-
-  x=>x.username===username&&x.id!==eid
-
+  x=>x.username===username &&
+  x.id!==editId
  );
 
- if(dupe){
+ if(duplicate){
 
-  alert("Username already exists.");
-
-  return
-
+  alert("That username already exists.");
+  return;
  }
 
- let t=
+ let teacher;
 
- eid
+ if(editId){
 
- ?
+  teacher=db.users.find(x=>x.id===editId);
 
- db.users.find(x=>x.id===eid)
+ }else{
 
- :
+  teacher={
+   id:id(),
+   role:"teacher",
+   password:"",
+   subjects:[],
+   hodSubjects:[],
+   isExamOfficer:false
+  };
 
- {
-
-  id:id(),
-
-  role:"teacher",
-
-  password:"",
-
-  subjects:[],
-
-  hodSubjects:[],
-
-  isExamOfficer:false
-
- };
-
- t.fullName=name;
-
- t.username=username;
-
- t.status=
-
- document.getElementById("tStatus").value;
-
- t.subjects=subjects;
-
- t.hodSubjects=hods;
-
- t.isExamOfficer=
-
- document.getElementById("tExam").checked;
-
- if(pass)t.password=pass;
-
- if(!t.password){
-
-  alert(
-
-   "Enter a password for the teacher."
-
-  );
-
-  return
-
+  db.users.push(teacher);
  }
 
- if(!eid)db.users.push(t);
+ if(!teacher)return;
 
+ teacher.fullName=name;
+ teacher.username=username;
+ teacher.status=document.getElementById("tStatus").value;
+ teacher.subjects=subjects;
+ teacher.hodSubjects=hods;
+ teacher.isExamOfficer=document.getElementById("tExam").checked;
+
+ if(password)
+ teacher.password=password;
+
+ if(!teacher.password){
+
+  alert("A password is required for the teacher.");
+  return;
+ }
+
+ /* Only one Examination Officer */
+ if(teacher.isExamOfficer){
+
+  db.users
+  .filter(x=>x.role==="teacher" && x.id!==teacher.id)
+  .forEach(x=>x.isExamOfficer=false);
+ }
+
+ /* One HOD per subject */
  db.users
-
- .filter(
-
-  x=>x.role==="teacher"&&x.id!==t.id
-
- )
-
+ .filter(x=>x.role==="teacher" && x.id!==teacher.id)
  .forEach(x=>{
 
-  x.hodSubjects=
-
-  (x.hodSubjects||[])
-
-  .filter(
-
-   s=>!hods.includes(s)
-
-  );
-
-  if(t.isExamOfficer)
-
-  x.isExamOfficer=false
+  x.hodSubjects=(x.hodSubjects||[])
+  .filter(s=>!hods.includes(s));
 
  });
 
  saveDB(db);
 
- clearTeacherForm();
+ logActivity(
+  editId?"Teacher Updated":"Teacher Created",
+  `${name} — ${username}`
+ );
 
+ clearTeacherForm();
  refreshAll();
 
- alert("Teacher saved successfully.")
-
+ alert(
+  editId
+  ?"Teacher account updated successfully."
+  :"Teacher account created successfully."
+ );
 }
 
 function editTeacher(tid){
 
- let t=
+ if(current()?.role!=="admin")return;
 
- getDB().users.find(x=>x.id===tid);
+ let t=getDB().users.find(x=>x.id===tid);
 
  if(!t)return;
 
  document.getElementById("editTeacherId").value=t.id;
-
  document.getElementById("tName").value=t.fullName;
-
  document.getElementById("tUser").value=t.username;
-
  document.getElementById("tPass").value=t.password;
-
  document.getElementById("tStatus").value=t.status;
-
  document.getElementById("tExam").checked=!!t.isExamOfficer;
 
  renderSubjectChecks();
 
- window.scrollTo({
-
-  top:0,
-
-  behavior:"smooth"
-
- })
-
+ document.getElementById("teachers")
+ .scrollIntoView({behavior:"smooth"});
 }
 
 function deleteTeacher(tid){
 
- if(!confirm("Delete this teacher account?"))
+ if(current()?.role!=="admin")return;
 
+ if(!confirm("Delete this teacher account?"))
  return;
 
  let db=getDB();
 
- db.users=
+ let teacher=db.users.find(x=>x.id===tid);
 
- db.users.filter(x=>x.id!==tid);
+ db.users=db.users.filter(x=>x.id!==tid);
 
  db.assessments.forEach(a=>{
 
   if(a.hodId===tid)
-
   a.status="Rejected: HOD account deleted";
 
   if(a.examOfficerId===tid)
+  a.status="Rejected: Examination Officer account deleted";
+ });
 
-  a.status="Rejected: Examination Officer account deleted"
+ db.documents.forEach(d=>{
+
+  if(d.hodId===tid)
+  d.status="Rejected: HOD account deleted";
 
  });
 
  saveDB(db);
 
- refreshAll()
+ logActivity(
+  "Teacher Deleted",
+  teacher?.fullName||tid
+ );
 
+ refreshAll();
 }
+
+/* =========================================================
+   HOD ASSIGNMENT
+   ========================================================= */
 
 function renderHODAssign(){
 
  let el=document.getElementById("hodTable");
 
- if(!el||current()?.role!=="admin")return;
+ if(!el || current()?.role!=="admin")return;
 
  let db=getDB();
 
  el.innerHTML=
+ SUBJECTS.map(subject=>{
 
- SUBJECTS.map(s=>{
-
-  let h=findHOD(s,db);
+  let currentHod=findHOD(subject,db);
 
   let teachers=
-
   db.users.filter(
-
    t=>
-
    t.role==="teacher" &&
-
    t.status==="Active" &&
-
-   (t.subjects||[]).includes(s)
-
+   (t.subjects||[]).includes(subject)
   );
 
   return `
-
   <tr>
 
-  <td>${esc(s)}</td>
+  <td>${esc(subject)}</td>
 
   <td>
 
   <select
+  onchange="assignHOD('${encodeURIComponent(subject)}',this.value)">
 
-  onchange="assignHOD('${encodeURIComponent(s)}',this.value)">
-
-  <option value="">
-
-  Not assigned
-
-  </option>
+  <option value="">Not assigned</option>
 
   ${
-
    teachers.map(t=>`
 
    <option
-
    value="${t.id}"
-
-   ${h?.id===t.id?"selected":""}>
+   ${currentHod?.id===t.id?"selected":""}>
 
    ${esc(t.fullName)}
 
    </option>
 
    `).join("")
-
   }
 
   </select>
@@ -3645,2571 +3114,1968 @@ function renderHODAssign(){
   </td>
 
   </tr>
+  `;
 
-  `
-
- }).join("")
-
+ }).join("");
 }
 
-function assignHOD(enc,tid){
+function assignHOD(encoded,teacherId){
 
- let s=decodeURIComponent(enc);
+ if(current()?.role!=="admin")return;
+
+ let subject=decodeURIComponent(encoded);
 
  let db=getDB();
 
  db.users
-
- .filter(t=>t.role==="teacher")
-
+ .filter(x=>x.role==="teacher")
  .forEach(
-
-  t=>
-
-  t.hodSubjects=
-
-  (t.hodSubjects||[])
-
-  .filter(x=>x!==s)
-
+  x=>
+  x.hodSubjects=(x.hodSubjects||[])
+  .filter(s=>s!==subject)
  );
 
- if(tid){
+ if(teacherId){
 
-  let t=
-
-  db.users.find(x=>x.id===tid);
+  let teacher=db.users.find(x=>x.id===teacherId);
 
   if(
-
-   !t ||
-
-   !t.subjects.includes(s)
-
+   !teacher ||
+   !(teacher.subjects||[]).includes(subject)
   ){
 
    alert(
-
-    "That teacher does not teach this subject."
-
+    "The selected teacher must teach this subject."
    );
 
-   return
-
+   return;
   }
 
-  t.hodSubjects.push(s)
-
+  teacher.hodSubjects.push(subject);
  }
 
  saveDB(db);
 
- refreshAll()
+ logActivity(
+  "HOD Assignment",
+  `${subject} → ${teacherId?"Assigned":"Unassigned"}`
+ );
 
+ refreshAll();
 }
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
 
 function loadSettings(){
 
  let db=getDB();
 
- [
+ let map={
+  setName:"name",
+  setMotto:"motto",
+  setAddress:"address",
+  setContact:"contact"
+ };
 
-  "Name",
+ Object.keys(map).forEach(id=>{
 
-  "Motto",
+  let e=document.getElementById(id);
 
-  "Address",
-
-  "Contact"
-
- ]
-
- .forEach(
-
-  x=>
-
-  document.getElementById("set"+x).value=
-
-  db.school[x.toLowerCase()]||""
-
- )
-
+  if(e)e.value=db.school[map[id]]||"";
+ });
 }
 
 function saveSettings(){
 
- if(current()?.role!=="admin")return;
+ if(current()?.role!=="admin"){
+
+  alert("Administrator permission required.");
+  return;
+ }
 
  let db=getDB();
 
  db.school={
-
-  name:document.getElementById("setName").value,
-
-  motto:document.getElementById("setMotto").value,
-
-  address:document.getElementById("setAddress").value,
-
-  contact:document.getElementById("setContact").value
-
+  name:document.getElementById("setName").value.trim(),
+  motto:document.getElementById("setMotto").value.trim(),
+  address:document.getElementById("setAddress").value.trim(),
+  contact:document.getElementById("setContact").value.trim()
  };
 
  saveDB(db);
 
+ logActivity("School Settings Updated","School profile changed");
+
  refreshAll();
 
- alert("School settings saved.")
-
+ alert("School settings saved.");
 }
+
+/* =========================================================
+   BACKUP
+   ========================================================= */
 
 function backup(){
 
- let b=
+ if(current()?.role!=="admin"){
 
- new Blob(
+  alert("Administrator permission required.");
+  return;
+ }
 
-  [JSON.stringify(getDB(),null,2)],
+ let data=JSON.stringify(getDB(),null,2);
 
-  {type:"application/json"}
-
+ downloadBlob(
+  "Caliphate-Tarbiya-Academy-V6-Backup.json",
+  data,
+  "application/json"
  );
 
- let a=document.createElement("a");
-
- a.href=URL.createObjectURL(b);
-
- a.download="CTA-backup.json";
-
- a.click()
-
+ logActivity("Backup Created","Complete local database backup");
 }
 
-function restore(e){
+function restore(event){
 
- let f=e.target.files[0];
+ if(current()?.role!=="admin"){
 
- if(!f)return;
+  alert("Administrator permission required.");
+  return;
+ }
 
- let r=new FileReader();
+ let file=event.target.files[0];
 
- r.onload=()=>{
+ if(!file)return;
+
+ let reader=new FileReader();
+
+ reader.onload=()=>{
 
   try{
 
-   let x=JSON.parse(r.result);
+   let data=JSON.parse(reader.result);
 
-   if(!x.users||!x.school)
+   if(
+    !data.users ||
+    !data.school ||
+    !Array.isArray(data.documents) ||
+    !Array.isArray(data.assessments)
+   ){
 
-   throw 0;
+    throw new Error("Invalid backup");
+   }
 
-   saveDB(x);
+   data.version="V6";
 
-   alert("Backup restored.");
+   saveDB(data);
 
-   location.reload()
+   alert("Backup restored successfully.");
 
-  }catch(_){
+   location.reload();
 
-   alert("Invalid backup file.")
+  }catch(e){
 
+   alert("Invalid or damaged backup file.");
   }
-
  };
 
- r.readAsText(f)
-
+ reader.readAsText(file);
 }
 
 function resetDemo(){
 
- if(
+ if(current()?.role!=="admin"){
 
-  confirm(
-
-   "This will erase all local system data. Continue?"
-
-  )
-
- ){
-
-  localStorage.removeItem(DB_KEY);
-
-  localStorage.removeItem(USER_KEY);
-
-  location.reload()
-
+  alert("Administrator permission required.");
+  return;
  }
 
+ let ok=confirm(
+  "This will permanently erase all local school data on this browser. Continue?"
+ );
+
+ if(!ok)return;
+
+ localStorage.removeItem(DB_KEY);
+ localStorage.removeItem(OLD_DB_KEY);
+ localStorage.removeItem(USER_KEY);
+ localStorage.removeItem("CTA_CURRENT_USER");
+
+ location.reload();
 }
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
 
 function changePassword(){
 
  let u=current();
 
+ if(!u)return;
+
  let db=getDB();
 
- let old=
+ let old=document.getElementById("oldPass").value;
+ let n=document.getElementById("newPass").value;
+ let n2=document.getElementById("newPass2").value;
 
- document.getElementById("oldPass").value;
+ if(old!==u.password){
 
- let n=
+  alert("Current password is incorrect.");
+  return;
+ }
 
- document.getElementById("newPass").value;
+ if(n.length<8){
 
- let n2=
+  alert("New password must contain at least 8 characters.");
+  return;
+ }
 
- document.getElementById("newPass2").value;
+ if(n!==n2){
 
- if(old!==u.password)
-
- return alert("Current password is incorrect.");
-
- if(n.length<6)
-
- return alert(
-
-  "New password must be at least 6 characters."
-
- );
-
- if(n!==n2)
-
- return alert(
-
-  "New passwords do not match."
-
- );
+  alert("New passwords do not match.");
+  return;
+ }
 
  u.password=n;
 
  saveDB(db);
 
- alert("Password changed successfully.");
+ logActivity("Password Changed","Password changed successfully");
 
  document.getElementById("oldPass").value="";
-
  document.getElementById("newPass").value="";
+ document.getElementById("newPass2").value="";
 
- document.getElementById("newPass2").value=""
-
+ alert("Password changed successfully.");
 }
 
-/* ==========================================================
+/* =========================================================
+   ACTIVITY
+   ========================================================= */
 
-   TEACHER ASSISTANT
+function renderActivity(){
 
-   ========================================================== */
+ let el=document.getElementById("activityTable");
 
-function assistantLanguage(s){
+ if(!el)return;
 
- if(s==="Hausa Language")return"Hausa";
+ let db=getDB();
 
- if(s==="Arabic Language")return"Arabic";
+ el.innerHTML=
+ db.activities.length
+ ?
+ db.activities.map(a=>`
 
- if(s==="French Language")return"French";
+ <tr>
+ <td>${formatDate(a.date)}</td>
+ <td>${esc(a.userName)}</td>
+ <td>${esc(a.action)}</td>
+ <td>${esc(a.details)}</td>
+ </tr>
 
- let x=
+ `).join("")
+ :
+ `<tr><td colspan="4">No activity recorded.</td></tr>`;
+}
 
+/* =========================================================
+   DOCUMENT TEXT
+   ========================================================= */
+
+function documentToText(d){
+
+ let x=d.data||{};
+
+ return Object.entries(x)
+ .filter(([k,v])=>v)
+ .map(
+  ([k,v])=>
+  `${k.replace(/([A-Z])/g," $1").toUpperCase()}\n${v}`
+ )
+ .join("\n\n");
+}
+
+/* =========================================================
+   ASSISTANT LANGUAGE
+   ========================================================= */
+
+function assistantLanguage(subject){
+
+ let requested=
  document.getElementById("taLanguage").value;
 
- return x==="Automatic"?"English":x
+ if(requested!=="Automatic")
+ return requested;
 
+ if(subject==="Hausa Language")
+ return"Hausa";
+
+ if(subject==="Arabic Language")
+ return"Arabic";
+
+ if(subject==="French Language")
+ return"French";
+
+ return"English";
 }
 
-function rand(max){
+/* =========================================================
+   QUESTION BANK
+   ========================================================= */
 
- return Math.floor(Math.random()*max)
+const QUESTION_BANK={
 
+ Mathematics:{
+  easy:[
+   "Which of the following is the correct value of the expression?",
+   "What is the next number in the sequence?",
+   "Which operation should be performed first?",
+   "What is the correct answer to the problem?",
+   "Which of the following represents the given mathematical idea?"
+  ],
+  moderate:[
+   "Which method gives the correct solution?",
+   "What is the value obtained after applying the correct procedure?",
+   "Which statement correctly describes the mathematical relationship?",
+   "If the given condition changes, which result is correct?",
+   "Which calculation gives the required answer?"
+  ],
+  hard:[
+   "Which conclusion follows from the mathematical relationship?",
+   "Which method provides the most efficient solution?",
+   "Which value satisfies the stated condition?",
+   "Which statement is mathematically valid?",
+   "What is the most appropriate result after applying the required principles?"
+  ]
+ },
+
+ English:{
+  easy:[
+   "Which of the following best explains the term?",
+   "Which sentence is grammatically correct?",
+   "Which word has the closest meaning?",
+   "Which option is the correct example?",
+   "Which statement is correct?"
+  ],
+  moderate:[
+   "Which option best completes the sentence?",
+   "Which expression is most appropriate in context?",
+   "Which statement correctly explains the passage or concept?",
+   "Which word is most suitable in the given context?",
+   "Which sentence demonstrates the required grammatical feature?"
+  ],
+  hard:[
+   "Which interpretation is best supported by the context?",
+   "Which option most accurately explains the author's or speaker's intention?",
+   "Which grammatical structure is most appropriate?",
+   "Which inference can reasonably be drawn?",
+   "Which expression demonstrates the most accurate usage?"
+  ]
+ },
+
+ Science:{
+  easy:[
+   "Which of the following correctly describes the concept?",
+   "Which is an example of the concept?",
+   "What is the main function of the stated part?",
+   "Which statement is scientifically correct?",
+   "Which of the following is directly associated with the concept?"
+  ],
+  moderate:[
+   "Which process best explains the observation?",
+   "What would most likely happen under the stated condition?",
+   "Which statement correctly explains the relationship?",
+   "Which factor is most directly responsible?",
+   "Which application demonstrates the concept?"
+  ],
+  hard:[
+   "Which conclusion is best supported by the scientific principle?",
+   "Which explanation best accounts for the observation?",
+   "Which prediction follows from the stated condition?",
+   "Which variable would most significantly affect the result?",
+   "Which interpretation is scientifically most accurate?"
+  ]
+ },
+
+ Computer:{
+  easy:[
+   "Which of the following correctly describes the computer concept?",
+   "Which device is associated with the concept?",
+   "Which option gives the correct example?",
+   "What is the main purpose of the stated component?",
+   "Which statement is correct?"
+  ],
+  moderate:[
+   "Which process best explains the operation?",
+   "Which component performs the stated function?",
+   "Which option represents a practical application?",
+   "What would be the most appropriate solution?",
+   "Which statement correctly describes the relationship?"
+  ],
+  hard:[
+   "Which solution is most efficient for the stated problem?",
+   "Which conclusion follows from the computer process?",
+   "Which architecture or method best satisfies the requirement?",
+   "Which option correctly analyses the situation?",
+   "Which statement best explains the technical implication?"
+  ]
+ }
+};
+
+function bankFor(subject){
+
+ if(/math/i.test(subject))
+ return QUESTION_BANK.Mathematics;
+
+ if(/english|literature/i.test(subject))
+ return QUESTION_BANK.English;
+
+ if(/computer|ict|data processing|information technology|digital/i.test(subject))
+ return QUESTION_BANK.Computer;
+
+ if(/physics|chemistry|biology|science|agricultural/i.test(subject))
+ return QUESTION_BANK.Science;
+
+ return QUESTION_BANK.Science;
 }
 
-function shuffle(arr){
+/* =========================================================
+   GENERATED OBJECTIVE QUESTIONS
+   IMPORTANT: ANSWER KEY MATCHES ACTUAL OPTIONS
+   ========================================================= */
 
- let a=[...arr];
+function buildObjectiveQuestions(subject,topic,count,difficulty){
 
- for(let i=a.length-1;i>0;i--){
+ let bank=bankFor(subject);
 
-  let j=Math.floor(Math.random()*(i+1));
+ let level=
+ difficulty==="Mixed"
+ ? ["easy","moderate","hard"][rand(3)]
+ : difficulty.toLowerCase();
 
-  [a[i],a[j]]=[a[j],a[i]]
+ if(!bank[level])level="moderate";
 
+ let questions=[];
+ let answerKey=[];
+
+ for(let i=1;i<=count;i++){
+
+  let stem=bank[level][rand(bank[level].length)];
+
+  let correct=
+  `The correct application or explanation of ${topic}`;
+
+  let wrongs=shuffle([
+   `An unrelated idea that does not describe ${topic}`,
+   `A statement that contradicts the principle of ${topic}`,
+   `A different concept that is not applicable to ${topic}`,
+   `An incorrect interpretation of ${topic}`,
+   `An example that does not belong to ${topic}`
+  ]).slice(0,3);
+
+  let options=shuffle([
+   correct,
+   ...wrongs
+  ]);
+
+  let correctIndex=options.indexOf(correct);
+
+  let letter=["A","B","C","D"][correctIndex];
+
+  questions.push({
+   number:i,
+   question:`${stem} Topic: ${topic}`,
+   options,
+   answer:letter
+  });
+
+  answerKey.push(`${i}. ${letter}`);
  }
 
- return a
-
+ return {questions,answerKey};
 }
 
-function variation(){
+function objectiveText(data){
 
- return Date.now()+Math.random()
+ return data.questions.map(q=>`
+${q.number}. ${q.question}
 
+A. ${q.options[0]}
+B. ${q.options[1]}
+C. ${q.options[2]}
+D. ${q.options[3]}
+`).join("\n");
 }
 
-function questionSeed(topic,i){
+function answerKeyText(data){
 
- let words=[
+ return data.answerKey.join("\n");
+}
 
-  "concept",
+/* =========================================================
+   THEORY GENERATOR
+   ========================================================= */
 
-  "principle",
+function buildTheoryQuestions(subject,topic,count){
 
-  "idea",
-
-  "process",
-
-  "feature",
-
-  "application",
-
-  "example",
-
-  "importance"
-
+ let templates=[
+  `Define ${topic} and explain four important points about it.`,
+  `Explain ${topic} in detail and give two relevant examples.`,
+  `State five important features of ${topic} and explain any three.`,
+  `Discuss the importance of ${topic} in practical situations.`,
+  `Differentiate between the major concepts associated with ${topic}.`,
+  `Describe the main process or stages involved in ${topic}.`,
+  `State four applications of ${topic} and explain any two.`,
+  `Give suitable examples of ${topic} and explain their relevance.`,
+  `What do you understand by ${topic}? Discuss its major characteristics.`,
+  `Explain how knowledge of ${topic} can be applied in everyday life.`
  ];
 
- return words[(i+Math.floor(Math.random()*words.length))%words.length]
+ return Array.from(
+  {length:count},
+  (_,i)=>{
 
-}
+   let marks=[5,6,8,10][i%4];
 
-function generateAssistant(){
-
- let type=
-
- document.getElementById("taType").value;
-
- let cl=
-
- document.getElementById("taClass").value||
-
- "Class";
-
- let sub=
-
- document.getElementById("taSubject").value;
-
- let topic=
-
- document.getElementById("taTopic").value||
-
- "Selected Topic";
-
- let st=
-
- document.getElementById("taSubtopic").value;
-
- let term=
-
- document.getElementById("taTerm").value;
-
- let session=
-
- document.getElementById("taSession").value;
-
- let count=
-
- Math.max(
-
-  1,
-
-  Math.min(
-
-   100,
-
-   +document.getElementById("taCount").value||10
-
-  )
-
+   return {
+    number:i+1,
+    question:templates[
+     (i+rand(templates.length))%templates.length
+    ],
+    marks
+   };
+  }
  );
-
- let lang=assistantLanguage(sub);
-
- let r;
-
- if(
-
-  lang==="Hausa"
-
- ){
-
-  r=hausa(
-
-   type,cl,sub,topic,st,
-
-   term,session,count
-
-  )
-
- }else if(
-
-  lang==="Arabic"
-
- ){
-
-  r=arabic(
-
-   type,cl,sub,topic,st,
-
-   term,session,count
-
-  )
-
- }else if(
-
-  lang==="French"
-
- ){
-
-  r=french(
-
-   type,cl,sub,topic,st,
-
-   term,session,count
-
-  )
-
- }else{
-
-  r=english(
-
-   type,cl,sub,topic,st,
-
-   term,session,count
-
-  )
-
- }
-
- document.getElementById("taResult").textContent=r
-
 }
 
-function head(
+function theoryText(data){
 
- type,
-
- cl,
-
- sub,
-
- topic,
-
- st,
-
- term,
-
- session
-
-){
-
- return `CALIPHATE TARBIYA ACADEMY
-
-${type.toUpperCase()}
-
-Class: ${cl}
-
-Subject: ${sub}
-
-Topic: ${topic}
-
-${st?"Subtopic: "+st+"\n":""}Term: ${term}
-
-Session: ${session}
-
-`
-
+ return data.map(q=>
+ `${q.number}. ${q.question} (${q.marks} marks)`
+ ).join("\n\n");
 }
 
-/* ==========================================================
+function theoryMarking(data){
 
-   STANDARD ENGLISH QUESTION GENERATOR
+ return data.map(q=>
+ `Question ${q.number} — ${q.marks} marks:
+Award marks for accurate definition/identification,
+relevant points, correct explanation and suitable examples.
+Accept equivalent correct answers.`
+ ).join("\n\n");
+}
 
-   ========================================================== */
+/* =========================================================
+   ENGLISH ASSISTANT DOCUMENTS
+   ========================================================= */
 
-function english(
+function englishLessonPlan(cl,sub,topic,subtopic,term,session){
 
- type,
-
- cl,
-
- sub,
-
- topic,
-
- st,
-
- term,
-
- session,
-
- count
-
-){
-
- let h=
-
- head(
-
-  type,
-
-  cl,
-
-  sub,
-
+ return {
+  school:getDB().school.name,
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
   topic,
-
-  st,
-
-  term,
-
-  session
-
- );
-
- if(type==="Lesson Plan"){
-
-  return h+
-
-`NIGERIAN STANDARD DETAILED LESSON PLAN
-
-LEARNING OBJECTIVES
-
-By the end of the lesson, learners should be able to:
-
+  subtopic,
+  date:new Date().toISOString().slice(0,10),
+  duration:"40 minutes",
+  period:"",
+  classSize:"",
+  objectives:
+`By the end of the lesson, learners should be able to:
 1. Define and explain ${topic}.
-
 2. Identify the major concepts associated with ${topic}.
-
 3. Give relevant examples.
+4. Apply the knowledge gained appropriately.
+5. Answer evaluation questions correctly.`,
+  previous:
+`Learners should possess basic knowledge related to ${topic}
+and be able to recall relevant previous lessons.`,
+  materials:
+`Whiteboard, marker, textbook, charts/pictures, real objects
+where applicable and other relevant instructional materials.`,
+  references:
+`${sub} textbook; approved curriculum; teacher's reference materials.`,
+  induction:
+`The teacher asks learners simple questions based on familiar
+situations connected with ${topic}, then introduces the lesson.`,
+  development:
+`Step 1: Introduce the topic and connect it with previous knowledge.
 
-4. Apply the knowledge gained to appropriate classroom or real-life situations.
+Step 2: Explain the meaning and important terms.
 
-5. Answer assessment questions correctly.
+Step 3: Present the major concepts or characteristics.
 
-PREVIOUS KNOWLEDGE
+Step 4: Give relevant examples and illustrations.
 
-Learners should possess basic knowledge related to ${topic}.
+Step 5: Allow learners to participate in guided activities.
 
-INSTRUCTIONAL MATERIALS
+Step 6: Give learners independent practice.
 
-Textbook, whiteboard, marker, charts, pictures,
+Step 7: Correct misconceptions and summarize the lesson.`,
+  teacherActivities:
+`The teacher introduces the lesson, explains concepts,
+asks questions, demonstrates examples, supervises activities,
+corrects errors and evaluates learners.`,
+  learner:
+`Learners listen, answer questions, participate in discussion,
+observe demonstrations, perform activities and complete exercises.`,
+  evaluation:
+`1. Define ${topic}.
+2. Mention two important points about ${topic}.
+3. Give one relevant example.
+4. Explain one practical application.`,
+  conclusion:
+`The teacher summarizes the main points and allows learners
+to ask questions.`,
+  assignment:
+`Write a short explanation of ${topic} and give two relevant examples.`,
+  reflection:""
+ };
+}
 
-real objects and other relevant instructional materials.
+function englishLessonNote(cl,sub,topic,subtopic){
 
-INTRODUCTION
+ return {
+  school:getDB().school.name,
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  objectives:
+`At the end of the lesson learners should be able to:
+1. Define ${topic}.
+2. Explain the major points.
+3. Give relevant examples.
+4. Apply the knowledge appropriately.`,
+  introduction:
+`The teacher introduces ${topic} using questions and familiar
+examples from the learners' environment.`,
+  content:
+`${topic.toUpperCase()}
 
-The teacher introduces ${topic} through questioning,
+Meaning / Definition:
+${topic} should be explained using simple, accurate and
+age-appropriate language.
 
-discussion and familiar examples.
+Major Points:
+1. Meaning and basic concept.
+2. Important characteristics.
+3. Relevant examples.
+4. Practical application.
 
-LESSON DEVELOPMENT
+The teacher should use suitable examples and allow learners
+to participate actively throughout the lesson.`,
+  examples:
+`Examples should be selected from the learners' environment
+and should clearly demonstrate the concept.`,
+  methods:
+`Discussion, explanation, questioning, demonstration,
+guided practice and learner participation.`,
+  materials:
+`Textbook, whiteboard, marker, charts, pictures and relevant
+real-life materials.`,
+  evaluation:
+`1. What is ${topic}?
+2. Mention two important points.
+3. Give an example.
+4. State one application.`,
+  summary:
+`The lesson is summarized by reviewing the meaning,
+major points, examples and applications.`,
+  assignment:
+`Write a short note on ${topic}.`,
+  references:`Approved ${sub} textbook and relevant curriculum.`
+ };
+}
 
-Step 1: Introduce the topic.
+function englishScheme(cl,sub,term,session,topic){
 
-Step 2: Explain important terms and concepts.
+ let weeks=[];
 
-Step 3: Give relevant examples.
+ for(let i=1;i<=12;i++){
 
-Step 4: Involve learners in guided activities.
+  weeks.push(
+`WEEK ${i}
+Topic: ${topic}${i>1?" — Aspect "+i:""}
 
-Step 5: Allow learners to practise independently.
+Specific Objectives:
+Learners should be able to explain the week's concept,
+identify important points, give examples and demonstrate
+appropriate application.
 
-Step 6: Correct misconceptions and summarize the lesson.
+Content:
+Meaning, characteristics, examples, applications,
+class activities and evaluation.
 
-TEACHER ACTIVITIES
+Teacher Activities:
+Explanation, questioning, demonstration and supervision.
 
-The teacher explains the concepts, demonstrates examples,
+Learner Activities:
+Discussion, observation, guided practice, classwork
+and independent exercises.
 
-asks questions, supervises activities and evaluates learning.
+Evaluation:
+Short oral and written questions based on the week's content.
 
-LEARNER ACTIVITIES
-
-Learners listen, respond to questions, participate in discussions,
-
-carry out activities and answer evaluation questions.
-
-EVALUATION
-
-Assess learners' ability to define, explain and apply ${topic}.
-
-CONCLUSION
-
-Review the major points and correct identified difficulties.
-
-ASSIGNMENT
-
-Give learners suitable exercises based on ${topic}.`
-
+Resources:
+Approved textbook, curriculum and relevant instructional materials.`
+  );
  }
 
- if(type==="Lesson Note"){
+ return {
+  school:getDB().school.name,
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  session,
+  term,
+  content:weeks.join("\n\n")
+ };
+}
 
-  return h+
+/* =========================================================
+   HAUSA DOCUMENTS
+   ========================================================= */
 
-`DETAILED LESSON NOTE
+function hausaLessonPlan(cl,sub,topic,subtopic){
 
-1. INTRODUCTION
+ return {
+  school:"Caliphate Tarbiya Academy",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  date:new Date().toISOString().slice(0,10),
+  duration:"Minti 40",
+  period:"",
+  classSize:"",
+  objectives:
+`A ƙarshen darasin, ɗalibai za su iya:
+1. Bayyana ma'anar ${topic}.
+2. Gano muhimman abubuwan da suka shafi ${topic}.
+3. Ba da misalai masu dacewa.
+4. Amfani da ilimin a aikace.
+5. Amsa tambayoyin kimantawa daidai.`,
+  previous:`Ɗalibai suna da wasu bayanan da suka shafi ${topic}
+daga darussan baya.`,
+  materials:`Allo, biro, littafin darasi, hotuna, jadawali
+da sauran kayan koyarwa masu dacewa.`,
+  references:`Littafin ${sub}, manhajar karatu da kayan koyarwa.`,
+  induction:`Malami zai fara da tambayoyi masu sauƙi da suka shafi
+abubuwan da ɗalibai suka sani sannan ya gabatar da maudu'in.`,
+  development:
+`Mataki na 1: Gabatar da maudu'i.
 
-${topic} is an important area of study in ${sub}.
+Mataki na 2: Bayyana ma'anoni da muhimman kalmomi.
 
-2. MEANING / DEFINITION
+Mataki na 3: Bayyana muhimman abubuwan ${topic}.
 
-Explain the meaning of ${topic} using clear and age-appropriate language.
+Mataki na 4: Bayar da misalai.
 
-3. MAIN FEATURES / COMPONENTS
+Mataki na 5: Aikin ɗalibai.
 
-Discuss the major features or components related to ${topic}.
+Mataki na 6: Kimantawa da gyaran kura-kurai.
 
-4. EXAMPLES
+Mataki na 7: Taƙaita darasi.`,
+  teacherActivities:`Malami zai yi bayani, ya yi tambayoyi,
+ya bayar da misalai, ya jagoranci aiki kuma ya yi kimantawa.`,
+  learner:`Ɗalibai za su saurara, su amsa tambayoyi,
+su shiga tattaunawa, su yi aiki kuma su amsa kimantawa.`,
+  evaluation:
+`1. Menene ${topic}?
+2. Ambaci muhimman abubuwa biyu.
+3. Ba da misali guda.
+4. Bayyana muhimmancin sa.`,
+  conclusion:`Malami zai taƙaita muhimman abubuwan darasin.`,
+  assignment:`Rubuta taƙaitaccen bayani game da ${topic}.`,
+  reflection:""
+ };
+}
 
-Give relevant examples that learners can understand.
+function hausaLessonNote(cl,sub,topic,subtopic){
 
-5. APPLICATION
+ return {
+  school:"Caliphate Tarbiya Academy",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  objectives:
+`A ƙarshen darasin ɗalibai za su iya:
+1. Bayyana ${topic}.
+2. Bayyana muhimman abubuwan.
+3. Ba da misalai.
+4. Amfani da ilimin.`,
+  introduction:`Malami zai gabatar da ${topic} ta hanyar tambayoyi
+da misalan da ɗalibai suka saba gani.`,
+  content:
+`${topic.toUpperCase()}
 
-Explain how the knowledge can be applied in practical situations.
+Ma'ana:
+Bayyana ${topic} cikin harshen da ya dace da matakin ɗalibai.
 
-6. SUMMARY
+Muhimman Abubuwa:
+1. Ma'ana.
+2. Siffofi.
+3. Misalai.
+4. Amfani da muhimmancin sa.`,
+  examples:`Ba da misalai daga rayuwar yau da kullum.`,
+  methods:`Bayani, tattaunawa, tambayoyi, nuna misali
+da aikin ɗalibai.`,
+  materials:`Allo, littafi, hotuna da sauran kayan koyarwa.`,
+  evaluation:`1. Menene ${topic}?
+2. Ambaci abubuwa biyu.
+3. Ba da misali.`,
+  summary:`Taƙaita ma'anar ${topic} da muhimman abubuwan sa.`,
+  assignment:`Rubuta taƙaitaccen bayani game da ${topic}.`,
+  references:`Littafin ${sub} da manhajar karatu.`
+ };
+}
 
-Summarize the major points covered in the lesson.
+/* =========================================================
+   ARABIC DOCUMENTS
+   ========================================================= */
 
-7. EVALUATION
+function arabicLessonPlan(cl,sub,topic,subtopic){
 
-Ask learners questions that test knowledge,
+ return {
+  school:"أكاديمية الخلافة تربية",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  date:new Date().toISOString().slice(0,10),
+  duration:"40 دقيقة",
+  period:"",
+  classSize:"",
+  objectives:
+`في نهاية الدرس يستطيع الطلاب:
+1. تعريف ${topic}.
+2. شرح الأفكار الأساسية.
+3. ذكر أمثلة مناسبة.
+4. تطبيق المعرفة.
+5. الإجابة عن أسئلة التقويم.`,
+  previous:`لدى الطلاب معرفة سابقة مرتبطة بالموضوع.`,
+  materials:`السبورة، الكتاب المدرسي، الصور والمخططات
+والوسائل التعليمية المناسبة.`,
+  references:`كتاب ${sub} والمنهج الدراسي والمراجع المناسبة.`,
+  induction:`يبدأ المعلم بأسئلة بسيطة مرتبطة بخبرات الطلاب
+ثم يقدم موضوع الدرس.`,
+  development:
+`الخطوة الأولى: تقديم الموضوع.
 
-understanding and application.
+الخطوة الثانية: شرح المصطلحات المهمة.
 
-8. ASSIGNMENT
+الخطوة الثالثة: شرح الأفكار الأساسية.
 
-Give suitable exercises based on ${topic}.`
+الخطوة الرابعة: تقديم الأمثلة.
 
- }
+الخطوة الخامسة: نشاط الطلاب.
 
- if(type==="Scheme of Work"){
+الخطوة السادسة: التقويم وتصحيح الأخطاء.
+
+الخطوة السابعة: تلخيص الدرس.`,
+  teacherActivities:`يشرح المعلم، يطرح الأسئلة،
+يقدم الأمثلة، يتابع نشاط الطلاب ويقوم بالتقويم.`,
+  learner:`يستمع الطلاب، يجيبون عن الأسئلة،
+يشاركون في المناقشة ويؤدون الأنشطة.`,
+  evaluation:
+`1. عرّف ${topic}.
+2. اذكر نقطتين مهمتين.
+3. أعط مثالاً مناسباً.
+4. وضح أهمية الموضوع.`,
+  conclusion:`تلخيص أهم النقاط والإجابة عن أسئلة الطلاب.`,
+  assignment:`اكتب ملخصاً قصيراً عن ${topic}.`,
+  reflection:""
+ };
+}
+
+function arabicLessonNote(cl,sub,topic,subtopic){
+
+ return {
+  school:"أكاديمية الخلافة تربية",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  objectives:
+`في نهاية الدرس يستطيع الطلاب:
+1. تعريف ${topic}.
+2. شرح الأفكار الأساسية.
+3. ذكر أمثلة.
+4. تطبيق المعرفة.`,
+  introduction:`يقدم المعلم الموضوع من خلال الأسئلة والأمثلة.`,
+  content:
+`${topic}
+
+التعريف:
+شرح معنى ${topic} بلغة مناسبة للطلاب.
+
+النقاط الأساسية:
+1. المعنى.
+2. الخصائص.
+3. الأمثلة.
+4. التطبيقات.`,
+  examples:`أمثلة مناسبة من البيئة المحيطة بالطلاب.`,
+  methods:`الشرح، المناقشة، الأسئلة، العرض والتطبيق.`,
+  materials:`الكتاب، السبورة والوسائل التعليمية.`,
+  evaluation:`1. ما معنى ${topic}؟
+2. اذكر نقطتين مهمتين.
+3. أعط مثالاً.`,
+  summary:`تلخيص الأفكار الأساسية.`,
+  assignment:`اكتب ملخصاً عن ${topic}.`,
+  references:`كتاب ${sub} والمنهج الدراسي.`
+ };
+}
+
+/* =========================================================
+   FRENCH DOCUMENTS
+   ========================================================= */
+
+function frenchLessonPlan(cl,sub,topic,subtopic){
+
+ return {
+  school:"CALIPHATE TARBIYA ACADEMY",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  date:new Date().toISOString().slice(0,10),
+  duration:"40 minutes",
+  period:"",
+  classSize:"",
+  objectives:
+`À la fin de la leçon, les élèves doivent être capables de :
+1. Définir ${topic}.
+2. Expliquer les idées principales.
+3. Donner des exemples.
+4. Appliquer les connaissances.
+5. Répondre correctement aux questions d'évaluation.`,
+  previous:`Les élèves ont des connaissances préalables liées au sujet.`,
+  materials:`Tableau, marqueur, manuel, images et autres
+supports pédagogiques appropriés.`,
+  references:`Manuel de ${sub}, programme scolaire et références appropriées.`,
+  induction:`L'enseignant commence par des questions simples
+liées aux expériences des élèves.`,
+  development:
+`Étape 1 : Présentation du sujet.
+
+Étape 2 : Explication des termes importants.
+
+Étape 3 : Présentation des idées principales.
+
+Étape 4 : Exemples.
+
+Étape 5 : Activité des élèves.
+
+Étape 6 : Évaluation et correction.
+
+Étape 7 : Résumé.`,
+  teacherActivities:`L'enseignant explique, pose des questions,
+présente des exemples, supervise les activités et évalue les élèves.`,
+  learner:`Les élèves écoutent, répondent aux questions,
+participent aux discussions et réalisent les activités.`,
+  evaluation:
+`1. Définissez ${topic}.
+2. Donnez deux points importants.
+3. Donnez un exemple.
+4. Expliquez une application.`,
+  conclusion:`Résumé des points principaux.`,
+  assignment:`Rédigez un court résumé sur ${topic}.`,
+  reflection:""
+ };
+}
+
+function frenchLessonNote(cl,sub,topic,subtopic){
+
+ return {
+  school:"CALIPHATE TARBIYA ACADEMY",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  topic,
+  subtopic,
+  objectives:
+`À la fin de la leçon, les élèves doivent pouvoir :
+1. Définir ${topic}.
+2. Expliquer les idées principales.
+3. Donner des exemples.
+4. Appliquer les connaissances.`,
+  introduction:`L'enseignant présente ${topic} à l'aide de questions
+et d'exemples familiers.`,
+  content:
+`${topic.toUpperCase()}
+
+Définition :
+Expliquer ${topic} dans un langage clair et adapté.
+
+Points principaux :
+1. Signification.
+2. Caractéristiques.
+3. Exemples.
+4. Applications.`,
+  examples:`Donner des exemples adaptés à l'environnement des élèves.`,
+  methods:`Explication, discussion, questions, démonstration et pratique.`,
+  materials:`Manuel, tableau et supports pédagogiques.`,
+  evaluation:`1. Qu'est-ce que ${topic} ?
+2. Donnez deux points importants.
+3. Donnez un exemple.`,
+  summary:`Résumé des idées principales.`,
+  assignment:`Rédigez un court résumé sur ${topic}.`,
+  references:`Manuel de ${sub} et programme scolaire.`
+ };
+}
+
+/* =========================================================
+   SCHEME BY LANGUAGE
+   ========================================================= */
+
+function multilingualScheme(lang,cl,sub,term,session,topic){
+
+ if(lang==="English")
+ return englishScheme(cl,sub,term,session,topic);
+
+ if(lang==="Hausa"){
 
   let weeks=[];
 
   for(let i=1;i<=12;i++){
 
    weeks.push(
+`MAKO NA ${i}
+Maudu'i: ${topic}${i>1?" — Sashe na "+i:""}
 
-`WEEK ${i}
+Manufofi:
+Ɗalibai su fahimci maudu'in, su gano muhimman abubuwa,
+su ba da misalai kuma su yi amfani da ilimin.
 
-Topic: ${topic}${i>1?" — Related Aspect "+i:""}
+Abubuwan Da Za A Koya:
+Ma'ana, siffofi, misalai, amfani da aiki da kimantawa.
 
-Objectives:
+Ayyukan Malami:
+Bayani, tambayoyi, misalai da jagoranci.
 
-Learners should understand the topic,
+Ayyukan Ɗalibai:
+Tattaunawa, amsa tambayoyi da yin aiki.
 
-identify important concepts and demonstrate
+Kimantawa:
+Tambayoyi da atisaye masu alaƙa da darasin.`
+   );
+  }
 
-appropriate knowledge and application.
+  return {
+   school:"Caliphate Tarbiya Academy",
+   teacher:current()?.fullName||"",
+   className:cl,
+   subject:sub,
+   session,
+   term,
+   content:weeks.join("\n\n")
+  };
+ }
 
-Content:
+ if(lang==="Arabic"){
 
-Meaning, explanation, examples, activities,
+  let weeks=[];
 
-evaluation and revision.
+  for(let i=1;i<=12;i++){
 
-Teacher/Learner Activities:
+   weeks.push(
+`الأسبوع ${i}
+الموضوع: ${topic}${i>1?" — الجزء "+i:""}
 
-Guided explanation, discussion, questioning,
+الأهداف:
+فهم الموضوع وتحديد الأفكار الأساسية وتقديم أمثلة
+وتطبيق المعرفة.
 
-classwork and practical/application activities.
+المحتوى:
+التعريف والخصائص والأمثلة والتطبيق والتقويم.
 
-Evaluation:
+نشاط المعلم:
+الشرح والأسئلة والتوجيه.
 
-Short questions and class exercises based on the week's content.`
+نشاط الطلاب:
+المناقشة والإجابة عن الأسئلة والأنشطة.
 
-   )
+التقويم:
+أسئلة وتمارين مرتبطة بالدرس.`
+   );
+  }
+
+  return {
+   school:"أكاديمية الخلافة تربية",
+   teacher:current()?.fullName||"",
+   className:cl,
+   subject:sub,
+   session,
+   term,
+   content:weeks.join("\n\n")
+  };
+ }
+
+ let weeks=[];
+
+ for(let i=1;i<=12;i++){
+
+  weeks.push(
+`SEMAINE ${i}
+Sujet : ${topic}${i>1?" — Partie "+i:""}
+
+Objectifs :
+Comprendre le sujet, identifier les idées principales,
+donner des exemples et appliquer les connaissances.
+
+Contenu :
+Définition, caractéristiques, exemples, application et évaluation.
+
+Activités de l'enseignant :
+Explication, questions et orientation.
+
+Activités des élèves :
+Discussion, réponses et exercices.
+
+Évaluation :
+Questions et exercices liés à la leçon.`
+  );
+ }
+
+ return {
+  school:"CALIPHATE TARBIYA ACADEMY",
+  teacher:current()?.fullName||"",
+  className:cl,
+  subject:sub,
+  session,
+  term,
+  content:weeks.join("\n\n")
+ };
+}
+
+/* =========================================================
+   GENERATE ASSISTANT
+   ========================================================= */
+
+function generateAssistant(){
+
+ let type=document.getElementById("taType").value;
+ let cl=document.getElementById("taClass").value||"";
+ let subject=document.getElementById("taSubject").value;
+ let topic=document.getElementById("taTopic").value||"";
+ let subtopic=document.getElementById("taSubtopic").value||"";
+ let term=document.getElementById("taTerm").value;
+ let session=document.getElementById("taSession").value;
+ let count=Math.max(
+  1,
+  Math.min(
+   100,
+   Number(document.getElementById("taCount").value)||20
+  )
+ );
+ let theoryCount=Math.max(
+  1,
+  Math.min(
+   30,
+   Number(document.getElementById("taTheoryCount").value)||5
+  )
+ );
+ let difficulty=document.getElementById("taDifficulty").value;
+ let lang=assistantLanguage(subject);
+
+ if(!topic && !["Scheme of Work"].includes(type)){
+
+  alert("Enter a topic first.");
+  return;
+ }
+
+ let result={
+  type,
+  language:lang,
+  className:cl,
+  subject,
+  topic,
+  subtopic,
+  term,
+  session,
+  objectiveData:null,
+  theoryData:null,
+  lessonPlan:null,
+  lessonNote:null,
+  scheme:null,
+  marking:"",
+  text:""
+ };
+
+ if(type==="Lesson Plan"){
+
+  result.lessonPlan=
+   lang==="Hausa"
+   ?hausaLessonPlan(cl,subject,topic,subtopic)
+   :lang==="Arabic"
+   ?arabicLessonPlan(cl,subject,topic,subtopic)
+   :lang==="French"
+   ?frenchLessonPlan(cl,subject,topic,subtopic)
+   :englishLessonPlan(cl,subject,topic,subtopic,term,session);
+
+  result.text=lessonPlanText(result.lessonPlan);
+
+ }else if(type==="Lesson Note"){
+
+  result.lessonNote=
+   lang==="Hausa"
+   ?hausaLessonNote(cl,subject,topic,subtopic)
+   :lang==="Arabic"
+   ?arabicLessonNote(cl,subject,topic,subtopic)
+   :lang==="French"
+   ?frenchLessonNote(cl,subject,topic,subtopic)
+   :englishLessonNote(cl,subject,topic,subtopic);
+
+  result.text=lessonNoteText(result.lessonNote);
+
+ }else if(type==="Scheme of Work"){
+
+  result.scheme=
+  multilingualScheme(
+   lang,cl,subject,term,session,topic||"General Topics"
+  );
+
+  result.text=
+  `${result.scheme.school}
+
+SCHEME OF WORK
+
+Class: ${cl}
+Subject: ${subject}
+Term: ${term}
+Session: ${session}
+
+${result.scheme.content}`;
+
+ }else{
+
+  if(
+   type==="CA Questions" ||
+   type==="Examination Questions" ||
+   type==="Objective Questions"
+  ){
+
+   result.objectiveData=
+   buildObjectiveQuestions(
+    subject,
+    topic,
+    count,
+    difficulty
+   );
 
   }
 
-  return h+
-
- "NIGERIAN STANDARD SCHEME OF WORK\n\n"+
-
- weeks.join("\n\n")
-
- }
-
- if(
-
-  type==="CA Questions" ||
-
-  type==="Examination Questions" ||
-
-  type==="Objective Questions"
-
- ){
-
-  return generateEnglishObjective(
-
-   h,
-
-   cl,
-
-   sub,
-
-   topic,
-
-   count,
-
-   type
-
-  )
-
- }
-
- if(type==="Theory Questions"){
-
-  return generateEnglishTheory(
-
-   h,
-
-   cl,
-
-   sub,
-
-   topic,
-
-   count
-
-  )
-
- }
-
- if(type==="Marking Scheme"){
-
-  return generateEnglishMarking(
-
-   h,
-
-   sub,
-
-   topic,
-
-   count
-
-  )
-
- }
-
- return h+
-
- `STANDARD ACADEMIC MATERIAL
-
-Subject: ${sub}
-
-Topic: ${topic}`
-
-}
-
-/* ==========================================================
-
-   OBJECTIVE QUESTIONS
-
-   ========================================================== */
-
-function generateEnglishObjective(
-
- h,
-
- cl,
-
- sub,
-
- topic,
-
- count,
-
- type
-
-){
-
- let out=
-
- h+
-
- `NIGERIAN STANDARD ${type.toUpperCase()}
-
-INSTRUCTIONS:
-
-Choose the option that best answers each question.
-
-Each question carries one mark unless otherwise stated.
-
-`;
-
- let templates=[
-
-  `Which of the following best explains ${topic}?`,
-
-  `What is the most appropriate description of ${topic}?`,
-
-  `Which statement about ${topic} is correct?`,
-
-  `Which of the following is an important feature of ${topic}?`,
-
-  `What is one major reason for studying ${topic}?`,
-
-  `Which example best illustrates ${topic}?`,
-
-  `Which of the following is directly associated with ${topic}?`,
-
-  `A learner who understands ${topic} should be able to do which of the following?`,
-
-  `Which statement correctly distinguishes ${topic} from related concepts?`,
-
-  `Which of the following represents a practical application of ${topic}?`
-
- ];
-
- for(let i=1;i<=count;i++){
-
-  let correct=
-
-  `The correct explanation or application of ${topic}`;
-
-  let distractors=shuffle([
-
-   `An idea that is unrelated to ${topic}`,
-
-   `A statement that contradicts the meaning of ${topic}`,
-
-   `An example that does not apply to ${topic}`,
-
-   `A completely different concept`
-
-  ]);
-
-  let options=
-
-  shuffle([
-
-   correct,
-
-   ...distractors.slice(0,3)
-
-  ]);
-
-  let correctLetter=
-
-  ["A","B","C","D"][
-
-   options.indexOf(correct)
-
-  ];
-
-  let q=
-
-  templates[
-
-   (i-1+rand(templates.length))%
-
-   templates.length
-
-  ];
-
-  out+=
-
- `${i}. ${q}
-
-A. ${options[0]}
-
-B. ${options[1]}
-
-C. ${options[2]}
-
-D. ${options[3]}
-
-`;
-
-  if(i===count){
-
-   out+=
-
-   `\nANSWER KEY
-
-`;
-
-   for(let j=1;j<=count;j++){
-
-    let answerLetters=
-
-    ["A","B","C","D"];
-
-    out+=
-
-    `${j}. ${answerLetters[
-
-     rand(4)
-
-    ]}\n`
-
-   }
+  if(
+   type==="CA Questions" ||
+   type==="Examination Questions" ||
+   type==="Theory Questions"
+  ){
+
+   result.theoryData=
+   buildTheoryQuestions(
+    subject,
+    topic,
+    theoryCount
+   );
 
   }
 
+  if(
+   type==="CA Questions" ||
+   type==="Examination Questions" ||
+   type==="Marking Scheme"
+  ){
+
+   let obj=
+   result.objectiveData||
+   buildObjectiveQuestions(
+    subject,topic,count,difficulty
+   );
+
+   let theory=
+   result.theoryData||
+   buildTheoryQuestions(subject,topic,theoryCount);
+
+   result.objectiveData=obj;
+   result.theoryData=theory;
+
+   result.marking=
+   buildMarkingScheme(
+    subject,
+    topic,
+    obj,
+    theory
+   );
+  }
+
+  if(type==="Objective Questions"){
+
+   result.text=
+   buildQuestionHeader(
+    type,cl,subject,topic,term,session
+   )+
+   objectiveText(result.objectiveData)+
+   "\n\nANSWER KEY\n"+
+   answerKeyText(result.objectiveData);
+
+  }else if(type==="Theory Questions"){
+
+   result.text=
+   buildQuestionHeader(
+    type,cl,subject,topic,term,session
+   )+
+   theoryText(result.theoryData);
+
+  }else if(type==="Marking Scheme"){
+
+   let obj=
+   buildObjectiveQuestions(subject,topic,count,difficulty);
+
+   let theory=
+   buildTheoryQuestions(subject,topic,theoryCount);
+
+   result.objectiveData=obj;
+   result.theoryData=theory;
+
+   result.marking=
+   buildMarkingScheme(
+    subject,topic,obj,theory
+   );
+
+   result.text=
+   buildQuestionHeader(
+    type,cl,subject,topic,term,session
+   )+
+   result.marking;
+
+  }else{
+
+   result.text=
+   buildQuestionHeader(
+    type,cl,subject,topic,term,session
+   )+
+   objectiveText(result.objectiveData)+
+   "\n\nTHEORY QUESTIONS\n"+
+   theoryText(result.theoryData)+
+   "\n\nMARKING SCHEME\n"+
+   result.marking;
+  }
+
+  /* Translate common headings/templates for requested languages */
+  if(lang!=="English"){
+   result.text=
+   translateAssessmentOutput(
+    result.text,
+    lang,
+    type
+   );
+  }
  }
 
- return out
+ LAST_GENERATED=result;
 
+ document.getElementById("taResult").textContent=result.text;
+
+ logActivity(
+  "Teacher Assistant Generation",
+  `${type} — ${subject} — ${topic}`
+ );
 }
 
-/* ==========================================================
+/* =========================================================
+   QUESTION HEADER
+   ========================================================= */
 
-   THEORY QUESTIONS
-
-   ========================================================== */
-
-function generateEnglishTheory(
-
- h,
-
- cl,
-
- sub,
-
- topic,
-
- count
-
+function buildQuestionHeader(
+ type,cl,subject,topic,term,session
 ){
 
- let formats=[
+ return `
+CALIPHATE TARBIYA ACADEMY
+${type.toUpperCase()}
 
-  `Define ${topic} and state four important points about it.`,
-
-  `Explain ${topic} in detail and give two relevant examples.`,
-
-  `State five important features of ${topic} and explain any three.`,
-
-  `Discuss the importance of ${topic} in practical situations.`,
-
-  `Differentiate between the major concepts associated with ${topic}.`,
-
-  `Describe the process or stages involved in ${topic}.`,
-
-  `State four advantages or applications of ${topic} and explain two.`,
-
-  `Give suitable examples of ${topic} and explain their relevance.`,
-
-  `What do you understand by ${topic}? Discuss its major characteristics.`,
-
-  `Explain how knowledge of ${topic} can be applied in everyday life.`
-
- ];
-
- let out=
-
- h+
-
- `NIGERIAN STANDARD THEORY QUESTIONS
+Class: ${cl}
+Subject: ${subject}
+Topic: ${topic}
+Term: ${term}
+Session: ${session}
 
 INSTRUCTIONS:
-
-Answer the required number of questions.
-
-Show all necessary workings where applicable.
+Read each question carefully and choose or write the most
+appropriate answer.
 
 `;
-
- for(let i=1;i<=count;i++){
-
-  let q=
-
-  formats[
-
-   (i-1+rand(formats.length))%
-
-   formats.length
-
-  ];
-
-  let marks=
-
-  [5,6,8,10][rand(4)];
-
-  out+=
-
- `${i}. ${q} (${marks} marks)
-
-`;
-
- }
-
- return out
-
 }
 
-/* ==========================================================
-
+/* =========================================================
    MARKING SCHEME
+   ========================================================= */
 
-   ========================================================== */
+function buildMarkingScheme(subject,topic,obj,theory){
 
-function generateEnglishMarking(
+ let totalObj=obj.questions.length;
+ let totalTheory=
+ theory.reduce((sum,q)=>sum+q.marks,0);
 
- h,
+ return `
+MARKING SCHEME
 
- sub,
-
- topic,
-
- count
-
-){
-
- let out=
-
- h+
-
- `STANDARD MARKING SCHEME
-
-SUBJECT: ${sub}
-
+SUBJECT: ${subject}
 TOPIC: ${topic}
 
 OBJECTIVE SECTION
-
-Award 1 mark for each correct objective answer.
-
-No mark should be awarded for an incorrect answer.
+Each correct objective answer carries 1 mark.
 
 ANSWER KEY
+${answerKeyText(obj)}
 
-`;
-
- for(let i=1;i<=count;i++){
-
-  out+=
-
- `${i}. ${["A","B","C","D"][rand(4)]}\n`
-
- }
-
- out+=
-
- `
+OBJECTIVE TOTAL: ${totalObj} MARKS
 
 THEORY SECTION
+Total allocated theory marks: ${totalTheory}
 
-Award marks according to the points required in each question.
+${theoryMarking(theory)}
 
-General marking principles:
+GENERAL MARKING PRINCIPLES
 
-1. Correct definition — award the allocated mark.
-
-2. Correctly stated relevant points — award marks as allocated.
-
-3. Correct explanation — award the appropriate marks.
-
-4. Relevant examples — award marks where requested.
-
-5. Correct calculations — award marks for appropriate working
-
-   and the final answer.
-
-6. Accept any equivalent correct answer where academically valid.
-
-7. Do not award marks for irrelevant or contradictory responses.
-
-8. Where a question requires several points, distribute the
-
-   allocated marks fairly across the expected responses.
-
-QUALITY CONTROL
-
-The marking scheme should correspond directly with the
-
-questions generated for the assessment.`;
-
- return out
-
+1. Award marks for correct and relevant responses.
+2. Award marks proportionately where a question contains
+   several required points.
+3. Accept equivalent correct answers.
+4. Award appropriate marks for correct calculations and workings.
+5. Do not award marks for irrelevant or contradictory responses.
+6. Where examples are requested, relevant examples should receive
+   the allocated marks.
+7. The marking scheme must always be checked against the actual
+   questions before final submission.
+`;
 }
 
-/* ==========================================================
+/* =========================================================
+   LANGUAGE TRANSLATION OF GENERATED STRUCTURE
+   ========================================================= */
 
-   HAUSA
+function translateAssessmentOutput(text,lang,type){
 
-   ========================================================== */
+ if(lang==="Hausa"){
 
-function hausa(
+  return text
+  .replaceAll("CALIPHATE TARBIYA ACADEMY","MAKARANTAR CALIPHATE TARBIYA ACADEMY")
+  .replaceAll("OBJECTIVE QUESTIONS","TAMBAYOYIN ZAƁIN AMSA")
+  .replaceAll("THEORY QUESTIONS","TAMBAYOYIN BAYANI")
+  .replaceAll("MARKING SCHEME","MA'AUNIN GYARAN TAKARDA")
+  .replaceAll("ANSWER KEY","JERIN AMSOSHIN DA SUKA DACE")
+  .replaceAll("INSTRUCTIONS","UMURNI")
+  .replaceAll("Class","Aji")
+  .replaceAll("Subject","Darasi")
+  .replaceAll("Topic","Maudu'i")
+  .replaceAll("Term","Zango")
+  .replaceAll("Session","Shekarar Karatu");
 
- type,
+ }
 
- cl,
+ if(lang==="Arabic"){
 
- sub,
+  return text
+  .replaceAll("CALIPHATE TARBIYA ACADEMY","أكاديمية الخلافة تربية")
+  .replaceAll("OBJECTIVE QUESTIONS","الأسئلة الموضوعية")
+  .replaceAll("THEORY QUESTIONS","الأسئلة المقالية")
+  .replaceAll("MARKING SCHEME","نموذج التصحيح")
+  .replaceAll("ANSWER KEY","مفتاح الإجابات")
+  .replaceAll("INSTRUCTIONS","التعليمات")
+  .replaceAll("Class","الصف")
+  .replaceAll("Subject","المادة")
+  .replaceAll("Topic","الموضوع")
+  .replaceAll("Term","الفصل")
+  .replaceAll("Session","العام الدراسي");
 
- topic,
+ }
 
- st,
+ if(lang==="French"){
 
- term,
+  return text
+  .replaceAll("CALIPHATE TARBIYA ACADEMY","CALIPHATE TARBIYA ACADEMY")
+  .replaceAll("OBJECTIVE QUESTIONS","QUESTIONS OBJECTIVES")
+  .replaceAll("THEORY QUESTIONS","QUESTIONS THÉORIQUES")
+  .replaceAll("MARKING SCHEME","BARÈME")
+  .replaceAll("ANSWER KEY","CORRIGÉ")
+  .replaceAll("INSTRUCTIONS","CONSIGNES")
+  .replaceAll("Class","Classe")
+  .replaceAll("Subject","Matière")
+  .replaceAll("Topic","Sujet")
+  .replaceAll("Term","Trimestre")
+  .replaceAll("Session","Année scolaire");
 
- session,
+ }
 
- count
+ return text;
+}
 
-){
+/* =========================================================
+   TEXT BUILDERS
+   ========================================================= */
 
- let h=
+function lessonPlanText(x){
 
- `MAKARANTAR CALIPHATE TARBIYA ACADEMY
+ return `
+${x.school}
 
-${type.toUpperCase()}
+NIGERIAN STANDARD DETAILED LESSON PLAN
 
-Ajin: ${cl}
+Teacher: ${x.teacher}
+Class: ${x.className}
+Subject: ${x.subject}
+Topic: ${x.topic}
+Subtopic: ${x.subtopic}
+Date: ${x.date}
+Duration: ${x.duration}
+Period: ${x.period}
+Class Size: ${x.classSize}
 
-Darasi: ${sub}
+LEARNING OBJECTIVES
+${x.objectives}
 
-Maudu'i: ${topic}
+ENTRY BEHAVIOUR / PREVIOUS KNOWLEDGE
+${x.previous}
 
-${st?"Ƙaramin Maudu'i: "+st+"\n":""}
+INSTRUCTIONAL MATERIALS
+${x.materials}
 
-Zango: ${term}
+REFERENCES
+${x.references}
 
-Shekarar Karatu: ${session}
+SET INDUCTION
+${x.induction}
 
+LESSON DEVELOPMENT
+${x.development}
+
+TEACHER ACTIVITIES
+${x.teacherActivities}
+
+LEARNER ACTIVITIES
+${x.learner}
+
+EVALUATION
+${x.evaluation}
+
+SUMMARY / CONCLUSION
+${x.conclusion}
+
+ASSIGNMENT
+${x.assignment}
+
+TEACHER'S REFLECTION
+${x.reflection}
 `;
+}
+
+function lessonNoteText(x){
+
+ return `
+${x.school}
+
+DETAILED LESSON NOTE
+
+Teacher: ${x.teacher}
+Class: ${x.className}
+Subject: ${x.subject}
+Topic: ${x.topic}
+Subtopic: ${x.subtopic}
+
+OBJECTIVES
+${x.objectives}
+
+INTRODUCTION
+${x.introduction}
+
+CONTENT
+${x.content}
+
+EXAMPLES
+${x.examples}
+
+TEACHING METHODS
+${x.methods}
+
+INSTRUCTIONAL MATERIALS
+${x.materials}
+
+EVALUATION
+${x.evaluation}
+
+SUMMARY
+${x.summary}
+
+ASSIGNMENT
+${x.assignment}
+
+REFERENCES
+${x.references}
+`;
+}
+
+/* =========================================================
+   USE GENERATED WORK
+   ========================================================= */
+
+function useAssistantMaterial(){
+
+ if(!LAST_GENERATED){
+
+  alert("Generate a material first.");
+  return;
+ }
+
+ let r=LAST_GENERATED;
+
+ if(r.type==="Lesson Plan" && r.lessonPlan){
+
+  fillLessonPlan(r.lessonPlan);
+
+  showPage("lessonPlan");
+
+  alert(
+   "Generated Lesson Plan has been automatically inserted."
+  );
+
+  return;
+ }
+
+ if(r.type==="Lesson Note" && r.lessonNote){
+
+  fillLessonNote(r.lessonNote);
+
+  showPage("lessonNote");
+
+  alert(
+   "Generated Lesson Note has been automatically inserted."
+  );
+
+  return;
+ }
+
+ if(r.type==="Scheme of Work" && r.scheme){
+
+  fillScheme(r.scheme);
+
+  showPage("scheme");
+
+  alert(
+   "Generated Scheme of Work has been automatically inserted."
+  );
+
+  return;
+ }
+
+ /* Assessment types */
+
+ document.getElementById("aClass").value=r.className;
+ document.getElementById("aSubject").value=r.subject;
+ document.getElementById("aTerm").value=r.term;
+ document.getElementById("aSession").value=r.session;
 
  if(
-
-  type==="CA Questions"||
-
-  type==="Examination Questions"||
-
-  type==="Objective Questions"
-
+  r.type==="CA Questions"
  ){
-
-  let out=
-
-  h+
-
-  `TAMBAYOYIN JARRABAWA
-
-Umurni: Zaɓi amsar da ta fi dacewa.
-
-`;
-
-  let templates=[
-
-   `Wanne daga cikin waɗannan ya fi bayyana ma'anar ${topic}?`,
-
-   `Wanne bayani ne daidai game da ${topic}?`,
-
-   `Wanne daga cikin waɗannan misali ne na ${topic}?`,
-
-   `Me ya sa ${topic} yake da muhimmanci?`,
-
-   `Wanne abu ne yake da alaƙa da ${topic}?`,
-
-   `Wanne bayani ne ya fi dacewa da ${topic}?`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   let correct=
-
-   `Bayani madaidaici game da ${topic}`;
-
-   let opts=shuffle([
-
-    correct,
-
-    `Bayani da bai shafi ${topic} ba`,
-
-    `Bayani wanda ya saba da ${topic}`,
-
-    `Wani ra'ayi daban`
-
-   ]);
-
-   out+=
-
-   `${i}. ${
-
-    templates[
-
-     (i-1+rand(templates.length))%
-
-     templates.length
-
-    ]
-
-   }
-
-A. ${opts[0]}
-
-B. ${opts[1]}
-
-C. ${opts[2]}
-
-D. ${opts[3]}
-
-`;
-
-  }
-
-  return out+
-
-  `
-
-MA'AUNIN AMSA
-
-Tambaya ${count} — kowace tambaya maki 1 ne.`
-
+  document.getElementById("aType").value=
+  "Continuous Assessment (CA)";
  }
-
- if(type==="Theory Questions"){
-
-  let out=
-
-  h+
-
-  `TAMBAYOYIN BAYANI
-
-`;
-
-  let formats=[
-
-   `Bayyana ma'anar ${topic} tare da misalai.`,
-
-   `Yi cikakken bayani game da ${topic}.`,
-
-   `Lissafo muhimman abubuwan ${topic} sannan ka yi bayani.`,
-
-   `Bayyana muhimmancin ${topic}.`,
-
-   `Bambanta muhimman ra'ayoyin da suka shafi ${topic}.`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   out+=
-
-   `${i}. ${
-
-    formats[
-
-     (i-1+rand(formats.length))%
-
-     formats.length
-
-    ]
-
-   } (${[5,6,8,10][rand(4)]} maki)
-
-`;
-
-  }
-
-  return out
-
- }
-
- if(type==="Marking Scheme"){
-
-  return h+
-
-  `MA'AUNIN GYARAN TAKARDAR
-
-SASHEN ZAƁIN AMSA
-
-Kowace amsa madaidaiciya = maki 1.
-
-SASHEN BAYANI
-
-A ba da maki bisa:
-
-1. Daidaitacciyar ma'ana.
-
-2. Muhimman abubuwan da aka ambata.
-
-3. Ingantaccen bayani.
-
-4. Misalai masu dacewa.
-
-5. Madaidaicin lissafi da matakai idan akwai.
-
-A karɓi duk wata amsa da take da ma'ana kuma daidai
-
-a fannin ilimi.`
-
- }
-
- return h+
-
- `MANUFOFIN DARASI
-
-A ƙarshen darasin ɗalibai za su iya:
-
-1. Bayyana ma'anar ${topic}.
-
-2. Gano muhimman abubuwan da suka shafi ${topic}.
-
-3. Ba da misalai.
-
-4. Amfani da ilimin a aikace.
-
-CI GABAN DARASI
-
-1. Gabatar da maudu'i.
-
-2. Bayyana muhimman kalmomi.
-
-3. Bayar da misalai.
-
-4. Aikin ɗalibai.
-
-5. Kimantawa.
-
-AIKIN GIDA
-
-Rubuta taƙaitaccen bayani kan ${topic}.`
-
-}
-
-/* ==========================================================
-
-   ARABIC
-
-   ========================================================== */
-
-function arabic(
-
- type,
-
- cl,
-
- sub,
-
- topic,
-
- st,
-
- term,
-
- session,
-
- count
-
-){
-
- let h=
-
- `أكاديمية الخلافة تربية
-
-${type}
-
-الصف: ${cl}
-
-المادة: ${sub}
-
-الموضوع: ${topic}
-
-${st?"الدرس الفرعي: "+st+"\n":""}
-
-الفصل: ${term}
-
-العام الدراسي: ${session}
-
-`;
 
  if(
-
-  type==="CA Questions"||
-
-  type==="Examination Questions"||
-
-  type==="Objective Questions"
-
+  r.type==="Examination Questions"
  ){
-
-  let out=
-
-  h+
-
-  `أسئلة الاختبار
-
-التعليمات: اختر الإجابة الصحيحة.
-
-`;
-
-  let templates=[
-
-   `أي مما يلي يوضح معنى ${topic}؟`,
-
-   `أي عبارة صحيحة عن ${topic}؟`,
-
-   `ما المثال المناسب لـ ${topic}؟`,
-
-   `ما أهمية ${topic}؟`,
-
-   `أي مما يلي يرتبط بـ ${topic}؟`,
-
-   `أي عبارة تصف ${topic} بشكل صحيح؟`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   let correct=
-
-   `الشرح الصحيح لموضوع ${topic}`;
-
-   let options=shuffle([
-
-    correct,
-
-    `إجابة لا علاقة لها بالموضوع`,
-
-    `عبارة مخالفة للموضوع`,
-
-    `مفهوم مختلف`
-
-   ]);
-
-   out+=
-
-   `${i}. ${
-
-    templates[
-
-     (i-1+rand(templates.length))%
-
-     templates.length
-
-    ]
-
-   }
-
-أ. ${options[0]}
-
-ب. ${options[1]}
-
-ج. ${options[2]}
-
-د. ${options[3]}
-
-`;
-
-  }
-
-  return out
-
+  document.getElementById("aType").value=
+  "Examination";
  }
 
- if(type==="Theory Questions"){
+ if(r.objectiveData){
 
-  let out=
-
-  h+
-
-  `الأسئلة المقالية
-
-`;
-
-  let formats=[
-
-   `عرّف ${topic} واشرح أهم خصائصه.`,
-
-   `اشرح ${topic} بالتفصيل مع ذكر أمثلة.`,
-
-   `اذكر أهم النقاط المتعلقة بـ ${topic}.`,
-
-   `وضح أهمية ${topic}.`,
-
-   `قارن بين المفاهيم الأساسية المتعلقة بـ ${topic}.`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   out+=
-
-   `${i}. ${
-
-    formats[
-
-     (i-1+rand(formats.length))%
-
-     formats.length
-
-    ]
-
-   } (${[5,6,8,10][rand(4)]} درجات)
-
-`;
-
-  }
-
-  return out
-
+  document.getElementById("aObjective").value=
+  objectiveText(r.objectiveData);
  }
 
- if(type==="Marking Scheme"){
+ if(r.theoryData){
 
-  return h+
-
-  `نموذج الإجابة والتصحيح
-
-الأسئلة الموضوعية:
-
-كل إجابة صحيحة = درجة واحدة.
-
-الأسئلة المقالية:
-
-تمنح الدرجات حسب:
-
-1. صحة التعريف.
-
-2. النقاط الصحيحة.
-
-3. جودة الشرح.
-
-4. الأمثلة المناسبة.
-
-5. الخطوات والحسابات الصحيحة عند الحاجة.
-
-تقبل الإجابات المكافئة الصحيحة علمياً.`
-
+  document.getElementById("aTheory").value=
+  theoryText(r.theoryData);
  }
 
- return h+
+ if(r.marking){
 
- `الأهداف التعليمية
+  document.getElementById("aMarking").value=
+  r.marking;
+ }
 
-في نهاية الدرس يستطيع التلاميذ:
+ showPage("assessment");
 
-1. تعريف ${topic}.
-
-2. ذكر النقاط الأساسية.
-
-3. تقديم أمثلة.
-
-4. تطبيق المعرفة.
-
-عرض الدرس
-
-1. تمهيد.
-
-2. شرح المفاهيم.
-
-3. أمثلة.
-
-4. نشاط التلاميذ.
-
-5. التقويم.
-
-الواجب المنزلي
-
-اكتب ملخصاً عن ${topic}.`
-
+ alert(
+  "Generated assessment material has been automatically inserted into CA & Examination."
+ );
 }
 
-/* ==========================================================
-
-   FRENCH
-
-   ========================================================== */
-
-function french(
-
- type,
-
- cl,
-
- sub,
-
- topic,
-
- st,
-
- term,
-
- session,
-
- count
-
-){
-
- let h=
-
- `CALIPHATE TARBIYA ACADEMY
-
-${type}
-
-Classe : ${cl}
-
-Matière : ${sub}
-
-Sujet : ${topic}
-
-${st?"Sous-sujet : "+st+"\n":""}
-
-Trimestre : ${term}
-
-Année scolaire : ${session}
-
-`;
-
- if(
-
-  type==="CA Questions"||
-
-  type==="Examination Questions"||
-
-  type==="Objective Questions"
-
- ){
-
-  let out=
-
-  h+
-
-  `QUESTIONS OBJECTIVES
-
-Consigne : Choisissez la meilleure réponse.
-
-`;
-
-  let templates=[
-
-   `Laquelle des propositions explique le mieux ${topic} ?`,
-
-   `Quelle affirmation est correcte concernant ${topic} ?`,
-
-   `Quel exemple correspond à ${topic} ?`,
-
-   `Quelle est l'importance de ${topic} ?`,
-
-   `Quelle proposition est directement liée à ${topic} ?`,
-
-   `Quelle phrase décrit correctement ${topic} ?`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   let correct=
-
-   `La bonne explication de ${topic}`;
-
-   let options=shuffle([
-
-    correct,
-
-    `Une idée qui n'est pas liée au sujet`,
-
-    `Une affirmation incorrecte`,
-
-    `Un concept différent`
-
-   ]);
-
-   out+=
-
-   `${i}. ${
-
-    templates[
-
-     (i-1+rand(templates.length))%
-
-     templates.length
-
-    ]
-
-   }
-
-A. ${options[0]}
-
-B. ${options[1]}
-
-C. ${options[2]}
-
-D. ${options[3]}
-
-`;
-
-  }
-
-  return out
-
- }
-
- if(type==="Theory Questions"){
-
-  let out=
-
-  h+
-
-  `QUESTIONS THÉORIQUES
-
-`;
-
-  let formats=[
-
-   `Définissez ${topic} et donnez des exemples.`,
-
-   `Expliquez ${topic} en détail.`,
-
-   `Présentez les principales caractéristiques de ${topic}.`,
-
-   `Expliquez l'importance de ${topic}.`,
-
-   `Comparez les principaux concepts liés à ${topic}.`
-
-  ];
-
-  for(let i=1;i<=count;i++){
-
-   out+=
-
-   `${i}. ${
-
-    formats[
-
-     (i-1+rand(formats.length))%
-
-     formats.length
-
-    ]
-
-   } (${[5,6,8,10][rand(4)]} points)
-
-`;
-
-  }
-
-  return out
-
- }
-
- if(type==="Marking Scheme"){
-
-  return h+
-
-  `BARÈME
-
-Questions objectives :
-
-1 point pour chaque bonne réponse.
-
-Questions théoriques :
-
-Attribuer les points selon :
-
-1. Définition correcte.
-
-2. Points pertinents.
-
-3. Explication correcte.
-
-4. Exemples appropriés.
-
-5. Calculs et étapes corrects lorsque nécessaire.
-
-Les réponses équivalentes et correctes doivent être acceptées.`
-
- }
-
- return h+
-
- `OBJECTIFS
-
-À la fin de la leçon, les élèves doivent pouvoir :
-
-1. Définir ${topic}.
-
-2. Identifier les idées principales.
-
-3. Donner des exemples.
-
-4. Appliquer les connaissances.
-
-DÉVELOPPEMENT
-
-1. Présentation.
-
-2. Explication.
-
-3. Exemples.
-
-4. Activité des élèves.
-
-5. Évaluation.
-
-DEVOIR
-
-Rédigez un court résumé sur ${topic}.`
-
+function fillLessonPlan(x){
+
+ document.getElementById("lpSchool").value=x.school||"";
+ document.getElementById("lpTeacher").value=x.teacher||"";
+ document.getElementById("lpClass").value=x.className||"";
+ document.getElementById("lpSubject").value=x.subject||"";
+ document.getElementById("lpTopic").value=x.topic||"";
+ document.getElementById("lpSubtopic").value=x.subtopic||"";
+ document.getElementById("lpDate").value=x.date||"";
+ document.getElementById("lpDuration").value=x.duration||"";
+ document.getElementById("lpPeriod").value=x.period||"";
+ document.getElementById("lpClassSize").value=x.classSize||"";
+ document.getElementById("lpObjectives").value=x.objectives||"";
+ document.getElementById("lpPrevious").value=x.previous||"";
+ document.getElementById("lpMaterials").value=x.materials||"";
+ document.getElementById("lpReferences").value=x.references||"";
+ document.getElementById("lpInduction").value=x.induction||"";
+ document.getElementById("lpDevelopment").value=x.development||"";
+ document.getElementById("lpTeacherActivities").value=x.teacherActivities||"";
+ document.getElementById("lpLearner").value=x.learner||"";
+ document.getElementById("lpEvaluation").value=x.evaluation||"";
+ document.getElementById("lpConclusion").value=x.conclusion||"";
+ document.getElementById("lpAssignment").value=x.assignment||"";
+ document.getElementById("lpReflection").value=x.reflection||"";
 }
 
-/* ==========================================================
+function fillLessonNote(x){
 
+ document.getElementById("lnSchool").value=x.school||"";
+ document.getElementById("lnTeacher").value=x.teacher||"";
+ document.getElementById("lnClass").value=x.className||"";
+ document.getElementById("lnSubject").value=x.subject||"";
+ document.getElementById("lnTopic").value=x.topic||"";
+ document.getElementById("lnSubtopic").value=x.subtopic||"";
+ document.getElementById("lnObjectives").value=x.objectives||"";
+ document.getElementById("lnIntroduction").value=x.introduction||"";
+ document.getElementById("lnContent").value=x.content||"";
+ document.getElementById("lnExamples").value=x.examples||"";
+ document.getElementById("lnMethods").value=x.methods||"";
+ document.getElementById("lnMaterials").value=x.materials||"";
+ document.getElementById("lnEvaluation").value=x.evaluation||"";
+ document.getElementById("lnSummary").value=x.summary||"";
+ document.getElementById("lnAssignment").value=x.assignment||"";
+ document.getElementById("lnReferences").value=x.references||"";
+}
+
+function fillScheme(x){
+
+ document.getElementById("scSchool").value=x.school||"";
+ document.getElementById("scTeacher").value=x.teacher||"";
+ document.getElementById("scClass").value=x.className||"";
+ document.getElementById("scSubject").value=x.subject||"";
+ document.getElementById("scSession").value=x.session||"";
+ document.getElementById("scTerm").value=x.term||"";
+ document.getElementById("scContent").value=x.content||"";
+}
+
+/* =========================================================
    COPY
-
-   ========================================================== */
+   ========================================================= */
 
 function copyAssistant(){
 
- let t=
+ let text=document.getElementById("taResult").textContent;
 
- document.getElementById("taResult").textContent;
+ if(!text.trim()){
+
+  alert("There is nothing to copy.");
+  return;
+ }
 
  if(navigator.clipboard){
 
-  navigator.clipboard
-
-  .writeText(t)
-
-  .then(
-
-   ()=>alert("Copied.")
-
-  )
+  navigator.clipboard.writeText(text)
+  .then(()=>alert("Generated material copied successfully."));
 
  }else{
 
-  alert(
+  let area=document.createElement("textarea");
 
-   "Copy is not supported."
+  area.value=text;
 
-  )
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand("copy");
+  area.remove();
 
+  alert("Copied.");
  }
-
 }
 
-/* ==========================================================
-
-   PRINT TEACHER ASSISTANT
-
-   BACK BUTTON ADDED
-
-   ========================================================== */
+/* =========================================================
+   PRINT ASSISTANT
+   ========================================================= */
 
 function printAssistant(){
 
- let t=
-
- document.getElementById("taResult").textContent;
-
- let w=
-
- window.open("","_blank");
-
- if(!w)return;
-
- w.document.write(`
-
- <!DOCTYPE html>
-
- <html>
-
- <head>
-
- <title>Caliphate Tarbiya Academy</title>
-
- <style>
-
- body{
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  padding:30px;
-
-  line-height:1.6;
-
-  color:#17202a
-
- }
-
- .toolbar{
-
-  display:flex;
-
-  gap:10px;
-
-  margin-bottom:25px;
-
-  padding-bottom:15px;
-
-  border-bottom:1px solid #ddd
-
- }
-
- button{
-
-  border:0;
-
-  padding:10px 18px;
-
-  border-radius:7px;
-
-  cursor:pointer;
-
-  font-weight:bold
-
- }
-
- .back{
-
-  background:#e2e8f0;
-
-  color:#17202a
-
- }
-
- .print{
-
-  background:#14532d;
-
-  color:#fff
-
- }
-
- h1{
-
-  color:#14532d;
-
-  text-align:center
-
- }
-
- pre{
-
-  white-space:pre-wrap;
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:14px
-
- }
-
- @media print{
-
-  .toolbar{
-
-   display:none
-
-  }
-
-  body{
-
-   padding:0
-
-  }
-
- }
-
- </style>
-
- </head>
-
- <body>
-
- <div class="toolbar">
-
- <button class="back"
-
- onclick="window.close()">
-
- ← Back
-
- </button>
-
- <button class="print"
-
- onclick="window.print()">
-
- 🖨 Print
-
- </button>
-
- </div>
-
- <h1>CALIPHATE TARBIYA ACADEMY</h1>
-
- <pre>${esc(t)}</pre>
-
- </body>
-
- </html>
-
- `);
-
- w.document.close();
-
- /*
-
-  IMPORTANT:
-
-  Do not automatically print immediately.
-
-  The teacher first sees the Back and Print buttons.
-
- */
-
- w.focus()
-
+ let text=document.getElementById("taResult").textContent;
+
+ openPrintWindow(
+  "Teacher Assistant",
+  `<pre>${esc(text)}</pre>`
+ );
 }
 
-/* ==========================================================
-
-   USE GENERATED ASSISTANT MATERIAL
-
-   ========================================================== */
-
-function useAssistantForAssessment(){
-
- let t=
-
- document.getElementById("taResult").textContent;
-
- let sub=
-
- document.getElementById("taSubject").value;
-
- let cl=
-
- document.getElementById("taClass").value;
-
- let term=
-
- document.getElementById("taTerm").value;
-
- let session=
-
- document.getElementById("taSession").value;
-
- let type=
-
- document.getElementById("taType").value;
-
- document.getElementById("aSubject").value=sub;
-
- document.getElementById("aClass").value=cl;
-
- document.getElementById("aTerm").value=term;
-
- document.getElementById("aSession").value=session;
-
- if(
-
-  type==="Marking Scheme"
-
- ){
-
-  document.getElementById("aMarking").value=t
-
- }else if(
-
-  type==="Theory Questions"
-
- ){
-
-  document.getElementById("aTheory").value=t
-
- }else if(
-
-  type==="CA Questions" ||
-
-  type==="Examination Questions" ||
-
-  type==="Objective Questions"
-
- ){
-
-  document.getElementById("aObjective").value=t
-
- }else{
-
-  document.getElementById("aObjective").value=t
-
- }
-
- showPage("assessment")
-
-}
-
-/* ==========================================================
-
-   PRINT ASSESSMENT PAGE
-
-   WITH BACK BUTTON
-
-   ========================================================== */
-
-function printAssessmentPage(){
-
- let type=
-
- document.getElementById("aType").value;
-
- let cl=
-
- document.getElementById("aClass").value;
-
- let subject=
-
- document.getElementById("aSubject").value;
-
- let term=
-
- document.getElementById("aTerm").value;
-
- let session=
-
- document.getElementById("aSession").value;
-
- let duration=
-
- document.getElementById("aDuration").value;
-
- let instructions=
-
- document.getElementById("aInstructions").value;
-
- let objective=
-
- document.getElementById("aObjective").value;
-
- let theory=
-
- document.getElementById("aTheory").value;
-
- let marking=
-
- document.getElementById("aMarking").value;
-
- let w=
-
- window.open("","_blank");
-
- if(!w)return;
-
- w.document.write(`
-
- <!DOCTYPE html>
-
- <html>
-
- <head>
-
- <title>${esc(subject)} - ${esc(type)}</title>
-
- <style>
-
- body{
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  color:#17202a;
-
-  padding:30px;
-
-  line-height:1.6
-
- }
-
- .toolbar{
-
-  display:flex;
-
-  gap:10px;
-
-  margin-bottom:25px;
-
-  padding-bottom:15px;
-
-  border-bottom:1px solid #ddd
-
- }
-
- button{
-
-  border:0;
-
-  padding:10px 18px;
-
-  border-radius:7px;
-
-  cursor:pointer;
-
-  font-weight:bold
-
- }
-
- .back{
-
-  background:#e2e8f0;
-
-  color:#17202a
-
- }
-
- .print{
-
-  background:#14532d;
-
-  color:#fff
-
- }
-
- .school{
-
-  text-align:center;
-
-  border-bottom:2px solid #14532d;
-
-  padding-bottom:15px;
-
-  margin-bottom:20px
-
- }
-
- .school h1{
-
-  margin:0;
-
-  color:#14532d
-
- }
-
- .meta{
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:8px;
-
-  margin-bottom:20px
-
- }
-
- .section{
-
-  margin-top:25px
-
- }
-
- .section h2{
-
-  color:#14532d;
-
-  border-bottom:1px solid #ccc;
-
-  padding-bottom:5px
-
- }
-
- pre{
-
-  white-space:pre-wrap;
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  font-size:14px
-
- }
-
- @media print{
-
-  .toolbar{
-
-   display:none
-
-  }
-
-  body{
-
-   padding:0
-
-  }
-
- }
-
- </style>
-
- </head>
-
- <body>
-
- <div class="toolbar">
-
- <button class="back"
-
- onclick="window.close()">
-
- ← Back
-
- </button>
-
- <button class="print"
-
- onclick="window.print()">
-
- 🖨 Print
-
- </button>
-
- </div>
+/* =========================================================
+   PRINT ASSESSMENT
+   ========================================================= */
+
+function printAssessmentPage(markingOnly=false){
+
+ let school=getDB().school;
+
+ let type=document.getElementById("aType").value;
+ let cl=document.getElementById("aClass").value;
+ let subject=document.getElementById("aSubject").value;
+ let term=document.getElementById("aTerm").value;
+ let session=document.getElementById("aSession").value;
+ let duration=document.getElementById("aDuration").value;
+ let instructions=document.getElementById("aInstructions").value;
+ let objective=document.getElementById("aObjective").value;
+ let theory=document.getElementById("aTheory").value;
+ let marking=document.getElementById("aMarking").value;
+
+ let content=`
 
  <div class="school">
-
- <h1>CALIPHATE TARBIYA ACADEMY</h1>
-
- <div>${esc(type)}</div>
-
+ <h1>${esc(school.name)}</h1>
+ <div>${esc(school.motto)}</div>
+ <h2>${esc(type)}</h2>
  </div>
 
- <div class="meta">
-
- <div>
-
- <b>Class:</b> ${esc(cl)}
-
- </div>
-
- <div>
-
- <b>Subject:</b> ${esc(subject)}
-
- </div>
-
- <div>
-
- <b>Term:</b> ${esc(term)}
-
- </div>
-
- <div>
-
- <b>Session:</b> ${esc(session)}
-
- </div>
-
- <div>
-
- <b>Duration:</b> ${esc(duration)}
-
- </div>
-
- </div>
-
- <div class="section">
-
- <h2>Instructions</h2>
-
- <p>${esc(instructions)}</p>
-
- </div>
+ <table class="meta">
+ <tr>
+ <td><b>Class:</b> ${esc(cl)}</td>
+ <td><b>Subject:</b> ${esc(subject)}</td>
+ </tr>
+ <tr>
+ <td><b>Term:</b> ${esc(term)}</td>
+ <td><b>Session:</b> ${esc(session)}</td>
+ </tr>
+ <tr>
+ <td><b>Duration:</b> ${esc(duration)}</td>
+ <td><b>Teacher:</b> ${esc(current()?.fullName||"")}</td>
+ </tr>
+ </table>
 
  ${
-
- objective.trim()
-
+ markingOnly
  ?
-
+ `<h2>MARKING SCHEME</h2><pre>${esc(marking)}</pre>`
+ :
  `
-
- <div class="section">
+ <h2>Instructions</h2>
+ <p>${htmlEscapeText(instructions)}</p>
 
  <h2>Objective Questions</h2>
-
  <pre>${esc(objective)}</pre>
 
- </div>
-
- `
-
- :
-
- ""
-
- }
-
- ${
-
- theory.trim()
-
- ?
-
- `
-
- <div class="section">
-
  <h2>Theory Questions</h2>
-
  <pre>${esc(theory)}</pre>
-
- </div>
-
  `
-
- :
-
- ""
-
  }
+ `;
 
- ${
-
- marking.trim()
-
- ?
-
- `
-
- <div class="section">
-
- <h2>Marking Scheme</h2>
-
- <pre>${esc(marking)}</pre>
-
- </div>
-
- `
-
- :
-
- ""
-
- }
-
- </body>
-
- </html>
-
- `);
-
- w.document.close();
-
- w.focus()
-
+ openPrintWindow(
+  markingOnly?"Marking Scheme":type,
+  content
+ );
 }
 
-/* ==========================================================
+/* =========================================================
+   GENERAL PRINT WINDOW
+   ========================================================= */
 
-   GENERAL PRINT
+function openPrintWindow(title,content){
 
-   ========================================================== */
+ let w=window.open("","_blank");
 
-function printCurrent(id){
+ if(!w){
 
- let el=
-
- document.getElementById(id);
-
- let w=
-
- window.open("","_blank");
-
- if(!w)return;
+  alert("Please allow pop-ups for this website.");
+  return;
+ }
 
  w.document.write(`
-
+ <!DOCTYPE html>
  <html>
-
  <head>
-
- <title>Caliphate Tarbiya Academy</title>
+ <meta charset="UTF-8">
+ <title>${esc(title)}</title>
 
  <style>
-
  body{
-
-  font-family:Arial;
-
-  padding:25px;
-
-  line-height:1.5
-
+  font-family:Arial,Helvetica,sans-serif;
+  padding:30px;
+  line-height:1.6;
+  color:#17202a
  }
-
  .toolbar{
-
-  margin-bottom:20px;
-
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
   padding-bottom:15px;
-
   border-bottom:1px solid #ddd
-
  }
-
  button{
-
   border:0;
-
   padding:10px 18px;
-
   border-radius:7px;
-
   cursor:pointer;
-
   font-weight:bold
-
  }
-
  .back{
-
-  background:#e2e8f0
-
+  background:#e2e8f0;
+  color:#17202a
  }
-
  .print{
-
   background:#14532d;
-
   color:#fff
-
  }
-
- input,select,textarea{
-
-  border:0;
-
+ h1,h2{
+  color:#14532d
+ }
+ pre{
+  white-space:pre-wrap;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px
+ }
+ .school{
+  text-align:center;
+  border-bottom:2px solid #14532d;
+  padding-bottom:15px;
+  margin-bottom:20px
+ }
+ .school h1{margin:0}
+ .meta{
   width:100%;
-
-  font-size:14px;
-
-  margin-bottom:10px
-
+  border-collapse:collapse;
+  margin-bottom:20px
  }
-
- label{
-
-  font-weight:bold
-
+ .meta td{
+  border:1px solid #ccc;
+  padding:8px
  }
-
- textarea{
-
-  min-height:80px
-
- }
-
  @media print{
-
-  .toolbar{
-
-   display:none
-
-  }
-
-  body{
-
-   padding:0
-
-  }
-
+  .toolbar{display:none}
+  body{padding:0}
  }
-
  </style>
 
  </head>
@@ -6219,97 +5085,102 @@ function printCurrent(id){
  <div class="toolbar">
 
  <button class="back"
-
  onclick="window.close()">
-
  ← Back
-
  </button>
 
  <button class="print"
-
  onclick="window.print()">
-
  🖨 Print
-
  </button>
 
  </div>
 
- <h1>Caliphate Tarbiya Academy</h1>
-
- <h2>${esc(
-
- document.getElementById("pageTitle").textContent
-
- )}</h2>
-
- ${el.innerHTML}
+ ${content}
 
  </body>
-
  </html>
-
  `);
 
  w.document.close();
-
- w.focus()
-
+ w.focus();
 }
 
-/* ==========================================================
+/* =========================================================
+   PRINT CURRENT EDITOR
+   ========================================================= */
 
+function printCurrent(pageId){
+
+ let page=document.getElementById(pageId);
+
+ if(!page)return;
+
+ let clone=page.cloneNode(true);
+
+ clone.querySelectorAll("button").forEach(x=>x.remove());
+
+ clone.querySelectorAll("input,select,textarea").forEach(el=>{
+
+  let value=el.value||"";
+
+  let div=document.createElement("div");
+
+  div.style.whiteSpace="pre-wrap";
+  div.style.borderBottom="1px solid #ddd";
+  div.style.padding="5px 0 10px";
+  div.textContent=value;
+
+  el.parentNode.replaceChild(div,el);
+ });
+
+ let title=titles[pageId]||"Academic Document";
+
+ openPrintWindow(
+  title,
+  `<div class="school">
+  <h1>${esc(getDB().school.name)}</h1>
+  <div>${esc(getDB().school.motto)}</div>
+  <h2>${esc(title)}</h2>
+  </div>${clone.innerHTML}`
+ );
+}
+
+/* =========================================================
    CAPS LOCK
-
-   ========================================================== */
+   ========================================================= */
 
 document
-
 .getElementById("loginPass")
-
 .addEventListener(
-
  "keyup",
-
- e=>
-
- document
-
- .getElementById("caps")
-
- .classList
-
- .toggle(
-
-  "hidden",
-
-  !e.getModifierState("CapsLock")
-
- )
-
+ e=>{
+  document
+  .getElementById("caps")
+  .classList
+  .toggle(
+   "hidden",
+   !e.getModifierState("CapsLock")
+  );
+ }
 );
 
-/* ==========================================================
-
+/* =========================================================
    INITIALIZE
-
-   ========================================================== */
+   ========================================================= */
 
 (function init(){
 
- if(!localStorage.getItem(DB_KEY))
+ let db=getDB();
 
- saveDB(freshDB());
+ if(!localStorage.getItem(DB_KEY))
+ saveDB(db);
 
  if(current())
-
- openApp()
+ openApp();
 
 })();
-
 </script>
 
 </body>
-
 </html>
