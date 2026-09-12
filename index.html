@@ -7,625 +7,334 @@
 <title>Caliphate Tarbiya Academy | Academic Management System</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --primary:#14532d;
-  --primary2:#166534;
-  --light:#f0fdf4;
-  --border:#d1d5db;
-  --text:#172033;
-  --muted:#64748b;
-  --danger:#b91c1c;
-  --warning:#b45309;
-  --success:#15803d;
-  --white:#fff;
-  --bg:#f8fafc;
-  --shadow:0 4px 18px rgba(0,0,0,.08);
+ --green:#14532d;
+ --green2:#166534;
+ --light:#f0fdf4;
+ --line:#d1d5db;
+ --text:#17202a;
+ --muted:#64748b;
+ --danger:#b91c1c;
+ --orange:#c2410c;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+ font-family:Arial,sans-serif;
+ background:#f6f8f7;
+ color:var(--text);
 }
 
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
 
-button{
-  cursor:pointer;
-}
+.hidden{display:none!important}
 
-.app{
-  min-height:100vh;
-}
-
-.login-screen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#052e16,#14532d,#166534);
+#login{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:linear-gradient(135deg,#052e16,#166534);
 }
 
 .login-card{
-  width:100%;
-  max-width:460px;
-  background:white;
-  border-radius:18px;
-  padding:30px;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
+ width:100%;
+ max-width:430px;
+ background:#fff;
+ border-radius:18px;
+ padding:28px;
+ box-shadow:0 20px 60px #0004;
 }
 
-.logo-box{
-  width:75px;
-  height:75px;
-  margin:0 auto 15px;
-  border-radius:50%;
-  background:var(--primary);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  font-weight:bold;
+.logo{
+ width:64px;
+ height:64px;
+ border-radius:16px;
+ background:var(--green);
+ color:#fff;
+ display:grid;
+ place-items:center;
+ font-size:28px;
+ font-weight:bold;
+ margin:auto auto 14px;
 }
 
-.login-card h1{
-  text-align:center;
-  color:var(--primary);
-  font-size:24px;
-  margin-bottom:5px;
+h1{font-size:24px}
+.center{text-align:center}
+.muted{color:var(--muted);font-size:14px}
+
+label{
+ display:block;
+ font-weight:700;
+ font-size:13px;
+ margin:14px 0 6px;
 }
 
-.login-card .subtitle{
-  text-align:center;
-  color:var(--muted);
-  margin-bottom:25px;
+input,select,textarea{
+ width:100%;
+ padding:11px 12px;
+ border:1px solid var(--line);
+ border-radius:9px;
+ background:#fff;
+ outline:none;
 }
 
-.form-group{
-  margin-bottom:16px;
+input:focus,select:focus,textarea:focus{
+ border-color:var(--green);
+ box-shadow:0 0 0 3px #14532d18;
 }
 
-.form-group label{
-  display:block;
-  margin-bottom:7px;
-  font-weight:700;
-}
-
-.form-control{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  outline:none;
-  background:white;
-}
-
-.form-control:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(20,83,45,.1);
-}
-
-textarea.form-control{
-  min-height:130px;
-  resize:vertical;
-}
-
-.multi-select{
-  min-height:150px;
+textarea{
+ min-height:120px;
+ resize:vertical;
 }
 
 .btn{
-  border:0;
-  border-radius:8px;
-  padding:11px 16px;
-  font-weight:700;
-  transition:.2s;
+ padding:10px 15px;
+ border-radius:9px;
+ font-weight:700;
 }
 
-.btn:hover{
-  opacity:.9;
-}
+.primary{background:var(--green);color:#fff}
+.secondary{background:#e2e8f0;color:#17202a}
+.danger{background:#fee2e2;color:#991b1b}
+.orange{background:#ffedd5;color:#9a3412}
 
-.btn-primary{
-  background:var(--primary);
-  color:white;
-}
-
-.btn-success{
-  background:var(--success);
-  color:white;
-}
-
-.btn-danger{
-  background:var(--danger);
-  color:white;
-}
-
-.btn-warning{
-  background:#d97706;
-  color:white;
-}
-
-.btn-secondary{
-  background:#475569;
-  color:white;
-}
-
-.btn-light{
-  background:#e2e8f0;
-  color:#1e293b;
-}
-
-.btn-block{
-  width:100%;
-}
-
-.password-wrap{
-  position:relative;
-}
-
-.password-wrap input{
-  padding-right:90px;
-}
-
-.password-toggle{
-  position:absolute;
-  right:8px;
-  top:6px;
-  border:0;
-  background:#e2e8f0;
-  padding:6px 9px;
-  border-radius:6px;
-}
-
-.caps-warning{
-  display:none;
-  color:var(--danger);
-  font-size:13px;
-  margin-top:5px;
-}
-
-.error-message{
-  display:none;
-  background:#fee2e2;
-  color:#991b1b;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
-.app-shell{
-  display:none;
-  min-height:100vh;
+#app{
+ display:none;
+ min-height:100vh;
 }
 
 .sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:255px;
-  background:#052e16;
-  color:white;
-  overflow-y:auto;
-  z-index:1000;
+ position:fixed;
+ left:0;
+ top:0;
+ bottom:0;
+ width:255px;
+ background:#052e16;
+ color:#fff;
+ padding:18px 12px;
+ overflow:auto;
 }
 
 .brand{
-  padding:20px 15px;
-  text-align:center;
-  border-bottom:1px solid rgba(255,255,255,.1);
+ padding:8px 10px 20px;
+ border-bottom:1px solid #ffffff22;
+ margin-bottom:12px;
 }
 
-.brand h2{
-  font-size:18px;
+.brand strong{
+ display:block;
+ font-size:17px;
 }
 
 .brand small{
-  color:#bbf7d0;
+ color:#bbf7d0;
 }
 
-.nav-section{
-  padding:15px 12px 5px;
-  color:#86efac;
-  font-size:11px;
-  text-transform:uppercase;
-  font-weight:bold;
+.nav-btn{
+ width:100%;
+ text-align:left;
+ padding:11px 12px;
+ border-radius:8px;
+ background:transparent;
+ color:#dcfce7;
+ margin:2px 0;
 }
 
-.nav-item{
-  width:100%;
-  display:block;
-  text-align:left;
-  background:transparent;
-  color:#dcfce7;
-  border:0;
-  padding:12px 15px;
-  border-radius:7px;
-  margin:2px 0;
-}
-
-.nav-item:hover,
-.nav-item.active{
-  background:#166534;
-  color:white;
-}
-
-.logout-btn{
-  margin:20px 12px;
-  width:calc(100% - 24px);
-  background:#991b1b;
-  color:white;
+.nav-btn:hover,
+.nav-btn.active{
+ background:#166534;
 }
 
 .main{
-  margin-left:255px;
-  min-height:100vh;
+ margin-left:255px;
+ padding:22px;
+ max-width:1500px;
 }
 
 .topbar{
-  height:65px;
-  background:white;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 25px;
-  position:sticky;
-  top:0;
-  z-index:900;
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ align-items:center;
+ margin-bottom:20px;
 }
 
-.menu-btn{
-  display:none;
-  border:0;
-  background:var(--primary);
-  color:white;
-  padding:8px 12px;
-  border-radius:7px;
+.userbox{
+ background:#fff;
+ border:1px solid var(--line);
+ padding:8px 12px;
+ border-radius:10px;
 }
 
-.user-info{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.user-avatar{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:var(--primary);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
-
-.content{
-  padding:25px;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.page-title{
-  font-size:26px;
-  margin-bottom:5px;
-}
-
-.page-subtitle{
-  color:var(--muted);
-  margin-bottom:20px;
-}
+.page{display:none}
+.page.active{display:block}
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.stat-card{
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:var(--shadow);
-  border-left:4px solid var(--primary);
-}
-
-.stat-card h3{
-  font-size:28px;
-  color:var(--primary);
-}
-
-.stat-card p{
-  color:var(--muted);
-  margin-top:5px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
 }
 
 .card{
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:var(--shadow);
-  margin-bottom:20px;
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:13px;
+ padding:18px;
 }
 
-.card h2{
-  margin-bottom:5px;
+.card h3{
+ font-size:14px;
+ color:var(--muted);
 }
 
-.card-description{
-  color:var(--muted);
-  margin-bottom:18px;
+.num{
+ font-size:28px;
+ font-weight:800;
+ margin-top:8px;
+ color:var(--green);
 }
 
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
 }
 
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.grid3{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
 }
 
-.action-row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
+.panel{
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:13px;
+ padding:18px;
+ margin-bottom:16px;
 }
 
-.table-wrapper{
-  overflow-x:auto;
+.panel h2{
+ font-size:18px;
+ margin-bottom:10px;
 }
 
-.data-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:750px;
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:14px;
 }
 
-.data-table th,
-.data-table td{
-  border-bottom:1px solid #e2e8f0;
-  padding:12px 10px;
-  text-align:left;
-  vertical-align:middle;
+table{
+ width:100%;
+ border-collapse:collapse;
+ margin-top:12px;
 }
 
-.data-table th{
-  background:#f0fdf4;
-  color:#14532d;
+th,td{
+ padding:10px;
+ border-bottom:1px solid #e5e7eb;
+ text-align:left;
+ font-size:13px;
+ vertical-align:top;
+}
+
+th{
+ background:#f8fafc;
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
+ display:inline-block;
+ padding:4px 8px;
+ border-radius:999px;
+ font-size:11px;
+ font-weight:700;
+ background:#e2e8f0;
 }
 
-.badge.success{
-  background:#dcfce7;
-  color:#166534;
+.badge.green{
+ background:#dcfce7;
+ color:#166534;
 }
 
-.badge.warning{
-  background:#fef3c7;
-  color:#92400e;
+.badge.orange{
+ background:#ffedd5;
+ color:#9a3412;
 }
 
-.badge.danger{
-  background:#fee2e2;
-  color:#991b1b;
+.badge.red{
+ background:#fee2e2;
+ color:#991b1b;
 }
 
-.badge.info{
-  background:#dbeafe;
-  color:#1d4ed8;
+.assistant-result{
+ white-space:pre-wrap;
+ background:#f8fafc;
+ border:1px solid var(--line);
+ padding:16px;
+ border-radius:10px;
+ line-height:1.6;
+ min-height:250px;
 }
 
-.empty{
-  text-align:center;
-  padding:35px;
-  color:var(--muted);
+.password-wrap{
+ position:relative;
 }
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:3000;
-  overflow-y:auto;
-  padding:20px;
+.password-wrap button{
+ position:absolute;
+ right:5px;
+ top:5px;
+ padding:6px;
+ background:#eef2f7;
+ border-radius:7px;
 }
 
-.modal.show{
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
+@media(max-width:900px){
+ .sidebar{width:220px}
+ .main{margin-left:220px}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .grid3{grid-template-columns:1fr 1fr}
 }
 
-.modal-box{
-  background:white;
+@media(max-width:650px){
+ .sidebar{
+  position:relative;
   width:100%;
-  max-width:800px;
-  border-radius:14px;
-  padding:25px;
-  margin-top:20px;
-}
+  height:auto;
+  max-height:280px;
+ }
 
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.close-btn{
-  border:0;
-  background:#fee2e2;
-  color:#991b1b;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  font-size:20px;
-}
-
-.notice{
-  background:#eff6ff;
-  border-left:4px solid #2563eb;
+ .main{
+  margin-left:0;
   padding:12px;
-  margin-bottom:15px;
-  border-radius:5px;
-}
+ }
 
-.success-notice{
-  background:#f0fdf4;
-  border-left:4px solid var(--success);
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:5px;
-}
+ .topbar{
+  align-items:flex-start;
+  flex-direction:column;
+ }
 
-.warning-notice{
-  background:#fffbeb;
-  border-left:4px solid #d97706;
-  padding:12px;
-  margin-bottom:15px;
-  border-radius:5px;
-}
+ .cards,
+ .grid,
+ .grid3{
+  grid-template-columns:1fr;
+ }
 
-.question-box{
-  border:1px solid var(--border);
-  padding:15px;
-  border-radius:8px;
-  margin-bottom:12px;
-  background:#fafafa;
-}
+ .sidebar .nav-btn{
+  display:inline-block;
+  width:auto;
+ }
 
-.question-number{
-  font-weight:bold;
-  color:var(--primary);
-  margin-bottom:8px;
-}
-
-.question-options{
-  padding-left:20px;
-  line-height:1.8;
-}
-
-.review-box{
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:15px;
-}
-
-.review-box h3{
-  color:var(--primary);
-  margin-bottom:8px;
-}
-
-hr{
-  border:0;
-  border-top:1px solid #e2e8f0;
-  margin:20px 0;
-}
-
-.mobile-only{
-  display:none;
-}
-
-@media(max-width:1000px){
-  .cards{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .grid-3{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:750px){
-
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-  }
-
-  .sidebar.open{
-    transform:translateX(0);
-  }
-
-  .main{
-    margin-left:0;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .mobile-only{
-    display:block;
-  }
-
-  .content{
-    padding:15px;
-  }
-
-  .topbar{
-    padding:0 12px;
-  }
-
-  .cards{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .grid-2,
-  .grid-3{
-    grid-template-columns:1fr;
-  }
-
-  .login-card{
-    padding:22px;
-  }
-}
-
-@media(max-width:450px){
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .page-title{
-    font-size:22px;
-  }
+ .brand{
+  padding-bottom:10px;
+ }
 }
 </style>
 </head>
@@ -633,4766 +342,3431 @@ hr{
 <body>
 
 <!-- LOGIN -->
-<div id="loginScreen" class="login-screen">
+<section id="login">
 
-  <div class="login-card">
+<div class="login-card">
 
-    <div class="logo-box">CTA</div>
+<div class="logo">CTA</div>
 
-    <h1>Caliphate Tarbiya Academy</h1>
+<div class="center">
+<h1>Caliphate Tarbiya Academy</h1>
+<p class="muted">Academic Management System</p>
+</div>
 
-    <p class="subtitle">
-      Academic Management System
-    </p>
+<label>Login as</label>
 
-    <div id="loginError" class="error-message"></div>
+<select id="loginRole">
+<option value="admin">Administrator</option>
+<option value="teacher">Teacher</option>
+</select>
 
-    <form id="loginForm">
+<label>Username</label>
+<input id="loginUser" autocomplete="username">
 
-      <div class="form-group">
-        <label>Login As</label>
+<label>Password</label>
 
-        <select id="loginRole" class="form-control">
-          <option value="admin">Administrator</option>
-          <option value="teacher">Teacher</option>
-        </select>
-      </div>
+<div class="password-wrap">
+<input id="loginPass" type="password" autocomplete="current-password">
+<button type="button" onclick="togglePassword('loginPass',this)">Show</button>
+</div>
 
-      <div class="form-group">
-        <label>Username</label>
+<div id="caps" class="muted hidden" style="margin-top:7px;color:#b45309">
+Caps Lock is ON.
+</div>
 
-        <input
-          id="loginUsername"
-          class="form-control"
-          type="text"
-          autocomplete="username"
-          required>
-      </div>
+<button class="btn primary" style="width:100%;margin-top:18px" onclick="login()">
+Login
+</button>
 
-      <div class="form-group">
-
-        <label>Password</label>
-
-        <div class="password-wrap">
-
-          <input
-            id="loginPassword"
-            class="form-control"
-            type="password"
-            autocomplete="current-password"
-            required>
-
-          <button
-            type="button"
-            class="password-toggle"
-            onclick="togglePassword('loginPassword',this)">
-            Show
-          </button>
-
-        </div>
-
-        <div id="capsWarning" class="caps-warning">
-          ⚠ Caps Lock is ON
-        </div>
-
-      </div>
-
-      <button class="btn btn-primary btn-block" type="submit">
-        Login
-      </button>
-
-    </form>
-
-    <div class="notice" style="margin-top:18px;font-size:13px;">
-      <strong>Default Administrator:</strong><br>
-      Username: <b>admin</b><br>
-      Password: <b>Admin@12345</b>
-    </div>
-
-  </div>
+<p class="muted center" style="margin-top:12px">
+Teachers must be created by the Administrator.
+</p>
 
 </div>
+</section>
 
 
 <!-- APPLICATION -->
-<div id="appShell" class="app-shell">
+<div id="app">
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar" class="sidebar">
+<aside class="sidebar">
 
-    <div class="brand">
-      <h2>Caliphate Tarbiya</h2>
-      <small>Academic System</small>
-    </div>
+<div class="brand">
+<strong>Caliphate Tarbiya Academy</strong>
+<small>Academic Management System</small>
+</div>
 
-    <div class="nav-section">Main</div>
+<button class="nav-btn" onclick="showPage('dashboard',this)">
+🏠 Dashboard
+</button>
 
-    <button class="nav-item active"
-            onclick="showPage('dashboard')">
-      🏠 Dashboard
-    </button>
+<div id="teacherNav">
 
-    <button class="nav-item"
-            onclick="showPage('lessonPlan')">
-      📝 Lesson Plan
-    </button>
+<button class="nav-btn" onclick="showPage('lessonPlan',this)">
+📘 Lesson Plan
+</button>
 
-    <button class="nav-item"
-            onclick="showPage('lessonNote')">
-      📖 Lesson Note
-    </button>
+<button class="nav-btn" onclick="showPage('lessonNote',this)">
+📝 Lesson Note
+</button>
 
-    <button class="nav-item"
-            onclick="showPage('scheme')">
-      📚 Scheme of Work
-    </button>
+<button class="nav-btn" onclick="showPage('scheme',this)">
+📚 Scheme of Work
+</button>
 
-    <button class="nav-item"
-            onclick="showPage('assessments')">
-      📝 CA & Examinations
-    </button>
+<button class="nav-btn" onclick="showPage('assessment',this)">
+📋 CA & Examination
+</button>
 
-    <button class="nav-item"
-            onclick="showPage('submissions')">
-      📤 My Submissions
-    </button>
+<button class="nav-btn" onclick="showPage('assistant',this)">
+🤖 Teacher Assistant
+</button>
 
-    <div id="teacherAdminSection">
+<button class="nav-btn" onclick="showPage('submissions',this)">
+📤 My Submissions
+</button>
 
-      <div class="nav-section">Administrator</div>
+<button id="hodNav" class="nav-btn hidden" onclick="showPage('hod',this)">
+✅ HOD Approval Centre
+</button>
 
-      <button class="nav-item"
-              onclick="showPage('teachers')">
-        👨‍🏫 Teacher Management
-      </button>
-
-      <button class="nav-item"
-              onclick="showPage('hodAssignments')">
-        📚 HOD Assignment
-      </button>
-
-      <button class="nav-item"
-              onclick="showPage('approval')">
-        ✅ Approval Centre
-      </button>
-
-      <button class="nav-item"
-              onclick="showPage('examOfficer')">
-        📝 Examination Officer
-      </button>
-
-    </div>
-
-    <div class="nav-section">Account</div>
-
-    <button class="nav-item"
-            onclick="showPage('settings')">
-      ⚙️ Settings
-    </button>
-
-    <button class="nav-item"
-            onclick="showPage('backup')">
-      💾 Backup & Restore
-    </button>
-
-    <button class="nav-item logout-btn"
-            onclick="logout()">
-      🚪 Logout
-    </button>
-
-  </aside>
-
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <header class="topbar">
-
-      <button class="menu-btn"
-              onclick="toggleSidebar()">
-        ☰
-      </button>
-
-      <div>
-        <strong id="topTitle">
-          Dashboard
-        </strong>
-      </div>
-
-      <div class="user-info">
-
-        <div class="user-avatar" id="userAvatar">
-          U
-        </div>
-
-        <div>
-          <strong id="userName">
-            User
-          </strong>
-
-          <div style="font-size:12px;color:#64748b"
-               id="userRole">
-            User
-          </div>
-        </div>
-
-      </div>
-
-    </header>
-
-
-    <div class="content">
-
-      <!-- DASHBOARD -->
-      <section id="page-dashboard" class="page active">
-
-        <h1 class="page-title">Dashboard</h1>
-
-        <p class="page-subtitle">
-          Welcome to the Caliphate Tarbiya Academy Academic Management System.
-        </p>
-
-        <div class="cards">
-
-          <div class="stat-card">
-            <h3 id="statTeachers">0</h3>
-            <p>Teachers</p>
-          </div>
-
-          <div class="stat-card">
-            <h3 id="statDocuments">0</h3>
-            <p>Documents</p>
-          </div>
-
-          <div class="stat-card">
-            <h3 id="statPending">0</h3>
-            <p>Pending Reviews</p>
-          </div>
-
-          <div class="stat-card">
-            <h3 id="statApproved">0</h3>
-            <p>Approved</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <h2>Academic Workflow</h2>
-
-          <p class="card-description">
-            Teachers prepare academic documents and assessments.
-            HODs review subject-specific submissions.
-            Approved examinations and CA are forwarded to the Examination Officer.
-          </p>
-
-          <div class="success-notice">
-            <strong>Important:</strong>
-            HODs and Examination Officers are normal Teacher accounts.
-            Only the Administrator creates teacher accounts and assigns responsibilities.
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- LESSON PLAN -->
-      <section id="page-lessonPlan" class="page">
-
-        <h1 class="page-title">Lesson Plan</h1>
-
-        <p class="page-subtitle">
-          Create a detailed professional lesson plan.
-        </p>
-
-        <div class="card">
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>Class</label>
-              <input id="lpClass" class="form-control"
-                     placeholder="e.g. JSS 1">
-            </div>
-
-            <div class="form-group">
-              <label>Subject</label>
-              <select id="lpSubject" class="form-control"></select>
-            </div>
-
-            <div class="form-group">
-              <label>Topic</label>
-              <input id="lpTopic" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Sub-topic</label>
-              <input id="lpSubtopic" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Date</label>
-              <input id="lpDate" class="form-control" type="date">
-            </div>
-
-            <div class="form-group">
-              <label>Duration</label>
-              <input id="lpDuration" class="form-control"
-                     placeholder="e.g. 40 minutes">
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label>Learning Objectives</label>
-            <textarea id="lpObjectives"
-                      class="form-control"
-                      placeholder="By the end of the lesson, learners should be able to..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Previous Knowledge</label>
-            <textarea id="lpPrevious"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Teaching/Learning Materials</label>
-            <textarea id="lpMaterials"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Introduction</label>
-            <textarea id="lpIntroduction"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Lesson Development / Teacher Activities</label>
-            <textarea id="lpDevelopment"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Learners' Activities</label>
-            <textarea id="lpLearnerActivities"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Evaluation</label>
-            <textarea id="lpEvaluation"
-                      class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Conclusion / Summary</label>
-            <textarea id="lpConclusion"
-                      class="form-control"></textarea>
-          </div>
-
-          <button class="btn btn-primary"
-                  onclick="saveAcademicDocument('Lesson Plan')">
-            Save Lesson Plan
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- LESSON NOTE -->
-      <section id="page-lessonNote" class="page">
-
-        <h1 class="page-title">Lesson Note</h1>
-
-        <p class="page-subtitle">
-          Prepare a complete lesson note.
-        </p>
-
-        <div class="card">
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>Class</label>
-              <input id="lnClass" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Subject</label>
-              <select id="lnSubject" class="form-control"></select>
-            </div>
-
-            <div class="form-group">
-              <label>Topic</label>
-              <input id="lnTopic" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Sub-topic</label>
-              <input id="lnSubtopic" class="form-control">
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label>Specific Objectives</label>
-            <textarea id="lnObjectives" class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Content</label>
-            <textarea id="lnContent"
-                      class="form-control"
-                      style="min-height:250px"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Teaching Methods</label>
-            <textarea id="lnMethods" class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Instructional Materials</label>
-            <textarea id="lnMaterials" class="form-control"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Evaluation Questions</label>
-            <textarea id="lnEvaluation" class="form-control"></textarea>
-          </div>
-
-          <button class="btn btn-primary"
-                  onclick="saveAcademicDocument('Lesson Note')">
-            Save Lesson Note
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- SCHEME -->
-      <section id="page-scheme" class="page">
-
-        <h1 class="page-title">Scheme of Work</h1>
-
-        <p class="page-subtitle">
-          Create and save a professional scheme of work.
-        </p>
-
-        <div class="card">
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>Class</label>
-              <input id="swClass" class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Subject</label>
-              <select id="swSubject" class="form-control"></select>
-            </div>
-
-            <div class="form-group">
-              <label>Session</label>
-              <input id="swSession"
-                     class="form-control"
-                     placeholder="2026/2027">
-            </div>
-
-            <div class="form-group">
-              <label>Term</label>
-              <select id="swTerm" class="form-control">
-                <option>First Term</option>
-                <option>Second Term</option>
-                <option>Third Term</option>
-              </select>
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label>Scheme of Work</label>
-            <textarea id="swContent"
-                      class="form-control"
-                      style="min-height:350px"
-                      placeholder="Week 1: Topic...
-Week 2: Topic...
-Week 3: Topic..."></textarea>
-          </div>
-
-          <button class="btn btn-primary"
-                  onclick="saveAcademicDocument('Scheme of Work')">
-            Save Scheme
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- ASSESSMENTS -->
-      <section id="page-assessments" class="page">
-
-        <h1 class="page-title">CA & Examinations</h1>
-
-        <p class="page-subtitle">
-          Create Continuous Assessment and Examination questions.
-        </p>
-
-        <div class="warning-notice">
-          <strong>Automatic HOD Routing:</strong>
-          You do not select the HOD here. The system automatically finds
-          the HOD assigned to the selected subject.
-        </div>
-
-        <div class="card">
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>Assessment Type</label>
-
-              <select id="assessmentType" class="form-control">
-                <option value="CA">Continuous Assessment</option>
-                <option value="Examination">Examination</option>
-              </select>
-
-            </div>
-
-            <div class="form-group">
-              <label>Class</label>
-              <input id="assessmentClass"
-                     class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Subject</label>
-              <select id="assessmentSubject"
-                      class="form-control"></select>
-            </div>
-
-            <div class="form-group">
-              <label>Term</label>
-
-              <select id="assessmentTerm"
-                      class="form-control">
-
-                <option>First Term</option>
-                <option>Second Term</option>
-                <option>Third Term</option>
-
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Session</label>
-
-              <input id="assessmentSession"
-                     class="form-control"
-                     value="2026/2027">
-
-            </div>
-
-            <div class="form-group">
-              <label>Duration</label>
-
-              <input id="assessmentDuration"
-                     class="form-control"
-                     placeholder="e.g. 1 hour 30 minutes">
-
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label>Instructions</label>
-
-            <textarea id="assessmentInstructions"
-                      class="form-control"
-                      placeholder="Answer all questions..."></textarea>
-
-          </div>
-
-          <div class="form-group">
-            <label>Objective Questions</label>
-
-            <textarea id="assessmentObjective"
-                      class="form-control"
-                      style="min-height:250px"
-                      placeholder="1. Question
-A. Option
-B. Option
-C. Option
-D. Option
-
-2. Question..."></textarea>
-
-          </div>
-
-          <div class="form-group">
-            <label>Theory Questions</label>
-
-            <textarea id="assessmentTheory"
-                      class="form-control"
-                      style="min-height:200px"></textarea>
-
-          </div>
-
-          <div class="form-group">
-            <label>Marking Scheme</label>
-
-            <textarea id="assessmentMarking"
-                      class="form-control"
-                      style="min-height:200px"></textarea>
-
-          </div>
-
-          <button class="btn btn-success"
-                  onclick="submitAssessment()">
-
-            Submit for HOD Review
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- SUBMISSIONS -->
-      <section id="page-submissions" class="page">
-
-        <h1 class="page-title">My Submissions</h1>
-
-        <p class="page-subtitle">
-          View the status of your submitted academic documents and assessments.
-        </p>
-
-        <div class="card">
-
-          <div id="mySubmissions"></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- TEACHERS -->
-      <section id="page-teachers" class="page">
-
-        <h1 class="page-title">Teacher Management</h1>
-
-        <p class="page-subtitle">
-          Only the Administrator can create and manage Teacher accounts.
-        </p>
-
-        <div class="card">
-
-          <div class="action-row">
-
-            <button class="btn btn-primary"
-                    onclick="openTeacherModal()">
-              + Add Teacher
-            </button>
-
-          </div>
-
-          <hr>
-
-          <div id="teacherTable"></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- HOD ASSIGNMENTS -->
-      <section id="page-hodAssignments" class="page">
-
-        <h1 class="page-title">HOD Assignment</h1>
-
-        <p class="page-subtitle">
-          Assign a Head of Department to each subject.
-        </p>
-
-        <div class="success-notice">
-
-          <strong>How it works:</strong>
-
-          The Administrator selects an HOD for each subject.
-          Only teachers who teach that subject appear in its HOD list.
-
-        </div>
-
-        <div class="card">
-
-          <div id="hodAssignmentTable"></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- APPROVAL CENTRE -->
-      <section id="page-approval" class="page">
-
-        <h1 class="page-title">HOD Approval Centre</h1>
-
-        <p class="page-subtitle">
-          Review assessments submitted for subjects you head.
-        </p>
-
-        <div class="card">
-
-          <div id="hodApprovalList"></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- EXAM OFFICER -->
-      <section id="page-examOfficer" class="page">
-
-        <h1 class="page-title">
-          Examination Officer Centre
-        </h1>
-
-        <p class="page-subtitle">
-          Review HOD-approved CA and examinations.
-        </p>
-
-        <div class="card">
-
-          <div id="examOfficerList"></div>
-
-        </div>
-
-      </section>
-
-
-      <!-- SETTINGS -->
-      <section id="page-settings" class="page">
-
-        <h1 class="page-title">Settings</h1>
-
-        <div class="card">
-
-          <h2>School Information</h2>
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>School Name</label>
-              <input id="schoolName"
-                     class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>School Motto</label>
-              <input id="schoolMotto"
-                     class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>School Address</label>
-              <input id="schoolAddress"
-                     class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>Phone / Email</label>
-              <input id="schoolContact"
-                     class="form-control">
-            </div>
-
-          </div>
-
-          <button class="btn btn-primary"
-                  onclick="saveSchoolSettings()">
-            Save School Settings
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <h2>Change Password</h2>
-
-          <div class="grid-2">
-
-            <div class="form-group">
-              <label>Current Password</label>
-
-              <input id="oldPassword"
-                     type="password"
-                     class="form-control">
-            </div>
-
-            <div class="form-group">
-              <label>New Password</label>
-
-              <input id="newPassword"
-                     type="password"
-                     class="form-control">
-            </div>
-
-          </div>
-
-          <button class="btn btn-warning"
-                  onclick="changePassword()">
-            Change Password
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- BACKUP -->
-      <section id="page-backup" class="page">
-
-        <h1 class="page-title">
-          Backup & Restore
-        </h1>
-
-        <p class="page-subtitle">
-          Protect your school data.
-        </p>
-
-        <div class="card">
-
-          <h2>Backup</h2>
-
-          <p class="card-description">
-            Download a complete backup of the current system data.
-          </p>
-
-          <button class="btn btn-primary"
-                  onclick="downloadBackup()">
-            Download Backup
-          </button>
-
-        </div>
-
-        <div class="card">
-
-          <h2>Restore</h2>
-
-          <p class="card-description">
-            Restore a previously downloaded backup.
-          </p>
-
-          <input id="restoreFile"
-                 type="file"
-                 accept=".json"
-                 class="form-control">
-
-          <button class="btn btn-warning"
-                  style="margin-top:12px"
-                  onclick="restoreBackup()">
-            Restore Backup
-          </button>
-
-        </div>
-
-      </section>
-
-    </div>
-
-  </main>
+<button id="examNav" class="nav-btn hidden" onclick="showPage('exam',this)">
+🧾 Examination Officer
+</button>
 
 </div>
 
 
-<!-- TEACHER MODAL -->
-<div id="teacherModal" class="modal">
+<div id="adminNav" class="hidden">
 
-  <div class="modal-box">
+<button class="nav-btn" onclick="showPage('teachers',this)">
+👨‍🏫 Teacher Management
+</button>
 
-    <div class="modal-header">
+<button class="nav-btn" onclick="showPage('hodAssign',this)">
+🎯 HOD Assignment
+</button>
 
-      <h2 id="teacherModalTitle">
-        Add Teacher
-      </h2>
+<button class="nav-btn" onclick="showPage('settings',this)">
+⚙️ School Settings
+</button>
 
-      <button class="close-btn"
-              onclick="closeTeacherModal()">
-        ×
-      </button>
-
-    </div>
-
-    <input type="hidden" id="teacherEditId">
-
-    <div class="grid-2">
-
-      <div class="form-group">
-
-        <label>Full Name</label>
-
-        <input id="teacherName"
-               class="form-control"
-               placeholder="Teacher full name">
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Username</label>
-
-        <input id="teacherUsername"
-               class="form-control"
-               placeholder="Login username">
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Password</label>
-
-        <input id="teacherPassword"
-               class="form-control"
-               placeholder="Teacher password">
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Status</label>
-
-        <select id="teacherStatus"
-                class="form-control">
-
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-
-        </select>
-
-      </div>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>
-        Subjects Taught
-      </label>
-
-      <select id="teacherSubjects"
-              class="form-control multi-select"
-              multiple>
-      </select>
-
-      <small>
-        Hold CTRL/CMD to select multiple subjects on computer.
-        On mobile, tap to select/deselect.
-      </small>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        HOD Subjects
-      </label>
-
-      <select id="teacherHodSubjects"
-              class="form-control multi-select"
-              multiple>
-      </select>
-
-      <small>
-        This is optional. You can also assign HODs from the dedicated
-        HOD Assignment page.
-      </small>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label style="display:flex;gap:8px;align-items:center">
-
-        <input type="checkbox"
-               id="teacherExamOfficer">
-
-        Examination Officer
-
-      </label>
-
-    </div>
-
-
-    <div class="action-row">
-
-      <button class="btn btn-primary"
-              onclick="saveTeacher()">
-        Save Teacher
-      </button>
-
-      <button class="btn btn-light"
-              onclick="closeTeacherModal()">
-        Cancel
-      </button>
-
-    </div>
-
-  </div>
+<button class="nav-btn" onclick="showPage('backup',this)">
+💾 Backup & Restore
+</button>
 
 </div>
 
 
-<!-- REVIEW MODAL -->
-<div id="reviewModal" class="modal">
+<button class="nav-btn" onclick="showPage('password',this)">
+🔐 Change Password
+</button>
 
-  <div class="modal-box">
+<button class="nav-btn" onclick="logout()">
+🚪 Logout
+</button>
 
-    <div class="modal-header">
+</aside>
 
-      <h2>Assessment Review</h2>
 
-      <button class="close-btn"
-              onclick="closeReviewModal()">
-        ×
-      </button>
+<main class="main">
 
-    </div>
+<div class="topbar">
 
-    <div id="reviewContent"></div>
+<div>
+<h1 id="pageTitle">Dashboard</h1>
+<p class="muted" id="schoolMotto"></p>
+</div>
 
-  </div>
+<div class="userbox" id="who"></div>
 
+</div>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page active">
+
+<div class="cards">
+
+<div class="card">
+<h3>Teachers</h3>
+<div class="num" id="statTeachers">0</div>
+</div>
+
+<div class="card">
+<h3>Documents</h3>
+<div class="num" id="statDocs">0</div>
+</div>
+
+<div class="card">
+<h3>Pending</h3>
+<div class="num" id="statPending">0</div>
+</div>
+
+<div class="card">
+<h3>Approved / Finalized</h3>
+<div class="num" id="statApproved">0</div>
+</div>
+
+</div>
+
+<div class="panel" style="margin-top:16px">
+<h2>Welcome</h2>
+<p id="welcomeText"></p>
+</div>
+
+<div class="panel">
+<h2>Assessment Workflow</h2>
+
+<p>
+Teacher creates assessment →
+assigned Subject HOD reviews →
+Examination Officer reviews →
+system finalizes →
+Word document is generated.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- LESSON PLAN -->
+<section id="lessonPlan" class="page">
+
+<div class="panel">
+
+<h2>Detailed Lesson Plan</h2>
+
+<div class="grid">
+
+<div>
+<label>Class</label>
+<input id="lpClass" placeholder="e.g. JSS1">
+</div>
+
+<div>
+<label>Subject</label>
+<select id="lpSubject"></select>
+</div>
+
+<div>
+<label>Topic</label>
+<input id="lpTopic">
+</div>
+
+<div>
+<label>Subtopic</label>
+<input id="lpSubtopic">
+</div>
+
+<div>
+<label>Date</label>
+<input id="lpDate" type="date">
+</div>
+
+<div>
+<label>Duration</label>
+<input id="lpDuration" placeholder="40 minutes">
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div>
+<label>Learning Objectives</label>
+<textarea id="lpObjectives"></textarea>
+</div>
+
+<div>
+<label>Previous Knowledge</label>
+<textarea id="lpPrevious"></textarea>
+</div>
+
+<div>
+<label>Instructional Materials</label>
+<textarea id="lpMaterials"></textarea>
+</div>
+
+<div>
+<label>Introduction</label>
+<textarea id="lpIntro"></textarea>
+</div>
+
+<div>
+<label>Lesson Development</label>
+<textarea id="lpDevelopment"></textarea>
+</div>
+
+<div>
+<label>Learner Activities</label>
+<textarea id="lpLearner"></textarea>
+</div>
+
+<div>
+<label>Evaluation</label>
+<textarea id="lpEvaluation"></textarea>
+</div>
+
+<div>
+<label>Conclusion / Assignment</label>
+<textarea id="lpConclusion"></textarea>
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn primary" onclick="saveDoc('Lesson Plan')">
+Save Lesson Plan
+</button>
+
+<button class="btn secondary" onclick="printCurrent('lessonPlan')">
+Print
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LESSON NOTE -->
+<section id="lessonNote" class="page">
+
+<div class="panel">
+
+<h2>Lesson Note</h2>
+
+<div class="grid">
+
+<div>
+<label>Class</label>
+<input id="lnClass">
+</div>
+
+<div>
+<label>Subject</label>
+<select id="lnSubject"></select>
+</div>
+
+<div>
+<label>Topic</label>
+<input id="lnTopic">
+</div>
+
+<div>
+<label>Subtopic</label>
+<input id="lnSubtopic">
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div>
+<label>Objectives</label>
+<textarea id="lnObjectives"></textarea>
+</div>
+
+<div>
+<label>Content</label>
+<textarea id="lnContent"></textarea>
+</div>
+
+<div>
+<label>Teaching Methods</label>
+<textarea id="lnMethods"></textarea>
+</div>
+
+<div>
+<label>Materials</label>
+<textarea id="lnMaterials"></textarea>
+</div>
+
+<div>
+<label>Evaluation</label>
+<textarea id="lnEvaluation"></textarea>
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button class="btn primary" onclick="saveDoc('Lesson Note')">
+Save Lesson Note
+</button>
+
+<button class="btn secondary" onclick="printCurrent('lessonNote')">
+Print
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SCHEME -->
+<section id="scheme" class="page">
+
+<div class="panel">
+
+<h2>Scheme of Work</h2>
+
+<div class="grid">
+
+<div>
+<label>Class</label>
+<input id="scClass">
+</div>
+
+<div>
+<label>Subject</label>
+<select id="scSubject"></select>
+</div>
+
+<div>
+<label>Session</label>
+<input id="scSession" value="2026/2027">
+</div>
+
+<div>
+<label>Term</label>
+<select id="scTerm">
+<option>First Term</option>
+<option>Second Term</option>
+<option>Third Term</option>
+</select>
+</div>
+
+</div>
+
+<label>Scheme Content</label>
+
+<textarea id="scContent"
+style="min-height:300px"
+placeholder="Week 1: ...
+Week 2: ...
+Week 3: ...">
+</textarea>
+
+<div class="actions">
+
+<button class="btn primary" onclick="saveDoc('Scheme of Work')">
+Save Scheme
+</button>
+
+<button class="btn secondary" onclick="printCurrent('scheme')">
+Print
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="page">
+
+<div class="panel">
+
+<h2>CA & Examination</h2>
+
+<div class="grid">
+
+<div>
+<label>Assessment Type</label>
+<select id="aType">
+<option>Continuous Assessment (CA)</option>
+<option>Examination</option>
+</select>
+</div>
+
+<div>
+<label>Class</label>
+<input id="aClass">
+</div>
+
+<div>
+<label>Subject</label>
+<select id="aSubject"></select>
+</div>
+
+<div>
+<label>Term</label>
+<select id="aTerm">
+<option>First Term</option>
+<option>Second Term</option>
+<option>Third Term</option>
+</select>
+</div>
+
+<div>
+<label>Session</label>
+<input id="aSession" value="2026/2027">
+</div>
+
+<div>
+<label>Duration</label>
+<input id="aDuration" value="1 Hour">
+</div>
+
+</div>
+
+
+<label>Instructions</label>
+
+<textarea id="aInstructions">
+Answer all questions as instructed.
+</textarea>
+
+
+<label>Objective Questions</label>
+
+<textarea id="aObjective"
+style="min-height:220px"
+placeholder="1. ...
+A. ...
+B. ...
+C. ...
+D. ...">
+</textarea>
+
+
+<label>Theory Questions</label>
+
+<textarea id="aTheory"
+style="min-height:220px">
+</textarea>
+
+
+<label>Marking Scheme</label>
+
+<textarea id="aMarking"
+style="min-height:180px">
+</textarea>
+
+
+<div class="actions">
+
+<button class="btn primary" onclick="submitAssessment()">
+Submit to Subject HOD
+</button>
+
+</div>
+
+<p class="muted" style="margin-top:10px">
+The system automatically sends the assessment to the HOD assigned to the selected subject.
+The teacher does not select the HOD.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- TEACHER ASSISTANT -->
+<section id="assistant" class="page">
+
+<div class="panel">
+
+<h2>🤖 AI Teacher Assistant</h2>
+
+<p class="muted">
+Create lesson plans, lesson notes, schemes, CA questions,
+examination questions, objective questions, theory questions
+and marking schemes.
+</p>
+
+
+<div class="grid">
+
+<div>
+
+<label>What do you want to create?</label>
+
+<select id="taType">
+
+<option>Lesson Plan</option>
+<option>Lesson Note</option>
+<option>Scheme of Work</option>
+<option>CA Questions</option>
+<option>Examination Questions</option>
+<option>Objective Questions</option>
+<option>Theory Questions</option>
+<option>Marking Scheme</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Class</label>
+
+<input id="taClass" placeholder="e.g. JSS1">
+
+</div>
+
+
+<div>
+
+<label>Subject</label>
+
+<select id="taSubject"></select>
+
+</div>
+
+
+<div>
+
+<label>Topic</label>
+
+<input id="taTopic" placeholder="e.g. Fractions">
+
+</div>
+
+
+<div>
+
+<label>Subtopic</label>
+
+<input id="taSubtopic">
+
+</div>
+
+
+<div>
+
+<label>Term</label>
+
+<select id="taTerm">
+
+<option>First Term</option>
+<option>Second Term</option>
+<option>Third Term</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>Session</label>
+
+<input id="taSession" value="2026/2027">
+
+</div>
+
+
+<div>
+
+<label>Number of Questions</label>
+
+<input id="taCount" type="number" min="1" max="100" value="10">
+
+</div>
+
+
+<div>
+
+<label>Output Language</label>
+
+<select id="taLanguage">
+
+<option>Automatic</option>
+<option>English</option>
+<option>Hausa</option>
+<option>Arabic</option>
+<option>French</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button class="btn primary" onclick="generateAssistant()">
+✨ Generate
+</button>
+
+<button class="btn secondary" onclick="copyAssistant()">
+Copy
+</button>
+
+<button class="btn secondary" onclick="printAssistant()">
+Print
+</button>
+
+<button class="btn orange" onclick="useAssistantForAssessment()">
+Use for CA / Exam
+</button>
+
+</div>
+
+
+<div id="taResult" class="assistant-result" style="margin-top:16px">
+Your generated material will appear here.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SUBMISSIONS -->
+<section id="submissions" class="page">
+
+<div class="panel">
+
+<h2>My Submissions</h2>
+
+<div id="submissionList"></div>
+
+</div>
+
+</section>
+
+
+<!-- HOD -->
+<section id="hod" class="page">
+
+<div class="panel">
+
+<h2>HOD Approval Centre</h2>
+
+<div id="hodList"></div>
+
+</div>
+
+</section>
+
+
+<!-- EXAM OFFICER -->
+<section id="exam" class="page">
+
+<div class="panel">
+
+<h2>Examination Officer Centre</h2>
+
+<div id="examList"></div>
+
+</div>
+
+</section>
+
+
+<!-- TEACHERS -->
+<section id="teachers" class="page">
+
+<div class="panel">
+
+<h2>Teacher Management</h2>
+
+<div class="grid">
+
+<div>
+<label>Full Name</label>
+<input id="tName">
+</div>
+
+<div>
+<label>Username</label>
+<input id="tUser">
+</div>
+
+<div>
+<label>Password</label>
+<input id="tPass" type="password">
+</div>
+
+<div>
+<label>Status</label>
+<select id="tStatus">
+<option>Active</option>
+<option>Inactive</option>
+</select>
+</div>
+
+</div>
+
+
+<label>Subjects Taught</label>
+
+<select id="tSubjects" multiple size="7"></select>
+
+
+<label>
+HOD Subjects
+(must also be taught by this teacher)
+</label>
+
+<select id="tHodSubjects" multiple size="7"></select>
+
+
+<label style="display:flex;gap:8px;align-items:center">
+
+<input id="tExam" type="checkbox" style="width:auto">
+
+Examination Officer
+
+</label>
+
+
+<div class="actions">
+
+<button class="btn primary" onclick="saveTeacher()">
+Create Teacher
+</button>
+
+<button class="btn secondary" onclick="clearTeacherForm()">
+Clear
+</button>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2>Teachers</h2>
+
+<div id="teacherList"></div>
+
+</div>
+
+</section>
+
+
+<!-- HOD ASSIGNMENT -->
+<section id="hodAssign" class="page">
+
+<div class="panel">
+
+<h2>Subject HOD Assignment</h2>
+
+<p class="muted">
+Only active teachers who teach a subject can be its HOD.
+</p>
+
+<div id="hodAssignmentTable"></div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+
+<div class="panel">
+
+<h2>School Settings</h2>
+
+<label>School Name</label>
+<input id="setName">
+
+<label>Motto</label>
+<input id="setMotto">
+
+<label>Address</label>
+<input id="setAddress">
+
+<label>Contact</label>
+<input id="setContact">
+
+<div class="actions">
+
+<button class="btn primary" onclick="saveSettings()">
+Save Settings
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BACKUP -->
+<section id="backup" class="page">
+
+<div class="panel">
+
+<h2>Backup & Restore</h2>
+
+<p class="muted">
+Backup keeps your current browser data.
+This version uses local browser storage.
+</p>
+
+<div class="actions">
+
+<button class="btn primary" onclick="backup()">
+Download Backup
+</button>
+
+<label class="btn secondary" style="display:inline-block">
+
+Restore JSON
+
+<input
+type="file"
+accept=".json"
+style="display:none"
+onchange="restore(event)"
+>
+
+</label>
+
+<button class="btn danger" onclick="resetDemo()">
+Reset System
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PASSWORD -->
+<section id="password" class="page">
+
+<div class="panel">
+
+<h2>Change Password</h2>
+
+<label>Current Password</label>
+<input id="oldPass" type="password">
+
+<label>New Password</label>
+<input id="newPass" type="password">
+
+<label>Confirm New Password</label>
+<input id="newPass2" type="password">
+
+<button class="btn primary" style="margin-top:14px" onclick="changePassword()">
+Change Password
+</button>
+
+</div>
+
+</section>
+
+</main>
 </div>
 
 
 <script>
 
-/* =========================================================
-   DATABASE
-========================================================= */
+const DB_KEY="CTA_COMPLETE_ACADEMIC_SYSTEM_V3";
 
-const DB_KEY = "CTA_COMPLETE_ACADEMIC_SYSTEM_V2";
-const CURRENT_USER_KEY = "CTA_CURRENT_USER";
-
-let currentUser = null;
-let currentReviewId = null;
+const USER_KEY="CTA_CURRENT_USER";
 
 
-/* =========================================================
-   COMPLETE SUBJECT LIST
-========================================================= */
+const SUBJECTS=[
 
-const SUBJECTS = [
-
-  /* NURSERY / PRIMARY */
-
-  "English Studies",
-  "Mathematics",
-  "Basic Science",
-  "Basic Technology",
-  "Social Studies",
-  "Civic Education",
-  "Computer Studies / ICT",
-  "Agricultural Science",
-  "Home Economics",
-  "Physical and Health Education",
-  "Cultural and Creative Arts",
-  "Religious and National Values (RNV)",
-  "Quantitative Reasoning",
-  "Verbal Reasoning",
-  "Handwriting",
-  "Reading",
-  "Phonics",
-  "Islamic Religious Studies",
-  "Christian Religious Studies",
-  "Hausa Language",
-  "Arabic Language",
-  "French Language",
-
-  /* JUNIOR SECONDARY */
-
-  "Business Studies",
-  "Basic Digital Literacy",
-  "Pre-Vocational Studies",
-
-  /* SENIOR SECONDARY */
-
-  "English Language",
-  "Further Mathematics",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "Economics",
-  "Government",
-  "Commerce",
-  "Accounting",
-  "Geography",
-  "Literature in English",
-  "Computer Science",
-  "Data Processing",
-  "Information Technology",
-  "Islamic Religious Studies",
-  "Christian Religious Studies",
-  "Physical Education",
-  "Technical Drawing",
-  "Food and Nutrition",
-  "Home Management",
-  "Visual Arts",
-  "Music"
+"English Studies",
+"English Language",
+"Mathematics",
+"Further Mathematics",
+"Basic Science",
+"Basic Technology",
+"Social Studies",
+"Civic Education",
+"Computer Studies / ICT",
+"Computer Science",
+"Data Processing",
+"Information Technology",
+"Agricultural Science",
+"Home Economics",
+"Physical and Health Education",
+"Cultural and Creative Arts",
+"Business Studies",
+"Economics",
+"Government",
+"Commerce",
+"Accounting",
+"Geography",
+"Literature in English",
+"Physics",
+"Chemistry",
+"Biology",
+"Technical Drawing",
+"Food and Nutrition",
+"Home Management",
+"Visual Arts",
+"Music",
+"Quantitative Reasoning",
+"Verbal Reasoning",
+"Handwriting",
+"Reading",
+"Phonics",
+"Religious and National Values (RNV)",
+"Islamic Religious Studies",
+"Christian Religious Studies",
+"Hausa Language",
+"Arabic Language",
+"French Language",
+"Basic Digital Literacy",
+"Pre-Vocational Studies"
 
 ];
 
 
-/* =========================================================
-   INITIAL DATABASE
-========================================================= */
+function freshDB(){
 
-function createInitialDB(){
+return{
 
-  return {
+school:{
+name:"Caliphate Tarbiya Academy",
+motto:"Knowledge, Character and Excellence",
+address:"Sokoto State",
+contact:""
+},
 
-    school:{
-      name:"Caliphate Tarbiya Academy",
-      motto:"",
-      address:"",
-      contact:""
-    },
+users:[
 
-    users:[
+{
+id:"admin-1",
+role:"admin",
+fullName:"Administrator",
+username:"admin",
+password:"Admin@12345",
+status:"Active",
+subjects:[],
+hodSubjects:[],
+isExamOfficer:false
+}
 
-      {
-        id:"admin-001",
-        role:"admin",
-        fullName:"System Administrator",
-        username:"admin",
-        password:"Admin@12345",
-        status:"active",
-        subjects:[],
-        hodSubjects:[],
-        isExamOfficer:false
-      }
+],
 
-    ],
+documents:[],
+assessments:[],
+activities:[]
 
-    documents:[],
-    assessments:[],
-    activities:[]
-
-  };
+};
 
 }
 
 
 function getDB(){
 
-  try{
+try{
 
-    const saved = localStorage.getItem(DB_KEY);
+return JSON.parse(localStorage.getItem(DB_KEY)) || freshDB();
 
-    if(!saved){
+}catch(e){
 
-      const db = createInitialDB();
+return freshDB();
 
-      localStorage.setItem(
-        DB_KEY,
-        JSON.stringify(db)
-      );
-
-      return db;
-    }
-
-    return JSON.parse(saved);
-
-  }catch(error){
-
-    alert(
-      "Unable to read system data. Please check browser storage."
-    );
-
-    return createInitialDB();
-  }
+}
 
 }
 
 
 function saveDB(db){
 
-  localStorage.setItem(
-    DB_KEY,
-    JSON.stringify(db)
-  );
+localStorage.setItem(DB_KEY,JSON.stringify(db));
 
 }
 
 
-/* =========================================================
-   SECURITY / HELPERS
-========================================================= */
+function current(){
 
-function escapeHTML(value){
+let id=localStorage.getItem(USER_KEY);
 
-  if(value === undefined || value === null){
-    return "";
-  }
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return getDB().users.find(u=>u.id===id)||null;
 
 }
 
 
-function uid(prefix="id"){
+function esc(s){
 
-  return prefix + "-" +
-    Date.now() + "-" +
-    Math.random()
-      .toString(36)
-      .substring(2,9);
+return String(s??"").replace(/[&<>"']/g,m=>({
 
-}
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
 
-
-function formatDate(date){
-
-  if(!date){
-    return "";
-  }
-
-  return new Date(date).toLocaleDateString();
+}[m]));
 
 }
 
 
-/* =========================================================
-   ACTIVITY
-========================================================= */
+function uid(p="id"){
 
-function addActivity(title,description){
-
-  const db = getDB();
-
-  db.activities.unshift({
-
-    id:uid("activity"),
-    title:title,
-    description:description,
-    user:currentUser ? currentUser.fullName : "",
-    date:new Date().toISOString()
-
-  });
-
-  db.activities =
-    db.activities.slice(0,100);
-
-  saveDB(db);
+return p+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
 
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
+function togglePassword(id,b){
 
-document.getElementById("loginForm")
-.addEventListener("submit",function(e){
+let x=document.getElementById(id);
 
-  e.preventDefault();
+x.type=x.type==="password"?"text":"password";
 
-  const role =
-    document.getElementById("loginRole").value;
+b.textContent=x.type==="password"?"Show":"Hide";
 
-  const username =
-    document.getElementById("loginUsername")
-      .value.trim();
+}
 
-  const password =
-    document.getElementById("loginPassword")
-      .value;
 
-  const db = getDB();
+document
+.getElementById("loginPass")
+.addEventListener("keyup",e=>{
 
-  const user = db.users.find(function(u){
-
-    return u.username === username &&
-           u.password === password &&
-           u.role === role &&
-           u.status !== "inactive";
-
-  });
-
-  if(!user){
-
-    const error =
-      document.getElementById("loginError");
-
-    error.style.display = "block";
-
-    error.innerHTML =
-      "Invalid username, password or account type.";
-
-    return;
-  }
-
-  currentUser = user;
-
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    JSON.stringify(user)
-  );
-
-  openApplication();
+document
+.getElementById("caps")
+.classList
+.toggle("hidden",!e.getModifierState("CapsLock"));
 
 });
 
 
-function openApplication(){
+function login(){
 
-  document.getElementById("loginScreen")
-    .style.display="none";
+let db=getDB();
 
-  document.getElementById("appShell")
-    .style.display="block";
+let role=document.getElementById("loginRole").value;
 
-  updateUserInterface();
+let un=document.getElementById("loginUser").value.trim();
 
-  populateAllSubjectSelects();
+let pw=document.getElementById("loginPass").value;
 
-  updateDashboard();
 
-  if(currentUser.role === "admin"){
+let u=db.users.find(x=>
 
-    document.getElementById(
-      "teacherAdminSection"
-    ).style.display="block";
+x.role===role &&
+x.username.toLowerCase()===un.toLowerCase() &&
+x.password===pw
 
-  }else{
+);
 
-    document.getElementById(
-      "teacherAdminSection"
-    ).style.display="block";
 
-  }
+if(!u){
+
+alert("Invalid username, password, or login type.");
+
+return;
+
+}
+
+
+if(u.status==="Inactive"){
+
+alert("This account is inactive. Contact the Administrator.");
+
+return;
+
+}
+
+
+localStorage.setItem(USER_KEY,u.id);
+
+openApp();
+
+}
+
+
+function openApp(){
+
+let u=current();
+
+let db=getDB();
+
+if(!u)return;
+
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("app").style.display="block";
+
+
+document.getElementById("who").innerHTML=
+
+`${esc(u.fullName)}
+<span class="badge">
+${u.role==="admin"?"Administrator":"Teacher"}
+</span>`;
+
+
+document.getElementById("schoolMotto").textContent=
+db.school.motto||"";
+
+
+document
+.getElementById("adminNav")
+.classList
+.toggle("hidden",u.role!=="admin");
+
+
+document
+.getElementById("hodNav")
+.classList
+.toggle(
+"hidden",
+!(u.role==="teacher" && u.hodSubjects.length)
+);
+
+
+document
+.getElementById("examNav")
+.classList
+.toggle(
+"hidden",
+!(u.role==="teacher" && u.isExamOfficer)
+);
+
+
+document.getElementById("welcomeText").textContent=
+`Welcome, ${u.fullName}. Use the menu to manage your academic work.`;
+
+
+populateSubjects();
+
+refreshAll();
 
 }
 
 
 function logout(){
 
-  currentUser=null;
+localStorage.removeItem(USER_KEY);
 
-  localStorage.removeItem(
-    CURRENT_USER_KEY
-  );
-
-  document.getElementById("appShell")
-    .style.display="none";
-
-  document.getElementById("loginScreen")
-    .style.display="flex";
-
-  document.getElementById("loginForm")
-    .reset();
+location.reload();
 
 }
 
 
-/* =========================================================
-   AUTO LOGIN
-========================================================= */
+function showPage(id,btn){
 
-function checkExistingLogin(){
+document
+.querySelectorAll(".page")
+.forEach(x=>x.classList.remove("active"));
 
-  try{
 
-    const saved =
-      localStorage.getItem(CURRENT_USER_KEY);
+document
+.getElementById(id)
+.classList
+.add("active");
 
-    if(!saved){
-      return;
-    }
 
-    const savedUser =
-      JSON.parse(saved);
+document
+.querySelectorAll(".nav-btn")
+.forEach(x=>x.classList.remove("active"));
 
-    const db = getDB();
 
-    const user = db.users.find(
-      u => u.id === savedUser.id
-    );
+if(btn)btn.classList.add("active");
 
-    if(user && user.status !== "inactive"){
 
-      currentUser=user;
+let title=
 
-      openApplication();
+id==="assistant"
 
-    }
+?"Teacher Assistant"
 
-  }catch(e){
+:id
+.replace(/([A-Z])/g," $1")
+.replace(/^./,s=>s.toUpperCase());
 
-    console.log(e);
 
-  }
+document.getElementById("pageTitle").textContent=
+title.trim();
+
+
+if(
+
+id==="submissions"||
+id==="hod"||
+id==="exam"||
+id==="teachers"||
+id==="hodAssign"
+
+){
+
+refreshAll();
+
+}
 
 }
 
 
-/* =========================================================
-   UI
-========================================================= */
+function fillSelect(id,multiple=false){
 
-const pageTitles={
+let el=document.getElementById(id);
 
-  dashboard:"Dashboard",
-  lessonPlan:"Lesson Plan",
-  lessonNote:"Lesson Note",
-  scheme:"Scheme of Work",
-  assessments:"CA & Examinations",
-  submissions:"My Submissions",
-  teachers:"Teacher Management",
-  hodAssignments:"HOD Assignment",
-  approval:"HOD Approval Centre",
-  examOfficer:"Examination Officer",
-  settings:"Settings",
-  backup:"Backup & Restore"
+if(!el)return;
+
+
+let old=[...el.selectedOptions].map(o=>o.value);
+
+
+el.innerHTML=
+
+SUBJECTS
+.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`)
+.join("");
+
+
+if(multiple){
+
+old.forEach(v=>{
+
+let o=[...el.options].find(x=>x.value===v);
+
+if(o)o.selected=true;
+
+});
+
+}
+
+}
+
+
+function populateSubjects(){
+
+["lpSubject","lnSubject","scSubject","aSubject","taSubject"]
+.forEach(id=>fillSelect(id));
+
+
+fillSelect("tSubjects",true);
+
+fillSelect("tHodSubjects",true);
+
+}
+
+
+function refreshAll(){
+
+let db=getDB();
+
+let u=current();
+
+
+document.getElementById("statTeachers").textContent=
+
+db.users.filter(x=>x.role==="teacher").length;
+
+
+document.getElementById("statDocs").textContent=
+
+db.documents.length+db.assessments.length;
+
+
+document.getElementById("statPending").textContent=
+
+db.assessments
+.filter(x=>x.status.startsWith("Pending"))
+.length;
+
+
+document.getElementById("statApproved").textContent=
+
+db.assessments
+.filter(x=>["HOD Approved","Finalized"].includes(x.status))
+.length;
+
+
+renderSubmissions();
+renderHOD();
+renderExam();
+renderTeachers();
+renderHODAssignments();
+loadSettings();
+
+}
+
+
+function collect(ids){
+
+let o={};
+
+ids.forEach(id=>{
+
+let e=document.getElementById(id);
+
+o[id]=e?e.value:"";
+
+});
+
+return o;
+
+}
+
+
+function saveDoc(type){
+
+let u=current();
+
+if(!u)return;
+
+
+let ids=
+
+type==="Lesson Plan"
+
+?[
+
+"lpClass",
+"lpSubject",
+"lpTopic",
+"lpSubtopic",
+"lpDate",
+"lpDuration",
+"lpObjectives",
+"lpPrevious",
+"lpMaterials",
+"lpIntro",
+"lpDevelopment",
+"lpLearner",
+"lpEvaluation",
+"lpConclusion"
+
+]
+
+:
+
+type==="Lesson Note"
+
+?[
+
+"lnClass",
+"lnSubject",
+"lnTopic",
+"lnSubtopic",
+"lnObjectives",
+"lnContent",
+"lnMethods",
+"lnMaterials",
+"lnEvaluation"
+
+]
+
+:[
+
+"scClass",
+"scSubject",
+"scSession",
+"scTerm",
+"scContent"
+
+];
+
+
+let data=collect(ids);
+
+let db=getDB();
+
+
+db.documents.push({
+
+id:uid("doc"),
+type,
+teacherId:u.id,
+created:new Date().toISOString(),
+data
+
+});
+
+
+db.activities.unshift({
+
+text:`${u.fullName} saved ${type}`,
+date:new Date().toISOString()
+
+});
+
+
+saveDB(db);
+
+refreshAll();
+
+alert(type+" saved successfully.");
+
+}
+
+
+function findHOD(subject,db){
+
+return db.users.find(x=>
+
+x.role==="teacher" &&
+x.status==="Active" &&
+x.hodSubjects.includes(subject)
+
+);
+
+}
+
+
+function findExam(db){
+
+return db.users.find(x=>
+
+x.role==="teacher" &&
+x.status==="Active" &&
+x.isExamOfficer===true
+
+);
+
+}
+
+
+function submitAssessment(){
+
+let u=current();
+
+let db=getDB();
+
+let subject=document.getElementById("aSubject").value;
+
+let hod=findHOD(subject,db);
+
+
+if(!hod){
+
+alert(
+"No active HOD has been assigned to this subject. Please ask the Administrator to assign one."
+);
+
+return;
+
+}
+
+
+let a={
+
+id:uid("assess"),
+
+teacherId:u.id,
+
+teacherName:u.fullName,
+
+type:document.getElementById("aType").value,
+
+className:document.getElementById("aClass").value,
+
+subject,
+
+term:document.getElementById("aTerm").value,
+
+session:document.getElementById("aSession").value,
+
+duration:document.getElementById("aDuration").value,
+
+instructions:document.getElementById("aInstructions").value,
+
+objective:document.getElementById("aObjective").value,
+
+theory:document.getElementById("aTheory").value,
+
+marking:document.getElementById("aMarking").value,
+
+status:"Pending HOD",
+
+hodId:hod.id,
+
+hodName:hod.fullName,
+
+created:new Date().toISOString(),
+
+hodComment:"",
+
+examComment:""
 
 };
 
 
-function showPage(page){
-
-  /* Teachers cannot access admin pages */
-
-  if(
-    currentUser.role !== "admin" &&
-    (
-      page==="teachers" ||
-      page==="hodAssignments"
-    )
-  ){
-
-    alert("Administrator access required.");
-    return;
-
-  }
+db.assessments.push(a);
 
 
-  document
-    .querySelectorAll(".page")
-    .forEach(function(p){
+db.activities.unshift({
 
-      p.classList.remove("active");
+text:
+`${u.fullName} submitted ${a.type} in ${subject} to HOD ${hod.fullName}`,
 
-    });
+date:new Date().toISOString()
 
-
-  const selected =
-    document.getElementById(
-      "page-" + page
-    );
-
-  if(selected){
-    selected.classList.add("active");
-  }
+});
 
 
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(function(btn){
+saveDB(db);
 
-      btn.classList.remove("active");
+refreshAll();
 
-    });
-
-
-  document.getElementById("topTitle")
-    .textContent =
-    pageTitles[page] || "Dashboard";
-
-
-  if(page==="teachers"){
-    renderTeachers();
-  }
-
-  if(page==="hodAssignments"){
-    renderHodAssignments();
-  }
-
-  if(page==="approval"){
-    renderHODApproval();
-  }
-
-  if(page==="examOfficer"){
-    renderExamOfficer();
-  }
-
-  if(page==="submissions"){
-    renderMySubmissions();
-  }
-
-  if(page==="settings"){
-    loadSchoolSettings();
-  }
-
-  if(page==="dashboard"){
-    updateDashboard();
-  }
-
-
-  document.getElementById("sidebar")
-    .classList.remove("open");
+alert("Submitted successfully to the Subject HOD.");
 
 }
 
 
-function toggleSidebar(){
+function renderSubmissions(){
 
-  document.getElementById("sidebar")
-    .classList.toggle("open");
+let u=current();
 
-}
-
-
-function updateUserInterface(){
-
-  const name =
-    currentUser.fullName || "User";
-
-  document.getElementById("userName")
-    .textContent=name;
-
-  document.getElementById("userRole")
-    .textContent=
-    currentUser.role==="admin"
-      ? "Administrator"
-      : "Teacher";
-
-  document.getElementById("userAvatar")
-    .textContent=
-    name.charAt(0).toUpperCase();
-
-}
+if(!u)return;
 
 
-/* =========================================================
-   SUBJECT SELECTS
-========================================================= */
+let arr=getDB().assessments
+.filter(a=>a.teacherId===u.id);
 
-function populateSubjectSelect(id){
 
-  const select =
-    document.getElementById(id);
+document.getElementById("submissionList").innerHTML=
 
-  if(!select){
-    return;
-  }
+arr.length
 
-  select.innerHTML="";
+?
 
-  SUBJECTS.forEach(function(subject){
+`<table>
 
-    const option =
-      document.createElement("option");
+<tr>
+<th>Type</th>
+<th>Subject</th>
+<th>Class</th>
+<th>Status</th>
+<th>Comments</th>
+</tr>
 
-    option.value=subject;
-    option.textContent=subject;
+${arr.map(a=>`
 
-    select.appendChild(option);
+<tr>
 
-  });
+<td>${esc(a.type)}</td>
+
+<td>${esc(a.subject)}</td>
+
+<td>${esc(a.className)}</td>
+
+<td>${badge(a.status)}</td>
+
+<td>${esc(a.hodComment||a.examComment||"")}</td>
+
+</tr>
+
+`).join("")}
+
+</table>`
+
+:
+
+"<p class='muted'>No assessment submissions yet.</p>";
 
 }
 
 
-function populateAllSubjectSelects(){
+function badge(s){
 
-  [
-    "lpSubject",
-    "lnSubject",
-    "swSubject",
-    "assessmentSubject"
-  ].forEach(populateSubjectSelect);
+let c=
 
+s==="Finalized"||s==="HOD Approved"
 
-  const teacherSubjects =
-    document.getElementById(
-      "teacherSubjects"
-    );
+?"green"
 
-  const teacherHodSubjects =
-    document.getElementById(
-      "teacherHodSubjects"
-    );
+:s.includes("Rejected")
+
+?"red"
+
+:"orange";
 
 
-  if(teacherSubjects){
-
-    teacherSubjects.innerHTML="";
-
-    SUBJECTS.forEach(function(subject){
-
-      const option =
-        document.createElement("option");
-
-      option.value=subject;
-      option.textContent=subject;
-
-      teacherSubjects.appendChild(option);
-
-    });
-
-  }
-
-
-  if(teacherHodSubjects){
-
-    teacherHodSubjects.innerHTML="";
-
-    SUBJECTS.forEach(function(subject){
-
-      const option =
-        document.createElement("option");
-
-      option.value=subject;
-      option.textContent=subject;
-
-      teacherHodSubjects.appendChild(option);
-
-    });
-
-  }
+return `<span class="badge ${c}">
+${esc(s)}
+</span>`;
 
 }
 
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+function renderHOD(){
 
-function updateDashboard(){
+let u=current();
 
-  const db=getDB();
 
-  document.getElementById("statTeachers")
-    .textContent=
-    db.users.filter(
-      u=>u.role==="teacher"
-    ).length;
+if(
 
-  document.getElementById("statDocuments")
-    .textContent=
-    db.documents.length;
+!u ||
+u.role!=="teacher" ||
+!u.hodSubjects.length
 
-  document.getElementById("statPending")
-    .textContent=
-    db.assessments.filter(
-      a =>
-        a.status==="Pending HOD" ||
-        a.status==="Pending Examination Officer"
-    ).length;
+){
 
-  document.getElementById("statApproved")
-    .textContent=
-    db.assessments.filter(
-      a=>a.status==="Finalized"
-    ).length;
+document.getElementById("hodList").innerHTML=
+
+"<p class='muted'>You are not assigned as HOD for any subject.</p>";
+
+return;
 
 }
 
 
-/* =========================================================
-   TEACHER MANAGEMENT
-========================================================= */
+let arr=getDB().assessments.filter(a=>
 
-function openTeacherModal(id=null){
+a.hodId===u.id &&
+a.status==="Pending HOD"
 
-  if(currentUser.role!=="admin"){
-
-    alert(
-      "Only the Administrator can create teachers."
-    );
-
-    return;
-  }
-
-  populateAllSubjectSelects();
-
-  document.getElementById(
-    "teacherModal"
-  ).classList.add("show");
+);
 
 
-  document.getElementById(
-    "teacherModalTitle"
-  ).textContent =
-    id ? "Edit Teacher" : "Add Teacher";
+document.getElementById("hodList").innerHTML=
 
+arr.length
 
-  document.getElementById(
-    "teacherEditId"
-  ).value=id || "";
+?
 
+arr.map(a=>assessmentCard(a,"hod")).join("")
 
-  if(!id){
+:
 
-    document.getElementById(
-      "teacherName"
-    ).value="";
-
-    document.getElementById(
-      "teacherUsername"
-    ).value="";
-
-    document.getElementById(
-      "teacherPassword"
-    ).value="";
-
-    document.getElementById(
-      "teacherStatus"
-    ).value="active";
-
-    clearMultiSelect("teacherSubjects");
-
-    clearMultiSelect("teacherHodSubjects");
-
-    document.getElementById(
-      "teacherExamOfficer"
-    ).checked=false;
-
-    return;
-  }
-
-
-  const db=getDB();
-
-  const teacher =
-    db.users.find(
-      u=>u.id===id &&
-         u.role==="teacher"
-    );
-
-  if(!teacher){
-    return;
-  }
-
-
-  document.getElementById(
-    "teacherName"
-  ).value=teacher.fullName || "";
-
-  document.getElementById(
-    "teacherUsername"
-  ).value=teacher.username || "";
-
-  document.getElementById(
-    "teacherPassword"
-  ).value=teacher.password || "";
-
-  document.getElementById(
-    "teacherStatus"
-  ).value=teacher.status || "active";
-
-  setMultiSelect(
-    "teacherSubjects",
-    teacher.subjects || []
-  );
-
-  setMultiSelect(
-    "teacherHodSubjects",
-    teacher.hodSubjects || []
-  );
-
-  document.getElementById(
-    "teacherExamOfficer"
-  ).checked=
-    !!teacher.isExamOfficer;
+"<p class='muted'>No pending HOD submissions.</p>";
 
 }
 
 
-function closeTeacherModal(){
+function renderExam(){
 
-  document.getElementById(
-    "teacherModal"
-  ).classList.remove("show");
-
-}
+let u=current();
 
 
-function getMultiSelectValues(id){
+if(!u||!u.isExamOfficer){
 
-  const select =
-    document.getElementById(id);
+document.getElementById("examList").innerHTML=
 
-  return Array.from(
-    select.selectedOptions
-  ).map(option=>option.value);
+"<p class='muted'>You are not assigned as Examination Officer.</p>";
+
+return;
 
 }
 
 
-function setMultiSelect(id,values){
+let arr=getDB().assessments.filter(a=>
 
-  const select =
-    document.getElementById(id);
+a.status==="Pending Examination Officer"
 
-  Array.from(
-    select.options
-  ).forEach(function(option){
+);
 
-    option.selected =
-      values.includes(option.value);
 
-  });
+document.getElementById("examList").innerHTML=
+
+arr.length
+
+?
+
+arr.map(a=>assessmentCard(a,"exam")).join("")
+
+:
+
+"<p class='muted'>No assessments awaiting Examination Officer review.</p>";
 
 }
 
 
-function clearMultiSelect(id){
+function assessmentCard(a,mode){
 
-  const select =
-    document.getElementById(id);
+return `
 
-  Array.from(
-    select.options
-  ).forEach(function(option){
+<div class="card" style="margin-bottom:12px">
 
-    option.selected=false;
+<h3>
+${esc(a.type)} — ${esc(a.subject)}
+</h3>
 
-  });
+<p>
+<b>Class:</b> ${esc(a.className)}
+&nbsp;
+<b>Term:</b> ${esc(a.term)}
+&nbsp;
+<b>Session:</b> ${esc(a.session)}
+</p>
+
+<p>
+<b>Teacher:</b> ${esc(a.teacherName)}
+</p>
+
+<details style="margin-top:10px">
+
+<summary>View questions</summary>
+
+<p style="white-space:pre-wrap;margin-top:8px">
+${esc(a.objective)}
+
+${esc(a.theory)}
+</p>
+
+</details>
+
+<textarea
+id="comment_${a.id}"
+placeholder="Comment">
+</textarea>
+
+<div class="actions">
+
+${
+mode==="hod"
+
+?
+
+`<button
+class="btn primary"
+onclick="approveHOD('${a.id}')">
+Approve to Exam Officer
+</button>`
+
+:""
+
+}
+
+<button
+class="btn danger"
+onclick="rejectAssessment('${a.id}','${mode}')">
+Reject
+</button>
+
+${
+mode==="exam"
+
+?
+
+`<button
+class="btn primary"
+onclick="finalizeAssessment('${a.id}')">
+Finalize & Generate Word
+</button>`
+
+:""
+
+}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function approveHOD(id){
+
+let db=getDB();
+
+let a=db.assessments.find(x=>x.id===id);
+
+let u=current();
+
+let ex=findExam(db);
+
+
+if(!ex){
+
+alert(
+"No active Examination Officer has been assigned. Ask the Administrator to assign one."
+);
+
+return;
+
+}
+
+
+a.hodComment=
+document.getElementById("comment_"+id).value;
+
+a.hodReviewer=u.fullName;
+
+a.status="Pending Examination Officer";
+
+a.examOfficerId=ex.id;
+
+a.examOfficerName=ex.fullName;
+
+
+db.activities.unshift({
+
+text:
+`${u.fullName} approved ${a.subject} assessment and sent it to ${ex.fullName}`,
+
+date:new Date().toISOString()
+
+});
+
+
+saveDB(db);
+
+refreshAll();
+
+alert(
+"Approved and automatically sent to the Examination Officer."
+);
+
+}
+
+
+function rejectAssessment(id,mode){
+
+let db=getDB();
+
+let a=db.assessments.find(x=>x.id===id);
+
+let u=current();
+
+let c=
+document.getElementById("comment_"+id).value ||
+"Rejected";
+
+
+a.status=
+
+mode==="hod"
+
+?"Rejected by HOD"
+
+:"Rejected by Examination Officer";
+
+
+if(mode==="hod")
+a.hodComment=c;
+else
+a.examComment=c;
+
+
+db.activities.unshift({
+
+text:
+`${u.fullName} rejected ${a.subject} assessment`,
+
+date:new Date().toISOString()
+
+});
+
+
+saveDB(db);
+
+refreshAll();
+
+}
+
+
+function finalizeAssessment(id){
+
+let db=getDB();
+
+let a=db.assessments.find(x=>x.id===id);
+
+let u=current();
+
+
+a.examComment=
+document.getElementById("comment_"+id).value;
+
+a.examReviewer=u.fullName;
+
+a.status="Finalized";
+
+
+db.activities.unshift({
+
+text:
+`${u.fullName} finalized ${a.subject} assessment`,
+
+date:new Date().toISOString()
+
+});
+
+
+saveDB(db);
+
+refreshAll();
+
+generateWord(a);
+
+}
+
+
+async function generateWord(a){
+
+let w=window.open("","_blank");
+
+
+if(!w){
+
+alert(
+"Please allow pop-ups to generate the Word document."
+);
+
+return;
+
+}
+
+
+w.document.write("<p>Preparing Word document...</p>");
+
+
+try{
+
+if(!window.docx){
+
+await loadScript(
+"https://cdn.jsdelivr.net/npm/docx@9.5.1/build/index.umd.js"
+);
+
+}
+
+
+const {
+Document,
+Packer,
+Paragraph,
+HeadingLevel
+}=window.docx;
+
+
+let children=[
+
+new Paragraph({
+text:"CALIPHATE TARBIYA ACADEMY",
+heading:HeadingLevel.TITLE
+}),
+
+new Paragraph({
+text:a.type
+}),
+
+new Paragraph({
+text:`Subject: ${a.subject} | Class: ${a.className}`
+}),
+
+new Paragraph({
+text:`Session: ${a.session} | ${a.term} | Duration: ${a.duration}`
+}),
+
+new Paragraph({
+text:`Teacher: ${a.teacherName}`
+}),
+
+new Paragraph({
+text:"Instructions",
+heading:HeadingLevel.HEADING_1
+}),
+
+new Paragraph(
+a.instructions||"Answer as instructed."
+),
+
+new Paragraph({
+text:"Objective Questions",
+heading:HeadingLevel.HEADING_1
+})
+
+];
+
+
+(a.objective||"")
+.split(/\n/)
+.forEach(x=>children.push(new Paragraph(x)));
+
+
+children.push(
+
+new Paragraph({
+text:"Theory Questions",
+heading:HeadingLevel.HEADING_1
+})
+
+);
+
+
+(a.theory||"")
+.split(/\n/)
+.forEach(x=>children.push(new Paragraph(x)));
+
+
+children.push(
+
+new Paragraph({
+text:"Marking Scheme",
+heading:HeadingLevel.HEADING_1
+})
+
+);
+
+
+(a.marking||"")
+.split(/\n/)
+.forEach(x=>children.push(new Paragraph(x)));
+
+
+let doc=new Document({
+
+sections:[{
+children
+}]
+
+});
+
+
+let blob=await Packer.toBlob(doc);
+
+let url=URL.createObjectURL(blob);
+
+w.location.href=url;
+
+
+}catch(e){
+
+w.document.body.innerHTML=
+
+"<p>Word generation failed. Check your internet connection and try again.</p>";
+
+}
+
+}
+
+
+function loadScript(src){
+
+return new Promise((res,rej)=>{
+
+let s=document.createElement("script");
+
+s.src=src;
+
+s.onload=res;
+
+s.onerror=rej;
+
+document.head.appendChild(s);
+
+});
+
+}
+
+
+/* TEACHER MANAGEMENT */
+
+function renderTeachers(){
+
+let db=getDB();
+
+if(current()?.role!=="admin")return;
+
+
+let arr=db.users.filter(x=>x.role==="teacher");
+
+
+document.getElementById("teacherList").innerHTML=
+
+arr.length
+
+?
+
+`<table>
+
+<tr>
+
+<th>Name</th>
+<th>Username</th>
+<th>Status</th>
+<th>Subjects</th>
+<th>HOD</th>
+<th>Exam Officer</th>
+<th>Action</th>
+
+</tr>
+
+${arr.map(t=>`
+
+<tr>
+
+<td>${esc(t.fullName)}</td>
+
+<td>${esc(t.username)}</td>
+
+<td>${esc(t.status)}</td>
+
+<td>${esc(t.subjects.join(", "))}</td>
+
+<td>${esc(t.hodSubjects.join(", "))}</td>
+
+<td>${t.isExamOfficer?"Yes":"No"}</td>
+
+<td>
+
+<button
+class="btn danger"
+onclick="deleteTeacher('${t.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</table>`
+
+:
+
+"<p class='muted'>No teachers created yet.</p>";
+
+}
+
+
+function selected(id){
+
+return [...document
+.getElementById(id)
+.selectedOptions]
+.map(o=>o.value);
 
 }
 
 
 function saveTeacher(){
 
-  if(currentUser.role!=="admin"){
+if(current()?.role!=="admin"){
 
-    alert(
-      "Only the Administrator can create teachers."
-    );
+alert(
+"Only the Administrator can create teachers."
+);
 
-    return;
-  }
-
-
-  const db=getDB();
-
-  const editId =
-    document.getElementById(
-      "teacherEditId"
-    ).value;
-
-
-  const fullName =
-    document.getElementById(
-      "teacherName"
-    ).value.trim();
-
-  const username =
-    document.getElementById(
-      "teacherUsername"
-    ).value.trim();
-
-  const password =
-    document.getElementById(
-      "teacherPassword"
-    ).value;
-
-  const status =
-    document.getElementById(
-      "teacherStatus"
-    ).value;
-
-  const subjects =
-    getMultiSelectValues(
-      "teacherSubjects"
-    );
-
-  const hodSubjects =
-    getMultiSelectValues(
-      "teacherHodSubjects"
-    );
-
-  const isExamOfficer =
-    document.getElementById(
-      "teacherExamOfficer"
-    ).checked;
-
-
-  if(!fullName ||
-     !username ||
-     !password){
-
-    alert(
-      "Please enter name, username and password."
-    );
-
-    return;
-  }
-
-
-  const duplicate =
-    db.users.find(function(user){
-
-      return user.username===username &&
-             user.id!==editId;
-
-    });
-
-
-  if(duplicate){
-
-    alert(
-      "That username already exists."
-    );
-
-    return;
-  }
-
-
-  /*
-    HOD subjects must be among subjects taught.
-  */
-
-  const invalidHOD =
-    hodSubjects.filter(
-      subject =>
-        !subjects.includes(subject)
-    );
-
-
-  if(invalidHOD.length){
-
-    alert(
-      "A teacher can only be HOD for a subject they teach:\n\n" +
-      invalidHOD.join(", ")
-    );
-
-    return;
-  }
-
-
-  if(editId){
-
-    const teacher =
-      db.users.find(
-        u=>u.id===editId
-      );
-
-    if(!teacher){
-      alert("Teacher not found.");
-      return;
-    }
-
-
-    teacher.fullName=fullName;
-    teacher.username=username;
-    teacher.password=password;
-    teacher.status=status;
-    teacher.subjects=subjects;
-    teacher.hodSubjects=hodSubjects;
-    teacher.isExamOfficer=isExamOfficer;
-
-
-    addActivity(
-      "Teacher Updated",
-      fullName
-    );
-
-  }else{
-
-    db.users.push({
-
-      id:uid("teacher"),
-      role:"teacher",
-      fullName:fullName,
-      username:username,
-      password:password,
-      status:status,
-      subjects:subjects,
-      hodSubjects:hodSubjects,
-      isExamOfficer:isExamOfficer
-
-    });
-
-
-    addActivity(
-      "Teacher Created",
-      fullName
-    );
-
-  }
-
-
-  saveDB(db);
-
-  closeTeacherModal();
-
-  renderTeachers();
-
-  updateDashboard();
-
-  alert(
-    "Teacher account saved successfully."
-  );
+return;
 
 }
 
 
-function renderTeachers(){
+let name=
+document.getElementById("tName").value.trim();
 
-  const container =
-    document.getElementById(
-      "teacherTable"
-    );
+let un=
+document.getElementById("tUser").value.trim();
 
-  if(!container){
-    return;
-  }
+let pw=
+document.getElementById("tPass").value;
 
+let subs=selected("tSubjects");
 
-  if(currentUser.role!=="admin"){
-
-    container.innerHTML=
-      '<div class="empty">Administrator access required.</div>';
-
-    return;
-  }
+let hods=selected("tHodSubjects");
 
 
-  const db=getDB();
+if(!name||!un||!pw){
 
-  const teachers =
-    db.users.filter(
-      u=>u.role==="teacher"
-    );
+alert(
+"Full name, username and password are required."
+);
 
+return;
 
-  if(!teachers.length){
-
-    container.innerHTML=
-      '<div class="empty">No teachers created yet.</div>';
-
-    return;
-  }
+}
 
 
-  let html=`
+if(pw.length<6){
 
-    <div class="table-wrapper">
+alert(
+"Teacher password must be at least 6 characters."
+);
 
-      <table class="data-table">
+return;
 
-        <thead>
-
-          <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Subjects</th>
-            <th>HOD Subjects</th>
-            <th>Exam Officer</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-  `;
+}
 
 
-  teachers.forEach(function(teacher){
+if(!subs.length){
 
-    html+=`
+alert(
+"Select at least one subject."
+);
 
-      <tr>
+return;
 
-        <td>
-          <strong>
-            ${escapeHTML(teacher.fullName)}
-          </strong>
-        </td>
-
-        <td>
-          ${escapeHTML(teacher.username)}
-        </td>
-
-        <td>
-          ${
-            (teacher.subjects || [])
-              .map(escapeHTML)
-              .join(", ") || "-"
-          }
-        </td>
-
-        <td>
-          ${
-            (teacher.hodSubjects || [])
-              .map(escapeHTML)
-              .join(", ") || "-"
-          }
-        </td>
-
-        <td>
-          ${
-            teacher.isExamOfficer
-              ? '<span class="badge success">Yes</span>'
-              : '<span class="badge">No</span>'
-          }
-        </td>
-
-        <td>
-          ${
-            teacher.status==="active"
-              ? '<span class="badge success">Active</span>'
-              : '<span class="badge danger">Inactive</span>'
-          }
-        </td>
-
-        <td>
-
-          <div class="action-row">
-
-            <button
-              class="btn btn-primary"
-              onclick="openTeacherModal('${teacher.id}')">
-              Edit
-            </button>
-
-            <button
-              class="btn btn-danger"
-              onclick="deleteTeacher('${teacher.id}')">
-              Delete
-            </button>
-
-          </div>
-
-        </td>
-
-      </tr>
-
-    `;
-
-  });
+}
 
 
-  html+=`
+if(hods.some(x=>!subs.includes(x))){
 
-        </tbody>
+alert(
+"Every HOD subject must also be in Subjects Taught."
+);
 
-      </table>
+return;
 
-    </div>
-
-  `;
+}
 
 
-  container.innerHTML=html;
+let db=getDB();
+
+
+if(db.users.some(x=>
+
+x.username.toLowerCase()===un.toLowerCase()
+
+)){
+
+alert("Username already exists.");
+
+return;
+
+}
+
+
+if(document.getElementById("tExam").checked){
+
+db.users.forEach(x=>{
+
+if(x.role==="teacher")
+x.isExamOfficer=false;
+
+});
+
+}
+
+
+db.users.push({
+
+id:uid("teacher"),
+
+role:"teacher",
+
+fullName:name,
+
+username:un,
+
+password:pw,
+
+status:document.getElementById("tStatus").value,
+
+subjects:subs,
+
+hodSubjects:hods,
+
+isExamOfficer:
+document.getElementById("tExam").checked
+
+});
+
+
+saveDB(db);
+
+clearTeacherForm();
+
+refreshAll();
+
+alert(
+"Teacher account created successfully."
+);
+
+}
+
+
+function clearTeacherForm(){
+
+["tName","tUser","tPass"]
+.forEach(id=>
+document.getElementById(id).value=""
+);
+
+
+document.getElementById("tSubjects").selectedIndex=-1;
+
+document.getElementById("tHodSubjects").selectedIndex=-1;
+
+document.getElementById("tExam").checked=false;
 
 }
 
 
 function deleteTeacher(id){
 
-  if(currentUser.role!=="admin"){
-    return;
-  }
+if(current()?.role!=="admin")return;
 
 
-  if(!confirm(
-    "Delete this teacher account?"
-  )){
-    return;
-  }
+let db=getDB();
 
 
-  const db=getDB();
-
-  const teacher =
-    db.users.find(
-      u=>u.id===id
-    );
+if(!confirm(
+"Delete this teacher account?"
+))return;
 
 
-  db.users =
-    db.users.filter(
-      u=>u.id!==id
-    );
+db.users=db.users.filter(x=>x.id!==id);
 
 
-  saveDB(db);
+db.assessments.forEach(a=>{
+
+if(a.hodId===id)
+a.status="Rejected: HOD account deleted";
+
+if(a.examOfficerId===id)
+a.status="Rejected: Examination Officer account deleted";
+
+});
 
 
-  addActivity(
-    "Teacher Deleted",
-    teacher ? teacher.fullName : id
-  );
+saveDB(db);
 
-
-  renderTeachers();
-
-  renderHodAssignments();
-
-  updateDashboard();
+refreshAll();
 
 }
 
 
-/* =========================================================
-   HOD ASSIGNMENT
-========================================================= */
+/* HOD ASSIGNMENT */
 
-function renderHodAssignments(){
+function renderHODAssignments(){
 
-  const container =
-    document.getElementById(
-      "hodAssignmentTable"
-    );
+if(current()?.role!=="admin")return;
 
-  if(!container){
-    return;
-  }
 
+let db=getDB();
 
-  if(!currentUser ||
-     currentUser.role!=="admin"){
 
-    container.innerHTML=
-      '<div class="empty">Administrator access required.</div>';
+document.getElementById("hodAssignmentTable").innerHTML=
 
-    return;
-  }
+`<table>
 
+<tr>
+<th>Subject</th>
+<th>Assigned HOD</th>
+</tr>
 
-  const db=getDB();
+${SUBJECTS.map(s=>{
 
+let h=findHOD(s,db);
 
-  const teachers =
-    db.users.filter(function(user){
+let teachers=db.users.filter(t=>
 
-      return user.role==="teacher" &&
-             user.status!=="inactive";
+t.role==="teacher" &&
+t.status==="Active" &&
+t.subjects.includes(s)
 
-    });
+);
 
 
-  let html=`
+return `
 
-    <div class="table-wrapper">
+<tr>
 
-      <table class="data-table">
+<td>${esc(s)}</td>
 
-        <thead>
+<td>
 
-          <tr>
-            <th>S/N</th>
-            <th>Subject</th>
-            <th>Assigned HOD</th>
-            <th>Status</th>
-          </tr>
+<select
+onchange="assignHOD('${encodeURIComponent(s)}',this.value)">
 
-        </thead>
+<option value="">
+Not assigned
+</option>
 
-        <tbody>
+${teachers.map(t=>`
 
-  `;
+<option
+value="${t.id}"
+${h?.id===t.id?"selected":""}>
 
+${esc(t.fullName)}
 
-  SUBJECTS.forEach(function(subject,index){
+</option>
 
-    const eligibleTeachers =
-      teachers.filter(function(teacher){
+`).join("")}
 
-        return Array.isArray(teacher.subjects) &&
-               teacher.subjects.includes(subject);
+</select>
 
-      });
+</td>
 
+</tr>
 
-    const currentHOD =
-      teachers.find(function(teacher){
+`;
 
-        return Array.isArray(
-          teacher.hodSubjects
-        ) &&
-        teacher.hodSubjects.includes(subject);
+}).join("")}
 
-      });
-
-
-    html+=`
-
-      <tr>
-
-        <td>
-          ${index+1}
-        </td>
-
-        <td>
-          <strong>
-            ${escapeHTML(subject)}
-          </strong>
-        </td>
-
-        <td>
-
-          <select
-            class="form-control"
-            onchange="assignSubjectHOD('${encodeURIComponent(subject)}',this.value)"
-            ${eligibleTeachers.length===0 ? "disabled":""}>
-
-            <option value="">
-              ${
-                eligibleTeachers.length
-                ? "Select HOD"
-                : "No teacher assigned to this subject"
-              }
-            </option>
-
-    `;
-
-
-    eligibleTeachers.forEach(function(teacher){
-
-      const selected =
-        currentHOD &&
-        currentHOD.id===teacher.id
-          ? "selected"
-          : "";
-
-
-      html+=`
-
-        <option
-          value="${teacher.id}"
-          ${selected}>
-
-          ${escapeHTML(
-            teacher.fullName
-          )}
-
-        </option>
-
-      `;
-
-    });
-
-
-    html+=`
-
-          </select>
-
-        </td>
-
-        <td>
-
-          ${
-            currentHOD
-
-            ?
-
-            `
-              <span class="badge success">
-                ✓ ${escapeHTML(currentHOD.fullName)}
-              </span>
-            `
-
-            :
-
-            `
-              <span class="badge warning">
-                Not Assigned
-              </span>
-            `
-          }
-
-        </td>
-
-      </tr>
-
-    `;
-
-  });
-
-
-  html+=`
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-
-
-  container.innerHTML=html;
+</table>`;
 
 }
 
 
-function assignSubjectHOD(
-  encodedSubject,
-  teacherId
-){
+function assignHOD(encoded,id){
 
-  if(!currentUser ||
-     currentUser.role!=="admin"){
+let subject=decodeURIComponent(encoded);
 
-    alert(
-      "Only the Administrator can assign HODs."
-    );
-
-    return;
-  }
+let db=getDB();
 
 
-  const subject =
-    decodeURIComponent(
-      encodedSubject
-    );
+db.users
+.filter(x=>x.role==="teacher")
+.forEach(t=>{
+
+t.hodSubjects=
+(t.hodSubjects||[])
+.filter(s=>s!==subject);
+
+});
 
 
-  const db=getDB();
+if(id){
+
+let t=db.users.find(x=>x.id===id);
 
 
-  /*
-    Remove this subject from all teachers first.
-    This guarantees one HOD per subject.
-  */
+if(t&&!t.subjects.includes(subject)){
 
-  db.users.forEach(function(user){
+alert(
+"That teacher does not teach this subject."
+);
 
-    if(user.role==="teacher"){
-
-      if(!Array.isArray(
-        user.hodSubjects
-      )){
-        user.hodSubjects=[];
-      }
-
-
-      user.hodSubjects =
-        user.hodSubjects.filter(
-          item=>item!==subject
-        );
-
-    }
-
-  });
-
-
-  if(!teacherId){
-
-    saveDB(db);
-
-    renderHodAssignments();
-
-    return;
-  }
-
-
-  const teacher =
-    db.users.find(function(user){
-
-      return user.id===teacherId &&
-             user.role==="teacher";
-
-    });
-
-
-  if(!teacher){
-
-    alert(
-      "Teacher account not found."
-    );
-
-    renderHodAssignments();
-
-    return;
-  }
-
-
-  if(!Array.isArray(
-    teacher.subjects
-  ) ||
-  !teacher.subjects.includes(subject)){
-
-    alert(
-      teacher.fullName +
-      " does not teach " +
-      subject +
-      "."
-    );
-
-    renderHodAssignments();
-
-    return;
-  }
-
-
-  if(!Array.isArray(
-    teacher.hodSubjects
-  )){
-    teacher.hodSubjects=[];
-  }
-
-
-  teacher.hodSubjects.push(subject);
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "HOD Assigned",
-    subject +
-    " → " +
-    teacher.fullName
-  );
-
-
-  /*
-    Update currentUser if the selected teacher
-    happens to be the currently logged-in user.
-  */
-
-  if(currentUser.id===teacher.id){
-
-    currentUser=teacher;
-
-    localStorage.setItem(
-      CURRENT_USER_KEY,
-      JSON.stringify(currentUser)
-    );
-
-  }
-
-
-  renderHodAssignments();
-
-
-  alert(
-    subject +
-    " HOD successfully assigned to " +
-    teacher.fullName
-  );
+return;
 
 }
 
 
-/* =========================================================
-   FIND HOD
-========================================================= */
-
-function findHODForSubject(
-  subject,
-  db
-){
-
-  return db.users.find(function(user){
-
-    return user.role==="teacher" &&
-           user.status!=="inactive" &&
-           Array.isArray(user.hodSubjects) &&
-           user.hodSubjects.includes(subject);
-
-  }) || null;
+t.hodSubjects.push(subject);
 
 }
 
 
-/* =========================================================
-   FIND EXAM OFFICER
-========================================================= */
+saveDB(db);
 
-function findExamOfficer(db){
-
-  return db.users.find(function(user){
-
-    return user.role==="teacher" &&
-           user.status!=="inactive" &&
-           user.isExamOfficer===true;
-
-  }) || null;
+refreshAll();
 
 }
 
 
-/* =========================================================
-   ASSESSMENT SUBMISSION
-========================================================= */
+/* SETTINGS */
 
-function submitAssessment(){
+function loadSettings(){
 
-  const db=getDB();
+let db=getDB();
 
 
-  const type =
-    document.getElementById(
-      "assessmentType"
-    ).value;
+document.getElementById("setName").value=
+db.school.name||"";
 
-  const className =
-    document.getElementById(
-      "assessmentClass"
-    ).value.trim();
+document.getElementById("setMotto").value=
+db.school.motto||"";
 
-  const subject =
-    document.getElementById(
-      "assessmentSubject"
-    ).value;
+document.getElementById("setAddress").value=
+db.school.address||"";
 
-  const term =
-    document.getElementById(
-      "assessmentTerm"
-    ).value;
-
-  const session =
-    document.getElementById(
-      "assessmentSession"
-    ).value.trim();
-
-  const duration =
-    document.getElementById(
-      "assessmentDuration"
-    ).value.trim();
-
-  const instructions =
-    document.getElementById(
-      "assessmentInstructions"
-    ).value.trim();
-
-  const objective =
-    document.getElementById(
-      "assessmentObjective"
-    ).value.trim();
-
-  const theory =
-    document.getElementById(
-      "assessmentTheory"
-    ).value.trim();
-
-  const marking =
-    document.getElementById(
-      "assessmentMarking"
-    ).value.trim();
-
-
-  if(!className ||
-     !subject ||
-     !session){
-
-    alert(
-      "Please enter class, subject and session."
-    );
-
-    return;
-  }
-
-
-  const hod =
-    findHODForSubject(
-      subject,
-      db
-    );
-
-
-  if(!hod){
-
-    alert(
-      "No HOD has been assigned for " +
-      subject +
-      ".\n\nPlease ask the Administrator to assign an HOD for this subject before submitting."
-    );
-
-    return;
-  }
-
-
-  const assessment={
-
-    id:uid("assessment"),
-
-    type:type,
-
-    className:className,
-
-    subject:subject,
-
-    term:term,
-
-    session:session,
-
-    duration:duration,
-
-    instructions:instructions,
-
-    objective:objective,
-
-    theory:theory,
-
-    marking:marking,
-
-    teacherId:currentUser.id,
-
-    teacherName:currentUser.fullName,
-
-    hodId:hod.id,
-
-    hodName:hod.fullName,
-
-    examOfficerId:null,
-
-    examOfficerName:null,
-
-    status:"Pending HOD",
-
-    hodComment:"",
-
-    examOfficerComment:"",
-
-    createdAt:new Date().toISOString(),
-
-    finalizedAt:null
-
-  };
-
-
-  db.assessments.push(
-    assessment
-  );
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "Assessment Submitted",
-    type +
-    " - " +
-    subject +
-    " sent to HOD " +
-    hod.fullName
-  );
-
-
-  alert(
-    "Submitted successfully.\n\n" +
-    "HOD: " +
-    hod.fullName
-  );
-
-
-  document.getElementById(
-    "assessmentObjective"
-  ).value="";
-
-  document.getElementById(
-    "assessmentTheory"
-  ).value="";
-
-  document.getElementById(
-    "assessmentMarking"
-  ).value="";
-
-
-  renderMySubmissions();
-
-  updateDashboard();
+document.getElementById("setContact").value=
+db.school.contact||"";
 
 }
 
 
-/* =========================================================
-   MY SUBMISSIONS
-========================================================= */
+function saveSettings(){
 
-function renderMySubmissions(){
-
-  const container =
-    document.getElementById(
-      "mySubmissions"
-    );
-
-  if(!container){
-    return;
-  }
+if(current()?.role!=="admin")return;
 
 
-  const db=getDB();
+let db=getDB();
 
 
-  const list =
-    db.assessments.filter(
-      a=>a.teacherId===currentUser.id
-    );
+db.school={
+
+name:document.getElementById("setName").value,
+
+motto:document.getElementById("setMotto").value,
+
+address:document.getElementById("setAddress").value,
+
+contact:document.getElementById("setContact").value
+
+};
 
 
-  if(!list.length){
+saveDB(db);
 
-    container.innerHTML=
-      '<div class="empty">No assessment submissions yet.</div>';
+openApp();
 
-    return;
-  }
-
-
-  let html=`
-
-    <div class="table-wrapper">
-
-      <table class="data-table">
-
-        <thead>
-
-          <tr>
-            <th>Type</th>
-            <th>Subject</th>
-            <th>Class</th>
-            <th>HOD</th>
-            <th>Status</th>
-            <th>Date</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-  `;
-
-
-  list.forEach(function(a){
-
-    let badge="warning";
-
-    if(a.status==="Approved by HOD"){
-      badge="info";
-    }
-
-    if(a.status==="Finalized"){
-      badge="success";
-    }
-
-    if(a.status==="Rejected"){
-      badge="danger";
-    }
-
-
-    html+=`
-
-      <tr>
-
-        <td>${escapeHTML(a.type)}</td>
-
-        <td>${escapeHTML(a.subject)}</td>
-
-        <td>${escapeHTML(a.className)}</td>
-
-        <td>${escapeHTML(a.hodName)}</td>
-
-        <td>
-          <span class="badge ${badge}">
-            ${escapeHTML(a.status)}
-          </span>
-        </td>
-
-        <td>
-          ${formatDate(a.createdAt)}
-        </td>
-
-      </tr>
-
-    `;
-
-  });
-
-
-  html+=`
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-
-
-  container.innerHTML=html;
+alert("School settings saved.");
 
 }
 
 
-/* =========================================================
-   HOD APPROVAL CENTRE
-========================================================= */
+/* BACKUP */
 
-function renderHODApproval(){
+function backup(){
 
-  const container =
-    document.getElementById(
-      "hodApprovalList"
-    );
+let blob=new Blob(
 
-  if(!container){
-    return;
-  }
+[JSON.stringify(getDB(),null,2)],
+
+{type:"application/json"}
+
+);
 
 
-  const db=getDB();
+let a=document.createElement("a");
 
+a.href=URL.createObjectURL(blob);
 
-  const list =
-    db.assessments.filter(function(a){
+a.download="CTA-backup.json";
 
-      return a.hodId===currentUser.id &&
-             a.status==="Pending HOD";
-
-    });
-
-
-  if(!list.length){
-
-    container.innerHTML=
-      '<div class="empty">No assessments are waiting for your HOD review.</div>';
-
-    return;
-  }
-
-
-  let html="";
-
-
-  list.forEach(function(a){
-
-    html+=`
-
-      <div class="review-box">
-
-        <h3>
-          ${escapeHTML(a.type)}
-          — ${escapeHTML(a.subject)}
-        </h3>
-
-        <p>
-          <strong>Class:</strong>
-          ${escapeHTML(a.className)}
-        </p>
-
-        <p>
-          <strong>Teacher:</strong>
-          ${escapeHTML(a.teacherName)}
-        </p>
-
-        <p>
-          <strong>Term:</strong>
-          ${escapeHTML(a.term)}
-        </p>
-
-        <p>
-          <strong>Session:</strong>
-          ${escapeHTML(a.session)}
-        </p>
-
-        <div class="action-row">
-
-          <button
-            class="btn btn-primary"
-            onclick="openReview('${a.id}')">
-            Review
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-
-  container.innerHTML=html;
+a.click();
 
 }
 
 
-/* =========================================================
-   EXAMINATION OFFICER
-========================================================= */
+function restore(e){
 
-function renderExamOfficer(){
+let f=e.target.files[0];
 
-  const container =
-    document.getElementById(
-      "examOfficerList"
-    );
-
-  if(!container){
-    return;
-  }
+if(!f)return;
 
 
-  const db=getDB();
+let r=new FileReader();
 
 
-  if(
-    currentUser.role!=="admin" &&
-    !currentUser.isExamOfficer
-  ){
+r.onload=()=>{
 
-    container.innerHTML=
-      '<div class="empty">You are not an Examination Officer.</div>';
+try{
 
-    return;
-
-  }
+let x=JSON.parse(r.result);
 
 
-  const list =
-    db.assessments.filter(function(a){
-
-      return a.status==="Pending Examination Officer";
-
-    });
+if(!x.users||!x.school)
+throw Error();
 
 
-  if(!list.length){
+saveDB(x);
 
-    container.innerHTML=
-      '<div class="empty">No HOD-approved assessments are waiting.</div>';
+alert("Backup restored.");
 
-    return;
-  }
+openApp();
 
 
-  let html="";
+}catch(_){
+
+alert("Invalid backup file.");
+
+}
+
+};
 
 
-  list.forEach(function(a){
-
-    html+=`
-
-      <div class="review-box">
-
-        <h3>
-          ${escapeHTML(a.type)}
-          — ${escapeHTML(a.subject)}
-        </h3>
-
-        <p>
-          <strong>Class:</strong>
-          ${escapeHTML(a.className)}
-        </p>
-
-        <p>
-          <strong>Teacher:</strong>
-          ${escapeHTML(a.teacherName)}
-        </p>
-
-        <p>
-          <strong>HOD:</strong>
-          ${escapeHTML(a.hodName)}
-        </p>
-
-        <div class="action-row">
-
-          <button
-            class="btn btn-success"
-            onclick="openExamOfficerReview('${a.id}')">
-            Final Review
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  });
-
-
-  container.innerHTML=html;
+r.readAsText(f);
 
 }
 
 
-/* =========================================================
-   REVIEW MODAL
-========================================================= */
+function resetDemo(){
 
-function openReview(id){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===id
-    );
+if(!confirm(
+"This will erase all local system data. Continue?"
+))return;
 
 
-  if(!assessment){
-    return;
-  }
+localStorage.removeItem(DB_KEY);
 
+localStorage.removeItem(USER_KEY);
 
-  currentReviewId=id;
-
-
-  let html=`
-
-    <div class="review-box">
-
-      <h3>
-        ${escapeHTML(assessment.type)}
-        — ${escapeHTML(assessment.subject)}
-      </h3>
-
-      <p>
-        <strong>Class:</strong>
-        ${escapeHTML(assessment.className)}
-      </p>
-
-      <p>
-        <strong>Teacher:</strong>
-        ${escapeHTML(assessment.teacherName)}
-      </p>
-
-      <p>
-        <strong>Term:</strong>
-        ${escapeHTML(assessment.term)}
-      </p>
-
-      <p>
-        <strong>Session:</strong>
-        ${escapeHTML(assessment.session)}
-      </p>
-
-      <hr>
-
-      <h3>Instructions</h3>
-
-      <p>
-        ${escapeHTML(assessment.instructions)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <h3>Objective Questions</h3>
-
-      <p>
-        ${escapeHTML(assessment.objective)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <h3>Theory Questions</h3>
-
-      <p>
-        ${escapeHTML(assessment.theory)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <h3>Marking Scheme</h3>
-
-      <p>
-        ${escapeHTML(assessment.marking)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <div class="form-group">
-
-        <label>HOD Comment</label>
-
-        <textarea
-          id="reviewComment"
-          class="form-control"
-          placeholder="Enter comment..."></textarea>
-
-      </div>
-
-      <div class="action-row">
-
-        <button
-          class="btn btn-success"
-          onclick="approveByHOD()">
-          ✓ Approve & Send to Examination Officer
-        </button>
-
-        <button
-          class="btn btn-danger"
-          onclick="rejectByHOD()">
-          Reject
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  document.getElementById(
-    "reviewContent"
-  ).innerHTML=html;
-
-
-  document.getElementById(
-    "reviewModal"
-  ).classList.add("show");
+location.reload();
 
 }
 
 
-function closeReviewModal(){
-
-  document.getElementById(
-    "reviewModal"
-  ).classList.remove("show");
-
-  currentReviewId=null;
-
-}
-
-
-function approveByHOD(){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===currentReviewId
-    );
-
-
-  if(!assessment){
-    return;
-  }
-
-
-  const officer =
-    findExamOfficer(db);
-
-
-  if(!officer){
-
-    alert(
-      "No Examination Officer has been assigned.\n\nPlease ask the Administrator to assign an Examination Officer."
-    );
-
-    return;
-  }
-
-
-  assessment.status=
-    "Pending Examination Officer";
-
-  assessment.hodComment =
-    document.getElementById(
-      "reviewComment"
-    ).value.trim();
-
-  assessment.examOfficerId=
-    officer.id;
-
-  assessment.examOfficerName=
-    officer.fullName;
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "HOD Approved Assessment",
-    assessment.subject +
-    " → Examination Officer " +
-    officer.fullName
-  );
-
-
-  closeReviewModal();
-
-  renderHODApproval();
-
-  updateDashboard();
-
-
-  alert(
-    "Approved successfully.\n\n" +
-    "The assessment has been sent to " +
-    officer.fullName +
-    ", the Examination Officer."
-  );
-
-}
-
-
-function rejectByHOD(){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===currentReviewId
-    );
-
-
-  if(!assessment){
-    return;
-  }
-
-
-  const comment =
-    document.getElementById(
-      "reviewComment"
-    ).value.trim();
-
-
-  if(!comment){
-
-    alert(
-      "Please enter a reason for rejection."
-    );
-
-    return;
-  }
-
-
-  assessment.status="Rejected";
-
-  assessment.hodComment=comment;
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "Assessment Rejected",
-    assessment.subject
-  );
-
-
-  closeReviewModal();
-
-  renderHODApproval();
-
-  updateDashboard();
-
-
-  alert(
-    "Assessment rejected."
-  );
-
-}
-
-
-/* =========================================================
-   EXAM OFFICER REVIEW
-========================================================= */
-
-function openExamOfficerReview(id){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===id
-    );
-
-
-  if(!assessment){
-    return;
-  }
-
-
-  currentReviewId=id;
-
-
-  let html=`
-
-    <div class="review-box">
-
-      <h3>
-        ${escapeHTML(assessment.type)}
-        — ${escapeHTML(assessment.subject)}
-      </h3>
-
-      <p>
-        <strong>Class:</strong>
-        ${escapeHTML(assessment.className)}
-      </p>
-
-      <p>
-        <strong>Teacher:</strong>
-        ${escapeHTML(assessment.teacherName)}
-      </p>
-
-      <p>
-        <strong>HOD:</strong>
-        ${escapeHTML(assessment.hodName)}
-      </p>
-
-      <hr>
-
-      <h3>Objective Questions</h3>
-
-      <p>
-        ${escapeHTML(assessment.objective)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <h3>Theory Questions</h3>
-
-      <p>
-        ${escapeHTML(assessment.theory)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <h3>Marking Scheme</h3>
-
-      <p>
-        ${escapeHTML(assessment.marking)
-          .replace(/\n/g,"<br>")}
-      </p>
-
-      <hr>
-
-      <div class="form-group">
-
-        <label>Examination Officer Comment</label>
-
-        <textarea
-          id="examOfficerComment"
-          class="form-control"></textarea>
-
-      </div>
-
-      <div class="action-row">
-
-        <button
-          class="btn btn-success"
-          onclick="finalizeAssessment()">
-
-          ✓ Finalize & Generate Word
-
-        </button>
-
-        <button
-          class="btn btn-danger"
-          onclick="rejectByExamOfficer()">
-
-          Reject
-
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  document.getElementById(
-    "reviewContent"
-  ).innerHTML=html;
-
-
-  document.getElementById(
-    "reviewModal"
-  ).classList.add("show");
-
-}
-
-
-function finalizeAssessment(){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===currentReviewId
-    );
-
-
-  if(!assessment){
-    return;
-  }
-
-
-  assessment.status="Finalized";
-
-  assessment.examOfficerComment =
-    document.getElementById(
-      "examOfficerComment"
-    ).value.trim();
-
-  assessment.finalizedAt =
-    new Date().toISOString();
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "Assessment Finalized",
-    assessment.subject +
-    " - " +
-    assessment.type
-  );
-
-
-  closeReviewModal();
-
-  renderExamOfficer();
-
-  updateDashboard();
-
-
-  alert(
-    "Assessment finalized successfully.\n\nThe Microsoft Word document will now be generated."
-  );
-
-
-  generateWordDocument(
-    assessment
-  );
-
-}
-
-
-function rejectByExamOfficer(){
-
-  const db=getDB();
-
-  const assessment =
-    db.assessments.find(
-      a=>a.id===currentReviewId
-    );
-
-
-  if(!assessment){
-    return;
-  }
-
-
-  const comment =
-    document.getElementById(
-      "examOfficerComment"
-    ).value.trim();
-
-
-  if(!comment){
-
-    alert(
-      "Please enter a reason for rejection."
-    );
-
-    return;
-  }
-
-
-  assessment.status="Rejected";
-
-  assessment.examOfficerComment=
-    comment;
-
-
-  saveDB(db);
-
-
-  addActivity(
-    "Examination Officer Rejected Assessment",
-    assessment.subject
-  );
-
-
-  closeReviewModal();
-
-  renderExamOfficer();
-
-  updateDashboard();
-
-
-  alert(
-    "Assessment rejected."
-  );
-
-}
-
-
-/* =========================================================
-   WORD DOCUMENT GENERATION
-========================================================= */
-
-function loadDocxLibrary(){
-
-  return new Promise(function(resolve,reject){
-
-    if(window.docx){
-
-      resolve();
-
-      return;
-    }
-
-
-    const script =
-      document.createElement("script");
-
-    script.src=
-      "https://cdn.jsdelivr.net/npm/docx@9.5.1/build/index.umd.js";
-
-
-    script.onload=function(){
-
-      resolve();
-
-    };
-
-
-    script.onerror=function(){
-
-      reject(
-        new Error(
-          "Unable to load Word document library."
-        )
-      );
-
-    };
-
-
-    document.head.appendChild(script);
-
-  });
-
-}
-
-
-async function generateWordDocument(
-  assessment
-){
-
-  try{
-
-    await loadDocxLibrary();
-
-    const {
-
-      Document,
-      Packer,
-      Paragraph,
-      TextRun,
-      HeadingLevel,
-      AlignmentType
-
-    }=window.docx;
-
-
-    const db=getDB();
-
-
-    const school =
-      db.school.name ||
-      "Caliphate Tarbiya Academy";
-
-
-    const children=[];
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:school,
-
-        heading:HeadingLevel.TITLE,
-
-        alignment:
-          AlignmentType.CENTER
-
-      })
-
-    );
-
-
-    if(db.school.motto){
-
-      children.push(
-
-        new Paragraph({
-
-          text:db.school.motto,
-
-          alignment:
-            AlignmentType.CENTER
-
-        })
-
-      );
-
-    }
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:
-          assessment.type.toUpperCase(),
-
-        heading:
-          HeadingLevel.HEADING_1,
-
-        alignment:
-          AlignmentType.CENTER
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        children:[
-
-          new TextRun({
-            text:"Subject: ",
-            bold:true
-          }),
-
-          new TextRun({
-            text:assessment.subject
-          })
-
-        ]
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        children:[
-
-          new TextRun({
-            text:"Class: ",
-            bold:true
-          }),
-
-          new TextRun({
-            text:assessment.className
-          })
-
-        ]
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        children:[
-
-          new TextRun({
-            text:"Session: ",
-            bold:true
-          }),
-
-          new TextRun({
-            text:assessment.session
-          })
-
-        ]
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        children:[
-
-          new TextRun({
-            text:"Term: ",
-            bold:true
-          }),
-
-          new TextRun({
-            text:assessment.term
-          })
-
-        ]
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        children:[
-
-          new TextRun({
-            text:"Duration: ",
-            bold:true
-          }),
-
-          new TextRun({
-            text:assessment.duration || ""
-          })
-
-        ]
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Name: __________________________________________"
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Date: ____________________"
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Instructions",
-
-        heading:
-          HeadingLevel.HEADING_2
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:
-          assessment.instructions || ""
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Objective Questions",
-
-        heading:
-          HeadingLevel.HEADING_2
-
-      })
-
-    );
-
-
-    (assessment.objective || "")
-      .split("\n")
-      .forEach(function(line){
-
-        children.push(
-
-          new Paragraph({
-            text:line
-          })
-
-        );
-
-      });
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Theory Questions",
-
-        heading:
-          HeadingLevel.HEADING_2
-
-      })
-
-    );
-
-
-    (assessment.theory || "")
-      .split("\n")
-      .forEach(function(line){
-
-        children.push(
-
-          new Paragraph({
-            text:line
-          })
-
-        );
-
-      });
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:"Marking Scheme",
-
-        heading:
-          HeadingLevel.HEADING_2
-
-      })
-
-    );
-
-
-    (assessment.marking || "")
-      .split("\n")
-      .forEach(function(line){
-
-        children.push(
-
-          new Paragraph({
-            text:line
-          })
-
-        );
-
-      });
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:
-          "Teacher: " +
-          assessment.teacherName
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:
-          "HOD: " +
-          assessment.hodName
-
-      })
-
-    );
-
-
-    children.push(
-
-      new Paragraph({
-
-        text:
-          "Examination Officer: " +
-          (assessment.examOfficerName || "")
-
-      })
-
-    );
-
-
-    const doc =
-      new Document({
-
-        sections:[{
-
-          children:children
-
-        }]
-
-      });
-
-
-    const blob =
-      await Packer.toBlob(doc);
-
-
-    const url =
-      URL.createObjectURL(blob);
-
-
-    const link =
-      document.createElement("a");
-
-    link.href=url;
-
-    link.download =
-      sanitizeFileName(
-        school +
-        "_" +
-        assessment.subject +
-        "_" +
-        assessment.type +
-        ".docx"
-      );
-
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    link.remove();
-
-
-    URL.revokeObjectURL(url);
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "The assessment was finalized, but the Word document could not be generated. Please make sure the phone has internet access and try again."
-    );
-
-  }
-
-}
-
-
-function sanitizeFileName(name){
-
-  return name
-    .replace(/[\\/:*?"<>|]/g,"_")
-    .replace(/\s+/g,"_");
-
-}
-
-
-/* =========================================================
-   ACADEMIC DOCUMENTS
-========================================================= */
-
-function saveAcademicDocument(type){
-
-  const db=getDB();
-
-
-  let title="";
-  let content="";
-  let className="";
-  let subject="";
-
-
-  if(type==="Lesson Plan"){
-
-    className=
-      document.getElementById(
-        "lpClass"
-      ).value;
-
-    subject=
-      document.getElementById(
-        "lpSubject"
-      ).value;
-
-    title=
-      document.getElementById(
-        "lpTopic"
-      ).value ||
-      "Lesson Plan";
-
-
-    content=`
-
-Class: ${className}
-Subject: ${subject}
-
-Topic:
-${document.getElementById("lpTopic").value}
-
-Sub-topic:
-${document.getElementById("lpSubtopic").value}
-
-Date:
-${document.getElementById("lpDate").value}
-
-Duration:
-${document.getElementById("lpDuration").value}
-
-Learning Objectives:
-${document.getElementById("lpObjectives").value}
-
-Previous Knowledge:
-${document.getElementById("lpPrevious").value}
-
-Teaching/Learning Materials:
-${document.getElementById("lpMaterials").value}
-
-Introduction:
-${document.getElementById("lpIntroduction").value}
-
-Lesson Development:
-${document.getElementById("lpDevelopment").value}
-
-Learners' Activities:
-${document.getElementById("lpLearnerActivities").value}
-
-Evaluation:
-${document.getElementById("lpEvaluation").value}
-
-Conclusion:
-${document.getElementById("lpConclusion").value}
-
-    `;
-
-  }
-
-
-  if(type==="Lesson Note"){
-
-    className=
-      document.getElementById(
-        "lnClass"
-      ).value;
-
-    subject=
-      document.getElementById(
-        "lnSubject"
-      ).value;
-
-    title=
-      document.getElementById(
-        "lnTopic"
-      ).value ||
-      "Lesson Note";
-
-
-    content=`
-
-Class: ${className}
-Subject: ${subject}
-
-Topic:
-${document.getElementById("lnTopic").value}
-
-Sub-topic:
-${document.getElementById("lnSubtopic").value}
-
-Objectives:
-${document.getElementById("lnObjectives").value}
-
-Content:
-${document.getElementById("lnContent").value}
-
-Teaching Methods:
-${document.getElementById("lnMethods").value}
-
-Instructional Materials:
-${document.getElementById("lnMaterials").value}
-
-Evaluation:
-${document.getElementById("lnEvaluation").value}
-
-    `;
-
-  }
-
-
-  if(type==="Scheme of Work"){
-
-    className=
-      document.getElementById(
-        "swClass"
-      ).value;
-
-    subject=
-      document.getElementById(
-        "swSubject"
-      ).value;
-
-    title=
-      subject +
-      " Scheme of Work";
-
-
-    content=`
-
-Class: ${className}
-Subject: ${subject}
-Session:
-${document.getElementById("swSession").value}
-
-Term:
-${document.getElementById("swTerm").value}
-
-Scheme:
-
-${document.getElementById("swContent").value}
-
-    `;
-
-  }
-
-
-  if(!className || !subject){
-
-    alert(
-      "Please enter the class and subject."
-    );
-
-    return;
-  }
-
-
-  db.documents.push({
-
-    id:uid("document"),
-
-    type:type,
-
-    title:title,
-
-    className:className,
-
-    subject:subject,
-
-    content:content,
-
-    teacherId:currentUser.id,
-
-    teacherName:currentUser.fullName,
-
-    createdAt:new Date().toISOString()
-
-  });
-
-
-  saveDB(db);
-
-
-  addActivity(
-    type+" Saved",
-    title
-  );
-
-
-  updateDashboard();
-
-
-  alert(
-    type +
-    " saved successfully."
-  );
-
-}
-
-
-/* =========================================================
-   SCHOOL SETTINGS
-========================================================= */
-
-function loadSchoolSettings(){
-
-  const db=getDB();
-
-
-  document.getElementById(
-    "schoolName"
-  ).value=
-    db.school.name || "";
-
-
-  document.getElementById(
-    "schoolMotto"
-  ).value=
-    db.school.motto || "";
-
-
-  document.getElementById(
-    "schoolAddress"
-  ).value=
-    db.school.address || "";
-
-
-  document.getElementById(
-    "schoolContact"
-  ).value=
-    db.school.contact || "";
-
-}
-
-
-function saveSchoolSettings(){
-
-  if(currentUser.role!=="admin"){
-
-    alert(
-      "Only the Administrator can change school settings."
-    );
-
-    return;
-  }
-
-
-  const db=getDB();
-
-
-  db.school.name =
-    document.getElementById(
-      "schoolName"
-    ).value.trim();
-
-
-  db.school.motto =
-    document.getElementById(
-      "schoolMotto"
-    ).value.trim();
-
-
-  db.school.address =
-    document.getElementById(
-      "schoolAddress"
-    ).value.trim();
-
-
-  db.school.contact =
-    document.getElementById(
-      "schoolContact"
-    ).value.trim();
-
-
-  saveDB(db);
-
-
-  alert(
-    "School settings saved."
-  );
-
-}
-
-
-/* =========================================================
-   CHANGE PASSWORD
-========================================================= */
+/* PASSWORD */
 
 function changePassword(){
 
-  const oldPassword =
-    document.getElementById(
-      "oldPassword"
-    ).value;
+let u=current();
 
-  const newPassword =
-    document.getElementById(
-      "newPassword"
-    ).value;
+let db=getDB();
 
 
-  if(!oldPassword ||
-     !newPassword){
+let old=
+document.getElementById("oldPass").value;
 
-    alert(
-      "Please enter both passwords."
-    );
+let n=
+document.getElementById("newPass").value;
 
-    return;
-  }
-
-
-  if(
-    oldPassword !==
-    currentUser.password
-  ){
-
-    alert(
-      "Current password is incorrect."
-    );
-
-    return;
-  }
+let n2=
+document.getElementById("newPass2").value;
 
 
-  if(newPassword.length < 6){
+if(old!==u.password){
 
-    alert(
-      "New password must be at least 6 characters."
-    );
+alert("Current password is incorrect.");
 
-    return;
-  }
-
-
-  const db=getDB();
-
-  const user =
-    db.users.find(
-      u=>u.id===currentUser.id
-    );
-
-
-  if(!user){
-    return;
-  }
-
-
-  user.password=newPassword;
-
-  currentUser=user;
-
-
-  saveDB(db);
-
-
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    JSON.stringify(currentUser)
-  );
-
-
-  document.getElementById(
-    "oldPassword"
-  ).value="";
-
-  document.getElementById(
-    "newPassword"
-  ).value="";
-
-
-  alert(
-    "Password changed successfully."
-  );
+return;
 
 }
 
 
-/* =========================================================
-   BACKUP
-========================================================= */
+if(n.length<6){
 
-function downloadBackup(){
+alert(
+"New password must be at least 6 characters."
+);
 
-  const db=getDB();
-
-
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          db,
-          null,
-          2
-        )
-      ],
-      {
-        type:"application/json"
-      }
-    );
-
-
-  const url =
-    URL.createObjectURL(blob);
-
-
-  const link =
-    document.createElement("a");
-
-
-  link.href=url;
-
-
-  link.download=
-    "Caliphate_Tarbiya_Academy_Backup_" +
-    new Date()
-      .toISOString()
-      .slice(0,10) +
-    ".json";
-
-
-  document.body.appendChild(link);
-
-  link.click();
-
-  link.remove();
-
-  URL.revokeObjectURL(url);
+return;
 
 }
 
 
-function restoreBackup(){
+if(n!==n2){
 
-  if(currentUser.role!=="admin"){
+alert(
+"New passwords do not match."
+);
 
-    alert(
-      "Only the Administrator can restore data."
-    );
-
-    return;
-  }
-
-
-  const input =
-    document.getElementById(
-      "restoreFile"
-    );
-
-
-  if(!input.files.length){
-
-    alert(
-      "Please select a backup file."
-    );
-
-    return;
-  }
-
-
-  if(!confirm(
-    "Restoring this backup will replace the current data. Continue?"
-  )){
-    return;
-  }
-
-
-  const file=input.files[0];
-
-
-  const reader=
-    new FileReader();
-
-
-  reader.onload=function(){
-
-    try{
-
-      const data =
-        JSON.parse(
-          reader.result
-        );
-
-
-      if(
-        !data.users ||
-        !data.assessments ||
-        !data.documents
-      ){
-
-        throw new Error(
-          "Invalid backup"
-        );
-
-      }
-
-
-      localStorage.setItem(
-        DB_KEY,
-        JSON.stringify(data)
-      );
-
-
-      alert(
-        "Backup restored successfully. The page will reload."
-      );
-
-
-      location.reload();
-
-
-    }catch(error){
-
-      alert(
-        "Invalid backup file."
-      );
-
-    }
-
-  };
-
-
-  reader.readAsText(file);
+return;
 
 }
 
 
-/* =========================================================
-   PASSWORD SHOW/HIDE
-========================================================= */
+u.password=n;
 
-function togglePassword(
-  inputId,
-  button
+saveDB(db);
+
+alert("Password changed successfully.");
+
+
+document.getElementById("oldPass").value="";
+
+document.getElementById("newPass").value="";
+
+document.getElementById("newPass2").value="";
+
+}
+
+
+/* TEACHER ASSISTANT */
+
+function assistantLanguage(subject){
+
+if(subject==="Hausa Language")
+return "Hausa";
+
+if(subject==="Arabic Language")
+return "Arabic";
+
+if(subject==="French Language")
+return "French";
+
+
+let selected=
+document.getElementById("taLanguage").value;
+
+
+return selected==="Automatic"
+?"English"
+:selected;
+
+}
+
+
+function generateAssistant(){
+
+let type=
+document.getElementById("taType").value;
+
+let cl=
+document.getElementById("taClass").value||"Class";
+
+let sub=
+document.getElementById("taSubject").value;
+
+let topic=
+document.getElementById("taTopic").value||"Selected Topic";
+
+let subtopic=
+document.getElementById("taSubtopic").value;
+
+let term=
+document.getElementById("taTerm").value;
+
+let session=
+document.getElementById("taSession").value;
+
+let count=Math.max(
+1,
+Math.min(
+100,
++document.getElementById("taCount").value||10
+)
+);
+
+let lang=assistantLanguage(sub);
+
+let r="";
+
+
+if(lang==="Hausa"){
+
+r=hausaAssistant(
+type,cl,sub,topic,subtopic,term,session,count
+);
+
+}
+
+else if(lang==="Arabic"){
+
+r=arabicAssistant(
+type,cl,sub,topic,subtopic,term,session,count
+);
+
+}
+
+else if(lang==="French"){
+
+r=frenchAssistant(
+type,cl,sub,topic,subtopic,term,session,count
+);
+
+}
+
+else{
+
+r=englishAssistant(
+type,cl,sub,topic,subtopic,term,session,count
+);
+
+}
+
+
+document.getElementById("taResult").textContent=r;
+
+}
+
+
+/* ENGLISH ASSISTANT */
+
+function englishAssistant(
+type,cl,sub,topic,subtopic,term,session,count
 ){
 
-  const input =
-    document.getElementById(
-      inputId
-    );
+let head=
+
+`CALIPHATE TARBIYA ACADEMY
+${type.toUpperCase()}
+
+Class: ${cl}
+Subject: ${sub}
+Topic: ${topic}
+${subtopic?"Subtopic: "+subtopic+"\n":""}
+Term: ${term}
+Session: ${session}
+
+`;
 
 
-  if(input.type==="password"){
+if(type==="Lesson Plan"){
 
-    input.type="text";
+return head+
 
-    button.textContent="Hide";
+`LEARNING OBJECTIVES
 
-  }else{
+By the end of the lesson, learners should be able to:
 
-    input.type="password";
+1. Define and explain ${topic}.
+2. Identify the main concepts related to ${topic}.
+3. Apply the knowledge in simple classroom examples.
 
-    button.textContent="Show";
 
-  }
+PREVIOUS KNOWLEDGE
+
+Learners should have basic knowledge related to the topic.
+
+
+INSTRUCTIONAL MATERIALS
+
+Textbook, board, marker, charts and relevant examples.
+
+
+INTRODUCTION
+
+Teacher introduces the lesson using questions and familiar examples connected to ${topic}.
+
+
+LESSON DEVELOPMENT
+
+Step 1: Introduce and define the key terms.
+
+Step 2: Explain the major concepts with examples.
+
+Step 3: Demonstrate the concept.
+
+Step 4: Learners practise through guided activities.
+
+Step 5: Teacher corrects misconceptions and reinforces key points.
+
+
+LEARNER ACTIVITIES
+
+Learners answer oral questions, participate in discussion,
+copy key notes and solve/practise examples.
+
+
+EVALUATION
+
+Ask learners to explain the topic, give examples and answer short application questions.
+
+
+CONCLUSION / ASSIGNMENT
+
+Review the main points and give learners a short assignment based on ${topic}.`;
 
 }
 
 
-/* =========================================================
-   CAPS LOCK
-========================================================= */
+if(type==="Lesson Note"){
 
-document.getElementById(
-  "loginPassword"
-)
-.addEventListener(
-  "keyup",
-  function(event){
+return head+
 
-    document.getElementById(
-      "capsWarning"
-    ).style.display =
-      event.getModifierState("CapsLock")
-        ? "block"
-        : "none";
+`INTRODUCTION
 
-  }
+${topic} is an important concept in ${sub}.
+This lesson explains its meaning, characteristics and practical application.
+
+
+CONTENT
+
+1. Meaning and definition of ${topic}.
+2. Main features/components.
+3. Examples and non-examples.
+4. Practical application.
+5. Summary of key points.
+
+
+TEACHING METHODS
+
+Discussion, explanation, questioning, demonstration and guided practice.
+
+
+INSTRUCTIONAL MATERIALS
+
+Board, marker, textbook, charts and relevant teaching aids.
+
+
+EVALUATION
+
+1. Define ${topic}.
+2. State three important points about the topic.
+3. Give two examples.
+
+
+ASSIGNMENT
+
+Write a short summary of ${topic} and provide relevant examples.`;
+
+}
+
+
+if(type==="Scheme of Work"){
+
+return head+
+
+Array.from(
+{length:12},
+(_,i)=>
+
+`WEEK ${i+1}
+
+Topic: ${topic}${i?` — Part ${i+1}`:""}
+
+Objectives:
+Learners understand and apply the key ideas in the topic.
+
+Content:
+Definitions, concepts, examples, class activities and evaluation.`
+
+).join("\n\n");
+
+}
+
+
+if(type==="Marking Scheme"){
+
+return head+
+
+`MARKING SCHEME
+
+Objective:
+1 mark for each correct answer.
+
+Theory:
+Award marks for correct definitions, relevant points,
+clear explanations, examples and correct calculations/steps where applicable.
+
+Teacher should accept equivalent correct answers where appropriate.`;
+
+}
+
+
+let qs=[];
+
+
+for(let i=1;i<=count;i++){
+
+if(
+type==="Objective Questions" ||
+type==="CA Questions" ||
+type==="Examination Questions"
+){
+
+qs.push(
+
+`${i}. Which statement best describes ${topic}?
+
+A. A statement unrelated to the topic
+B. The correct explanation of the topic
+C. An incorrect example
+D. None of the above`
+
 );
 
+}else{
 
-/* =========================================================
-   CLOSE MODALS WHEN CLICKING BACKGROUND
-========================================================= */
+qs.push(
 
-window.addEventListener(
-  "click",
-  function(event){
+`${i}. Explain ${topic} and state two important points about it.`
 
-    if(
-      event.target ===
-      document.getElementById(
-        "teacherModal"
-      )
-    ){
-
-      closeTeacherModal();
-
-    }
-
-
-    if(
-      event.target ===
-      document.getElementById(
-        "reviewModal"
-      )
-    ){
-
-      closeReviewModal();
-
-    }
-
-  }
 );
 
+}
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
-
-    /*
-      Make sure database exists.
-    */
-
-    getDB();
+}
 
 
-    /*
-      Populate all subjects.
-    */
+if(type==="Theory Questions"){
 
-    populateAllSubjectSelects();
-
-
-    /*
-      Load previous session if available.
-    */
-
-    checkExistingLogin();
-
-  }
+qs=Array.from(
+{length:count},
+(_,i)=>
+`${i+1}. Explain ${topic} and give relevant examples.`
 );
+
+}
+
+
+return head+qs.join("\n\n");
+
+}
+
+
+/* HAUSA */
+
+function hausaAssistant(
+type,cl,sub,topic,st,term,session,count
+){
+
+return `MAKARANTAR CALIPHATE TARBIYA ACADEMY
+
+${type.toUpperCase()}
+
+Ajin: ${cl}
+Darasi: ${sub}
+Maudu'i: ${topic}
+${st?"Ƙaramin maudu'i: "+st:""}
+
+Zango: ${term}
+
+Shekarar Karatu: ${session}
+
+
+MANUFOFIN DARASI
+
+A ƙarshen darasin, ɗalibai za su iya:
+
+1. Bayyana ma'anar ${topic}.
+2. Gano muhimman abubuwan da suka shafi ${topic}.
+3. Amfani da ilimin a cikin misalai.
+
+
+ABUBUWAN KOYARWA
+
+Littafi, allo, alkalami, hotuna ko sauran kayan koyarwa masu dacewa.
+
+
+GABATARWA
+
+Malami zai gabatar da tambayoyi da misalan rayuwar yau da kullum
+da suka shafi ${topic}.
+
+
+CI GABAN DARASI
+
+1. Bayyana ma'anar ${topic}.
+2. Yi bayani kan muhimman abubuwa.
+3. Nuna misalai.
+4. Ba ɗalibai damar yin aiki da kansu.
+5. Gyara kura-kurai tare da taƙaita darasi.
+
+
+TAMBAYOYIN KIMANTAWA
+
+${Array.from(
+{length:Math.min(count,10)},
+(_,i)=>
+`${i+1}. Bayyana ${topic} tare da ba da misali.`
+).join("\n")}
+
+
+AIKIN GIDA
+
+Rubuta taƙaitaccen bayani kan ${topic}.`;
+
+}
+
+
+/* ARABIC */
+
+function arabicAssistant(
+type,cl,sub,topic,st,term,session,count
+){
+
+return `أكاديمية الخلافة تربية
+
+${type}
+
+الصف: ${cl}
+المادة: ${sub}
+الموضوع: ${topic}
+${st?"الدرس الفرعي: "+st:""}
+
+الفصل: ${term}
+
+العام الدراسي: ${session}
+
+
+الأهداف التعليمية
+
+في نهاية الدرس يستطيع التلاميذ:
+
+1. تعريف ${topic}.
+2. ذكر أهم النقاط المتعلقة بالموضوع.
+3. تطبيق المعرفة في أمثلة مناسبة.
+
+
+الوسائل التعليمية
+
+الكتاب المدرسي، السبورة، القلم، الصور والوسائل المناسبة.
+
+
+تمهيد
+
+يبدأ المعلم بأسئلة وأمثلة مرتبطة بالموضوع من الحياة اليومية.
+
+
+عرض الدرس
+
+1. تعريف الموضوع.
+2. شرح المفاهيم الأساسية.
+3. تقديم أمثلة.
+4. تدريب التلاميذ.
+5. التقويم والتلخيص.
+
+
+أسئلة التقويم
+
+${Array.from(
+{length:Math.min(count,10)},
+(_,i)=>
+`${i+1}. عرّف ${topic} واذكر مثالاً مناسباً.`
+).join("\n")}
+
+
+الواجب المنزلي
+
+اكتب ملخصاً عن ${topic}.`;
+
+}
+
+
+/* FRENCH */
+
+function frenchAssistant(
+type,cl,sub,topic,st,term,session,count
+){
+
+return `CALIPHATE TARBIYA ACADEMY
+
+${type}
+
+Classe : ${cl}
+Matière : ${sub}
+Sujet : ${topic}
+${st?"Sous-sujet : "+st:""}
+
+Trimestre : ${term}
+
+Année scolaire : ${session}
+
+
+OBJECTIFS
+
+À la fin de la leçon, les élèves doivent pouvoir:
+
+1. Définir ${topic}.
+2. Identifier les idées principales.
+3. Appliquer les connaissances dans des exemples simples.
+
+
+MATÉRIELS
+
+Manuel, tableau, marqueur, images et autres supports appropriés.
+
+
+INTRODUCTION
+
+L'enseignant présente le sujet à l'aide de questions
+et d'exemples familiers.
+
+
+DÉVELOPPEMENT
+
+1. Définition du sujet.
+2. Explication des concepts principaux.
+3. Exemples.
+4. Activité guidée des élèves.
+5. Évaluation et résumé.
+
+
+ÉVALUATION
+
+${Array.from(
+{length:Math.min(count,10)},
+(_,i)=>
+`${i+1}. Définissez ${topic} et donnez un exemple.`
+).join("\n")}
+
+
+DEVOIR
+
+Rédigez un court résumé sur ${topic}.`;
+
+}
+
+
+/* ASSISTANT BUTTONS */
+
+function copyAssistant(){
+
+let t=
+document.getElementById("taResult").textContent;
+
+if(!t)return;
+
+
+if(navigator.clipboard){
+
+navigator.clipboard
+.writeText(t)
+.then(()=>alert("Copied."));
+
+}else{
+
+alert("Copy is not supported by this browser.");
+
+}
+
+}
+
+
+function printAssistant(){
+
+let t=
+document.getElementById("taResult").textContent;
+
+
+let w=window.open("","_blank");
+
+if(!w)return;
+
+
+w.document.write(`
+
+<html>
+
+<head>
+
+<title>Teacher Assistant</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:30px;
+line-height:1.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Caliphate Tarbiya Academy</h2>
+
+<pre style="white-space:pre-wrap;font-family:Arial">
+${esc(t)}
+</pre>
+
+</body>
+
+</html>
+
+`);
+
+
+w.document.close();
+
+w.print();
+
+}
+
+
+function useAssistantForAssessment(){
+
+let t=
+document.getElementById("taResult").textContent;
+
+let subject=
+document.getElementById("taSubject").value;
+
+
+document.getElementById("aSubject").value=
+subject;
+
+
+document.getElementById("aClass").value=
+document.getElementById("taClass").value;
+
+
+document.getElementById("aTerm").value=
+document.getElementById("taTerm").value;
+
+
+document.getElementById("aSession").value=
+document.getElementById("taSession").value;
+
+
+let type=
+document.getElementById("taType").value;
+
+
+if(type==="Marking Scheme"){
+
+document.getElementById("aMarking").value=t;
+
+}
+
+else if(type==="Theory Questions"){
+
+document.getElementById("aTheory").value=t;
+
+}
+
+else{
+
+document.getElementById("aObjective").value=t;
+
+}
+
+
+showPage("assessment");
+
+
+}
+
+
+/* PRINT */
+
+function printCurrent(id){
+
+let el=document.getElementById(id);
+
+let w=window.open("","_blank");
+
+if(!w)return;
+
+
+w.document.write(`
+
+<html>
+
+<head>
+
+<title>Caliphate Tarbiya Academy</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:30px;
+}
+
+input,select,textarea{
+border:0;
+width:100%;
+font-size:14px;
+margin-bottom:12px;
+}
+
+label{
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Caliphate Tarbiya Academy</h1>
+
+<h2>${document.getElementById("pageTitle").textContent}</h2>
+
+${el.innerHTML}
+
+</body>
+
+</html>
+
+`);
+
+
+w.document.close();
+
+w.print();
+
+}
+
+
+/* INITIALIZE */
+
+(function init(){
+
+if(!localStorage.getItem(DB_KEY)){
+
+saveDB(freshDB());
+
+}
+
+
+if(current()){
+
+openApp();
+
+}
+
+})();
 
 </script>
 
